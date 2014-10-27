@@ -1,0 +1,43 @@
+$NetBSD$
+
+--- DEFAULTS/Defaults.haiku.orig	2014-10-27 22:20:49.000000000 +0000
++++ DEFAULTS/Defaults.haiku
+@@ -0,0 +1,38 @@
++#ident "%W% %E% %Q%"
++###########################################################################
++#
++# global definitions for Haiku Systems
++#
++###########################################################################
++#
++# Compiler stuff
++#
++###########################################################################
++#DEFCCOM=	cc
++DEFCCOM=	gcc
++###########################################################################
++#
++# If the next line is commented out, compilation is done with max warn level
++# If the next line is uncommented, compilation is done with minimal warnings
++#
++###########################################################################
++CWARNOPTS=
++
++DEFINCDIRS=	$(SRCROOT)/include
++LDPATH=		-L/boot/home/pkg/schily/lib
++RUNPATH=	-R $(INS_BASE)/lib -R /boot/home/pkg/schily/lib -R $(OLIBSDIR)
++
++###########################################################################
++#
++# Installation config stuff
++#
++###########################################################################
++INS_BASE=	/boot/home/pkg/schily
++INS_KBASE=	/
++#
++DEFUMASK=	002
++#
++DEFINSMODEF=	444
++DEFINSMODEX=	755
++DEFINSUSR=	bin
++DEFINSGRP=	bin

@@ -1,0 +1,21 @@
+$NetBSD$
+
+--- configure.ac.orig	2010-03-10 12:59:16.047710208 +0000
++++ configure.ac
+@@ -47,6 +47,8 @@ AC_CHECK_TYPE(gid_t, int)
+ AC_HEADER_STDC
+ AC_HEADER_DIRENT
+ 
++AC_SEARCH_LIBS(gethostbyname, [socket, network])
++
+ AC_CHECK_FUNCS([fchmod fchown])
+ # This is needed for mingw build
+ AC_CHECK_FUNCS([setmode getpwuid getpwnam getgrgid getgrnam pipe fork getuid geteuid])
+@@ -98,7 +100,6 @@ AC_CONFIG_FILES([Makefile
+  headers/Makefile
+  gnu/Makefile
+  lib/Makefile
+- rmt/Makefile
+  src/Makefile
+  po/Makefile.in])
+ AC_OUTPUT

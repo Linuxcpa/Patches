@@ -1,0 +1,49 @@
+$NetBSD: patch-aa,v 1.3 2009/02/09 23:53:00 joerg Exp $
+
+--- Makefile.in.orig	1993-02-24 13:36:56.049807360 +0000
++++ Makefile.in
+@@ -3,7 +3,7 @@ srcdir        = @srcdir@
+ VPATH         = $(srcdir)
+ 
+ CC            = @CC@
+-CFLAGS        = -I.     # -O2   # for gcc 2.2.2
++CFLAGS        += -I.     # -O2   # for gcc 2.2.2
+ 
+ INSTALL       = @INSTALL@
+ INSTALL_PROGRAM = @INSTALL_PROGRAM@
+@@ -19,8 +19,8 @@ default:        prog
+ 
+ # Added the prefix macro, so that it was easier to change installation place.
+ prefix        = /usr/local
+-DEST          = $(prefix)/bin
+-MANDEST       = $(prefix)/man/man1
++DEST          = ${DESTDIR}$(prefix)/bin
++MANDEST       = ${DESTDIR}$(prefix)/${PKGMANDIR}/man1
+ SEC           = 1
+ 
+ HDRS          = bitio.h\
+@@ -101,18 +101,18 @@ patch:;         rm -f patch.out
+ 
+ $(DEST)/freeze: freeze
+ 		$(INSTALL_PROGRAM) freeze $@
+-		-ln -f $@ $(DEST)/melt
+-		-ln -f $@ $(DEST)/unfreeze
+-		-ln -f $@ $(DEST)/fcat
++		-ln -sf $@ $(DEST)/melt
++		-ln -sf $@ $(DEST)/unfreeze
++		-ln -sf $@ $(DEST)/fcat
+ 
+ $(DEST)/statist: statist
+ 		$(INSTALL_PROGRAM) statist $@
+ 
+ $(MANDEST)/freeze.$(SEC): freeze.1
+ 		$(INSTALL_DATA) $(srcdir)/freeze.1 $@
+-		-ln -f $@ $(MANDEST)/melt.$(SEC)
+-		-ln -f $@ $(MANDEST)/unfreeze.$(SEC)
+-		-ln -f $@ $(MANDEST)/fcat.$(SEC)
++		-ln -sf $@ $(MANDEST)/melt.$(SEC)
++		-ln -sf $@ $(MANDEST)/unfreeze.$(SEC)
++		-ln -sf $@ $(MANDEST)/fcat.$(SEC)
+ # This is much better for places which keep preformated manpages.
+ #		echo ".so man1/freeze.$(SEC)" > $(MANDEST)/melt.$(SEC)
+ #		echo ".so man1/freeze.$(SEC)" > $(MANDEST)/unfreeze.$(SEC)

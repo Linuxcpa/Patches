@@ -1,0 +1,45 @@
+$NetBSD$
+
+--- DEFAULTS_ENG/Defaults.haiku.orig	2014-10-27 22:21:17.000000000 +0000
++++ DEFAULTS_ENG/Defaults.haiku
+@@ -0,0 +1,40 @@
++#ident "%W% %E% %Q%"
++###########################################################################
++#
++# global definitions for BeOS Systems
++#
++###########################################################################
++#
++# Compiler stuff
++#
++###########################################################################
++#DEFCCOM=	cc
++DEFCCOM=	gcc
++###########################################################################
++#
++# If the next line is commented out, compilation is done with max warn level
++# If the next line is uncommented, compilation is done with minimal warnings
++#
++###########################################################################
++#CWARNOPTS=
++
++DEFINCDIRS=	$(SRCROOT)/include
++LDPATH=		-L/boot/home/pkg/schily/lib
++RUNPATH=	-R $(INS_BASE)/lib -R /boot/home/pkg/schily/lib -R $(OLIBSDIR)
++
++###########################################################################
++#
++# Installation config stuff
++#
++###########################################################################
++#INS_BASE=	/boot/home/pkg/schily
++#INS_KBASE=	/
++INS_BASE=	/boot/home/pkg/tmp/schily
++INS_KBASE=	/boot/home/pkg/tmp/schily/root
++#
++DEFUMASK=	002
++#
++DEFINSMODEF=	444
++DEFINSMODEX=	755
++DEFINSUSR=	bin
++DEFINSGRP=	bin
