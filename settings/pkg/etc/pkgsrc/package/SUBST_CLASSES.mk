@@ -26,3 +26,17 @@ SUBST_STAGE.fix_ld= post-configure
 SUBST_FILES.fix_ld= giscanner/shlibs.py
 SUBST_SED.fix_ld= -e "s|'ldd'|'fakeldd'|"
 .endif
+
+.if ${PKGPATH} == "archivers/zziplib"
+SUBST_CLASSES+= zzipinc
+SUBST_STAGE.zzipinc= pre-build
+SUBST_MESSAGE.zzipinc = Fixing Path To Headers in configure
+SUBST_FILES.zzipinc=configure
+SUBST_SED.zzipinc=		-e "s|'$with_zlib/include'|'$with_zlib/headers'|"
+
+SUBST_CLASSES+= zzipinc-ac
+SUBST_STAGE.zzipinc-ac= pre-build
+SUBST_MESSAGE.zzipinc-ac = Fixing Path To Headers in configure.ac
+SUBST_FILES.zzipinc-ac=configure.ac
+SUBST_SED.zzipinc-ac=		-e "s|'$with_zlib/include'|'$with_zlib/headers'|"
+.endif

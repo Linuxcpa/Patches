@@ -31,3 +31,7 @@ CONFIGURE_ARGS+= --with-libedit=${BUILDLINK_PREFIX.editline}/lib
 CONFIGURE_ARGS+= --enable-lock-dir=/var/empty
 CONFIGURE_ARGS+= --enable-dfl-port=/dev/ports/usb0
 .endif
+
+.if ${PKGPATH} == "lang/python27"
+CONFIGURE_ARGS+= --disable-ipv6
+.endif
