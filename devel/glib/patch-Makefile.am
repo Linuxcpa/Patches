@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- Makefile.am.orig	2000-10-28 04:35:30.000000000 +0000
++++ Makefile.am
+@@ -70,7 +70,7 @@ configinclude_DATA = \
+ 
+ CONFIGURE_DEPENDENCIES = acglib.m4		
+ 
+-BUILT_SOURCES = stamp-gc-h #note: not glibconfig.h
++BUILT_SOURCES += stamp-gc-h #note: not glibconfig.h
+ glibconfig.h: stamp-gc-h
+ 	@:
+ stamp-gc-h: config.status

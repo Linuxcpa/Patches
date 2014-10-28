@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- gmodule/Makefile.am.orig	2001-03-15 15:33:10.000000000 +0000
++++ gmodule/Makefile.am
+@@ -42,7 +42,7 @@ libgplugin_b_la_LDFLAGS = @G_MODULE_LDFL
+ libgplugin_b_la_LIBADD = @G_MODULE_LIBS@ # $(libglib)
+ 
+ noinst_PROGRAMS = testgmodule
+-testgmodule_LDFLAGS += @G_MODULE_LDFLAGS@
++testgmodule_LDFLAGS = @G_MODULE_LDFLAGS@
+ testgmodule_LDADD = libgmodule.la $(libglib) @G_MODULE_LIBS@
+ 
+ .PHONY: files release

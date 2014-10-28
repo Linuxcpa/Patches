@@ -1,0 +1,6 @@
+Settings in the pkgsrc folder are related to:
+
+1. Where compiled packages are ultimately placed
+2. Notification settings upon sucessful build
+
+Settings in the pkg folder are fundamental and integral to the patches.
