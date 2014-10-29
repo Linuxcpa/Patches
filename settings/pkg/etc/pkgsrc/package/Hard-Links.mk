@@ -2,6 +2,7 @@
 
 .if ${PKGPATH} == archivers/bzip2 || ${PKGPATH} == "archivers/rzip" \
 || ${PKGPATH} == "devel/cmake" || ${PKGPATH} == "lang/ruby200-base" \
-|| ${PKGPATH} == "math/fftw"
+|| ${PKGPATH} == "math/fftw" || ${PKGPATH} == "archivers/pigz" \
+|| ${PKGPATH} == "archivers/libzip" 
 TOOLS_PLATFORM.ln?=             /bin/ln -s
 .endif
