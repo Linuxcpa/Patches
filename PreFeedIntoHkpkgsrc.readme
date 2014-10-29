@@ -1,0 +1,7 @@
+These patches are designed to supplement Diger's patches. 
+My hope is that they will eventually placed into Diger's
+repository.
+I am actually comfortable with all of these, surprisingly. Many of the changes were header
+includes. 
+
+These were built in the nightly Rev 48080, GCC 4.
