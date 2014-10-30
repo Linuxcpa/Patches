@@ -16,7 +16,8 @@ LDFLAGS+= -Wl,-R/boot/system/lib
 LDFLAGS+= -L/boot/system/lib
 .endif
 
-.if ${PKGPATH} == "graphics/netpbm" || ${PKGPATH} == "security/tcp_wrappers"
+.if ${PKGPATH} == "graphics/netpbm" || ${PKGPATH} == "security/tcp_wrappers" \
+|| ${PKGPATH} == "benchmarks/httperf" || ${PKGPATH} == "benchmarks/netpipe"
 LDFLAGS+= -lnetwork
 .endif
 

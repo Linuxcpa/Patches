@@ -40,3 +40,11 @@ SUBST_MESSAGE.zzipinc-ac = Fixing Path To Headers in configure.ac
 SUBST_FILES.zzipinc-ac=configure.ac
 SUBST_SED.zzipinc-ac=		-e "s|'$with_zlib/include'|'$with_zlib/headers'|"
 .endif
+
+.if ${PKGPATH} == "benchmarks/postal"
+SUBST_CLASSES+= libs
+SUBST_STAGE.libs= pre-build
+SUBST_MESSAGE.libs = Adding Haiku lnetwork to libraries
+SUBST_FILES.libs=Makefile
+SUBST_SED.libs=		-e '/^CRYPTLFLAGS/s/$$/ -lnetwork/'
+.endif

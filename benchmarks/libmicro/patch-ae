@@ -1,0 +1,33 @@
+$NetBSD: patch-ae,v 1.1.1.1 2009/11/22 00:45:54 jym Exp $
+
+--- Makefile.com.orig	2007-07-02 21:17:45.056098816 +0000
++++ Makefile.com
+@@ -54,10 +54,10 @@ lint:	libmicro.ln $(ALL:%=%.lint) $(EXTR
+ 
+ 
+ $(EXTRA_CFILES:%.c=%.lint):
+-	$(LINT) ../$(@:%.lint=%.c) -I. -mu -lc libmicro.ln -lm
++	$(LINT) ../$(@:%.lint=%.c) -I. -mu -lc libmicro.ln
+ 
+ %.lint:	../%.c libmicro.ln
+-	$(LINT) -mu $(CPPFLAGS) $< libmicro.ln -lpthread -lsocket -lnsl -lm
++	$(LINT) -mu $(CPPFLAGS) $< libmicro.ln -lnetwork
+ 
+ %.o:	../%.c
+ 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+@@ -107,13 +107,13 @@ tattle:		../tattle.c	libmicro.a
+ 	echo "char * compiler_version = \""`$(COMPILER_VERSION_CMD)`"\";" > tattle.h
+ 	echo "char * CC = \""$(CC)"\";" >> tattle.h
+ 	echo "char * extra_compiler_flags = \""$(extra_CFLAGS)"\";" >> tattle.h
+-	$(CC) -o tattle $(CFLAGS) -I. ../tattle.c libmicro.a -lrt -lm
++	$(CC) -o tattle $(CFLAGS) -I. ../tattle.c libmicro.a
+ 
+ $(ELIDED_BENCHMARKS):	../elided.c
+ 	$(CC) -o $(@) ../elided.c
+ 
+ %: libmicro.a %.o 
+-	$(CC) -o $(@) $(@).o $($(@)_EXTRA_DEPS) $(CFLAGS) libmicro.a $($(@)_EXTRA_LIBS) $(EXTRA_LIBS) -lpthread -lm
++	$(CC) -o $(@) $(@).o $($(@)_EXTRA_DEPS) $(CFLAGS) libmicro.a $($(@)_EXTRA_LIBS) $(EXTRA_LIBS) -lnetwork
+ 
+ exec:	exec_bin
+ 

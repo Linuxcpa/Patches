@@ -11,3 +11,11 @@ BUILD_TARGET.Haiku= haiku
 .if ${PKGPATH} == "pkgtools/rc.subr"
 ONLY_FOR_PLATFORM+= Haiku-*-*
 .endif
+
+.if ${PKGPATH} == "benchmarks/netpipe"
+MAKE_ENV+=	EXTRA_LIBS="-lnetwork"
+.endif
+
+.if ${PKGPATH} == "benchmarks/nttcp"
+MAKE_ENV+=	LIB="-lnetwork"
+.endif

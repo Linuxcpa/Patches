@@ -1,5 +1,4 @@
-Edit lines 18 20 25 for channges to final package destination. 
+Edit lines 18 20 25 for channges to final package destination.
 Note: mk.conf is integral to this solution.
-
 Edit line 78 if you want to insert a notification upon build sucess.
-Note: A script to activate playfile is integral to this feature.
+Note: A script to activate playfile is integral to this feature. 

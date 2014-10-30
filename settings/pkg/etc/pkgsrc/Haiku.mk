@@ -17,7 +17,7 @@
 .include "/boot/home/pkg/etc/pkgsrc/global/SUBST_CLASSES.mk"
 .include "/boot/home/pkg/etc/pkgsrc/global/Substitute-Makefile-Library.mk"
 
-# Settings For Specific Packages - Check Total = 9
+# Settings For Specific Packages - Check Total = 11
 .include "/boot/home/pkg/etc/pkgsrc/package/CompileTool.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/CONFIGURE_ARGS_ENV.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/Haiku-Misc.mk"
@@ -28,3 +28,4 @@
 .include "/boot/home/pkg/etc/pkgsrc/package/Remove-Compiler-Setting.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/Remove-Makefile-Library.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/SUBST_CLASSES.mk"
+.include "/boot/home/pkg/etc/pkgsrc/package/Substitute-Makefile-Library.mk"
