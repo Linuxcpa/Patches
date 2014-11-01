@@ -8,7 +8,8 @@ LDFLAGS+= -Wl,-R${PREFIX}/lib
 LDFLAGS+= -lssp_nonshared
 .endif
 
-.if ${PKGPATH} == "net/samba" || ${PKGPATH} == "lang/gcc48-libs"
+.if ${PKGPATH} == "net/samba" || ${PKGPATH} == "lang/gcc48-libs" \
+|| ${PKGPATH} == "chat/anope"
 LDFLAGS+= -Wl,-R/boot/system/lib
 .endif
 

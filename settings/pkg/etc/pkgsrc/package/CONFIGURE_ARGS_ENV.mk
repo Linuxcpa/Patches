@@ -34,4 +34,5 @@ CONFIGURE_ARGS+= --enable-dfl-port=/dev/ports/usb0
 
 .if ${PKGPATH} == "lang/python27"
 CONFIGURE_ARGS+= --disable-ipv6
+CONFIGURE_ARGS+= --with-threads=no
 .endif

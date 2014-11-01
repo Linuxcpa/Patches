@@ -1,0 +1,64 @@
+$NetBSD: patch-configure,v 1.7 2013/11/04 16:39:32 joerg Exp $
+
+Several configure changes to work on and detect NetBSD (and some other OSes)
+
+--- configure.orig	2013-08-23 06:22:36.011010048 +0000
++++ configure
+@@ -290,6 +290,10 @@ case "$bytecc,$host" in
+     bytecccompopts="-fno-defer-pop $gcc_warnings"
+     # No -lm library
+     mathlib="";;
++  *,*-*-haiku*)
++    bytecccompopts="-fno-defer-pop $gcc_warnings"
++    # No -lm library
++    mathlib="";;
+   gcc,alpha*-*-osf*)
+     bytecccompopts="-fno-defer-pop $gcc_warnings"
+     if cc="$bytecc" sh ./hasgot -mieee; then
+@@ -622,6 +626,9 @@ if test $withsharedlibs = "yes"; then
+       byteccrpath="-Wl,-rpath,"
+       mksharedlibrpath="-Wl,-rpath,"
+       shared_libraries_supported=true;;
++    *-*haiku*)
++      mksharedlib="$bytecc -shared"
++      shared_libraries_supported=true;;  
+   esac
+ fi
+ 
+@@ -641,7 +648,7 @@ if test $withsharedlibs = "yes"; then
+     x86_64-*-linux*)              natdynlink=true;;
+     i[3456]86-*-darwin[89].*)     natdynlink=true;;
+     i[3456]86-*-darwin*)
+-      if test $arch64 == true; then
++      if test $arch64 = true; then
+         natdynlink=true
+       fi;;
+     x86_64-*-darwin*)             natdynlink=true;;
+@@ -687,6 +694,7 @@ case "$host" in
+                                   arch=i386; system=solaris
+                                 fi;;
+   i[3456]86-*-beos*)            arch=i386; system=beos;;
++  i[3456]86-*-haiku*)           arch=i386; system=beos;;
+   i[3456]86-*-cygwin*)          arch=i386; system=cygwin;;
+   i[3456]86-*-darwin*)          if $arch64; then
+                                   arch=amd64; system=macosx
+@@ -713,6 +721,7 @@ case "$host" in
+   x86_64-*-freebsd*)            arch=amd64; system=freebsd;;
+   x86_64-*-netbsd*)             arch=amd64; system=netbsd;;
+   x86_64-*-openbsd*)            arch=amd64; system=openbsd;;
++  x86_64-*-haiku*)              arch=amd64; system=haiku;;
+   x86_64-*-darwin*)             arch=amd64; system=macosx;;
+ esac
+ 
+@@ -918,6 +927,11 @@ elif sh ./hasgot -lnsl -lsocket socket s
+   cclibs="$cclibs -lnsl -lsocket"
+   echo "#define HAS_SOCKETS" >> s.h
+   has_sockets=yes
++elif sh ./hasgot -lnetwork socket socketpair bind listen accept connect; then
++  echo "You have BSD sockets (with libraries '-lnetwork')"
++  cclibs="$cclibs -lnetwork"
++  echo "#define HAS_SOCKETS" >> s.h
++  has_sockets=yes
+ fi
+ 
+ if sh ./hasgot -i sys/socket.h -t socklen_t; then
