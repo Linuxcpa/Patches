@@ -1,0 +1,26 @@
+$NetBSD: patch-Makefile,v 1.1 2012/11/07 15:23:37 joerg Exp $
+
+--- Makefile.orig	1999-09-01 00:04:00.003932160 +0000
++++ Makefile
+@@ -7,7 +7,7 @@ MYCODEDIR := .
+ 
+ # Directories to search for header files
+ 
+-SEARCHDIRS := -I- -I${MYCODEDIR}
++SEARCHDIRS := -I${MYCODEDIR}
+ 
+ # makemake variables
+ 
+@@ -123,9 +123,9 @@ jdepend:
+ 
+ # DO NOT DELETE THIS LINE -- makemake depends on it.
+ 
+-./MacFork.o: ./Resource.h ./Types.h ./arg.h ./mac-std-palette.txt /usr/include/netinet/in.h /usr/include/stdio.h /usr/include/stdlib.h
++./MacFork.o: ./Resource.h ./Types.h ./arg.h ./mac-std-palette.txt /boot/system/develop/headers/posix/netinet/in.h /boot/system/develop/headers/posix/stdio.h /boot/system/develop/headers/posix/stdlib.h
+ 
+-./Resource.o: ./Resource.h ./Types.h /usr/include/netinet/in.h /usr/include/stdio.h
++./Resource.o: ./Resource.h ./Types.h /boot/system/develop/headers/posix/netinet/in.h /boot/system/develop/headers/posix/stdio.h
+ 
+-./arg.o: ./arg.h ./simple.h /usr/include/ctype.h /usr/include/math.h /usr/include/stdio.h /usr/include/stdlib.h /usr/include/string.h
++./arg.o: ./arg.h ./simple.h /boot/system/develop/headers/posix/ctype.h /boot/system/develop/headers/posix/math.h /boot/system/develop/headers/posix/stdio.h /boot/system/develop/headers/posix/stdlib.h /boot/system/develop/headers/posix/string.h
+ 

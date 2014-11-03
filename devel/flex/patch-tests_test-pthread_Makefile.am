@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- tests/test-pthread/Makefile.am.orig	2014-02-18 19:47:04.000000000 +0000
++++ tests/test-pthread/Makefile.am
+@@ -27,7 +27,7 @@ CLEANFILES = scanner.c scanner.h parser.
+ OBJS = scanner.o # parser.o
+ 
+ AM_CPPFLAGS = -I$(srcdir) -I$(top_srcdir) -I$(top_builddir)
+-LIBS = -lpthread
++#LIBS = -lpthread
+ #LFLAGS = --header="scanner.h"
+ #YFLAGS = --defines --output=parser.c
+ 

@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- configure.ac.orig	2014-03-26 18:55:03.000000000 +0000
++++ configure.ac
+@@ -48,7 +48,7 @@ LT_INIT
+ AC_PROG_AWK
+ AC_PROG_INSTALL
+ 
+-AC_PATH_PROG(BISON, bison,bison)
++AC_CHECK_PROG(BISON, bison,bison)
+ AC_PATH_PROG(HELP2MAN, help2man, help2man)
+ 
+ # Check for a m4 that supports -P

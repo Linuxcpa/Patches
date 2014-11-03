@@ -1,0 +1,27 @@
+$NetBSD$
+
+--- Makefile.orig	2003-03-13 12:24:00.004456448 +0000
++++ Makefile
+@@ -21,6 +21,7 @@ OS_Make:;	@echo '*** No OS_Make file has
+ 		@echo '   make DEC_OSF1'
+ 		@echo '   make HP-UX_cc    (uses the cc compiler)'
+ 		@echo '   make HP-UX_gcc   (uses the gcc compiler)'
++		@echo '   make HAIKU_gcc   (uses the gcc compiler)'
+ 		@echo '   make IRIX4'
+ 		@echo '   make IRIX5'
+ 		@echo '   make FreeBSD'
+@@ -59,6 +60,14 @@ HP-UX_gcc:      clean
+ 		ln -s hpuxlocal.h unixlocal.h
+ 		@echo '*** Now run make again'
+ 
++HAIKU_gcc:      clean
++		/bin/rm -f OS_Make elocal.h elocal.c unixlocal.h
++		ln -s OS_Make_HAIKU.gcc OS_Make
++		ln -s elocal.haiku.h elocal.h
++		ln -s elocal.haiku.c elocal.c
++		ln -s haikulocal.h unixlocal.h
++		@echo '*** Now run make again'
++
+ IRIX4:          clean
+ 		/bin/rm -f OS_Make elocal.h elocal.c unixlocal.h
+ 		ln -s OS_Make_IRIX4 OS_Make

@@ -1,0 +1,29 @@
+$NetBSD$
+
+--- MakeLinks.orig	1998-01-02 14:35:28.065273856 +0000
++++ MakeLinks
+@@ -10,6 +10,7 @@ ln -s ../src/OS_Make_DEC_OSF1 OS_Make_DE
+ ln -s ../src/OS_Make_FreeBSD OS_Make_FreeBSD
+ ln -s ../src/OS_Make_HP-UX.gcc OS_Make_HP-UX.gcc
+ ln -s ../src/OS_Make_HP-UX.cc OS_Make_HP-UX.cc
++ln -s ../src/OS_Make_HAIKU.gcc OS_Make_HAIKU.gcc
+ ln -s ../src/OS_Make_IRIX4 OS_Make_IRIX4
+ ln -s ../src/OS_Make_IRIX5 OS_Make_IRIX5
+ ln -s ../src/OS_Make_Linux.cc   OS_Make_Linux.cc
+@@ -46,6 +47,8 @@ ln -s ../src/ekey.c ekey.c
+ ln -s ../src/ekeysub.c ekeysub.c
+ ln -s ../src/eline.c eline.c
+ ln -s ../src/elocal.hpux.c elocal.hpux.c
++ln -s ../src/elocal.haiku.c elocal.haiku.c
++ln -s ../src/elocal.haiku.h elocal.haiku.h
+ ln -s ../src/elocal.hpux.h elocal.hpux.h
+ ln -s ../src/elocal.irix5.c elocal.irix5.c
+ ln -s ../src/elocal.irix5.h elocal.irix5.h
+@@ -64,6 +67,7 @@ ln -s ../src/escrnrdl.c escrnrdl.c
+ ln -s ../src/escrnsub.c escrnsub.c
+ ln -s ../src/estore.c estore.c
+ ln -s ../src/eversion.c eversion.c
++ln -s ../src/haikulocal.h haikulocal.h
+ ln -s ../src/hpuxlocal.h hpuxlocal.h
+ ln -s ../src/irix4local.h irix4local.h
+ ln -s ../src/irix5local.h irix5local.h

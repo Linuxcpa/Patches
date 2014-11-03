@@ -1,0 +1,76 @@
+$NetBSD$
+
+--- configure.orig	2014-03-26 18:58:55.000000000 +0000
++++ configure
+@@ -8700,7 +8700,7 @@ aix[4-9]*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+-beos*)
++haiku*)
+   lt_cv_deplibs_check_method=pass_all
+   ;;
+ 
+@@ -11482,7 +11482,7 @@ lt_prog_compiler_static=
+       esac
+       ;;
+ 
+-    beos* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
++    haiku* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
+       # PIC is the default for these OSes.
+       ;;
+ 
+@@ -12168,7 +12168,7 @@ _LT_EOF
+       esac
+       ;;
+ 
+-    beos*)
++    haiku*)
+       if $LD --help 2>&1 | $GREP ': supported targets:.* elf' > /dev/null; then
+ 	allow_undefined_flag=unsupported
+ 	# Joseph Beckenbach <jrb3@best.com> says some releases of gcc
+@@ -13570,7 +13570,7 @@ amigaos*)
+   esac
+   ;;
+ 
+-beos*)
++haiku*)
+   library_names_spec='${libname}${shared_ext}'
+   dynamic_linker="$host_os ld.so"
+   shlibpath_var=LIBRARY_PATH
+@@ -14318,7 +14318,7 @@ else
+   lt_cv_dlopen_libs=
+ 
+   case $host_os in
+-  beos*)
++  haiku*)
+     lt_cv_dlopen="load_add_on"
+     lt_cv_dlopen_libs=
+     lt_cv_dlopen_self=yes
+@@ -15558,7 +15558,7 @@ fi
+         fi
+         ;;
+ 
+-      beos*)
++      haiku*)
+ 	if $LD --help 2>&1 | $GREP ': supported targets:.* elf' > /dev/null; then
+ 	  allow_undefined_flag_CXX=unsupported
+ 	  # Joseph Beckenbach <jrb3@best.com> says some releases of gcc
+@@ -16608,7 +16608,7 @@ lt_prog_compiler_static_CXX=
+       esac
+       ;;
+ 
+-    beos* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
++    haiku* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
+       # PIC is the default for these OSes.
+       ;;
+     mingw* | cygwin* | os2* | pw32* | cegcc*)
+@@ -17418,7 +17418,7 @@ amigaos*)
+   esac
+   ;;
+ 
+-beos*)
++haiku*)
+   library_names_spec='${libname}${shared_ext}'
+   dynamic_linker="$host_os ld.so"
+   shlibpath_var=LIBRARY_PATH

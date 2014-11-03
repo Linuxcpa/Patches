@@ -1,0 +1,31 @@
+$NetBSD$
+
+--- Makefile.in.orig	2008-05-04 15:57:10.000000000 +0000
++++ Makefile.in
+@@ -48,7 +48,7 @@ install : all install-info
+ 	if test ! -d $(DESTDIR)$(bindir) ; then $(INSTALL) -d $(DESTDIR)$(bindir) ; fi
+ 	$(INSTALL_PROGRAM) ./$(progname) $(DESTDIR)$(bindir)/$(program_prefix)$(progname)
+ 	-rm -f $(DESTDIR)$(bindir)/$(program_prefix)r$(progname)
+-	cd $(DESTDIR)$(bindir) ; ln $(program_prefix)$(progname) $(program_prefix)r$(progname)
++	cd $(DESTDIR)$(bindir) ; ln -s $(program_prefix)$(progname) $(program_prefix)r$(progname)
+ 
+ install-info :
+ 	if test ! -d $(DESTDIR)$(infodir) ; then $(INSTALL) -d $(DESTDIR)$(infodir) ; fi
+@@ -59,7 +59,7 @@ install-man :
+ 	if test ! -d $(DESTDIR)$(mandir)/man1 ; then $(INSTALL) -d $(DESTDIR)$(mandir)/man1 ; fi
+ 	$(INSTALL_DATA) $(VPATH)/doc/$(progname).1 $(DESTDIR)$(mandir)/man1/$(program_prefix)$(progname).1
+ 	-rm -f $(DESTDIR)$(mandir)/man1/$(program_prefix)r$(progname).1
+-	cd $(DESTDIR)$(mandir)/man1 ; ln $(program_prefix)$(progname).1 $(program_prefix)r$(progname).1
++	cd $(DESTDIR)$(mandir)/man1 ; ln -s $(program_prefix)$(progname).1 $(program_prefix)r$(progname).1
+ 
+ install-strip : all
+ 	$(MAKE) INSTALL_PROGRAM='$(INSTALL_PROGRAM) -s' install
+@@ -77,7 +77,7 @@ uninstall-man :
+ 	-rm -f $(DESTDIR)$(mandir)/man1/$(program_prefix)r$(progname).1
+ 
+ dist :
+-	ln -sf $(VPATH) $(DISTNAME)
++	ln -s $(VPATH) $(DISTNAME)
+ 	tar -cvf $(DISTNAME).tar \
+ 	  $(DISTNAME)/AUTHORS \
+ 	  $(DISTNAME)/COPYING \

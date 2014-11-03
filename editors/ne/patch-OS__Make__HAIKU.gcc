@@ -1,0 +1,15 @@
+$NetBSD$
+
+--- OS_Make_HAIKU.gcc.orig	2014-11-03 06:25:12.563085312 +0000
++++ OS_Make_HAIKU.gcc
+@@ -0,0 +1,10 @@
++# System-dependent Unix makefile for the NE editor.
++# Version for Haiku.
++
++FLAGS   = CC=cc \
++          CFLAGS="-Dunixwinsz -DNO_VDISCARD -O" \
++          LIB_TERMINAL=-lncurses 
++        
++newne:;   @make -f BaseMake $(FLAGS) $(TARGET)
++
++# End

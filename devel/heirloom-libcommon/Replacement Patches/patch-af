@@ -1,0 +1,22 @@
+$NetBSD: patch-af,v 1.1.1.1 2011/05/27 22:57:42 cheusov Exp $
+
+Fix for Interix
+--- libcommon/getdir.c.orig	2006-05-14 13:24:39.042729472 +0000
++++ libcommon/getdir.c
+@@ -59,7 +59,15 @@ extern int	getdents(int, struct dirent *
+ #ifdef	__hpux
+ #define		_KERNEL
+ #endif	/* __hpux */
+-#include	<sys/dirent.h>
++
++#ifdef __INTERIX
++#include	<dirent.h>
++#define d_reclen      d_namlen
++#endif
++#if defined (__Haiku__)
++#include <pwd.h>
++#endif
++#include <dirent.h>
+ #ifdef		__hpux
+ #ifndef	_INO64_T
+ typedef	unsigned long long	uint64_t;
