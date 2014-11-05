@@ -1,10 +1,9 @@
 Status
 This is in progress work for libpcap as of November 5, 2014.
 I imagine that this will be much improved in the coming weeks.
-
 1. Replace pkgsrc's patch-ac with mine
 2. Start the build: bmake install
 4. Let the build fail.
 5. Replace libpcap's makefile with mine. Replace the /boot/work/net/libpcap/work/libpcap-1.4.0/Makefile with the Makefile in the Confederate folder.
 6. To finish off the build, like its done in Mortal Kombat, start the build again.
-
+ 
