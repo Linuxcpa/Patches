@@ -32,7 +32,10 @@ CONFIGURE_ARGS+= --enable-lock-dir=/var/empty
 CONFIGURE_ARGS+= --enable-dfl-port=/dev/ports/usb0
 .endif
 
-.if ${PKGPATH} == "lang/python27"
+.if ${PKGPATH} == "lang/python27" || ${PKGPATH} == "lang/python34"
 CONFIGURE_ARGS+= --disable-ipv6
-CONFIGURE_ARGS+= --with-threads=no
+.endif
+
+.if ${PKGPATH} == "mail/mutt"
+CONFIGURE_ARGS+= --with-mailpath=/boot/home/mail
 .endif

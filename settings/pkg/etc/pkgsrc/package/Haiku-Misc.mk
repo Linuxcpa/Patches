@@ -19,4 +19,3 @@ MAKE_ENV+=	EXTRA_LIBS="-lnetwork"
 .if ${PKGPATH} == "benchmarks/nttcp"
 MAKE_ENV+=	LIB="-lnetwork"
 .endif
-

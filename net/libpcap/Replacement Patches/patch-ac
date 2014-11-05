@@ -1,0 +1,12 @@
+$NetBSD: patch-ac,v 1.8 2013/02/06 18:07:04 jperkin Exp $
+
+--- Makefile.in.orig	2014-11-04 06:39:50.096468992 +0000
++++ Makefile.in
+@@ -256,7 +256,6 @@ EXTRA_DIST = \
+ 	fad-getad.c \
+ 	fad-gifc.c \
+ 	fad-glifc.c \
+-	fad-null.c \
+ 	fad-sita.c \
+ 	fad-win32.c \
+ 	grammar.y \

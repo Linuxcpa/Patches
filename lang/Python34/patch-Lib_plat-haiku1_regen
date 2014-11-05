@@ -1,0 +1,8 @@
+$NetBSD$
+
+--- Lib/plat-haiku1/regen.orig	2014-11-05 05:53:09.510918656 +0000
++++ Lib/plat-haiku1/regen
+@@ -0,0 +1,3 @@
++#! /bin/sh
++set -v
++eval $PYTHON_FOR_BUILD ../../Tools/scripts/h2py.py -i "'(u_long)'" /boot/home/pkg/include/netinet/in.h

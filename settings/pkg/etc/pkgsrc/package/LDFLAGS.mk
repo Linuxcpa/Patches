@@ -29,3 +29,7 @@ LDFLAGS+= -lnetwork
 || ${PKGPATH} == "devel/bmkdep" || ${PKGPATH} == "archivers/unrar"
 LDFLAGS+= -lbsd
 .endif
+
+.if ${PKGPATH} == "net/libpcap"
+LDFLAGS = -L/boot/system/develop/lib -lnetwork -Wl,-R/boot/system/develop/lib
+.endif

@@ -28,4 +28,5 @@
 .include "/boot/home/pkg/etc/pkgsrc/package/Remove-Compiler-Setting.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/Remove-Makefile-Library.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/SUBST_CLASSES.mk"
+#.include "/boot/home/pkg/etc/pkgsrc/package/SUBST_CLASSES_LIBPCAP.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/Substitute-Makefile-Library.mk"
