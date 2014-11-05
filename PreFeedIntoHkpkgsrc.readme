@@ -1,7 +1,10 @@
-These patches are designed to supplement Diger's patches. 
-My hope is that they will eventually placed into Diger's
-repository.
-I am actually comfortable with all of these, surprisingly. Many of the changes were header
-includes. 
+These patches are designed to supplement Diger's patches.
+Some won't work if you don't use my settings.
+I have all of Diger's seetings in mine.
+The only exception is if I updated Diger's patches for a newer version.
+This is only the case for glib2 and mit-krb5.
+My hope is that all of my patches will be merged into Diger's localpatches repository.
+I am actually comfortable with most of these, surprisingly. 
+Many of the changes were header includes. 
 
-These were built in the nightly Rev 48080, GCC 4.
+These were built in the Haiku nightly Rev 48080, GCC 4 only.
