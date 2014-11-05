@@ -1,0 +1,54 @@
+$NetBSD: patch-configure,v 1.1 2012/07/16 00:19:14 abs Exp $
+
+Fix the check to pickup mkstemp() on at least NetBSD
+
+--- configure.orig	2010-02-14 09:33:54.004194304 +0000
++++ configure
+@@ -349,10 +349,10 @@ if [ z$NOX11 = z ]; then
+ 
+ 	XOK=0
+ 
+-	XINCLUDE=-I/usr/X11R6/include
++	XINCLUDE=-I/boot/home/pkg/include
+ 	$CXX $CXXFLAGS _test_x11.cc -c -o _test_x11.o $XINCLUDE 2> /dev/null
+ 
+-	XLIB="-L/usr/X11R6/lib -lX11"
++	XLIB="-L/boot/home/pkg/lib -Wl,-R/boot/home/pkg/lib -lX11"
+ 	$CXX $CXXFLAGS _test_x11.o -o _test_x11 $XLIB 2> /dev/null
+ 
+ 	if [ -x _test_x11 ]; then
+@@ -378,7 +378,7 @@ if [ z$NOX11 = z ]; then
+ 	if [ z$XOK = z0 ]; then
+ 		$CXX $CXXFLAGS _test_x11.cc -c -o _test_x11.o $XINCLUDE 2> /dev/null
+ 
+-		XLIB="-L/usr/X11R6/lib64 -lX11"
++		XLIB="-L/boot/home/pkg/lib -Wl,-R/boot/home/pkg/lib64 -lX11"
+ 		$CXX $CXXFLAGS _test_x11.o -o _test_x11 $XLIB 2> /dev/null
+ 
+ 		if [ -x _test_x11 ]; then
+@@ -403,13 +403,13 @@ if [ z$NOX11 = z ]; then
+ 
+ 	if [ z`uname` = zNetBSD ]; then
+ 		echo "Using NetBSD hack for X11 libs..."
+-		XLIB="$XLIB -Wl,-rpath,/usr/X11R6/lib"
++		XLIB="$XLIB -Wl,-rpath,/boot/home/pkg/lib"
+ 	fi
+ 
+ 	if [ z`uname` = zOpenBSD ]; then
+ 		if [ z`uname -m` = zarc ]; then
+ 			echo "Using old OpenBSD/arc hack for X11 libs..."
+-			XLIB="$XLIB -Wl,-rpath,/usr/X11R6/lib"
++			XLIB="$XLIB -Wl,-rpath,/boot/home/pkg/lib"
+ 		fi
+ 	fi
+ 
+@@ -705,7 +705,8 @@ rm -f _tests.cc _tests.o _tests
+ #  mkstemp missing?
+ printf "checking for mkstemp... "
+ printf "#include <unistd.h>
+-int main(int argc, char *argv[]) { int x; char *y = \"abc\";
++#include <stdlib.h>
++int main(int argc, char *argv[]) { int x; char y[4] = \"abc\";
+ x = mkstemp(y); return 0;}\n" > _tests.cc
+ $CXX $CXXFLAGS _tests.cc -o _tests 2> /dev/null
+ if [ ! -x _tests ]; then
