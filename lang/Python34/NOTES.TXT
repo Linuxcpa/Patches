@@ -1,27 +1,48 @@
-This is in progress work for Python 34. 
-As it is now, I have a mostly complete build and better results then with Python 27.
+Status
 
-The only item that didn't build was the zlib module, and this bullshit:
+This is in progress work for Python 34 as of November 5, 2014. 
+I imagine that this will be much improved in the coming weeks.
+As it is now, I have a mostly complete build and better results then I am able to achieve building Python 27.
+
+NOTE: THIS WON'T WORK UNLESS YOU BUILD YOUR PACKAGES IN /boot/work, or manually edit the confederate makefile
+WRKOBJDIR= /boot/work
+
+In general, Python 34 is able to build more dependent packages than Pythin 27, if it is made the default python.
+However, Python 27 can build packages Python 34 cannot, so selecting which one to use prior to a build is beneficial.
+#PYTHON_VERSION_DEFAULT = 34 sets the default to Python 27. Remove the # to set it to Python 34. 
+However, in general you want to use all of my settings, in the settings folder in this repository.
+
+The only items that didn't build were the zlib module, and these files:
 
 1. /lib/python3.4/plat-haiku1/__pycache__/IN.cpython-34.pyc
 2. /lib/python3.4/plat-haiku1/__pycache__/IN.cpython-34.pyo
 
-Also, the makefile didn't make /boot/home/pkg/lib/libpython3.so which you can easily do manually.
-Just symlink from libpython3.4.so.1.0 in .destdir.
+Furthermore, the makefile didn't create a symlink from libpython3.4.so.1.0 and call it libpython3.so, as PLIST expects.
+So, at the end, the build will complain that /boot/work/python34/work.destdir/boot/home/pkg/lib/libpython3.so does not exist. 
+This is easy to fix manually. Just create a link from libpython3.4.so.1.0 in /boot/work/python34/work.destdir/boot/home/pkg/.
 
-So here is what you have to do, the last bit an annoying pain in the ass:
+Now that I have discussed the results, here is what you have to do to get this to work.
+Follow the steps as sequenced below:
 
-1. Place the replacement patches in ..pkgsrc/lang/python34/patches and replace the patches of the same name.
-2. Place the rest of the 111 patches there too.
-3. Replace pkgsrc's Makefile and PLIST with mine.
+Prior to starting the build:
+1. Replace pkgsrc's patch-am and patch-au with the ones I have provided. You can find these in the Replacement Patches folder.  
+Move them into /boot/home/pkgsrc/pkgsrc/lang/python34/patches and overwrite pkgsrc's files with mine.
+2. Move the remaining 111 patches into either: /boot/localpatches or /boot/home/pkgsrc/pkgsrc/lang/python34/patches
+3. cd /boot/home/pkgsrc/pkgsrc/lang/python34
+4. bmake makepatchsum
+5. Replace pkgsrc's Makefile and PLIST with mine.
+6. Start the build: bmake install
 4. Let the build fail.
-5. Pave over Python's makefile with mine.
-6. At the end, it will complain about not having libpython3.so. Make a symlink.
+5. Replace Python's makefile with mine. Replace the /boot/work/lang/python34/work/Python-3.4.1/Makefile with the Makefile in the Confederate folder.
+6. At the end, it will complain about not having libpython3.so. 
+To create the libpython3.so file, symbolicly link it from libpython3.4.so.1.0 while in /boot/work/python34/work.destdir/boot/home/pkg/
 7. mkdir /boot/work/lang/python34/work/.destdir/boot/home/pkg/lib/python3.4/plat-haiku1/__pycache__/
 8. touch /boot/work/lang/python34/work/.destdir/boot/home/pkg//lib/python3.4/plat-haiku1/__pycache__/IN.cpython-34.pyc
 9. touch /boot/work/lang/python34/work/.destdir/boot/home/pkg//lib/python3.4/plat-haiku1/__pycache__/IN.cpython-34.pyo
-10. If that shit doesn't work, just pave over the .PLIST file .prefix.pre and +CONTENTS bullshit files with mine.
-11. Finish off the build, like its done in Mortal Kombat
+10. Start the build again
+11. If build still complains, copy the contents of my replacement Files/work directory into the pkgsrc package directory I have provided:
+.PLIST, .PLIST-1src, .PLIST-3mag, .PLIST_deps, .PLIST_nokeywords, .prefix.pre and the +CONTENTS file inside of the .pkgdb directory
+12. To finish off the build, like its done in Mortal Kombat, start the build again.
 
 113 patches are mostly because of some pathing issue in Haiku. 
 Most of them are simply putting a header where the compiler wants to find it.
