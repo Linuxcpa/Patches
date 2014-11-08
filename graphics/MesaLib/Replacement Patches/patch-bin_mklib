@@ -1,0 +1,154 @@
+$NetBSD: patch-bin_mklib,v 1.3 2013/11/29 15:27:19 bsiegert Exp $
+
+Solaris ld seemingly has a hard time swallowing nested archives,
+so flatten them out as is done for linux.
+
+Also, to simplify PLIST processing, add versioned shared libraries
+for SunOS.
+
+--- bin/mklib.orig	2011-10-15 00:43:58.060293120 +0000
++++ bin/mklib
+@@ -260,7 +260,7 @@ if [ $STATIC = 1 ]; then
+     NEWOBJECTS=""
+     for OBJ in $OBJECTS ; do
+ 	case $OBJ in
+-	    -Wl,*)
++	    -Wl,*|-L*|-l*)
+ 		echo "mklib: warning: ignoring $OBJ for static library"
+ 		;;
+ 	    *)
+@@ -305,9 +305,15 @@ fi
+ #
+ # OK, make the library now
+ #
++if [ x${PATCH} = "x" ] ; then
++	VERSION="${MAJOR}.${MINOR}"
++else
++	VERSION="${MAJOR}.${MINOR}.${PATCH}"
++fi
++
+ case $ARCH in
+ 
+-    'Linux' | 'OpenBSD' | 'DragonFly' | 'GNU' | GNU/* | 'NetBSD')
++    'Linux' | 'OpenBSD' | 'DragonFly' | 'GNU' | GNU/* | 'NetBSD' | 'FreeBSD' | 'MirBSD' | 'Haiku')
+ 	# we assume gcc
+ 
+ 	if [ "x$LINK" = "x" ] ; then
+@@ -398,12 +404,6 @@ case $ARCH in
+                 OPTS=${ALTOPTS}
+             fi
+ 
+-	    if [ x${PATCH} = "x" ] ; then
+-		VERSION="${MAJOR}.${MINOR}"
+-	    else
+-		VERSION="${MAJOR}.${MINOR}.${PATCH}"
+-	    fi
+-
+             echo "mklib: Making" $ARCH "shared library: " ${LIBNAME}.so.${VERSION}
+ 
+             # rm any old libs
+@@ -426,7 +426,20 @@ case $ARCH in
+         if [ $STATIC = 1 ] ; then
+ 	    LIBNAME="lib${LIBNAME}.a"
+ 	    echo "mklib: Making SunOS static library: " ${LIBNAME}
+-	    FINAL_LIBS=`make_ar_static_lib -ruc 0 ${LIBNAME} ${OBJECTS}`
++#	    FINAL_LIBS=`make_ar_static_lib -ruc 0 ${LIBNAME} ${OBJECTS}`
++           OPTS="-rucs"
++            if [ "${ALTOPTS}" ] ; then
++                OPTS=${ALTOPTS}
++            fi
++
++            # expand .a into .o files
++            NEW_OBJECTS=`expand_archives ${LIBNAME}.obj $OBJECTS`
++
++            # make static lib
++            FINAL_LIBS=`make_ar_static_lib ${OPTS} 0 ${LIBNAME} ${NEW_OBJECTS}`
++
++            # remove temporary extracted .o files
++            rm -rf ${LIBNAME}.obj
+ 	else
+ 	    if [ $NOPREFIX = 0 ] ; then
+ 		LIBNAME="lib${LIBNAME}.so"
+@@ -517,10 +530,13 @@ case $ARCH in
+ 		${LINK} ${OPTS} ${LDFLAGS} -o ${LIBNAME} ${OBJECTS} ${DEPS}
+ 		FINAL_LIBS="${LIBNAME}"
+ 	    else
+-		rm -f ${LIBNAME}.${MAJOR} ${LIBNAME}
+-		${LINK} ${OPTS} ${LDFLAGS} -o ${LIBNAME}.${MAJOR} -h ${LIBNAME}.${MAJOR} ${OBJECTS} ${DEPS}
++        # rm any old libs
++		rm -f ${LIBNAME}.${VERSION} ${LIBNAME}.${MAJOR} ${LIBNAME}
++		${LINK} ${OPTS} ${LDFLAGS} -o ${LIBNAME}.${VERSION} -h ${LIBNAME}.${VERSION} ${OBJECTS} ${DEPS}
++
++        ln -s ${LIBNAME}.${VERSION} ${LIBNAME}.${MAJOR}
+ 		ln -s ${LIBNAME}.${MAJOR} ${LIBNAME}
+-		FINAL_LIBS="${LIBNAME}.${MAJOR} ${LIBNAME}"
++		FINAL_LIBS="${LIBNAME}.${VERSION} ${LIBNAME}.${MAJOR} ${LIBNAME}"
+ 	    fi
+ 	fi
+ 	;;
+@@ -802,22 +818,6 @@ case $ARCH in
+         FINAL_LIBS=`make_ar_static_lib -ru 0 ${LIBNAME} ${OBJECTS}`
+ 	;;
+ 
+-    'BeOS')
+-        if [ $STATIC = 1 ] ; then
+-            LIBNAME="lib${LIBNAME}.a"
+-            echo "mklib: Making BeOS static library: " ${LIBNAME}
+-            FINAL_LIBS=`make_ar_static_lib -cru 0 ${LIBNAME} ${OBJECTS}`
+-        else
+-	    LIBNAME="lib${LIBNAME}.so"
+-	    echo "mklib: Making BeOS shared library: " ${LIBNAME}
+-	    gcc -nostart -Xlinker "-soname=${LIBNAME}" -L/Be/develop/lib/x86 -lbe ${DEPS} ${OBJECTS} -o "${LIBNAME}"
+-	    mimeset -f "${LIBNAME}"
+-	    # XXX remove the Mesa3D stuff here since mklib isn't mesa-specific.
+-	    setversion "${LIBNAME}" -app ${MAJOR} ${MINOR} ${PATCH} -short "Powered by Mesa3D!" -long "Powered by Mesa3D!"
+-	fi
+-	FINAL_LIBS=${LIBNAME}
+-	;;
+-
+     'QNX')
+ 	LIBNAME="lib${LIBNAME}.a"
+ 	echo "mklib: Making QNX library: " ${LIBNAME}
+@@ -956,7 +956,6 @@ case $ARCH in
+                 OPTS=${ALTOPTS}
+             fi
+             echo "mklib: Making CYGWIN shared library: " ${CYGNAME}-${MAJOR}.dll
+-
+             # rm any old libs
+             rm -f ${CYGNAME}-${MAJOR}.dll
+             rm -f ${LIBNAME}-${MAJOR}.dll.a
+@@ -969,31 +968,15 @@ case $ARCH in
+             ln -s ${LIBNAME}-${MAJOR}.dll.a ${LIBNAME}.dll.a
+             # finish up
+             FINAL_LIBS="${LIBNAME}-${MAJOR}.dll.a ${LIBNAME}.dll.a"
+-	    # special case for installing in bin
++	    	# special case for installing in bin
+             FINAL_BINS="${CYGNAME}-${MAJOR}.dll"
+         fi
+         fi
+ 	;;
+-
+-    'example')
+-	# If you're adding support for a new architecture, you can
+-	# start with this:
+-        if [ $STATIC = 1 ] ; then
+-	    LIBNAME="lib${LIBNAME}.a"
+-	    echo "mklib: Making static library for example arch: " ${LIBNAME}
+-            FINAL_LIBS=`make_ar_static_lib rv 0 ${LIBNAME} ${OBJECTS}`
+-	else
+-	    LIBNAME="lib${LIBNAME}.so"  # prefix with "lib", suffix with ".so"
+-	    echo "mklib: Making shared library for example arch: " ${LIBNAME}
+-	    ld -o ${LIBNAME} ${OBJECTS} ${DEPS}
+-	    FINAL_LIBS="${LIBNAME}"
+-	fi
+-	;;
+-
+-    *)
++*)
+ 	echo "mklib: ERROR: Don't know how to make a static/shared library for" ${ARCH}
+ 	echo "mklib: Please add necessary commands to mklib script."
+-	;;
++;;
+ esac
+ 
+ 

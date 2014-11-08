@@ -1,0 +1,37 @@
+$NetBSD$
+
+--- Makefile.orig	2011-11-23 01:09:52.060817408 +0000
++++ Makefile
+@@ -78,7 +78,7 @@ aix-static \
+ autoconf \
+ bluegene-osmesa \
+ bluegene-xlc-osmesa \
+-beos \
++haiku \
+ catamount-osmesa-pgi \
+ darwin \
+ darwin-fat-32bit \
+@@ -274,8 +274,8 @@ MAIN_FILES = \
+ 	$(DIRECTORY)/src/mesa/tnl_dd/imm/*.[ch]				\
+ 	$(DIRECTORY)/src/mesa/tnl_dd/imm/NOTES.imm			\
+ 	$(DIRECTORY)/src/mesa/drivers/Makefile				\
+-	$(DIRECTORY)/src/mesa/drivers/beos/*.cpp			\
+-	$(DIRECTORY)/src/mesa/drivers/beos/Makefile			\
++	$(DIRECTORY)/src/mesa/drivers/haiku/*.cpp			\
++	$(DIRECTORY)/src/mesa/drivers/haiku/Makefile			\
+ 	$(DIRECTORY)/src/mesa/drivers/common/*.[ch]			\
+ 	$(DIRECTORY)/src/mesa/drivers/common/descrip.mms		\
+ 	$(DIRECTORY)/src/mesa/drivers/fbdev/Makefile			\
+@@ -430,9 +430,9 @@ GLUT_FILES = \
+ 	$(DIRECTORY)/src/glut/glx/glut.pc.in		\
+ 	$(DIRECTORY)/src/glut/glx/*def			\
+ 	$(DIRECTORY)/src/glut/glx/*.[ch]		\
+-	$(DIRECTORY)/src/glut/beos/*.[ch]		\
+-	$(DIRECTORY)/src/glut/beos/*.cpp		\
+-	$(DIRECTORY)/src/glut/beos/Makefile
++	$(DIRECTORY)/src/glut/haiku/*.[ch]		\
++	$(DIRECTORY)/src/glut/haiku/*.cpp		\
++	$(DIRECTORY)/src/glut/haiku/Makefile
+ 
+ 
+ LIB_FILES = \

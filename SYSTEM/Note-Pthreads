@@ -1,0 +1,14 @@
+A simple text file called pthread-stubs.pc will solve any configure requirements for this to be "installed."
+
+Place the file in /boot/home/pkg/lib/pkgconfig:
+
+Give it the following contents:
+
+prefix=/boot/home/pkg
+exec_prefix=${prefix}
+libdir=/boot/home/pkg/lib
+
+Name: pthread stubs
+Description: Stubs missing from libc for standard pthread functions
+Version: 0.3
+Libs: 

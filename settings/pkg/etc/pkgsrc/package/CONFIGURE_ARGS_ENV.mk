@@ -39,3 +39,7 @@ CONFIGURE_ARGS+= --disable-ipv6
 .if ${PKGPATH} == "mail/mutt"
 CONFIGURE_ARGS+= --with-mailpath=/boot/home/mail
 .endif
+
+.if ${PKGPATH} == "x11/pixman"
+CONFIGURE_ARGS+=	PTHREAD_LIBS=
+.endif

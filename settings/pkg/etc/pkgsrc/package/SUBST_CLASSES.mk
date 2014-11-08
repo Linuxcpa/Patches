@@ -118,3 +118,25 @@ SUBST_MESSAGE.cppfix= Fixing /lib/cpp to /bin/cpp
 SUBST_FILES.cppfix= Makefile
 SUBST_SED.cppfix+= -e 's|/lib/cpp|/bin/cpp|g'
 .endif
+
+.if ${PKGPATH} == "net/3proxy"
+SUBST_CLASSES+= lnetwork5
+SUBST_STAGE.lnetwork5= pre-build
+SUBST_MESSAGE.lnetwork5= Fixing lroot
+SUBST_FILES.lnetwork5= Makefile.unix
+SUBST_SED.lnetwork5+= -e 's|CFLAGS = -Wall -g -O2 -c -pthread|CFLAGS = -Wall -g -O2 -c -lroot|g'
+
+SUBST_CLASSES+= lnetwork6
+SUBST_STAGE.lnetwork6= pre-build
+SUBST_MESSAGE.lnetwork6= Fixing lnetwork lbsd
+SUBST_FILES.lnetwork6= Makefile.unix
+SUBST_SED.lnetwork6+= -e 's|LDFLAGS = -Wall -O2 -pthread|LDFLAGS = -Wall -O2 -lnetwork -lbsd|g'
+.endif
+
+.if ${PKGPATH} == "net/mtr"
+SUBST_CLASSES+= lnetwork7
+SUBST_STAGE.lnetwork7= pre-configure
+SUBST_MESSAGE.lnetwork7= Fixing lnetwork bewshit
+SUBST_FILES.lnetwork7= configure
+SUBST_SED.lnetwork7+= -e 's|-lsocket|-lnetwork|g'
+.endif
