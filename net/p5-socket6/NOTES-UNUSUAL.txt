@@ -1,0 +1,51 @@
+The current Haiku system does not allow any user, 
+administrator or not, to have write access to /boot/home/develop/headers
+where two headers are stored that cause this package to not build.
+
+The solution to allowing this package to build is somewhat involved.
+It requires that you are able to edit your perl.h header, which probably means 
+you can only do this with pkgsrc. 
+
+My approach to building this package was to keep the package code in tact
+and edit Haiku's headers instead.
+
+PART I. 
+You will have to retrieve:
+1. /boot/system/develop/headers/netdb.h
+2. /boot/system/develop/headers/arpa/inet.h
+and place them in:
+1. /boot/home/pkg/include/netdb.h
+2. /boot/home/pkg/include/arpa/inet.h
+
+PART II.
+
+You will also have to temporarily replace the gollowing file, with the Perl.h
+file provided -> SO BACK IT UP:
+
+1. Make a copy of /boot/home/pkg/lib/perl5/5.20.0/i386-haiku/CORE/perl.h
+and call it /boot/home/pkg/lib/perl5/5.20.0/i386-haiku/CORE/perl.h copy
+2. Copy the perl.h file provided and place in in:
+/boot/home/pkg/lib/perl5/5.20.0/i386-haiku/CORE/perl.h
+
+PART III.
+
+1. Add the patch-Socket6.xs file provided to the patches folder and 
+run bmake makepatchsum before attempting to build the package.
+When the build starts, the file will be patched.
+
+FOR YOUR INFORMATION ONLY, I HAVE PROVIDED DIFFS FOR THE 
+FOLLOWING NON-PATCHABLE SYSTEM FILES:
+
+1. /boot/home/pkg/include/netdb.h
+2. /boot/home/pkg/include/arpa/inet.h
+3. /boot/home/pkg/lib/perl5/5.20.0/i386-haiku/CORE/perl.h
+
+AS STATED ABOVE, I PROVIDED 1 PATCH FOR SOURCE CHANGES
+
+1. patch-Socket6.xs
+
+WHEN YOU ARE DONE, REVERT BACK TO THE ORIGINAL PERL.H
+
+1. Delete /boot/home/pkg/lib/perl5/5.20.0/i386-haiku/CORE/perl.h
+and rename /boot/home/pkg/lib/perl5/5.20.0/i386-haiku/CORE/perl.h copy
+as: /boot/home/pkg/lib/perl5/5.20.0/i386-haiku/CORE/perl.h
