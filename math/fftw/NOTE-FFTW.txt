@@ -1,0 +1,2 @@
+Plafe this file in (or outside, I don't recall) the .lax directory that contains 
+broken symlinks when the build fails in pkgsrc. This will allow it to succeed.

@@ -140,3 +140,20 @@ SUBST_MESSAGE.lnetwork7= Fixing lnetwork bewshit
 SUBST_FILES.lnetwork7= configure
 SUBST_SED.lnetwork7+= -e 's|-lsocket|-lnetwork|g'
 .endif
+
+.if ${PKGPATH} == "devel/git-base"
+SUBST_CLASSES+= lnetwork8
+SUBST_STAGE.lnetwork8= pre-build
+SUBST_MESSAGE.lnetwork8= Fixing lnetwork bewshit
+SUBST_FILES.lnetwork8= Makefile
+SUBST_SED.lnetwork8+= -e 's|-lsocket|-lnetwork|g'
+.endif
+
+.if ${PKGPATH} == "chat/jabberd"
+SUBST_CLASSES+= lnetwork10
+SUBST_STAGE.lnetwork10= pre-build
+SUBST_MESSAGE.lnetwork10= Fixing lnetwork bewshit
+SUBST_FILES.lnetwork10= platform-settings
+SUBST_SED.lnetwork10+= -e 's|LIBS= -lssl -lcrypto|LIBS= -lssl -lcrypto -lnetwork|g'
+.endif
+

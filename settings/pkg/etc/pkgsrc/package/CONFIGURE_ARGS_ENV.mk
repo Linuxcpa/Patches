@@ -36,6 +36,13 @@ CONFIGURE_ARGS+= --enable-dfl-port=/dev/ports/usb0
 CONFIGURE_ARGS+= --disable-ipv6
 .endif
 
+.if ${PKGPATH} == "lang/python27"
+CONFIGURE_ARGS+=    PKG_CONFIG_PATH=/boot/home/pkg/lib/pkgconfig
+CONFIGURE_ARGS+=    --enable-shared
+CONFIGURE_ARGS+=    --prefix=/boot/home/pkg
+CONFIGURE_ARGS+=    --includedir=/boot/home/pkg/include
+.endif
+
 .if ${PKGPATH} == "mail/mutt"
 CONFIGURE_ARGS+= --with-mailpath=/boot/home/mail
 .endif
