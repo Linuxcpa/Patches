@@ -143,6 +143,11 @@ post-install:
 		${DESTDIR}${PREFIX}/lib/libpython3.4.sl.1.0
 .endif
 
+.if ${OPSYS} == "Haiku"
+post-install:
+	${LN} -sf ${DESTDIR}${PREFIX}/lib/libpython3.4.so.1.0 ${DESTDIR}${PREFIX}/lib/libpython3.so
+.endif
+
 BUILDLINK_DEPMETHOD.readline=		build
 
 .include "../../archivers/bzip2/buildlink3.mk"

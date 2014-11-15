@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pyport.h.orig	2014-11-05 06:57:22.000000000 +0000
+--- Modules/pyport.h.orig	2014-11-14 22:11:24.316407808 +0000
 +++ Modules/pyport.h
 @@ -0,0 +1,883 @@
 +#ifndef Py_PYPORT_H

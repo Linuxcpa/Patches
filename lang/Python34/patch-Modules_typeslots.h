@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/typeslots.h.orig	2014-11-05 06:54:07.000000000 +0000
+--- Modules/typeslots.h.orig	2014-11-14 22:11:35.244842496 +0000
 +++ Modules/typeslots.h
 @@ -0,0 +1,76 @@
 +/* Do not renumber the file; these numbers are part of the stable ABI. */

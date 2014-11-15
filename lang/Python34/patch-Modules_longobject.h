@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/longobject.h.orig	2014-11-05 07:03:04.000000000 +0000
+--- Modules/longobject.h.orig	2014-11-14 22:11:09.042729472 +0000
 +++ Modules/longobject.h
 @@ -0,0 +1,204 @@
 +#ifndef Py_LONGOBJECT_H

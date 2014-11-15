@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/eval.h.orig	2014-11-05 06:44:18.000000000 +0000
+--- Modules/eval.h.orig	2014-11-14 22:11:02.793247744 +0000
 +++ Modules/eval.h
 @@ -0,0 +1,27 @@
 +

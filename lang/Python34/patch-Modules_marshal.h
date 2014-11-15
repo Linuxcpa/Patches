@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/marshal.h.orig	2014-11-05 07:02:50.000000000 +0000
+--- Modules/marshal.h.orig	2014-11-14 22:11:11.251920384 +0000
 +++ Modules/marshal.h
 @@ -0,0 +1,28 @@
 +

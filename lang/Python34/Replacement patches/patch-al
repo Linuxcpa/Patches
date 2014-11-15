@@ -1,0 +1,127 @@
+$NetBSD: patch-al,v 1.4 2014/05/20 09:13:37 wiz Exp $
+
+MirBSD support
+http://bugs.python.org/issue21458
+
+Changes for consistency across pkgsrc platforms.
+
+XXX: Not sure what the BLDSHARED changes are about.
+
+--- configure.orig	2014-05-19 05:19:40.009699328 +0000
++++ configure
+@@ -3354,7 +3354,7 @@ case $ac_sys_system/$ac_sys_release in
+   # Reconfirmed for OpenBSD 3.3 by Zachary Hamm, for 3.4 by Jason Ish.
+   # In addition, Stefan Krah confirms that issue #1244610 exists through
+   # OpenBSD 4.6, but is fixed in 4.7.
+-  OpenBSD/2.* | OpenBSD/3.* | OpenBSD/4.[0123456])
++  OpenBSD/2.* | OpenBSD/3.* | OpenBSD/4.[0123456] | MirBSD/*)
+     define_xopen_source=no
+     # OpenBSD undoes our definition of __BSD_VISIBLE if _XOPEN_SOURCE is
+     # also defined. This can be overridden by defining _BSD_SOURCE
+@@ -5632,21 +5632,22 @@ $as_echo "#define Py_ENABLE_SHARED 1" >>
+ 	      PY3LIBRARY=libpython3.so
+ 	  fi
+           ;;
+-    Linux*|GNU*|NetBSD*|FreeBSD*|DragonFly*|OpenBSD*)
++    Linux*|GNU*|NetBSD*|FreeBSD*|DragonFly*|OpenBSD*|MirBSD*)
+ 	  LDLIBRARY='libpython$(LDVERSION).so'
+ 	  BLDLIBRARY='-L. -lpython$(LDVERSION)'
+ 	  RUNSHARED=LD_LIBRARY_PATH=`pwd`${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+-	  case $ac_sys_system in
+-	      FreeBSD*)
+-		SOVERSION=`echo $SOVERSION|cut -d "." -f 1`
+-		;;
+-	  esac
+ 	  INSTSONAME="$LDLIBRARY".$SOVERSION
+ 	  if test "$with_pydebug" != yes
+           then
+ 	      PY3LIBRARY=libpython3.so
+ 	  fi
+ 	  ;;
++    Haiku*)
++      LDLIBRARY='libpython$(VERSION).so'
++	  BLDLIBRARY='-L. -lpython$(VERSION)'
++	  RUNSHARED=LIBRARY_PATH=`pwd`${LIBRARY_PATH:+:${LIBRARY_PATH}}
++ 	  INSTSONAME="$LDLIBRARY".$SOVERSION
++ 	  ;;	  
+     hp*|HP*)
+ 	  case `uname -m` in
+ 		ia64)
+@@ -8532,8 +8533,8 @@ then
+ 			LDCXXSHARED="$LDCXXSHARED "'$(PYTHONFRAMEWORKPREFIX)/$(PYTHONFRAMEWORKDIR)/Versions/$(VERSION)/$(PYTHONFRAMEWORK)'
+ 		else
+ 			# No framework, use the Python app as bundle-loader
+-			BLDSHARED="$LDSHARED "'-bundle_loader $(BUILDPYTHON)'
+-			LDSHARED="$LDSHARED "'-bundle_loader $(BINDIR)/python$(VERSION)$(EXE)'
++			BLDSHARED="$LDSHARED "'-flat_namespace -undefined suppress -bundle_loader $(BUILDPYTHON)'
++			LDSHARED="$LDSHARED "'-flat_namespace -undefined suppress -bundle_loader $(BINDIR)/python$(VERSION)$(EXE)'
+ 			LDCXXSHARED="$LDCXXSHARED "'-bundle_loader $(BINDIR)/python$(VERSION)$(EXE)'
+ 		fi ;;
+ 	Darwin/*)
+@@ -8555,13 +8556,13 @@ then
+ 				LDCXXSHARED="$LDCXXSHARED "'$(PYTHONFRAMEWORKPREFIX)/$(PYTHONFRAMEWORKDIR)/Versions/$(VERSION)/$(PYTHONFRAMEWORK)'
+ 			else
+ 				# No framework, use the Python app as bundle-loader
+-				BLDSHARED="$LDSHARED "'-bundle_loader $(BUILDPYTHON)'
+-				LDSHARED="$LDSHARED "'-bundle_loader $(BINDIR)/python$(VERSION)$(EXE)'
+-				LDCXXSHARED="$LDCXXSHARED "'-bundle_loader $(BINDIR)/python$(VERSION)$(EXE)'
++				BLDSHARED="$LDSHARED "'-flat_namespace -undefined suppress -bundle_loader $(BUILDPYTHON)'
++				LDSHARED="$LDSHARED "'-flat_namespace -undefined suppress -bundle_loader $(BINDIR)/python$(VERSION)$(EXE)'
++				LDCXXSHARED="$LDCXXSHARED "'-flat_namespace -undefined suppress -bundle_loader $(BINDIR)/python$(VERSION)$(EXE)'
+ 			fi
+ 		fi
+ 		;;
+-	Linux*|GNU*|QNX*)
++	Linux*|GNU*|QNX*|Haiku*)
+ 		LDSHARED='$(CC) -shared'
+ 		LDCXXSHARED='$(CXX) -shared';;
+ 	BSD/OS*/4*)
+@@ -8591,6 +8592,9 @@ then
+ 				   ;;
+ 				esac
+ 		fi;;
++	MirBSD*)
++		LDSHARED='$(CC) -shared $(CCSHARED)'
++		LDCXXSHARED='$(CXX) -shared $(CCSHARED)';;
+ 	NetBSD*|DragonFly*)
+ 		LDSHARED='$(CC) -shared'
+ 		LDCXXSHARED='$(CXX) -shared';;
+@@ -8632,9 +8636,9 @@ then
+ 		 then CCSHARED="-fPIC";
+ 		 else CCSHARED="+z";
+ 		 fi;;
+-	Linux*|GNU*) CCSHARED="-fPIC";;
++	Linux*|GNU*|Haiku*) CCSHARED="-fPIC";;
+ 	BSD/OS*/4*) CCSHARED="-fpic";;
+-	FreeBSD*|NetBSD*|OpenBSD*|DragonFly*) CCSHARED="-fPIC";;
++	FreeBSD*|NetBSD*|OpenBSD*|MirBSD*|DragonFly*) CCSHARED="-fPIC";;
+ 	OpenUNIX*|UnixWare*)
+ 		if test "$GCC" = "yes"
+ 		then CCSHARED="-fPIC"
+@@ -8665,7 +8669,7 @@ then
+ 	    LINKFORSHARED="-Wl,-E -Wl,+s";;
+ #	    LINKFORSHARED="-Wl,-E -Wl,+s -Wl,+b\$(BINLIBDEST)/lib-dynload";;
+ 	BSD/OS/4*) LINKFORSHARED="-Xlinker -export-dynamic";;
+-	Linux*|GNU*) LINKFORSHARED="-Xlinker -export-dynamic";;
++	Linux*|GNU*|Haiku*) LINKFORSHARED="-Xlinker -export-dynamic";;
+ 	# -u libsys_s pulls in all symbols in libsys
+ 	Darwin/*)
+ 		LINKFORSHARED="$extra_undefs -framework CoreFoundation"
+@@ -8683,7 +8687,7 @@ then
+ 	OpenUNIX*|UnixWare*) LINKFORSHARED="-Wl,-Bexport";;
+ 	SCO_SV*) LINKFORSHARED="-Wl,-Bexport";;
+ 	ReliantUNIX*) LINKFORSHARED="-W1 -Blargedynsym";;
+-	FreeBSD*|NetBSD*|OpenBSD*|DragonFly*)
++	FreeBSD*|NetBSD*|OpenBSD*|MirBSD*|DragonFly*)
+ 		if [ "`$CC -dM -E - </dev/null | grep __ELF__`" != "" ]
+ 		then
+ 			LINKFORSHARED="-Wl,--export-dynamic"
+@@ -13917,8 +13921,6 @@ $as_echo "$SOABI" >&6; }
+ 
+ 
+ case $ac_sys_system in
+-    Linux*|GNU*)
+-	EXT_SUFFIX=.${SOABI}${SHLIB_SUFFIX};;
+     *)
+ 	EXT_SUFFIX=${SHLIB_SUFFIX};;
+ esac

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/_datetimemodule.c.orig	2014-05-19 05:19:39.016515072 +0000
+--- Modules/_datetimemodule.c.orig	2014-05-19 05:19:39.012582912 +0000
 +++ Modules/_datetimemodule.c
 @@ -5,7 +5,7 @@
  #include "Python.h"

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/intrcheck.h.orig	2014-11-05 07:03:39.000000000 +0000
+--- Modules/intrcheck.h.orig	2014-11-14 22:11:07.466092032 +0000
 +++ Modules/intrcheck.h
 @@ -0,0 +1,21 @@
 +

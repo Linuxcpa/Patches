@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pgen.h.orig	2014-11-05 07:00:29.000000000 +0000
+--- Modules/pgen.h.orig	2014-11-14 22:11:16.784596992 +0000
 +++ Modules/pgen.h
 @@ -0,0 +1,18 @@
 +#ifndef Py_PGEN_H

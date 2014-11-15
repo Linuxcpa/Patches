@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/posixmodule.c.orig	2014-05-19 05:19:39.011272192 +0000
+--- Modules/posixmodule.c.orig	2014-05-19 05:19:39.001835008 +0000
 +++ Modules/posixmodule.c
 @@ -11994,9 +11994,6 @@ all_ins(PyObject *m)
      if (PyModule_AddIntMacro(m, SCHED_OTHER)) return -1;

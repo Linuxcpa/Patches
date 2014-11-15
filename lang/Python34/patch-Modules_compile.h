@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/compile.h.orig	2014-11-05 06:42:50.000000000 +0000
+--- Modules/compile.h.orig	2014-11-14 22:10:55.084148224 +0000
 +++ Modules/compile.h
 @@ -0,0 +1,72 @@
 +#ifndef Py_COMPILE_H

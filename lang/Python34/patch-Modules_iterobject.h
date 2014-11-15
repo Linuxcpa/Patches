@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/iterobject.h.orig	2014-11-05 07:03:29.000000000 +0000
+--- Modules/iterobject.h.orig	2014-11-14 22:11:07.921174016 +0000
 +++ Modules/iterobject.h
 @@ -0,0 +1,25 @@
 +#ifndef Py_ITEROBJECT_H

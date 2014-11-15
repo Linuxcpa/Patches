@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/code.h.orig	2014-11-05 06:42:27.000000000 +0000
+--- Modules/code.h.orig	2014-11-14 22:10:52.670564352 +0000
 +++ Modules/code.h
 @@ -0,0 +1,115 @@
 +/* Definitions for bytecode */

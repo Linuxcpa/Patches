@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/dynamic_annotations.h.orig	2014-11-05 06:43:49.000000000 +0000
+--- Modules/dynamic_annotations.h.orig	2014-11-14 22:11:00.607387648 +0000
 +++ Modules/dynamic_annotations.h
 @@ -0,0 +1,499 @@
 +/* Copyright (c) 2008-2009, Google Inc.

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pyconfig.h.orig	2014-11-05 06:59:31.000000000 +0000
+--- Modules/pyconfig.h.orig	2014-11-14 22:11:19.531103744 +0000
 +++ Modules/pyconfig.h
 @@ -0,0 +1,1503 @@
 +/* pyconfig.h.  Generated from pyconfig.h.in by configure.  */

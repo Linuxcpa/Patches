@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pystate.h.orig	2014-11-05 06:57:13.000000000 +0000
+--- Modules/pystate.h.orig	2014-11-14 22:11:24.701497344 +0000
 +++ Modules/pystate.h
 @@ -0,0 +1,271 @@
 +

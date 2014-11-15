@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/fileutils.h.orig	2014-11-05 06:45:04.000000000 +0000
+--- Modules/fileutils.h.orig	2014-11-14 22:11:04.053477376 +0000
 +++ Modules/fileutils.h
 @@ -0,0 +1,79 @@
 +#ifndef Py_FILEUTILS_H

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pycapsule.h.orig	2014-11-05 06:59:40.000000000 +0000
+--- Modules/pycapsule.h.orig	2014-11-14 22:11:19.139460608 +0000
 +++ Modules/pycapsule.h
 @@ -0,0 +1,59 @@
 +

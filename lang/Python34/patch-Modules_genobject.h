@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/genobject.h.orig	2014-11-05 06:46:08.000000000 +0000
+--- Modules/genobject.h.orig	2014-11-14 22:11:05.915931136 +0000
 +++ Modules/genobject.h
 @@ -0,0 +1,46 @@
 +

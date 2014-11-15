@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/complexobject.h.orig	2014-11-05 06:43:00.000000000 +0000
+--- Modules/complexobject.h.orig	2014-11-14 22:10:57.508297216 +0000
 +++ Modules/complexobject.h
 @@ -0,0 +1,77 @@
 +/* Complex number structure */

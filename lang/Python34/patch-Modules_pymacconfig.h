@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pymacconfig.h.orig	2014-11-05 06:58:05.000000000 +0000
+--- Modules/pymacconfig.h.orig	2014-11-14 22:11:22.721944576 +0000
 +++ Modules/pymacconfig.h
 @@ -0,0 +1,102 @@
 +#ifndef PYMACCONFIG_H

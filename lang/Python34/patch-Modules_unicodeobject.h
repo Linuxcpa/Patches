@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/unicodeobject.h.orig	2014-11-05 06:53:47.000000000 +0000
+--- Modules/unicodeobject.h.orig	2014-11-14 22:11:36.162004992 +0000
 +++ Modules/unicodeobject.h
 @@ -0,0 +1,2271 @@
 +#ifndef Py_UNICODEOBJECT_H

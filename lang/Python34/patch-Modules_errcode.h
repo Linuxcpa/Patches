@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/errcode.h.orig	2014-11-05 06:44:09.000000000 +0000
+--- Modules/errcode.h.orig	2014-11-14 22:11:01.365690880 +0000
 +++ Modules/errcode.h
 @@ -0,0 +1,38 @@
 +#ifndef Py_ERRCODE_H

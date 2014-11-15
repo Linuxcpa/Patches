@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/boolobject.h.orig	2014-11-05 06:41:17.000000000 +0000
+--- Modules/boolobject.h.orig	2014-11-14 22:10:49.753401856 +0000
 +++ Modules/boolobject.h
 @@ -0,0 +1,34 @@
 +/* Boolean object interface */

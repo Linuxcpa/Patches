@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/frameobject.h.orig	2014-11-05 06:45:23.000000000 +0000
+--- Modules/frameobject.h.orig	2014-11-14 22:11:05.166461440 +0000
 +++ Modules/frameobject.h
 @@ -0,0 +1,95 @@
 +

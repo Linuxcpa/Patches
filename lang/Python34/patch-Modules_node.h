@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/node.h.orig	2014-11-05 07:01:39.000000000 +0000
+--- Modules/node.h.orig	2014-11-14 22:11:14.061341696 +0000
 +++ Modules/node.h
 @@ -0,0 +1,44 @@
 +

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/ucnhash.h.orig	2014-11-05 06:53:57.000000000 +0000
+--- Modules/ucnhash.h.orig	2014-11-14 22:11:35.718536704 +0000
 +++ Modules/ucnhash.h
 @@ -0,0 +1,36 @@
 +/* Unicode name database interface */

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/spwdmodule.c.orig	2014-05-19 05:19:39.027000832 +0000
+--- Modules/spwdmodule.c.orig	2014-05-19 05:19:39.033554432 +0000
 +++ Modules/spwdmodule.c
 @@ -81,7 +81,9 @@ static PyObject *mkspent(struct spwd *p)
  

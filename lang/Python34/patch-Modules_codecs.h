@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/codecs.h.orig	2014-11-05 06:42:40.000000000 +0000
+--- Modules/codecs.h.orig	2014-11-14 22:10:53.119275520 +0000
 +++ Modules/codecs.h
 @@ -0,0 +1,229 @@
 +#ifndef Py_CODECREGISTRY_H

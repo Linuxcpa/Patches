@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/sliceobject.h.orig	2014-11-05 06:55:35.000000000 +0000
+--- Modules/sliceobject.h.orig	2014-11-14 22:11:28.989069312 +0000
 +++ Modules/sliceobject.h
 @@ -0,0 +1,50 @@
 +#ifndef Py_SLICEOBJECT_H

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pystrcmp.h.orig	2014-11-05 06:57:04.000000000 +0000
+--- Modules/pystrcmp.h.orig	2014-11-14 22:11:25.105381888 +0000
 +++ Modules/pystrcmp.h
 @@ -0,0 +1,23 @@
 +#ifndef Py_STRCMP_H

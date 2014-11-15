@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/bytesobject.h.orig	2014-11-05 06:41:47.000000000 +0000
+--- Modules/bytesobject.h.orig	2014-11-14 22:10:51.011272192 +0000
 +++ Modules/bytesobject.h
 @@ -0,0 +1,128 @@
 +

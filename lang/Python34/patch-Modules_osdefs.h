@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/osdefs.h.orig	2014-11-05 07:01:01.000000000 +0000
+--- Modules/osdefs.h.orig	2014-11-14 22:11:15.660340736 +0000
 +++ Modules/osdefs.h
 @@ -0,0 +1,50 @@
 +#ifndef Py_OSDEFS_H

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/import.h.orig	2014-11-05 07:03:50.000000000 +0000
+--- Modules/import.h.orig	2014-11-14 22:11:07.073662464 +0000
 +++ Modules/import.h
 @@ -0,0 +1,130 @@
 +

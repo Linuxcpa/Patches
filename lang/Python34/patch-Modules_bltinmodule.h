@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/bltinmodule.h.orig	2014-11-05 06:41:07.000000000 +0000
+--- Modules/bltinmodule.h.orig	2014-11-14 22:10:49.340525056 +0000
 +++ Modules/bltinmodule.h
 @@ -0,0 +1,14 @@
 +#ifndef Py_BLTINMODULE_H

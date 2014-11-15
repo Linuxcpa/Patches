@@ -1,30 +1,19 @@
-This is in progress work for Python 34. 
+This is in progress work for Python 34. This is the second improved release.
+I am going to see if I can get the nis module to behave, but we have an almost complete solution as of now.
+
 As it is now, I have a mostly complete build and better results then with Python 27.
 
-The only item that didn't build was the zlib module, and this bullshit:
+The only item that didn't build was the NIS module
 
-1. /lib/python3.4/plat-haiku1/__pycache__/IN.cpython-34.pyc
-2. /lib/python3.4/plat-haiku1/__pycache__/IN.cpython-34.pyo
+So here is what you have to do:
 
-Also, the makefile didn't make /boot/home/pkg/lib/libpython3.so which you can easily do manually.
-Just symlink from libpython3.4.so.1.0 in .destdir.
+1. Place the 3 replacement patches in ..pkgsrc/lang/python34/patches and replace the 3 patches of the same name.
+2. Place the rest of the 110 patches in the localpatches directory
+3. Replace pkgsrc's Makefile and PLIST with the ones in the replacement files folder.
+4. Build
 
-So here is what you have to do, the last bit an annoying pain in the ass:
+Most of the 113 patches end up placing headers where the source can find it.
+The remaining patches are mostly standard.
+This is because of some pathing issue in Haiku. 
 
-1. Place the replacement patches in ..pkgsrc/lang/python34/patches and replace the patches of the same name.
-2. Place the rest of the 111 patches there too.
-3. Replace pkgsrc's Makefile and PLIST with mine.
-4. Let the build fail.
-5. Pave over Python's makefile with mine.
-6. At the end, it will complain about not having libpython3.so. Make a symlink.
-7. mkdir /boot/work/lang/python34/work/.destdir/boot/home/pkg/lib/python3.4/plat-haiku1/__pycache__/
-8. touch /boot/work/lang/python34/work/.destdir/boot/home/pkg//lib/python3.4/plat-haiku1/__pycache__/IN.cpython-34.pyc
-9. touch /boot/work/lang/python34/work/.destdir/boot/home/pkg//lib/python3.4/plat-haiku1/__pycache__/IN.cpython-34.pyo
-10. If that shit doesn't work, just pave over the .PLIST file .prefix.pre and +CONTENTS bullshit files with mine.
-11. Finish off the build, like its done in Mortal Kombat
-
-113 patches are mostly because of some pathing issue in Haiku. 
-Most of them are simply putting a header where the compiler wants to find it.
-
-Eventually we will get a good configure script to handle creation of the makefile. 
-For now you have this, which is pretty damned good start.
+We are almost there, if not. :)

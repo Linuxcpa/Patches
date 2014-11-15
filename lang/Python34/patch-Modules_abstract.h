@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/abstract.h.orig	2014-11-05 06:37:15.000000000 +0000
+--- Modules/abstract.h.orig	2014-11-14 22:10:47.775159808 +0000
 +++ Modules/abstract.h
 @@ -0,0 +1,1267 @@
 +#ifndef Py_ABSTRACTOBJECT_H

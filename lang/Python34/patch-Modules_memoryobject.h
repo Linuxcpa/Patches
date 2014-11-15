@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/memoryobject.h.orig	2014-11-05 07:02:41.000000000 +0000
+--- Modules/memoryobject.h.orig	2014-11-14 22:11:11.652214272 +0000
 +++ Modules/memoryobject.h
 @@ -0,0 +1,74 @@
 +/* Memory view object. In Python this is available as "memoryview". */

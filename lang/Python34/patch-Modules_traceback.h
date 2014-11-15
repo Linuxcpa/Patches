@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/traceback.h.orig	2014-11-05 06:54:26.000000000 +0000
+--- Modules/traceback.h.orig	2014-11-14 22:11:34.480509952 +0000
 +++ Modules/traceback.h
 @@ -0,0 +1,72 @@
 +

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/socketmodule.c.orig	2014-05-19 05:19:39.024903680 +0000
+--- Modules/socketmodule.c.orig	2014-05-19 05:19:39.029884416 +0000
 +++ Modules/socketmodule.c
 @@ -6087,7 +6087,9 @@ PyInit__socket(void)
      PyModule_AddIntMacro(m, SOCK_DGRAM);

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pymem.h.orig	2014-11-05 06:57:35.000000000 +0000
+--- Modules/pymem.h.orig	2014-11-14 22:11:23.931135488 +0000
 +++ Modules/pymem.h
 @@ -0,0 +1,183 @@
 +/* The PyMem_ family:  low-level memory allocation interfaces.

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pyexpat.h.orig	2014-11-05 06:58:44.000000000 +0000
+--- Modules/pyexpat.h.orig	2014-11-14 22:11:21.102498304 +0000
 +++ Modules/pyexpat.h
 @@ -0,0 +1,53 @@
 +/* Stuff to export relevant 'expat' entry points from pyexpat to other

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/ceval.h.orig	2014-11-05 06:42:08.000000000 +0000
+--- Modules/ceval.h.orig	2014-11-14 22:10:51.849084416 +0000
 +++ Modules/ceval.h
 @@ -0,0 +1,205 @@
 +#ifndef Py_CEVAL_H

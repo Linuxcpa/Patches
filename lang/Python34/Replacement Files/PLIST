@@ -1934,8 +1934,7 @@ lib/python${PY_VER_SUFFIX}/lib-dynload/syslog.so
 lib/python${PY_VER_SUFFIX}/lib-dynload/termios.so
 lib/python${PY_VER_SUFFIX}/lib-dynload/time.so
 lib/python${PY_VER_SUFFIX}/lib-dynload/unicodedata.so
-${PLIST.Haibroken}lib/python${PY_VER_SUFFIX}/lib-dynload/zlib.so
-lib/python${PY_VER_SUFFIX}/lib-dynload/zlib_failed.so
+lib/python${PY_VER_SUFFIX}/lib-dynload/zlib.so
 lib/python${PY_VER_SUFFIX}/lib2to3/Grammar.txt
 lib/python${PY_VER_SUFFIX}/lib2to3/Grammar${PKGVERSION}.final.0.pickle
 lib/python${PY_VER_SUFFIX}/lib2to3/PatternGrammar.txt

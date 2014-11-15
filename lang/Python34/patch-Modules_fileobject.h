@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/fileobject.h.orig	2014-11-05 06:44:56.000000000 +0000
+--- Modules/fileobject.h.orig	2014-11-14 22:11:03.238288896 +0000
 +++ Modules/fileobject.h
 @@ -0,0 +1,58 @@
 +/* File object interface (what's left of it -- see io.py) */

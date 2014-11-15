@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/bitset.h.orig	2014-11-05 06:40:57.000000000 +0000
+--- Modules/bitset.h.orig	2014-11-14 22:10:48.978583552 +0000
 +++ Modules/bitset.h
 @@ -0,0 +1,32 @@
 +

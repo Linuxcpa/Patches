@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pyarena.h.orig	2014-11-05 07:00:00.000000000 +0000
+--- Modules/pyarena.h.orig	2014-11-14 22:11:18.304349184 +0000
 +++ Modules/pyarena.h
 @@ -0,0 +1,64 @@
 +/* An arena-like memory interface for the compiler.

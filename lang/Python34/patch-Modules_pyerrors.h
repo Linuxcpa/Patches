@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pyerrors.h.orig	2014-11-05 06:58:56.000000000 +0000
+--- Modules/pyerrors.h.orig	2014-11-14 22:11:20.677904384 +0000
 +++ Modules/pyerrors.h
 @@ -0,0 +1,464 @@
 +#ifndef Py_ERRORS_H

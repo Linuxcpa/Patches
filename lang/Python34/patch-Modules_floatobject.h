@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/floatobject.h.orig	2014-11-05 06:45:32.000000000 +0000
+--- Modules/floatobject.h.orig	2014-11-14 22:11:04.702021632 +0000
 +++ Modules/floatobject.h
 @@ -0,0 +1,128 @@
 +

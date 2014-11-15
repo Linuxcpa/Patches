@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/token.h.orig	2014-11-05 06:54:36.000000000 +0000
+--- Modules/token.h.orig	2014-11-14 22:11:34.093061120 +0000
 +++ Modules/token.h
 @@ -0,0 +1,87 @@
 +

@@ -1,57 +1,11 @@
 $NetBSD$
 
---- Modules/socketmodule.h.orig	2014-11-05 06:55:27.000000000 +0000
+--- Modules/socketmodule.h.orig	2014-05-19 05:19:39.056623104 +0000
 +++ Modules/socketmodule.h
-@@ -0,0 +1,240 @@
-+/* Socket module header file */
-+
-+/* Includes needed for the sockaddr_* symbols below */
-+#ifndef MS_WINDOWS
-+#ifdef __VMS
-+#   include <socket.h>
-+# else
-+#   include <sys/socket.h>
-+# endif
-+# include <netinet/in.h>
-+# if !defined(__CYGWIN__)
-+#  include <netinet/tcp.h>
-+# endif
-+
-+#else /* MS_WINDOWS */
-+# include <winsock2.h>
-+# include <ws2tcpip.h>
-+/* VC6 is shipped with old platform headers, and does not have MSTcpIP.h
-+ * Separate SDKs have all the functions we want, but older ones don't have
-+ * any version information.
-+ * I use SIO_GET_MULTICAST_FILTER to detect a decent SDK.
-+ */
-+# ifdef SIO_GET_MULTICAST_FILTER
-+#  include <MSTcpIP.h> /* for SIO_RCVALL */
-+#  define HAVE_ADDRINFO
-+#  define HAVE_SOCKADDR_STORAGE
-+#  define HAVE_GETADDRINFO
-+#  define HAVE_GETNAMEINFO
-+#  define ENABLE_IPV6
-+# else
-+typedef int socklen_t;
-+# endif /* IPPROTO_IPV6 */
-+#endif /* MS_WINDOWS */
-+
-+#ifdef HAVE_SYS_UN_H
-+# include <sys/un.h>
-+#else
-+# undef AF_UNIX
-+#endif
-+
-+#ifdef HAVE_LINUX_NETLINK_H
-+# ifdef HAVE_ASM_TYPES_H
-+#  include <asm/types.h>
-+# endif
-+# include <linux/netlink.h>
-+#else
-+#  undef AF_NETLINK
-+#endif
-+
+@@ -47,6 +47,246 @@ typedef int socklen_t;
+ #  undef AF_NETLINK
+ #endif
+ 
 +#if defined (__HAIKU__)
 +#  undef HAVE_BLUETOOTH_BLUETOOTH_H
 +#endif
@@ -243,3 +197,55 @@ $NetBSD$
 +}
 +#endif
 +#endif /* !Py__SOCKET_H */
++/* Socket module header file */
++
++/* Includes needed for the sockaddr_* symbols below */
++#ifndef MS_WINDOWS
++#ifdef __VMS
++#   include <socket.h>
++# else
++#   include <sys/socket.h>
++# endif
++# include <netinet/in.h>
++# if !defined(__CYGWIN__)
++#  include <netinet/tcp.h>
++# endif
++
++#else /* MS_WINDOWS */
++# include <winsock2.h>
++# include <ws2tcpip.h>
++/* VC6 is shipped with old platform headers, and does not have MSTcpIP.h
++ * Separate SDKs have all the functions we want, but older ones don't have
++ * any version information.
++ * I use SIO_GET_MULTICAST_FILTER to detect a decent SDK.
++ */
++# ifdef SIO_GET_MULTICAST_FILTER
++#  include <MSTcpIP.h> /* for SIO_RCVALL */
++#  define HAVE_ADDRINFO
++#  define HAVE_SOCKADDR_STORAGE
++#  define HAVE_GETADDRINFO
++#  define HAVE_GETNAMEINFO
++#  define ENABLE_IPV6
++# else
++typedef int socklen_t;
++# endif /* IPPROTO_IPV6 */
++#endif /* MS_WINDOWS */
++
++#ifdef HAVE_SYS_UN_H
++# include <sys/un.h>
++#else
++# undef AF_UNIX
++#endif
++
++#ifdef HAVE_LINUX_NETLINK_H
++# ifdef HAVE_ASM_TYPES_H
++#  include <asm/types.h>
++# endif
++# include <linux/netlink.h>
++#else
++#  undef AF_NETLINK
++#endif
++
+ #ifdef HAVE_BLUETOOTH_BLUETOOTH_H
+ #include <bluetooth/bluetooth.h>
+ #include <bluetooth/rfcomm.h>

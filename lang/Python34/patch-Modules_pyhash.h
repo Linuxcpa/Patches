@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pyhash.h.orig	2014-11-05 06:58:14.000000000 +0000
+--- Modules/pyhash.h.orig	2014-11-14 22:11:22.315359232 +0000
 +++ Modules/pyhash.h
 @@ -0,0 +1,149 @@
 +#ifndef Py_HASH_H

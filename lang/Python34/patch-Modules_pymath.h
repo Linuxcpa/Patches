@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pymath.h.orig	2014-11-05 06:57:46.000000000 +0000
+--- Modules/pymath.h.orig	2014-11-14 22:11:23.520355840 +0000
 +++ Modules/pymath.h
 @@ -0,0 +1,190 @@
 +#ifndef Py_PYMATH_H
