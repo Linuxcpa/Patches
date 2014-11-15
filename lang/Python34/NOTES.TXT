@@ -10,7 +10,9 @@ So here is what you have to do:
 1. Place the 3 replacement patches in ..pkgsrc/lang/python34/patches and replace the 3 patches of the same name.
 2. Place the rest of the 110 patches in the localpatches directory
 3. Replace pkgsrc's Makefile and PLIST with the ones in the replacement files folder.
-4. Build
+4. bmake makepatchsum
+5. Build
+6. Party like its 1899.
 
 Most of the 113 patches end up placing headers where the source can find it.
 The remaining patches are mostly standard.
