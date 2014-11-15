@@ -12,7 +12,7 @@ progs/MKtermsort.sh progs/capconvert
 SUBST_SED.sh+= -e 's/1 2 5 15/1 2 15/g'
 .endif
 
-.if ${PKGPATH} == "lang/python27"
+.if ${PKGPATH} == "lang/python27" || ${PKGPATH} == "lang/python34"
 LDFLAGS+= -L/boot/system/lib
 SUBST_CLASSES+= symlink
 SUBST_STAGE.symlink= pre-configure
