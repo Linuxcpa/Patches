@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/asdl.h.orig	2014-11-14 22:10:48.315359232 +0000
+--- Modules/asdl.h.orig	2014-11-16 03:15:00.664272896 +0000
 +++ Modules/asdl.h
 @@ -0,0 +1,45 @@
 +#ifndef Py_ASDL_H

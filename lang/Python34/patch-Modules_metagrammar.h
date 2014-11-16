@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/metagrammar.h.orig	2014-11-14 22:11:12.052690944 +0000
+--- Modules/metagrammar.h.orig	2014-11-16 03:15:07.729808896 +0000
 +++ Modules/metagrammar.h
 @@ -0,0 +1,18 @@
 +#ifndef Py_METAGRAMMAR_H

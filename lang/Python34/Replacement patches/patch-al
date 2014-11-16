@@ -7,7 +7,7 @@ Changes for consistency across pkgsrc platforms.
 
 XXX: Not sure what the BLDSHARED changes are about.
 
---- configure.orig	2014-05-19 05:19:40.009699328 +0000
+--- configure.orig	2014-05-19 05:19:40.065798144 +0000
 +++ configure
 @@ -3354,7 +3354,7 @@ case $ac_sys_system/$ac_sys_release in
    # Reconfirmed for OpenBSD 3.3 by Zachary Hamm, for 3.4 by Jason Ish.

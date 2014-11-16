@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/structseq.h.orig	2014-11-14 22:11:31.963379200 +0000
+--- Modules/structseq.h.orig	2014-11-16 03:15:16.490995712 +0000
 +++ Modules/structseq.h
 @@ -0,0 +1,49 @@
 +

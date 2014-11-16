@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/cellobject.h.orig	2014-11-14 22:10:51.394002432 +0000
+--- Modules/cellobject.h.orig	2014-11-16 03:15:02.132120576 +0000
 +++ Modules/cellobject.h
 @@ -0,0 +1,29 @@
 +/* Cell object interface */

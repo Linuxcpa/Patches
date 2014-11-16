@@ -5,6 +5,7 @@
 || ${PKGPATH} == "mail/mutt" || ${PKGPATH} == "emulators/or1ksim" \
 || ${PKGPATH} == "graphics/libcaca" || ${PKGPATH} == "graphics/netpbm" \
 || ${PKGPATH} == "comms/minicom" || ${PKGPATH} == "mail/msmtp" \
-|| ${PKGPATH} == "chat/bsflite" || ${PKGPATH} == "chat/jabberd"
+|| ${PKGPATH} == "chat/bsflite" || ${PKGPATH} == "chat/jabberd" \
+|| ${PKGPATH} == "lang/python34"
 LIBS.Haiku+=	-lnetwork
 .endif

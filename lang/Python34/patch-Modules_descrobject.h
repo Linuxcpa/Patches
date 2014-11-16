@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/descrobject.h.orig	2014-11-14 22:10:59.304087040 +0000
+--- Modules/descrobject.h.orig	2014-11-16 03:15:03.571998208 +0000
 +++ Modules/descrobject.h
 @@ -0,0 +1,105 @@
 +/* Descriptors */

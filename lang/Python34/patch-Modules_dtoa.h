@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/dtoa.h.orig	2014-11-14 22:11:00.213385216 +0000
+--- Modules/dtoa.h.orig	2014-11-16 03:15:03.893124608 +0000
 +++ Modules/dtoa.h
 @@ -0,0 +1,19 @@
 +#ifndef Py_LIMITED_API

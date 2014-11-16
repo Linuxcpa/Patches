@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/parsetok.h.orig	2014-11-14 22:11:16.027262976 +0000
+--- Modules/parsetok.h.orig	2014-11-16 03:15:09.497811456 +0000
 +++ Modules/parsetok.h
 @@ -0,0 +1,108 @@
 +

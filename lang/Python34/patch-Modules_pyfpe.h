@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pyfpe.h.orig	2014-11-14 22:11:21.527958016 +0000
+--- Modules/pyfpe.h.orig	2014-11-16 03:15:12.049545216 +0000
 +++ Modules/pyfpe.h
 @@ -0,0 +1,176 @@
 +#ifndef Py_PYFPE_H

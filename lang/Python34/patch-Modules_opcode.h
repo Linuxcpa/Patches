@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/opcode.h.orig	2014-11-14 22:11:15.251396096 +0000
+--- Modules/opcode.h.orig	2014-11-16 03:15:09.159121408 +0000
 +++ Modules/opcode.h
 @@ -0,0 +1,159 @@
 +#ifndef Py_OPCODE_H

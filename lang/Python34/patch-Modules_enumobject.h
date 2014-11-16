@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/enumobject.h.orig	2014-11-14 22:11:00.994050048 +0000
+--- Modules/enumobject.h.orig	2014-11-16 03:15:04.223084544 +0000
 +++ Modules/enumobject.h
 @@ -0,0 +1,17 @@
 +#ifndef Py_ENUMOBJECT_H

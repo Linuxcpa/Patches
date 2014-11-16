@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Python/bltinmodule.c.orig	2014-05-19 05:19:39.021757952 +0000
+--- Python/bltinmodule.c.orig	2014-05-19 05:19:39.004718592 +0000
 +++ Python/bltinmodule.c
 @@ -24,7 +24,7 @@
  #ifdef HAVE_MBCS

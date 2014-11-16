@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/methodobject.h.orig	2014-11-14 22:11:12.433061888 +0000
+--- Modules/methodobject.h.orig	2014-11-16 03:15:07.909377536 +0000
 +++ Modules/methodobject.h
 @@ -0,0 +1,93 @@
 +

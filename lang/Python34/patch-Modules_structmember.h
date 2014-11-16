@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/structmember.h.orig	2014-11-14 22:11:31.609746944 +0000
+--- Modules/structmember.h.orig	2014-11-16 03:15:16.307494912 +0000
 +++ Modules/structmember.h
 @@ -0,0 +1,76 @@
 +#ifndef Py_STRUCTMEMBER_H

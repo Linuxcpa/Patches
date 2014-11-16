@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pythonrun.h.orig	2014-11-14 22:11:26.633602048 +0000
+--- Modules/pythonrun.h.orig	2014-11-16 03:15:14.369885184 +0000
 +++ Modules/pythonrun.h
 @@ -0,0 +1,304 @@
 +

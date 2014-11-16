@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/object.h.orig	2014-11-14 22:11:14.483655680 +0000
+--- Modules/object.h.orig	2014-11-16 03:15:08.812384256 +0000
 +++ Modules/object.h
 @@ -0,0 +1,1015 @@
 +#ifndef Py_OBJECT_H

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Lib/test/test_json/test_unicode.py.orig	2014-05-19 05:19:38.041680896 +0000
+--- Lib/test/test_json/test_unicode.py.orig	2014-05-19 05:19:38.019922944 +0000
 +++ Lib/test/test_json/test_unicode.py
 @@ -6,26 +6,6 @@ class TestUnicode:
      # test_encoding1 and test_encoding2 from 2.x are irrelevant (only str

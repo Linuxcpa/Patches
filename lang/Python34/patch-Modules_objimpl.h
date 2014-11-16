@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/objimpl.h.orig	2014-11-14 22:11:14.882900992 +0000
+--- Modules/objimpl.h.orig	2014-11-16 03:15:08.995622912 +0000
 +++ Modules/objimpl.h
 @@ -0,0 +1,361 @@
 +/* The PyObject_ memory family:  high-level object memory interfaces.

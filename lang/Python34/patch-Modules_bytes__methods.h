@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/bytes_methods.h.orig	2014-11-14 22:10:50.634912768 +0000
+--- Modules/bytes_methods.h.orig	2014-11-16 03:15:01.767557632 +0000
 +++ Modules/bytes_methods.h
 @@ -0,0 +1,46 @@
 +#ifndef Py_LIMITED_API

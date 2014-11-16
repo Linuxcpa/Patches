@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/accu.h.orig	2014-11-14 22:10:48.083886080 +0000
+--- Modules/accu.h.orig	2014-11-16 03:15:00.442499072 +0000
 +++ Modules/accu.h
 @@ -0,0 +1,37 @@
 +#ifndef Py_LIMITED_API

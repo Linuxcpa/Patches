@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/funcobject.h.orig	2014-11-14 22:11:05.524550144 +0000
+--- Modules/funcobject.h.orig	2014-11-16 03:15:05.457441280 +0000
 +++ Modules/funcobject.h
 @@ -0,0 +1,89 @@
 +

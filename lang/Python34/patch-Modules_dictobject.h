@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/dictobject.h.orig	2014-11-14 22:10:59.726925312 +0000
+--- Modules/dictobject.h.orig	2014-11-16 03:15:03.729808896 +0000
 +++ Modules/dictobject.h
 @@ -0,0 +1,126 @@
 +#ifndef Py_DICTOBJECT_H

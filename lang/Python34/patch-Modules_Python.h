@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/Python.h.orig	2014-11-14 22:11:26.273154048 +0000
+--- Modules/Python.h.orig	2014-11-16 03:15:14.219676672 +0000
 +++ Modules/Python.h
 @@ -0,0 +1,133 @@
 +#ifndef Py_PYTHON_H

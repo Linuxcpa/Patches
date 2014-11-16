@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pydebug.h.orig	2014-11-14 22:11:20.279445504 +0000
+--- Modules/pydebug.h.orig	2014-11-16 03:15:11.583794688 +0000
 +++ Modules/pydebug.h
 @@ -0,0 +1,34 @@
 +#ifndef Py_LIMITED_API

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/classobject.h.orig	2014-11-14 22:10:52.275251200 +0000
+--- Modules/classobject.h.orig	2014-11-16 03:15:02.501219328 +0000
 +++ Modules/classobject.h
 @@ -0,0 +1,58 @@
 +/* Former class object interface -- now only bound methods are here  */

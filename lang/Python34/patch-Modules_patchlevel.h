@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/patchlevel.h.orig	2014-11-14 22:11:16.428605440 +0000
+--- Modules/patchlevel.h.orig	2014-11-16 03:15:09.654835712 +0000
 +++ Modules/patchlevel.h
 @@ -0,0 +1,35 @@
 +

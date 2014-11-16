@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/warnings.h.orig	2014-11-14 22:11:36.606601216 +0000
+--- Modules/warnings.h.orig	2014-11-16 03:15:18.200015872 +0000
 +++ Modules/warnings.h
 @@ -0,0 +1,54 @@
 +#ifndef Py_WARNINGS_H

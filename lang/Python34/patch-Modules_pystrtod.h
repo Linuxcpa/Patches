@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pystrtod.h.orig	2014-11-14 22:11:25.529793024 +0000
+--- Modules/pystrtod.h.orig	2014-11-16 03:15:13.866385920 +0000
 +++ Modules/pystrtod.h
 @@ -0,0 +1,41 @@
 +#ifndef Py_STRTOD_H

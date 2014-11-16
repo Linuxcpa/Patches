@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/longintrepr.h.orig	2014-11-14 22:11:08.668991488 +0000
+--- Modules/longintrepr.h.orig	2014-11-16 03:15:06.989331456 +0000
 +++ Modules/longintrepr.h
 @@ -0,0 +1,103 @@
 +#ifndef Py_LIMITED_API

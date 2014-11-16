@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Tools/scripts/h2py.py.orig	2014-05-19 05:19:40.051380224 +0000
+--- Tools/scripts/h2py.py.orig	2014-05-19 05:19:40.019398656 +0000
 +++ Tools/scripts/h2py.py
 @@ -1,4 +1,4 @@
 -#! /usr/bin/env python3

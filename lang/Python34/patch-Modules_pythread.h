@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pythread.h.orig	2014-11-14 22:11:26.999292928 +0000
+--- Modules/pythread.h.orig	2014-11-16 03:15:14.543686656 +0000
 +++ Modules/pythread.h
 @@ -0,0 +1,93 @@
 +

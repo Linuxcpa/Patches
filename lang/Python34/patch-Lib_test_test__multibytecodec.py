@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Lib/test/test_multibytecodec.py.orig	2014-05-19 05:19:38.049545216 +0000
+--- Lib/test/test_multibytecodec.py.orig	2014-05-19 05:19:38.027262976 +0000
 +++ Lib/test/test_multibytecodec.py
 @@ -210,12 +210,6 @@ class Test_ISO2022(unittest.TestCase):
          uni = ':hu4:unit\xe9 de famille'

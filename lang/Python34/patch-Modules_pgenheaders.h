@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pgenheaders.h.orig	2014-11-14 22:11:17.187695104 +0000
+--- Modules/pgenheaders.h.orig	2014-11-16 03:15:10.012320768 +0000
 +++ Modules/pgenheaders.h
 @@ -0,0 +1,42 @@
 +#ifndef Py_PGENHEADERS_H

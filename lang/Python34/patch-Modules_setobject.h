@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/setobject.h.orig	2014-11-14 22:11:28.603979776 +0000
+--- Modules/setobject.h.orig	2014-11-16 03:15:15.371458048 +0000
 +++ Modules/setobject.h
 @@ -0,0 +1,113 @@
 +/* Set object interface */

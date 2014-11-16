@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pytime.h.orig	2014-11-14 22:11:27.368312320 +0000
+--- Modules/pytime.h.orig	2014-11-16 03:15:14.774897664 +0000
 +++ Modules/pytime.h
 @@ -0,0 +1,105 @@
 +#ifndef Py_LIMITED_API

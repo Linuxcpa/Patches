@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/rangeobject.h.orig	2014-11-14 22:11:27.831520768 +0000
+--- Modules/rangeobject.h.orig	2014-11-16 03:15:14.989593600 +0000
 +++ Modules/rangeobject.h
 @@ -0,0 +1,27 @@
 +

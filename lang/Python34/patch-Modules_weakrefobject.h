@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/weakrefobject.h.orig	2014-11-14 22:11:37.020447232 +0000
+--- Modules/weakrefobject.h.orig	2014-11-16 03:15:18.394002432 +0000
 +++ Modules/weakrefobject.h
 @@ -0,0 +1,86 @@
 +/* Weak references objects for Python. */

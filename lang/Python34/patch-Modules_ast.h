@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/ast.h.orig	2014-11-14 22:10:48.605290496 +0000
+--- Modules/ast.h.orig	2014-11-16 03:15:00.850395136 +0000
 +++ Modules/ast.h
 @@ -0,0 +1,22 @@
 +#ifndef Py_AST_H

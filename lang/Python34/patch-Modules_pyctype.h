@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pyctype.h.orig	2014-11-14 22:11:19.913833984 +0000
+--- Modules/pyctype.h.orig	2014-11-16 03:15:11.413401088 +0000
 +++ Modules/pyctype.h
 @@ -0,0 +1,33 @@
 +#ifndef Py_LIMITED_API

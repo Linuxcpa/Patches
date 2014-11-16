@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/modsupport.h.orig	2014-11-14 22:11:12.861667328 +0000
+--- Modules/modsupport.h.orig	2014-11-16 03:15:08.087818240 +0000
 +++ Modules/modsupport.h
 @@ -0,0 +1,132 @@
 +

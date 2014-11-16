@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pymacro.h.orig	2014-11-14 22:11:23.098304000 +0000
+--- Modules/pymacro.h.orig	2014-11-16 03:15:12.798228480 +0000
 +++ Modules/pymacro.h
 @@ -0,0 +1,78 @@
 +#ifndef Py_PYMACRO_H

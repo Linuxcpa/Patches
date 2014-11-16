@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/bytearrayobject.h.orig	2014-11-14 22:10:50.198705152 +0000
+--- Modules/bytearrayobject.h.orig	2014-11-16 03:15:01.565444608 +0000
 +++ Modules/bytearrayobject.h
 @@ -0,0 +1,62 @@
 +/* ByteArray object interface */

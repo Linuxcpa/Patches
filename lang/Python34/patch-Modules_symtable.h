@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/symtable.h.orig	2014-11-14 22:11:32.318504960 +0000
+--- Modules/symtable.h.orig	2014-11-16 03:15:16.753401856 +0000
 +++ Modules/symtable.h
 @@ -0,0 +1,122 @@
 +#ifndef Py_LIMITED_API

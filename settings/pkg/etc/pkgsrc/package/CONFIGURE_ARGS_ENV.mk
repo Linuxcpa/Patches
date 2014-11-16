@@ -36,7 +36,7 @@ CONFIGURE_ARGS+= --enable-dfl-port=/dev/ports/usb0
 CONFIGURE_ARGS+= --disable-ipv6
 .endif
 
-.if ${PKGPATH} == "lang/python27"
+.if ${PKGPATH} == "lang/python27" || ${PKGPATH} == "lang/python34"
 CONFIGURE_ARGS+=    PKG_CONFIG_PATH=/boot/home/pkg/lib/pkgconfig
 CONFIGURE_ARGS+=    --enable-shared
 CONFIGURE_ARGS+=    --prefix=/boot/home/pkg

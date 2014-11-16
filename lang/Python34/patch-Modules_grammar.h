@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/grammar.h.orig	2014-11-14 22:11:06.716177408 +0000
+--- Modules/grammar.h.orig	2014-11-16 03:15:06.078118912 +0000
 +++ Modules/grammar.h
 @@ -0,0 +1,93 @@
 +

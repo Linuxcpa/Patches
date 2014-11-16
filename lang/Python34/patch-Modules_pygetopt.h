@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/pygetopt.h.orig	2014-11-14 22:11:21.922484736 +0000
+--- Modules/pygetopt.h.orig	2014-11-16 03:15:12.225705984 +0000
 +++ Modules/pygetopt.h
 @@ -0,0 +1,21 @@
 +

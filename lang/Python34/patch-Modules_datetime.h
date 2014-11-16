@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/datetime.h.orig	2014-11-14 22:10:58.913571840 +0000
+--- Modules/datetime.h.orig	2014-11-16 03:15:03.387186688 +0000
 +++ Modules/datetime.h
 @@ -0,0 +1,243 @@
 +/*  datetime.h

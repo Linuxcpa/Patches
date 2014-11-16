@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/tupleobject.h.orig	2014-11-14 22:11:34.892338176 +0000
+--- Modules/tupleobject.h.orig	2014-11-16 03:15:17.443023360 +0000
 +++ Modules/tupleobject.h
 @@ -0,0 +1,73 @@
 +

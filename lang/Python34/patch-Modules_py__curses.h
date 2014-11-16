@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Modules/py_curses.h.orig	2014-11-14 22:11:17.892338176 +0000
+--- Modules/py_curses.h.orig	2014-11-16 03:15:10.459014144 +0000
 +++ Modules/py_curses.h
 @@ -0,0 +1,192 @@
 +
