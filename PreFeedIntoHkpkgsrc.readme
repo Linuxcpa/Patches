@@ -1,10 +1,24 @@
-These patches are designed to supplement Diger's patches.
-Some won't work if you don't use my settings.
+Previous to today's upload, these patches were designed to supplement Diger's patches.
+However, there are patches of Diger's that I have not uploaded with mine yet, because I have not updated them:
+
+security/qca2 2.0.3
+chat/psi .15
+multimedia/ffmpeg 2.33
+multimedia/ffmpeg 1.2.8
+multimedia/ffmpeg 1.0
+multimedia/ffmpeg 2.0
+multimedia/ffmpeg 0.10.14
+lang/gcc47 4.7.3
+lang/gcc48-c++ 4.8.3
+lang/gcc48-lib 4.8.3
+lang/python27 2.7.8
+x11/qt4-libs 4.8.6
+net/dante 1.1.19
+emulators/qemu 2.1.0
+lang/ruby 200 200
+www/squid3 3.4.8
+
 I have all of Diger's seetings in mine.
-The only exception is if I updated Diger's patches for a newer version.
-This is only the case for glib2 and mit-krb5.
-My hope is that all of my patches will be merged into Diger's localpatches repository.
-I am actually comfortable with most of these, surprisingly. 
-Many of the changes were header includes. 
+However I have updated a number of settings and patches.
 
 These were built in the Haiku nightly Rev 48080, GCC 4 only.
