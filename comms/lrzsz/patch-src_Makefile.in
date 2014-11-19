@@ -1,0 +1,43 @@
+$NetBSD$
+
+--- src/Makefile.in.orig	2014-05-21 11:00:08.203161600 +0000
++++ src/Makefile.in
+@@ -282,7 +282,7 @@ distdir: $(DISTFILES)
+ 	@for file in $(DISTFILES); do \
+ 	  d=$(srcdir); \
+ 	  test -f $(distdir)/$$file \
+-	  || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
++	  || ln -s $$d/$$file $(distdir)/$$file 2> /dev/null \
+ 	  || cp -p $$d/$$file $(distdir)/$$file; \
+ 	done
+ canit.o: canit.c zglobal.h ../config.h zmodem.h ../lib/getopt.h
+@@ -370,17 +370,21 @@ maintainer-clean-generic clean mostlycle
+ 
+ install-exec-local:
+ 	rm -f $(DESTDIR)/$(bindir)/`echo lsb | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lsz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lsb |sed -e '$(transform)'` 
++	cd $(DESTDIR)/$(bindir) && \
++	ln -s `echo lsz |sed -e '$(transform)'` \
++		`echo lsb |sed -e '$(transform)'`  
+ 	rm -f $(DESTDIR)$(bindir)/`echo lsx | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lsz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lsx |sed -e '$(transform)'` 
++	cd $(DESTDIR)/$(bindir) && \
++	ln -s `echo lsz |sed -e '$(transform)'` \
++		`echo lsx |sed -e '$(transform)'` 
+ 	rm -f $(DESTDIR)$(bindir)/`echo lrb | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lrz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lrb |sed -e '$(transform)'` 
++	cd $(DESTDIR)/$(bindir) && \
++	ln -s `echo lrz |sed -e '$(transform)'` \
++		`echo lrb |sed -e '$(transform)'`
+ 	rm -f $(DESTDIR)$(bindir)/`echo lrx | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lrz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lrx |sed -e '$(transform)'` 
++	cd $(DESTDIR)/$(bindir) && \
++	ln -s `echo lrz |sed -e '$(transform)'` \
++		`echo lrx |sed -e '$(transform)'`
+ #	rm -f $(bindir)/`echo lrzszbug | sed -e '$(transform)'`
+ #	ln $(bindir)/`echo lrzszbug |sed -e '$(transform)'` \
+ #		$(bindir)/`echo lrzszbug |sed -e '$(transform)'` 

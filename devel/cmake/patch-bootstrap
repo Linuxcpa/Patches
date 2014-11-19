@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- bootstrap.orig	2014-07-31 15:03:58.051642368 +0000
++++ bootstrap
+@@ -187,8 +187,6 @@ if ${cmake_system_mingw}; then
+   else
+     cmake_default_prefix="c:/Program Files/CMake"
+   fi
+-elif ${cmake_system_haiku}; then
+-  cmake_default_prefix=`finddir B_COMMON_DIRECTORY`
+ else
+   cmake_default_prefix="/usr/local"
+ fi

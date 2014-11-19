@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- Makefile.in.orig	1998-12-30 16:31:40.030146560 +0000
++++ Makefile.in
+@@ -261,7 +261,7 @@ distdir: $(DISTFILES)
+ 	@for file in $(DISTFILES); do \
+ 	  d=$(srcdir); \
+ 	  test -f $(distdir)/$$file \
+-	  || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
++	  || ln -s $$d/$$file $(distdir)/$$file 2> /dev/null \
+ 	  || cp -p $$d/$$file $(distdir)/$$file; \
+ 	done
+ 	for subdir in $(SUBDIRS); do \

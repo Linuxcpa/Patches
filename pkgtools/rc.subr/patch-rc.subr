@@ -1,0 +1,30 @@
+$NetBSD$
+
+--- rc.subr.orig	2014-05-23 09:23:13.000000000 +0000
++++ rc.subr
+@@ -123,6 +123,16 @@ case $_osname in
+ 		_RCARG_ps="-ef"
+ 		_RCARG_su=""
+ 		;;
++	Haiku)
++		_RCCMD_chown="/bin/chown"
++		_RCCMD_chroot="/bin/chroot"
++		_RCCMD_whoami="/bin/whoami"
++		_RCCMD_mount="/bin/mount"
++		_RCCMD_logger="/bin/logger"
++		_RCARG_psformat="-o Id Team"
++		_RCARG_su=""
++		_RCARG_ps="-a"
++		;;
+ esac
+ 
+ #
+@@ -215,7 +225,7 @@ check_pidfile()
+ 	if [ -z "$_pid" ]; then
+ 		return
+ 	fi
+-	_find_processes $_procname ${_interpreter:-.} '-p '"$_pid"
++	_find_processes $_procname ${_interpreter:-.} "$_pid"
+ }
+ 
+ #

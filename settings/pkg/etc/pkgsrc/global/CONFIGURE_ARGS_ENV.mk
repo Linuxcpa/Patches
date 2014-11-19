@@ -12,4 +12,6 @@ CONFIGURE_ENV+= shlibpath_overrides_runpath=no
 #CONFIGURE_ARGS+=    --prefix=/boot/home/pkg
 #CONFIGURE_ARGS+=    --includedir=/boot/home/pkg/include
 #CONFIGURE_ARGS+=    -specs=/boot/home/pkg/etc/specs
+#CONFIGURE_ENV+= CC='cc -I/boot/home/pkg/include'
+
 

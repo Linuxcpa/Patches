@@ -1,0 +1,12 @@
+$NetBSD$
+
+--- configure.orig	2014-06-02 12:00:46.000000000 +0000
++++ configure
+@@ -7443,6 +7443,7 @@ case "${host}" in
+ 	*-*-nto*)	platform=U_QNX ;;
+ 	*-dec-osf*) 	platform=U_OSF ;;
+ 	*-*-beos)		platform=U_BEOS ;;
++	*-*-haiku)		platform=U_HAIKU ;;
+ 	*-*-irix*)		platform=U_IRIX ;;
+ 	*-ncr-*)		platform=U_MPRAS ;;
+ 	*) 		platform=U_UNKNOWN_PLATFORM ;;

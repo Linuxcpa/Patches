@@ -24,7 +24,7 @@ SUBST_SED.symlink= -e 's,LN) -f ,LN) -sf ,g'
 SUBST_CLASSES+= fix_ld
 SUBST_STAGE.fix_ld= post-configure
 SUBST_FILES.fix_ld= giscanner/shlibs.py
-SUBST_SED.fix_ld= -e "s|'ldd'|'fakeldd'|"
+SUBST_SED.fix_ld= -e "s|'ldd'|'ld'|"
 .endif
 
 .if ${PKGPATH} == "archivers/zziplib"
@@ -156,4 +156,3 @@ SUBST_MESSAGE.lnetwork10= Fixing lnetwork bewshit
 SUBST_FILES.lnetwork10= platform-settings
 SUBST_SED.lnetwork10+= -e 's|LIBS= -lssl -lcrypto|LIBS= -lssl -lcrypto -lnetwork|g'
 .endif
-

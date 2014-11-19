@@ -50,3 +50,11 @@ CONFIGURE_ARGS+= --with-mailpath=/boot/home/mail
 .if ${PKGPATH} == "x11/pixman"
 CONFIGURE_ARGS+=	PTHREAD_LIBS=
 .endif
+
+.if ${PKGPATH} == "sysutils/testdisk"
+CONFIGURE_ARGS+= --enable-missing-uuid-ok
+.endif
+
+.if ${PKGPATH} == "chat/licq-core"
+CONFIGURE_ENV+= CC='cc -I/boot/home/pkg/include -L/boot/home/pkg/lib'
+.endif

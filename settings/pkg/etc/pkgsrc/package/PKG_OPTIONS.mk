@@ -24,7 +24,7 @@ PKG_OPTIONS.cherokee= -pam
 
 PKG_OPTIONS.boost= icu
 
-PKG_OPTIONS.cairo= -xcb
+#PKG_OPTIONS.cairo= -xcb
 
 PKG_OPTIONS.samba= -ads -ldap -winbind -pam
 

@@ -1,0 +1,31 @@
+$NetBSD$
+
+--- build/generic/configure.orig	2014-06-08 16:48:43.004718592 +0000
++++ build/generic/configure
+@@ -4316,7 +4316,7 @@ SHARED_EXTENSION=""
+ STATIC_EXTENSION=""
+ OBJECT_EXTENSION=""
+ case "$target_os" in
+-     *bsd*|linux*|beos|irix*|solaris*|gnu*|*qnx*|dragonfly*)
++     *bsd*|linux*|haiku*|beos|irix*|solaris*|gnu*|*qnx*|dragonfly*)
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: .so .a .o" >&5
+ $as_echo ".so .a .o" >&6; }
+ 	STATIC_EXTENSION="a"
+@@ -4362,7 +4362,7 @@ PRE_SHARED_LIB=""
+ SO_API_MAJOR_LINK=""
+ SO_LINK=""
+ case "$target_os" in
+-     linux*|solaris*|gnu*|*qnx*)
++     linux*|solaris*|gnu*|*qnx*|haiku*)
+ 	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
+ $as_echo "ok" >&6; }
+ 	STATIC_LIB="libxvidcore.\$(STATIC_EXTENSION)"
+@@ -4600,7 +4600,7 @@ $as_echo "$as_me: WARNING: nasm version 
+        { $as_echo "$as_me:${as_lineno-$LINENO}: checking for asm object format" >&5
+ $as_echo_n "checking for asm object format... " >&6; }
+        case "$target_os" in
+-           *bsd*|linux*|beos|irix*|solaris*|gnu*|*qnx*|dragonfly*)
++           *bsd*|linux*|haiku*|beos|irix*|solaris*|gnu*|*qnx*|dragonfly*)
+                if test "$ARCHITECTURE" = "X86_64" ; then
+                    { $as_echo "$as_me:${as_lineno-$LINENO}: result: elf64" >&5
+ $as_echo "elf64" >&6; }

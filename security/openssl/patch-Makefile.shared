@@ -1,0 +1,19 @@
+$NetBSD$
+
+--- Makefile.shared.orig	2014-05-15 03:54:33.453246976 +0000
++++ Makefile.shared
+@@ -604,10 +604,10 @@ symlink.hpux:
+ symlink.cygwin symlink.alpha-osf1 symlink.tru64 symlink.tru64-rpath symlink.beos:
+ 
+ # Compatibility targets
+-link_o.bsd-gcc-shared link_o.linux-shared link_o.gnu-shared: link_o.gnu
+-link_a.bsd-gcc-shared link_a.linux-shared link_a.gnu-shared: link_a.gnu
+-link_app.bsd-gcc-shared link_app.linux-shared link_app.gnu-shared: link_app.gnu
+-symlink.bsd-gcc-shared symlink.bsd-shared symlink.linux-shared symlink.gnu-shared: symlink.gnu
++link_o.bsd-gcc-shared link_o.linux-shared link_o.haiku-shared link_o.gnu-shared: link_o.gnu
++link_a.bsd-gcc-shared link_a.linux-shared link_a.haiku-shared link_a.gnu-shared: link_a.gnu
++link_app.bsd-gcc-shared link_app.linux-shared link_app.haiku-shared link_app.gnu-shared: link_app.gnu
++symlink.bsd-gcc-shared symlink.bsd-shared symlink.linux-shared symlink.haiku-shared symlink.gnu-shared: symlink.gnu
+ link_o.bsd-shared: link_o.bsd
+ link_a.bsd-shared: link_a.bsd
+ link_app.bsd-shared: link_app.bsd

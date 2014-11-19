@@ -1,0 +1,21 @@
+$NetBSD$
+
+--- lib/replace/wscript.orig	2013-06-04 14:21:30.000786432 +0000
++++ lib/replace/wscript
+@@ -240,6 +240,8 @@ struct foo bar = { .y = 'X', .x = 1 };
+     if host_os.rfind('aix') > -1:
+         conf.DEFINE('BROKEN_STRNLEN', 1)
+         conf.DEFINE('BROKEN_STRNDUP', 1)
++    if host_os.rfind('haiku') > -1:
++        conf.DEFINE('HAVE___STRTOULL', 1)
+ 
+     conf.CHECK_FUNCS('shl_load shl_unload shl_findsym')
+     conf.CHECK_FUNCS('pipe strftime srandom random srand rand usleep setbuffer')
+@@ -273,6 +275,7 @@ struct foo bar = { .y = 'X', .x = 1 };
+     #Some OS (ie. freebsd) return EINVAL if the convertion could not be done, it's not what we expect
+     #Let's detect those cases
+     if conf.CONFIG_SET('HAVE_STRTOLL'):
++      if host_os.rfind('haiku') < -1:
+         conf.CHECK_CODE('''
+                         long long nb = strtoll("Text", NULL, 0);
+                         if (errno == EINVAL) {

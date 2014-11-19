@@ -1,0 +1,12 @@
+$NetBSD$
+
+--- tools/build/src/tools/gcc.jam.orig	2014-06-19 17:15:38.057147392 +0000
++++ tools/build/src/tools/gcc.jam
+@@ -1030,6 +1030,7 @@ rule setup-threading ( targets * : sourc
+             case cygwin  : option = -mthreads ;
+             case solaris : option = -pthreads ; libs = rt ;
+             case beos    : # No threading options.
++            case haiku   : option = ; libs = root ;
+             case *bsd    : option = -pthread ;  # There is no -lrt on BSD.
+             case sgi     : # gcc on IRIX does not support multi-threading.
+             case darwin  : # No threading options.

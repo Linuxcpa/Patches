@@ -1,6 +1,6 @@
 $NetBSD$
 
---- lib/rpc/auth_gssapi.c.orig	2013-11-06 20:52:23.050855936 +0000
+--- lib/rpc/auth_gssapi.c.orig	2013-11-06 20:52:23.000000000 +0000
 +++ lib/rpc/auth_gssapi.c
 @@ -5,7 +5,11 @@
  

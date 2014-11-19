@@ -5,6 +5,6 @@
 || ${PKGPATH} == "math/fftw" || ${PKGPATH} == "archivers/pigz" \
 || ${PKGPATH} == "archivers/libzip" || ${PKGPATH} == "net/bind99" \
 || ${PKGPATH} == "lang/tcl" || ${PKGPATH} == "x11/tk" \
-|| ${PKGPATH} == "net/libpcap"
+|| ${PKGPATH} == "net/libpcap" || ${PKGPATH} == "converters/unix2dos"
 TOOLS_PLATFORM.ln?=             /bin/ln -s
 .endif

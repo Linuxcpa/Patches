@@ -1,0 +1,14 @@
+--- installperl.orig	2014-05-13 14:58:01.979369984 +0600
++++ installperl	2014-05-13 14:58:15.065011712 +0600
+@@ -379,6 +379,11 @@
+ 
+     # AIX needs perl.exp installed as well.
+     push(@corefiles,'perl.exp') if $^O eq 'aix';
++    if ($^O eq 'haiku') {
++    	# Haiku needs haikuish.h installed as well.
++		mkpath("$installarchlib/CORE/haiku", $opts{verbose}, 0777);
++		push(@corefiles,'haiku/haikuish.h');
++	}
+ }
+ foreach my $file (@corefiles) {
+     # HP-UX (at least) needs to maintain execute permissions

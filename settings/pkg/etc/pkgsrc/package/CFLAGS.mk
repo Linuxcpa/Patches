@@ -5,7 +5,10 @@ LDFLAGS =
 ac_ct_CC = "gcc"
 .endif
 
-.if ${PKGPATH} == "chat/gtmess"
+.if ${PKGPATH} == "chat/gtmess" || ${PKGPATH} == "net/dante"
 CFLAGS.Haiku+= -lnetwork
 .endif
 
+#.if ${PKGPATH} == "chat/licq-core"
+#CFLAGS+= 		-specs=/boot/home/pkg/etc/specs
+#.endif

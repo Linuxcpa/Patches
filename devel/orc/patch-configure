@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- configure.orig	2014-08-21 05:52:42.000000000 +0000
++++ configure
+@@ -13237,7 +13237,7 @@ $as_echo "#define HAVE_CODEMEM_MALLOC 1"
+ $as_echo "#define HAVE_CODEMEM_VIRTUALALLOC 1" >>confdefs.h
+ 
+     ;;
+-  linux*|darwin*|solaris*|netbsd*|freebsd*|openbsd*|mirbsd*|kfreebsd*|dragonfly*|gnu*)
++  linux*|darwin*|solaris*|netbsd*|freebsd*|openbsd*|mirbsd*|kfreebsd*|haiku*|dragonfly*|gnu*)
+ 
+ $as_echo "#define HAVE_CODEMEM_MMAP 1" >>confdefs.h
+ 

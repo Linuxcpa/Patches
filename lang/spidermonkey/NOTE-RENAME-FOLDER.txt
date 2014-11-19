@@ -1,0 +1,8 @@
+If the install fails saying:
+/bin/install: cannot stat `/boot/work/lang/spidermonkey/work/js/src/Haiku_OPT.OBJ/js': No such file or directory
+
+Rename /boot/work/lang/spidermonkey/work/js/src/Haiku1_OPT.OBJ 
+
+to
+
+/boot/work/lang/spidermonkey/work/js/src/Haiku_OPT.OBJ

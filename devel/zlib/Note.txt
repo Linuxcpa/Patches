@@ -1,0 +1,26 @@
+For reasons unclear to me, pkgsrc and Haiku together 
+will not build a version of zlib with versioning 
+information embedded in the library file itself.
+Without the patches, the problem is much worse.
+
+This will cause numerous build failures at link time. 
+Some of the packages will link with Haiku's libz and, 
+as a result, contain versioning information embedded 
+in the library. This was the case with libtcl86.
+
+When I attempted to build tkgate, pkgsrc attempted to
+link libtcl86 with the libz that was built in Haiku 
+with pkgsrc - which has no versioning information. 
+The result was an error at link time. 
+
+The only real solution is to take Haiku's libz and 
+replace the one built with pkgsrc. Make a copy of 
+the file from: /boot/system/lib/libz.so.1.2.8
+and place it here: /boot/home/pkg/lib. 
+
+Rename the file to the one already presend.
+Replace the existing file if/when promted.
+
+I have included this file because this was part of 
+what I did. My procedure is to make available 
+everything I did. 

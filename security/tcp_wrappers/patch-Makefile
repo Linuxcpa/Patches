@@ -1,0 +1,16 @@
+$NetBSD$
+
+--- Makefile.orig	2014-08-07 05:43:19.000000000 +0000
++++ Makefile
+@@ -146,6 +146,11 @@ linux:
+ 	LIBS= RANLIB=ranlib ARFLAGS=rv AUX_OBJ=setenv.o \
+ 	NETGROUP= TLI= EXTRA_CFLAGS="-DBROKEN_SO_LINGER -DUSE_STRERROR" all
+ 
++haiku:
++	@make REAL_DAEMON_DIR=$(REAL_DAEMON_DIR) STYLE=$(STYLE) \
++	LIBS=-lnetwork RANLIB=ranlib ARFLAGS=rv AUX_OBJ= NETGROUP= TLI= \
++	EXTRA_CFLAGS="-DSYS_ERRLIST_DEFINED -DUSE_STRERROR" VSYSLOG= all
++
+ # This is good for many SYSV+BSD hybrids with NIS, probably also for HP-UX 7.x.
+ hpux hpux8 hpux9 hpux10:
+ 	@make REAL_DAEMON_DIR=$(REAL_DAEMON_DIR) STYLE=$(STYLE) \

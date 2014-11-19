@@ -1,0 +1,12 @@
+--- Configure.orig	2014-05-13 15:01:18.283115520 +0600
++++ Configure	2014-05-13 15:06:23.538705920 +0600
+@@ -3311,6 +3311,9 @@
+ 			*) osname=newsos ;;
+ 			esac
+ 			;;
++		haiku) osname=haiku
++			osvers="$3"
++			;;
+ 		next*) osname=next ;;
+ 		nonstop-ux) osname=nonstopux ;;
+ 		openbsd) osname=openbsd

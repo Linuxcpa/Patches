@@ -23,7 +23,7 @@ LDFLAGS+= -L/boot/system/develop/lib
 
 .if ${PKGPATH} == "graphics/netpbm" || ${PKGPATH} == "security/tcp_wrappers" \
 || ${PKGPATH} == "benchmarks/httperf" || ${PKGPATH} == "benchmarks/netpipe" \
-|| ${PKGPATH} == "chat/goofey"
+|| ${PKGPATH} == "chat/goofey" || ${PKGPATH} == "devel/git-base"
 LDFLAGS+= -lnetwork
 .endif
 
@@ -36,6 +36,11 @@ LDFLAGS+= -lbsd
 .endif
 
 .if ${PKGPATH} == "net/libpcap" || ${PKGPATH} == "lang/python27" \
-|| ${PKGPATH} == "chat/iip"
+|| ${PKGPATH} == "chat/iip" || ${PKGPATH} == "chat/icbirc" \
+|| "chat/mu-conference"
 LDFLAGS = -L/boot/system/develop/lib -lnetwork -Wl,-R/boot/system/develop/lib
+.endif
+
+.if ${PKGPATH} == "chat/icbirc"
+LDFLAGS = -L/boot/system/develop/lib -lnetwork -lbsd -Wl,-R/boot/system/develop/lib
 .endif

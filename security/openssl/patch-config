@@ -1,0 +1,34 @@
+$NetBSD$
+
+--- config.orig	2014-05-15 03:54:33.666370048 +0000
++++ config
+@@ -135,6 +135,10 @@ case "${SYSTEM}:${RELEASE}:${VERSION}:${
+ 	echo "${MACHINE}-dg-dgux"; exit 0
+ 	;;
+ 
++    Haiku:*:BePC)
++    echo "i586-pc-haiku"; exit 0
++    ;;
++    
+     HI-UX:*)
+ 	echo "${MACHINE}-hi-hiux"; exit 0
+ 	;;
+@@ -167,6 +171,10 @@ case "${SYSTEM}:${RELEASE}:${VERSION}:${
+ 	echo "i386-pc-interix"; exit 0
+ 	;;
+ 
++    Haiku:*:*)
++    echo "${MACHINE}-unknown-haiku"; exit 0
++    ;;
++    
+     Linux:[2-9].*)
+ 	echo "${MACHINE}-whatever-linux2"; exit 0
+ 	;;
+@@ -847,6 +855,7 @@ case "$GUESSOS" in
+ 	    options="$options no-asm"
+ 	fi
+ 	;;
++  i586-*-haiku) OUT="haiku-x86" ;;
+   # these are all covered by the catchall below
+   # *-dgux) OUT="dgux" ;;
+   mips-sony-newsos4) OUT="newsos4-gcc" ;;
