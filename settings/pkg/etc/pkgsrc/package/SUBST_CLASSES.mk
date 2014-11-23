@@ -59,7 +59,8 @@ SUBST_SED.xawfix+= -e 's|libXaw.a|libXaw6.a|g'
 
 .if ${PKGPATH} == "time/gnyaclock" || ${PKGPATH} == "time/lmclock" \
 || ${PKGPATH} == "time/polclock" || ${PKGPATH} == "time/sunclock" \
-|| ${PKGPATH} == "time/titrax" || ${PKGPATH} == "time/xcal"
+|| ${PKGPATH} == "time/titrax" || ${PKGPATH} == "time/xcal" \
+|| ${PKGPATH} == "wm/larswm"
 SUBST_CLASSES+= xawfix1
 SUBST_STAGE.xawfix1= pre-build
 SUBST_MESSAGE.xawfix1= Fixing libxaw to libxaw6
@@ -136,23 +137,80 @@ SUBST_SED.lnetwork6+= -e 's|LDFLAGS = -Wall -O2 -pthread|LDFLAGS = -Wall -O2 -ln
 .if ${PKGPATH} == "net/mtr"
 SUBST_CLASSES+= lnetwork7
 SUBST_STAGE.lnetwork7= pre-configure
-SUBST_MESSAGE.lnetwork7= Fixing lnetwork bewshit
+SUBST_MESSAGE.lnetwork7= Fixing lnetwork
 SUBST_FILES.lnetwork7= configure
 SUBST_SED.lnetwork7+= -e 's|-lsocket|-lnetwork|g'
 .endif
 
-.if ${PKGPATH} == "devel/git-base"
-SUBST_CLASSES+= lnetwork8
-SUBST_STAGE.lnetwork8= pre-build
-SUBST_MESSAGE.lnetwork8= Fixing lnetwork bewshit
-SUBST_FILES.lnetwork8= Makefile
-SUBST_SED.lnetwork8+= -e 's|-lsocket|-lnetwork|g'
-.endif
+#.if ${PKGPATH} == "devel/git-base"
+#SUBST_CLASSES+= lnetwork8
+#SUBST_STAGE.lnetwork8= pre-build
+#SUBST_MESSAGE.lnetwork8= Fixing lnetwork
+#SUBST_FILES.lnetwork8= Makefile
+#SUBST_SED.lnetwork8+= -e 's|-lsocket|-lnetwork|g'
+#.endif
 
 .if ${PKGPATH} == "chat/jabberd"
 SUBST_CLASSES+= lnetwork10
 SUBST_STAGE.lnetwork10= pre-build
-SUBST_MESSAGE.lnetwork10= Fixing lnetwork bewshit
+SUBST_MESSAGE.lnetwork10= Fixing lnetwork
 SUBST_FILES.lnetwork10= platform-settings
 SUBST_SED.lnetwork10+= -e 's|LIBS= -lssl -lcrypto|LIBS= -lssl -lcrypto -lnetwork|g'
+.endif
+
+.if ${PKGPATH} == "converters/odt2txt"
+SUBST_CLASSES+= usr-local-fix
+SUBST_STAGE.usr-local-fix= pre-build
+SUBST_MESSAGE.usr-local-fix= Fixing /usr/local to /boot/home/pkg
+SUBST_FILES.usr-local-fix= Makefile
+SUBST_SED.usr-local-fix+= -e 's|/usr/local|/boot/home/pkg|g'
+.endif
+
+.if ${PKGPATH} == "converters/php-mbstring"
+SUBST_CLASSES+= fix-disable-shared
+SUBST_STAGE.fix-disable-shared= pre-build
+SUBST_MESSAGE.fix-disable-shared= Fixing shared disable
+SUBST_FILES.fix-disable-shared= Itmain.sh
+SUBST_SED.fix-disable-shared+= -e 's|fix-disable-shared| |g'
+.endif
+
+.if ${PKGPATH} == "finance/xquote"
+SUBST_CLASSES+= lnetwork9
+SUBST_STAGE.lnetwork9= pre-build
+SUBST_MESSAGE.lnetwork9= Fixing lnetwork
+SUBST_FILES.lnetwork9= Makefile
+SUBST_SED.lnetwork9+= -e 's|-lm|-lnetwork|g'
+.endif
+
+.if ${PKGPATH} == "net/tnftp"
+SUBST_CLASSES+= lbsd
+SUBST_STAGE.lbsd= pre-build
+SUBST_MESSAGE.lbsd= Fixing lbsd
+SUBST_FILES.lbsd= src/Makefile
+SUBST_SED.lbsd+= -e 's|-lnetbsd|-lbsd|g'
+.endif
+
+.if ${PKGPATH} == "chat/xaric" || ${PKGPATH} == "devel/php-memcached" \
+|| ${PKGPATH} == "devel/php-memcache"
+SUBST_CLASSES+= usr-fix1
+SUBST_STAGE.usr-fix1= pre-configure
+SUBST_MESSAGE.usr-fix1= Fixing /usr to /boot/home/pkg in configure
+SUBST_FILES.usr-fix1= configure
+SUBST_SED.usr-fix1+= -e 's|/usr|/boot/home/pkg|g'
+.endif
+
+.if ${PKGPATH} == "devel/php-memcached" || ${PKGPATH} == "devel/php-memcache"
+SUBST_CLASSES+= usr-fix2
+SUBST_STAGE.usr-fix2= configure
+SUBST_MESSAGE.usr-fix2= Fixing /usr to /boot/home/pkg in configure.in
+SUBST_FILES.usr-fix2= configure.in
+SUBST_SED.usr-fix2+= -e 's|/usr|/boot/home/pkg|g'
+.endif
+
+.if ${PKGPATH} == "devel/php-memcached" || ${PKGPATH} == "devel/php-memcache"
+SUBST_CLASSES+= usr-fix3
+SUBST_STAGE.usr-fix3= post-configure
+SUBST_MESSAGE.usr-fix3= Fixing /usr to /boot/home/pkg in configure.in
+SUBST_FILES.usr-fix3= aclocal.m4
+SUBST_SED.usr-fix3+= -e 's|/usr|/boot/home/pkg|g'
 .endif

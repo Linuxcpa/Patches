@@ -1,0 +1,44 @@
+$NetBSD$
+
+--- configure.ac.orig	2010-04-27 07:06:43.038010880 +0000
++++ configure.ac
+@@ -27,7 +27,7 @@ AC_INIT([Xaric],[0.13.6],[support@xaric.
+ AM_INIT_AUTOMAKE
+ AC_CONFIG_SRCDIR([irc.c])
+ AC_CONFIG_HEADERS([config.h])
+-AC_PREFIX_DEFAULT(/usr/local)
++AC_PREFIX_DEFAULT(/boot/home/pkg)
+ AM_MAINTAINER_MODE
+ 
+ CFLAGS="$CFLAGS -D_GNU_SOURCE"
+@@ -134,9 +134,9 @@ dnl ------------------------------------
+ dnl Extra libraries
+ dnl ----------------------------------------------------------
+ 
+-AC_MSG_CHECKING(for svr4's /usr/ccs/lib)
+-if test -d /usr/ccs/lib; then
+-	LIBS="-L/usr/ccs/lib $LIBS"
++AC_MSG_CHECKING(for svr4's /boot/home/pkg/ccs/lib)
++if test -d /boot/home/pkg/ccs/lib; then
++	LIBS="-L/boot/home/pkg/ccs/lib $LIBS"
+ 	AC_MSG_RESULT(found it!)
+ else
+ 	AC_MSG_RESULT(no)
+@@ -315,7 +315,7 @@ dnl ------------------------------------
+ if test x$sys_siglist != x1
+ then
+ echo "generating a list of signal names..."
+-set X `cat /usr/include/signal.h /usr/include/sys/signal.h /usr/include/linux/signal.h 2>&1 | sed 's/^#[	]*/#/' | awk '
++set X `cat /boot/home/pkg/include/signal.h /boot/home/pkg/include/sys/signal.h /boot/home/pkg/include/linux/signal.h 2>&1 | sed 's/^#[	]*/#/' | awk '
+ $1 ~ /^#define$/ && $2 ~ /^SIG[A-Z0-9]*$/ && $3 ~ /^[1-9][0-9]*$/ {
+   [sig[$3] = substr($2,4,20)]
+   if (max < $3 && $3 < 60) {
+@@ -362,7 +362,7 @@ dnl OpenSSL!
+ dnl ----------------------------------------------------------
+ 
+ AC_MSG_CHECKING(for OpenSSL)
+-for dir in $withval /usr/local/ssl /usr/lib/ssl /usr/ssl /usr/pkg /usr/local /usr; do
++for dir in $withval /boot/home/pkg/ssl /boot/home/pkg/lib/ssl /boot/home/pkg/ssl /boot/home/pkg/pkg /boot/home/pkg /boot/home/pkg; do
+     ssldir="$dir"
+     if test -f "$dir/include/openssl/ssl.h"; then
+ 	found_ssl="yes";

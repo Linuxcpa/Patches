@@ -1,0 +1,19 @@
+Creating and applying patches for libfetch works differently.
+
+Once patches are created, a directory called "files" will include
+patched versions of the files, digest will not update
+and bmake makepatchsum will appear to be broken with response
+sh digest not found equal to the number of patches applied.
+
+Furthermore, digest won't update unless bmake mdi is applied.
+
+If you have these symptoms, just check the files directory to see if
+.orig files are present. If so, no need to have patches in the patches folder.
+
+I have supplied a Replacement files folder if you can't work this out.
+I have also supplied patches, but they need only be applied once, the source
+for libfetch comes with pkgsrc, so it doesn't re-extract or populate the 
+work directory, if different, with new source that requires patching.
+
+Note that the libfetch and net/libfetch are the same thing, but two different
+source code bases. If one requires patches, the other does as well.

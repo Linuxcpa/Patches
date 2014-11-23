@@ -1,0 +1,27 @@
+$NetBSD$
+
+--- Makefile.orig	2005-03-18 12:53:46.052953088 +0000
++++ Makefile
+@@ -1,17 +1,17 @@
+ 
+-CFLAGS= -Werror -Wall -ansi
++CFLAGS= -Werror -Wall -ansi -lnetwork
+ SRC=	mdd.c sender.c receiver.c sniffer.c
+ OBJ=	mdd.o sender.o receiver.o sniffer.o
+ 
+-all:	depend mdd
++all:	mdd
+ 
+ mdd:	${OBJ}
+-	${CC} -static -o $@ ${OBJ}
++	${CC} ${CFLAGS} -static -o $@ ${OBJ}
+ 
+ depend:
+ 	mkdep ${CFLAGS} ${SRC}
+ clean:
+ 	rm -f ${OBJ} mdd .depend
+ install:	mdd mdd.1
+-	install -m 755 mdd /usr/local/bin
+-	install -m 644 mdd.1 /usr/local/man/man1/
++	install -m 755 mdd /boot/home/pkg/bin
++	install -m 644 mdd.1 /boot/home/pkg/man/man1/

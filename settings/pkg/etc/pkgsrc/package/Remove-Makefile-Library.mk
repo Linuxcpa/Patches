@@ -7,3 +7,7 @@ BUILDLINK_TRANSFORM+= rm:-pthread
 .if ${PKGPATH} == "devel/libexecinfo"
 BUILDLINK_TRANSFORM+= rm:-lm
 .endif
+
+#.if ${PKGPATH} == "converters/chef"
+#BUILDLINK_TRANSFORM+= rm:-ll
+#.endif

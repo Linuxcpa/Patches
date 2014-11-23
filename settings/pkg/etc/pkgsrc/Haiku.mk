@@ -17,15 +17,18 @@
 .include "/boot/home/pkg/etc/pkgsrc/global/SUBST_CLASSES.mk"
 .include "/boot/home/pkg/etc/pkgsrc/global/Substitute-Makefile-Library.mk"
 
-# Settings For Specific Packages - Check Total = 13
+# Settings For Specific Packages - Check Total = 17
 .include "/boot/home/pkg/etc/pkgsrc/package/Add-Makefile-Library.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/Autoconf-CPPFLAGS.mk"
+.include "/boot/home/pkg/etc/pkgsrc/package/CheckPermissions.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/CompileTool.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/CONFIGURE_ARGS_ENV.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/CFLAGS.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/Haiku-Misc.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/Hard-Links.mk"
+.include "/boot/home/pkg/etc/pkgsrc/package/Include-Dependency-Headers.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/LDFLAGS.mk"
+.include "/boot/home/pkg/etc/pkgsrc/package/LIBTOOL-SHARED.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/Libs.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/PKG_OPTIONS.mk"
 .include "/boot/home/pkg/etc/pkgsrc/package/Remove-Compiler-Setting.mk"

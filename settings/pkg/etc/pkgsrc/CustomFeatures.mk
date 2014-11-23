@@ -7,3 +7,4 @@ PKG_DEVELOPER=yes
 NO_CHECKSUM=yes
 #FIX_SYSTEM_HEADERS= yes
 
+#${TOOLS_PREFIX.digest}=/boot/home/pkg

@@ -1,0 +1,14 @@
+/Makefile/1.7/Thu Oct  3 01:25:51 2013//Tpkgsrc-2014Q3
+/common.c/1.29/Wed Jan  8 20:25:34 2014//Tpkgsrc-2014Q3
+/common.h/1.23/Wed Jan  8 20:25:34 2014//Tpkgsrc-2014Q3
+/errlist.sh/1.2/Mon Oct  6 12:58:29 2008//Tpkgsrc-2014Q3
+/fetch.3/1.16/Sat Jul 20 21:50:52 2013//Tpkgsrc-2014Q3
+/fetch.c/1.19/Tue Aug 11 20:48:06 2009//Tpkgsrc-2014Q3
+/fetch.cat3/1.14/Thu Apr 22 14:11:16 2010//Tpkgsrc-2014Q3
+/fetch.h/1.16/Fri Jan 22 13:21:09 2010//Tpkgsrc-2014Q3
+/file.c/1.15/Thu Oct 15 12:36:57 2009//Tpkgsrc-2014Q3
+/ftp.c/1.46/Wed Jun 11 13:12:12 2014//Tpkgsrc-2014Q3
+/ftp.errors/1.2/Mon Oct  6 12:58:29 2008//Tpkgsrc-2014Q3
+/http.c/1.37/Wed Jun 11 13:12:12 2014//Tpkgsrc-2014Q3
+/http.errors/1.3/Thu Feb  5 16:59:45 2009//Tpkgsrc-2014Q3
+D

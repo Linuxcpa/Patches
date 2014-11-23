@@ -17,7 +17,7 @@ LDFLAGS+= -Wl,-R/boot/system/lib
 LDFLAGS+= -L/boot/system/lib
 .endif
 
-.if ${PKGPATH} == "chat/gtmess"
+.if ${PKGPATH} == "chat/gtmess" || ${PKGPATH} == "print/luatex"
 LDFLAGS+= -L/boot/system/develop/lib
 .endif
 
@@ -41,6 +41,6 @@ LDFLAGS+= -lbsd
 LDFLAGS = -L/boot/system/develop/lib -lnetwork -Wl,-R/boot/system/develop/lib
 .endif
 
-.if ${PKGPATH} == "chat/icbirc"
+.if ${PKGPATH} == "chat/icbirc" || ${PKGPATH} == "devel/git-base"
 LDFLAGS = -L/boot/system/develop/lib -lnetwork -lbsd -Wl,-R/boot/system/develop/lib
 .endif

@@ -1,0 +1,48 @@
+$NetBSD: patch-aa,v 1.3 2010/01/31 22:21:32 joerg Exp $
+
+--- Makefile.orig	2008-06-23 19:32:28.055836672 +0000
++++ Makefile
+@@ -23,20 +23,23 @@ ALL_OBJ = $(OBJ) $(TEST_OBJ)
+ INSTALL = install
+ GROFF   = groff
+ 
+-DESTDIR = /usr/local
+-PREFIX  =
+ BINDIR  = $(PREFIX)/bin
+-MANDIR  = $(PREFIX)/share/man
++MANDIR  = $(PREFIX)/${PKGMANDIR}
+ MAN1DIR = $(MANDIR)/man1
+ 
+ ifeq ($(UNAME_S),FreeBSD)
+-	CFLAGS += -DICONV_CHAR="const char" -I/usr/local/include
+-	LDFLAGS += -L/usr/local/lib
++	CFLAGS += -DICONV_CHAR="const char" -I/boot/home/pkg/include
++	LDFLAGS += -L/boot/home/pkg/lib
++	LIBS += -liconv
++endif
++ifeq ($(UNAME_S),Haiku)
++	CFLAGS += -DICONV_CHAR="const char" -I/boot/home/pkg/include
++	LDFLAGS += -L/boot/home/pkg/lib
+ 	LIBS += -liconv
+ endif
+ ifeq ($(UNAME_S),OpenBSD)
+-	CFLAGS += -DICONV_CHAR="const char" -I/usr/local/include
+-	LDFLAGS += -L/usr/local/lib
++	CFLAGS += -DICONV_CHAR="const char" -I/boot/home/pkg/include
++	LDFLAGS += -L/boot/home/pkg/lib
+ 	LIBS += -liconv
+ endif
+ ifeq ($(UNAME_S),NetBSD)
+@@ -87,10 +90,8 @@ $(ALL_OBJ): Makefile
+ all: $(BIN)
+ 
+ install: $(BIN) $(MAN)
+-	$(INSTALL) -d -m755 $(DESTDIR)$(BINDIR)
+-	$(INSTALL) $(BIN) $(DESTDIR)$(BINDIR)
+-	$(INSTALL) -d -m755 $(DESTDIR)$(MAN1DIR)
+-	$(INSTALL) $(MAN) $(DESTDIR)$(MAN1DIR)
++	$(BSD_INSTALL_PROGRAM) $(BIN) $(DESTDIR)$(BINDIR)
++	$(BSD_INSTALL_MAN) $(MAN) $(DESTDIR)$(MAN1DIR)
+ 
+ odt2txt.html: $(MAN)
+ 	$(GROFF) -Thtml -man $(MAN) > $@

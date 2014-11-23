@@ -10,3 +10,8 @@ CPPFLAGS+= -I/boot/home/pkg/include
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
 .endif
+
+.if ${PKGPATH} == "wm/pekwm" || ${PKGPATH} == "devel/nsis"
+CPPFLAGS+= -I/boot/home/pkg/include
+.include "../../converters/libiconv/buildlink3.mk"
+.endif
