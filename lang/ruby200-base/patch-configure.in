@@ -1,0 +1,39 @@
+$NetBSD$
+
+--- configure.in.orig	2014-01-30 15:58:25.048496640 +0000
++++ configure.in
+@@ -2327,7 +2327,7 @@ if test "$with_dln_a_out" != yes; then
+ 	[bsdi3*], [	AS_CASE(["$CC"],
+ 			[*shlicc*], [	: ${LDSHARED='$(CC) -r'}
+ 					rb_cv_dlopen=yes])],
+-	[linux* | gnu* | k*bsd*-gnu | netbsd* | bsdi* | kopensolaris*-gnu], [
++	[linux* | gnu* | k*bsd*-gnu | netbsd* | bsdi* | kopensolaris*-gnu | haiku*], [
+ 			: ${LDSHARED='$(CC) -shared'}
+ 			if test "$rb_cv_binary_elf" = yes; then
+ 			    LDFLAGS="$LDFLAGS -Wl,-export-dynamic"
+@@ -2379,13 +2379,13 @@ if test "$with_dln_a_out" != yes; then
+ 			  [powerpc*], [
+ 			    : ${LDSHARED='$(LD) -xms'}
+ 			    EXTDLDFLAGS='-export $(TARGET_ENTRY)'
+-			    DLDFLAGS="$DLDFLAGS -lbe -lroot glue-noinit.a init_term_dyn.o start_dyn.o"
++			    DLDFLAGS="$DLDFLAGS -lroot glue-noinit.a init_term_dyn.o start_dyn.o"
+ 			    LDFLAGS="$LDFLAGS -L/boot/home/config/lib -lbe -lroot"
+ 			    ],
+ 			  [i586*], [
+ 			    : ${LDSHARED='$(LD) -shared'}
+-			    DLDFLAGS="$DLDFLAGS -L/boot/develop/lib/x86 -L/boot/home/config/lib \$(topdir)/_APP_ -lroot"
+-			    LDFLAGS="$LDFLAGS -L/boot/develop/lib/x86 -L/boot/home/config/lib -lroot"
++			    DLDFLAGS="$DLDFLAGS -L/boot/home/pkg/lib -lroot -L/boot/home/pkg/lib"
++			    LDFLAGS="$LDFLAGS -L/boot/home/pkg/lib -lroot-L/boot/home/pkg/lib"
+ 			    ])
+ 			: ${LIBPATHENV=LIBRARY_PATH}
+ 			rb_cv_dlopen=yes],
+@@ -2717,7 +2717,7 @@ AS_CASE("$enable_shared", [yes], [
+     [sunos4*], [
+ 	LIBRUBY_ALIASES='lib$(RUBY_SO_NAME).so.$(MAJOR).$(MINOR) lib$(RUBY_SO_NAME).so'
+ 	],
+-    [linux* | gnu* | k*bsd*-gnu | atheos* | kopensolaris*-gnu], [
++    [linux* | gnu* | k*bsd*-gnu | atheos* | kopensolaris*-gnu | haiku*], [
+ 	LIBRUBY_DLDFLAGS='-Wl,-soname,lib$(RUBY_SO_NAME).so.$(MAJOR).$(MINOR)'" $LDFLAGS_OPTDIR"
+ 	LIBRUBY_ALIASES='lib$(RUBY_SO_NAME).so.$(MAJOR).$(MINOR) lib$(RUBY_SO_NAME).so'
+ 	if test "$load_relative" = yes; then

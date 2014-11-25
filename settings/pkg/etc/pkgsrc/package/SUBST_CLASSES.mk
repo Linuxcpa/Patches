@@ -20,11 +20,11 @@ SUBST_FILES.symlink= Makefile.pre.in
 SUBST_SED.symlink= -e 's,LN) -f ,LN) -sf ,g'
 .endif
 
-.if ${PKGPATH} == "devel/gobject-introspection"
+.if ${PKGPATH} == "devel/gobject-introspection" || ${PKGPATH} == "devel/physfs"
 SUBST_CLASSES+= fix_ld
 SUBST_STAGE.fix_ld= post-configure
 SUBST_FILES.fix_ld= giscanner/shlibs.py
-SUBST_SED.fix_ld= -e "s|'ldd'|'ld'|"
+SUBST_SED.fix_ld= -e "s|'ldd'|'/boot/home/pkg/sbin/fakeldd'|"
 .endif
 
 .if ${PKGPATH} == "archivers/zziplib"
@@ -76,7 +76,7 @@ SUBST_FILES.xawfix2= Makefile
 SUBST_SED.xawfix2+= -e 's|libXaw.a|libXaw6.a|g'
 .endif
 
-.if ${PKGPATH} == "time/xtimer"
+.if ${PKGPATH} == "time/xtimer" || ${PKGPATH} == "games/cbzone"
 SUBST_CLASSES+= xawfix3
 SUBST_STAGE.xawfix3= pre-build
 SUBST_MESSAGE.xawfix3= Fixing libxaw to libxaw6
@@ -174,7 +174,7 @@ SUBST_FILES.fix-disable-shared= Itmain.sh
 SUBST_SED.fix-disable-shared+= -e 's|fix-disable-shared| |g'
 .endif
 
-.if ${PKGPATH} == "finance/xquote"
+.if ${PKGPATH} == "finance/xquote" || ${PKGPATH} == "games/battalion"
 SUBST_CLASSES+= lnetwork9
 SUBST_STAGE.lnetwork9= pre-build
 SUBST_MESSAGE.lnetwork9= Fixing lnetwork
@@ -213,4 +213,12 @@ SUBST_STAGE.usr-fix3= post-configure
 SUBST_MESSAGE.usr-fix3= Fixing /usr to /boot/home/pkg in configure.in
 SUBST_FILES.usr-fix3= aclocal.m4
 SUBST_SED.usr-fix3+= -e 's|/usr|/boot/home/pkg|g'
+.endif
+
+.if ${PKGPATH} == "games/stratagus"
+SUBST_CLASSES+= lnetwork11
+SUBST_STAGE.lnetwork11= pre-build
+SUBST_MESSAGE.lnetwork11= Fixing lnetwork
+SUBST_FILES.lnetwork11= Rules.make
+SUBST_SED.lnetwork11+= -e 's|CCLLIB		= -lm|CCLLIB		= -lnetwork|g'
 .endif

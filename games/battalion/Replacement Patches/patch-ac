@@ -1,0 +1,52 @@
+$NetBSD: patch-ac,v 1.1 2006/04/28 14:58:32 joerg Exp $
+
+--- net.c.orig	1997-01-16 16:31:59.001572864 +0000
++++ net.c
+@@ -22,8 +22,10 @@
+  * ocassionally wehn switching from demo to game mode the screen goes
+  * black and everything stops
+  */
++#include <errno.h>
+ #include "battalion.h"
+-
++#include <strings.h>
++#include <fcntl.h>
+ /*****************/
+ /* network stuff */
+ /*****************/
+@@ -166,7 +168,7 @@ int setUpClient()
+     /* set nonblocking */
+     /*******************/
+     
+-    fcntl(sockfd,F_SETFL,FNDELAY);
++    fcntl(sockfd,F_SETFL,O_NDELAY);
+ 
+ 
+     return(1);
+@@ -218,7 +220,7 @@ int setUpNetwork()
+     /* set nonblocking */
+     /*******************/
+     
+-    fcntl(sockfd,F_SETFL,FNDELAY);
++    fcntl(sockfd,F_SETFL,O_NDELAY);
+ 
+     /******************/
+     /* no clients yet */
+@@ -627,9 +629,6 @@ void processClient(time_t now, int mainC
+     int j;
+     int frameNum;
+ 
+-    extern int errno;
+-     
+-
+     /* send a request every once in a while until connection established */
+     /* if I haven't seen any data from the server in a while try to reconnect */
+     /* this may be a bit harsh to say connected = 0 */
+@@ -778,7 +777,6 @@ void processNetwork(time_t now, int main
+     char command[MAXLINE];
+ 
+     struct targetInfo * tempTarget;
+-    extern int errno;
+     
+     int clilen;
+     int oldClient;

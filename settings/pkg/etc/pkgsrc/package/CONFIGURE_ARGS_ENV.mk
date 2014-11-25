@@ -58,3 +58,5 @@ CONFIGURE_ARGS+= --enable-missing-uuid-ok
 .if ${PKGPATH} == "chat/licq-core"
 CONFIGURE_ENV+= CC='cc -I/boot/home/pkg/include -L/boot/home/pkg/lib'
 .endif
+
+

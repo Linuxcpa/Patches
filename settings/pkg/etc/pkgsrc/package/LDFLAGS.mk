@@ -9,7 +9,7 @@ LDFLAGS+= -lssp_nonshared
 .endif
 
 .if ${PKGPATH} == "net/samba" || ${PKGPATH} == "lang/gcc48-libs" \
-|| ${PKGPATH} == "chat/anope"
+|| ${PKGPATH} == "chat/anope" 
 LDFLAGS+= -Wl,-R/boot/system/lib
 .endif
 
@@ -18,7 +18,7 @@ LDFLAGS+= -L/boot/system/lib
 .endif
 
 .if ${PKGPATH} == "chat/gtmess" || ${PKGPATH} == "print/luatex"
-LDFLAGS+= -L/boot/system/develop/lib
+LDFLAGS+= -L/boot/system/lib
 .endif
 
 .if ${PKGPATH} == "graphics/netpbm" || ${PKGPATH} == "security/tcp_wrappers" \
@@ -37,10 +37,15 @@ LDFLAGS+= -lbsd
 
 .if ${PKGPATH} == "net/libpcap" || ${PKGPATH} == "lang/python27" \
 || ${PKGPATH} == "chat/iip" || ${PKGPATH} == "chat/icbirc" \
-|| "chat/mu-conference"
-LDFLAGS = -L/boot/system/develop/lib -lnetwork -Wl,-R/boot/system/develop/lib
+|| ${PKGPATH} == "chat/mu-conference"
+LDFLAGS = -L/boot/system/lib -lnetwork -Wl,-R/boot/system/lib
 .endif
 
 .if ${PKGPATH} == "chat/icbirc" || ${PKGPATH} == "devel/git-base"
-LDFLAGS = -L/boot/system/develop/lib -lnetwork -lbsd -Wl,-R/boot/system/develop/lib
+LDFLAGS+= -L/boot/system/lib -lnetwork -lbsd -Wl,-R/boot/system/lib
+.endif
+
+.if ${PKGPATH} == "devel/gobject-introspection"
+LDFLAGS+= -L/boot/system/lib -lnetwork -lbsd -Wl,-R/boot/system/lib
+#CONFIGURE_ARGS+= -libdir=/boot/system/lib
 .endif

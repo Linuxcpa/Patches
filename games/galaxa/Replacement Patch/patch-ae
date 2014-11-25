@@ -1,0 +1,46 @@
+$NetBSD: patch-ae,v 1.2 1998/08/07 10:40:41 agc Exp $
+
+--- soundmgr.c.orig	1998-04-23 04:16:41.055312384 +0000
++++ soundmgr.c
+@@ -16,7 +16,7 @@
+ #include <sys/time.h>
+ #include <sys/types.h>
+ #include <sys/uio.h>
+-#include <sys/unistd.h>
++#include <unistd.h>
+ #include <fcntl.h>
+ #include <sys/stat.h>
+ #include "soundmgr.h"
+@@ -36,7 +36,7 @@ FILE * soundmgr(int num_sounds, char * *
+   struct timeval now, then;
+   long time_padding;
+   struct stat sbuf;
+-  
++  char temp[256];  
+   
+   /* Open /dev/audio: */
+   
+@@ -84,11 +84,12 @@ FILE * soundmgr(int num_sounds, char * *
+       
+       for (i = 0; i < num_sounds; i++)
+ 	{
+-	  stat(files[i], &sbuf);
++	  sprintf(temp,"%s/%s",SOUNDS,files[i]);
++	  stat(temp, &sbuf);
+ 	  au_file_data[i] = malloc(sbuf.st_size);
+ 	  sound_len[i] = sbuf.st_size;
+ 	  
+-	  fi = fopen(files[i], "r");
++	  fi = fopen(temp, "r");
+ 	  
+ 	  if (fi != NULL)
+ 	    {
+@@ -106,7 +107,7 @@ FILE * soundmgr(int num_sounds, char * *
+ 	    }
+ 	  else
+ 	    {
+-	      perror(file);
++	      perror(temp);
+ 	      exit(0);
+ 	    }
+ 	}

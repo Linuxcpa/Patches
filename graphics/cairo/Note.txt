@@ -1,0 +1,7 @@
+Cairo wants two shm.h files.
+
+One cannot be included as a patch, unless I renamed the file.
+
+place the shm.h file that is in the system files folder at:
+
+/boot/home/pkg/include/shm.h
