@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- Makefile.orig	2003-03-17 14:29:15.000000000 +0000
++++ Makefile
+@@ -22,7 +22,7 @@
+ #
+ 
+ CFLAGS+=-I. -g
+-LDFLAGS+=-lreadline -ltermcap
++LDFLAGS+=-lreadline -ltermcap -lnetwork
+ 
+ all: ccxstream ccxtest
+ 

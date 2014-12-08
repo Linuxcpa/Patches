@@ -9,7 +9,7 @@ LDFLAGS+= -lssp_nonshared
 .endif
 
 .if ${PKGPATH} == "net/samba" || ${PKGPATH} == "lang/gcc48-libs" \
-|| ${PKGPATH} == "chat/anope" 
+|| ${PKGPATH} == "chat/anope"
 LDFLAGS+= -Wl,-R/boot/system/lib
 .endif
 
@@ -23,7 +23,8 @@ LDFLAGS+= -L/boot/system/lib
 
 .if ${PKGPATH} == "graphics/netpbm" || ${PKGPATH} == "security/tcp_wrappers" \
 || ${PKGPATH} == "benchmarks/httperf" || ${PKGPATH} == "benchmarks/netpipe" \
-|| ${PKGPATH} == "chat/goofey" || ${PKGPATH} == "devel/git-base"
+|| ${PKGPATH} == "chat/goofey" || ${PKGPATH} == "devel/git-base" \
+|| ${PKGPATH} == "lang/squeak-vm"
 LDFLAGS+= -lnetwork
 .endif
 

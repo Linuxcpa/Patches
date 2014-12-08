@@ -1,0 +1,62 @@
+$NetBSD: patch-configure,v 1.1 2012/03/13 14:13:52 fhajny Exp $
+
+Allow x86_64 as a SunOS arch.
+--- configure.orig	2012-08-27 05:11:53.003145728 +0000
++++ configure
+@@ -25000,33 +25000,7 @@ fi
+ 
+ 
+ 
+-if test $pkg_failed = yes; then
+-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+-$as_echo "no" >&6; }
+-
+-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
+-        _pkg_short_errors_supported=yes
+-else
+-        _pkg_short_errors_supported=no
+-fi
+-        if test $_pkg_short_errors_supported = yes; then
+-	        DRI_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors "$GLPROTO $LIBDRI" 2>&1`
+-        else
+-	        DRI_PKG_ERRORS=`$PKG_CONFIG --print-errors "$GLPROTO $LIBDRI" 2>&1`
+-        fi
+-	# Put the nasty error message in config.log where it belongs
+-	echo "$DRI_PKG_ERRORS" >&5
+-
+-	as_fn_error $? "Package requirements ($GLPROTO $LIBDRI) were not met:
+-
+-$DRI_PKG_ERRORS
+-
+-Consider adjusting the PKG_CONFIG_PATH environment variable if you
+-installed software in a non-standard prefix.
+ 
+-Alternatively, you may set the environment variables DRI_CFLAGS
+-and DRI_LIBS to avoid the need to call pkg-config.
+-See the pkg-config man page for more details." "$LINENO" 5
+ elif test $pkg_failed = untried; then
+      	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+ $as_echo "no" >&6; }
+@@ -25050,8 +25024,6 @@ $as_echo "yes" >&6; }
+ 
+ fi
+ 
+-fi
+-
+ 
+ pkg_failed=no
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for DRI2PROTO" >&5
+@@ -27102,7 +27074,7 @@ fi
+ 		  sparc*)
+ 			SOLARIS_INOUT_ARCH="sparcv8plus"
+ 			;;
+-		  i*86)
++		  i*86|x86_64)
+ 			if test x$SOLARIS_64 = xyes ; then
+ 				SOLARIS_INOUT_ARCH="amd64"
+ 			else
+@@ -32942,4 +32918,3 @@ if test -n "$ac_unrecognized_opts" && te
+   { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
+ $as_echo "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
+ fi
+-

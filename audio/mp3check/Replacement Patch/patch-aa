@@ -1,0 +1,21 @@
+$NetBSD: patch-aa,v 1.5 2013/04/10 16:20:21 drochner Exp $
+
+--- mp3check.cc.orig	2012-06-04 22:33:07.001310720 +0000
++++ mp3check.cc
+@@ -18,7 +18,7 @@
+  * Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+  * *GPL*END*/  
+ 
+-
++#include <strings.h>
+ #include <sys/stat.h>
+ #include <sys/mman.h>
+ #include <sys/ioctl.h>
+@@ -26,6 +26,7 @@
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <termios.h>
+ #include "tappconfig.h"
+ #include "crc16.h"
+ #include "id3tag.h"

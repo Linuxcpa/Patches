@@ -1,0 +1,38 @@
+$NetBSD: patch-ab,v 1.2 2010/02/26 19:45:11 is Exp $
+
+--- Makefile.orig	2002-01-04 06:05:25.002621440 +0000
++++ Makefile
+@@ -2,14 +2,14 @@
+ 
+ # CONFIGURE: If you are using a SystemV-based operating system, such as
+ # Solaris, you will need to uncomment this definition.
+-#SYSV_LIBS =    -lnsl -lsocket
++SYSV_LIBS =    -lnetwork
+ 
+-BINDIR =	/usr/local/sbin
+-MANDIR =	/usr/local/man
+-CC =		gcc
+-CFLAGS =	-O
++BINDIR =	${DESTDIR}$(PREFIX)/sbin
++MANDIR =	${DESTDIR}$(PREFIX)/man
++#CC =		gcc
++#CFLAGS =	-O
+ #CFLAGS =	-g
+-LDFLAGS =	-s -static
++#LDFLAGS =	-s -static
+ #LDFLAGS =	-g -static
+ LDLIBS =	$(SYSV_LIBS)
+ 
+@@ -30,10 +30,8 @@ mini_sendmail.o:	mini_sendmail.c version
+ 
+ 
+ install:	all
+-	rm -f $(BINDIR)/mini_sendmail
+-	cp mini_sendmail $(BINDIR)
+-	rm -f $(MANDIR)/man8/mini_sendmail.8
+-	cp mini_sendmail.8 $(MANDIR)/man8
++	$(BSD_INSTALL_PROGRAM) mini_sendmail $(BINDIR)
++	$(BSD_INSTALL_MAN) mini_sendmail.8 $(MANDIR)/man8
+ 
+ clean:
+ 	rm -f mini_sendmail *.o core core.* *.core

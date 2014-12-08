@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- util/Makefile.in.orig	2012-01-12 15:53:35.000000000 +0000
++++ util/Makefile.in
+@@ -698,7 +698,7 @@ aliascheck_dbm.o: $(srcdir)/aliascheck_d
+ 
+ install-exec-hook:
+ 	rm -f $(DESTDIR)$(bindir)/sendmac$(EXEEXT)
+-	ln $(DESTDIR)$(bindir)/macutil$(EXEEXT) \
++	ln -s $(DESTDIR)$(bindir)/macutil$(EXEEXT) \
+ 		$(DESTDIR)$(bindir)/sendmac$(EXEEXT)
+ 
+ uninstall-hook:

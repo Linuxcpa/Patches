@@ -76,7 +76,8 @@ SUBST_FILES.xawfix2= Makefile
 SUBST_SED.xawfix2+= -e 's|libXaw.a|libXaw6.a|g'
 .endif
 
-.if ${PKGPATH} == "time/xtimer" || ${PKGPATH} == "games/cbzone"
+.if ${PKGPATH} == "time/xtimer" || ${PKGPATH} == "games/cbzone" \
+|| ${PKGPATH} == "mail/xmailwatcher" || ${PKGPATH} == "mail/xmailbox"
 SUBST_CLASSES+= xawfix3
 SUBST_STAGE.xawfix3= pre-build
 SUBST_MESSAGE.xawfix3= Fixing libxaw to libxaw6
@@ -222,3 +223,20 @@ SUBST_MESSAGE.lnetwork11= Fixing lnetwork
 SUBST_FILES.lnetwork11= Rules.make
 SUBST_SED.lnetwork11+= -e 's|CCLLIB		= -lm|CCLLIB		= -lnetwork|g'
 .endif
+
+.if ${PKGPATH} == "games/xgospel"
+SUBST_CLASSES+= lnetwork12
+SUBST_STAGE.lnetwork12= pre-build
+SUBST_MESSAGE.lnetwork12= Fixing lnetwork
+SUBST_FILES.lnetwork12= Makefile
+SUBST_SED.lnetwork12+= -e 's|LIBS         =|LIBS         =  -lnetwork|g'
+.endif
+
+.if ${PKGPATH} == "mail/xmailbox"
+SUBST_CLASSES+= lbsd10
+SUBST_STAGE.lbsd10= pre-build
+SUBST_MESSAGE.lbsd10= Fixing lbsd
+SUBST_FILES.lbsd10= Makefile
+SUBST_SED.lbsd10+= -e 's|SNDLIB =|SNDLIB = -lbsd|g'
+.endif
+

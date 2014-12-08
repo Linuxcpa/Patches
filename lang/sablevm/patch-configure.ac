@@ -1,0 +1,14 @@
+$NetBSD$
+
+--- configure.ac.orig	2005-12-07 17:54:33.000000000 +0000
++++ configure.ac
+@@ -314,8 +314,7 @@ AC_LIBTOOL_DLOPEN
+ AC_PROG_LIBTOOL
+ 
+ dnl Checks for libraries.
+-LIBSVMADD="-lm -lltdl -lz"
+-AC_CHECK_LIB(ltdl,lt_dlinit,echo -n,echo ***ERROR: libltdl is missing; exit 1)
++LIBSVMADD="-lm -lz"
+ AC_CHECK_LIB(m,fmod,echo -n,echo ***ERROR: libm is missing; exit 1)
+ AC_CHECK_LIB(z,inflate,echo -n,echo ***ERROR: zlib/libz is missing; exit 1)
+ 

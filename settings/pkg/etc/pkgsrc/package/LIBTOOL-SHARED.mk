@@ -20,13 +20,19 @@
 || ${PKGPATH} == "databases/php-sqlite" || ${PKGPATH} == "databases/php-sqlrelay" \
 || ${PKGPATH} == "mail/php-imap" || ${PKGPATH} == "math/php-bcmath" \
 || ${PKGPATH} == "misc/php-orangehrm" || ${PKGPATH} == "editors/vile" \
-|| ${PKGPATH} == "multimedia/smpeg"
+|| ${PKGPATH} == "multimedia/smpeg" || ${PKGPATH} == "graphics/php-exif" \
+|| ${PKGPATH} == "graphics/php-gd" || ${PKGPATH} == "graphics/php-jpgraph" \
+|| ${PKGPATH} == "graphics/pear-Image_Canvas" || ${PKGPATH} == "graphics/pear-Image_Color" \
+|| ${PKGPATH} == "graphics/pear-Image_Graph" || ${PKGPATH} == "graphics/grap" \
+|| ${PKGPATH} == "print/luatex" || ${PKGPATH} == "mail/pear-Auth_SASL" \
+|| ${PKGPATH} == "mail/pear-Mail" || ${PKGPATH} == "mail/pear-Mail_Mime" \
+|| ${PKGPATH} == "mail/pear-Mail_mimeDecode" || ${PKGPATH} == "mail/squirrelmail" \
+|| ${PKGPATH} == "mail/squirrelmail-decode" || ${PKGPATH} == "mail/squirrelmail-locales" \
+|| ${PKGPATH} == "mail/roundcube" || ${PKGPATH} == "textproc/php54-dom" \
+|| ${PKGPATH} == "math/pear-Math_BigInteger" || ${PKGPATH} == "audio/libao-oss" \
+|| ${PKGPATH} == "multimedia/php-ming"
 SHLIBTOOL_OVERRIDE= # empty
 LDFLAGS.Haiku+= -Wl,--rpath
-.endif
-
-.if ${PKGPATH} == "devel/pango" 
-LDFLAGS.Haiku+= -Wl,--unresolved-symbols=ignore-all
 .endif
 
 .if ${PKGPATH} == "archivers/php-zip" || ${PKGPATH} == "archivers/php-zlib" \

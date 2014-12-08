@@ -1,0 +1,23 @@
+$NetBSD: patch-ab,v 1.1 2006/08/22 15:19:45 joerg Exp $
+
+--- util.c.orig	2004-07-20 16:48:11.043778048 +0000
++++ util.c
+@@ -19,7 +19,8 @@
+  * Free Software Foundation, Inc., 59 Temple Place - Suite 330,
+  * Boston, MA 02111-1307, USA.
+  */
+-#include <stdio.h>
++#include <strings.h>
++#include "stdio.h"
+ #include <stdlib.h>
+ #include <stdarg.h>
+ #include <string.h>
+@@ -79,7 +80,7 @@ zphoto_wprintf (const char *fmt, ...)
+     va_end(args);
+ }
+ 
+-#if defined(__NetBSD__) || defined(__FreeBSD__) || defined(__OpenBSD__)
++#if defined(__NetBSD__) || defined(__FreeBSD__) || defined(__OpenBSD__) || defined(__DragonFly__) || defined(__HAIKU__)
+ /*
+  * They have the declaration of vasprintf in stdio.h
+  */

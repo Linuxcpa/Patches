@@ -1,0 +1,16 @@
+$NetBSD$
+
+--- configure.orig	2013-03-31 21:04:52.000000000 +0000
++++ configure
+@@ -15134,11 +15134,6 @@ LIBS=$ac_check_lib_save_LIBS
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_lib_ltdl_lt_dlopen" >&5
+ $as_echo "$ac_cv_lib_ltdl_lt_dlopen" >&6; }
+-if test "x$ac_cv_lib_ltdl_lt_dlopen" = xyes; then :
+-   hasltdl="yes"
+-else
+-   as_fn_error $? "libltdl not found - check libtool installation !" "$LINENO" 5
+-fi
+ 
+ 
+ #################################################################

@@ -34,4 +34,6 @@ PKG_OPTIONS.tinyproxy= -socks5
 
 PKG_OPTIONS.squid= -inet6 -snmp -squid-backend-diskd -squid-carp -squid-pam-helper squid-unlinkd ssl
 
-PKG_OPTIONS.qt4-libs= -xcb
+PKG_OPTIONS.qt4-libs= -xcb -x11
+
+PKG_OPTIONS.MesaLib +=dri

@@ -1,0 +1,5 @@
+@comment $NetBSD: PLIST,v 1.1.1.1 2003/12/24 10:56:27 recht Exp $
+${PYSITELIB}/fpconst.py
+${PYSITELIB}/fpconst.pyc
+${PYSITELIB}/fpconst.pyo
+${PYSITELIB}/fpconst-0.7.2-py2.7.egg-info

@@ -38,10 +38,10 @@ $NetBSD$
 +
 +__BEGIN_DECLS
 +
-+void* shmat(int id, const void* address, int flags);
 +int shmctl(int id, int command, struct shmid_ds* buffer);
-+int	shmdt(const void* address);
 +int	shmget(key_t key, size_t size, int flags);
++void* shmat(int id, const void* address, int flags);
++int	shmdt(const void* address);
 +
 +__END_DECLS
 +

@@ -19,6 +19,3 @@
 #.include "../../mk/curses.buildlink3.mk"
 #.include "../../mk/terminfo.buildlink3.mk"
 #.endif
-
-
-

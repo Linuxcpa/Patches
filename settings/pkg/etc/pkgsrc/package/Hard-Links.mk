@@ -6,6 +6,8 @@
 || ${PKGPATH} == "archivers/libzip" || ${PKGPATH} == "net/bind99" \
 || ${PKGPATH} == "lang/tcl" || ${PKGPATH} == "x11/tk" \
 || ${PKGPATH} == "net/libpcap" || ${PKGPATH} == "converters/unix2dos" \
-|| ${PKGPATH} == "geography/proj" || ${PKGPATH} == "editors/bvi"
+|| ${PKGPATH} == "geography/proj" || ${PKGPATH} == "editors/bvi" \
+|| ${PKGPATH} == "lang/pfe" || ${PKGPATH} == "math/newmat" \
+|| ${PKGPATH} == "misc/ja-man"
 TOOLS_PLATFORM.ln?=             /bin/ln -s
 .endif

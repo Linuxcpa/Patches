@@ -11,7 +11,12 @@ CPPFLAGS+= -I/boot/home/pkg/include
 .include "../../security/openssl/buildlink3.mk"
 .endif
 
-.if ${PKGPATH} == "wm/pekwm" || ${PKGPATH} == "devel/nsis"
+.if ${PKGPATH} == "wm/pekwm" || ${PKGPATH} == "devel/nsis" \
+|| ${PKGPATH} == "mail/courier-maildir"
 CPPFLAGS+= -I/boot/home/pkg/include
 .include "../../converters/libiconv/buildlink3.mk"
+.endif
+
+.if ${PKGPATH} == "lang/sablevm" 
+LDFLAGS+= -L/boot/home/pkg/lib
 .endif

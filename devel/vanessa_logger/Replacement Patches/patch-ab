@@ -1,0 +1,40 @@
+$NetBSD: patch-ab,v 1.1 2005/12/15 22:10:24 joerg Exp $
+
+--- libvanessa_logger/vanessa_logger.c.orig	2009-09-03 09:54:20.007340032 +0000
++++ libvanessa_logger/vanessa_logger.c
+@@ -23,7 +23,7 @@
+  *
+  **********************************************************************/
+ 
+-
++#include <syslog.h>
+ #include <stdlib.h>
+ #include <string.h>
+ #include <stdarg.h>
+@@ -31,9 +31,6 @@
+ #include <netdb.h>
+ #include <time.h>
+ 
+-#define SYSLOG_NAMES
+-#include <syslog.h>
+-
+ #ifdef HAVE_CONFIG_H
+ #include "../config.h"
+ #endif
+@@ -53,7 +50,7 @@
+ 
+ #define INTERNAL_NOPRI  0x10	/* the "no priority" priority */
+ 				/* mark "facility" */
+-#define INTERNAL_MARK   LOG_MAKEPRI(LOG_NFACILITIES, 0)
++#define INTERNAL_MARK   LOG_MAKEPRI(LOG_SYSLOG, 0)
+ typedef struct _code {
+ 	char *c_name;
+ 	int c_val;
+@@ -94,7 +91,6 @@ CODE facilitynames[] = {
+ 
+ #include "vanessa_logger.h"
+ 
+-extern int errno;
+ vanessa_logger_t *__vanessa_logger_vl;
+ 
+ /**********************************************************************

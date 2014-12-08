@@ -59,4 +59,18 @@ CONFIGURE_ARGS+= --enable-missing-uuid-ok
 CONFIGURE_ENV+= CC='cc -I/boot/home/pkg/include -L/boot/home/pkg/lib'
 .endif
 
+.if ${PKGPATH} == "mail/imap-uw"
+CONFIGURE_ARGS+=    --includedir=/boot/home/pkg/include
+.endif
 
+.if ${PKGPATH} == "x11/modular-xorg-server"
+CONFIGURE_ARGS+=	--disable-glx-tls
+.endif
+
+#.if ${PKGPATH} == "devel/"
+#LD_LIBRARY_PATH=/boot/home/pkg/lib
+#.endif
+
+.if ${PKGPATH} == "multimedia/mencoder"
+CONFIGURE_ARGS+=    --disable-runtime-cpudetection 
+.endif

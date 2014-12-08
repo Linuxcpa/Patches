@@ -1,0 +1,17 @@
+$NetBSD: patch-aa,v 1.1 2004/06/16 03:25:48 minskim Exp $
+
+--- mp3info.cxx.orig	1999-03-19 20:36:34.051118080 +0000
++++ mp3info.cxx
+@@ -3,10 +3,11 @@
+  * Read 'README' and the manpage for details.
+  * GPL'ed, check COPYRIGHT
+  */
+-
++#include <strings.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <stdlib.h>
++#include <time.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
