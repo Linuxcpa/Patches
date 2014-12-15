@@ -1,4 +1,6 @@
-.if ${PKGPATH} == "converters/odt2txt" || ${PKGPATH} == "devel/astyle"
+.if ${PKGPATH} == "converters/odt2txt" || ${PKGPATH} == "devel/astyle" \
+|| ${PKGPATH} == "security/courier-authlib" || ${PKGPATH} == "shells/fish" \
+|| ${PKGPATH} == "textproc/ocaml-text"
 .include "../../converters/libiconv/buildlink3.mk"
 .endif
 
@@ -19,3 +21,18 @@
 #.include "../../mk/curses.buildlink3.mk"
 #.include "../../mk/terminfo.buildlink3.mk"
 #.endif
+
+.if ${PKGPATH} == "net/chimera"
+.include "../../security/openssl/buildlink3.mk"
+.endif
+
+.if ${PKGPATH} == "net/gift"
+.include "../../devel/libltdl/buildlink3.mk"
+.endif
+
+.if ${PKGPATH} == "shells/zsh" || ${PKGPATH} == "shells/fish" \
+|| ${PKGPATH} == "devel/p5-Term-ReadLine"
+.include "../../devel/ncurses/buildlink3.mk"
+.include "../../mk/curses.buildlink3.mk"
+.include "../../mk/terminfo.buildlink3.mk"
+.endif

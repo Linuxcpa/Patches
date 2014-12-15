@@ -1,0 +1,319 @@
+$NetBSD: patch-af,v 1.16 2013/03/17 00:15:29 gdt Exp $
+
+--- configure.orig	2014-02-20 00:36:50.002359296 +0000
++++ configure
+@@ -15391,6 +15391,12 @@ case x$target_os in
+       CFLAGS="-D_WIN32_WINNT=0x0501 $CFLAGS"
+     fi
+     ;;
++  Haiku*)
++    with_socklib=lnetwork
++    if test "x$enable_ipv6" = "xyes"; then
++      CFLAGS="-D_WIN32_WINNT=0x0501 $CFLAGS"
++    fi
++    ;;
+   *)
+     with_socklib=default;;
+ esac
+@@ -16048,11 +16054,11 @@ return opendir ();
+ }
+ _ACEOF
+ for ac_lib in '' dir; do
+-  if test -z "$ac_lib"; then
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_opendir=$ac_res
+@@ -16105,11 +16111,11 @@ return opendir ();
+ }
+ _ACEOF
+ for ac_lib in '' x; do
+-  if test -z "$ac_lib"; then
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_opendir=$ac_res
+@@ -19261,11 +19267,11 @@ return getfsstat ();
+ }
+ _ACEOF
+ for ac_lib in '' nbutil; do
+-  if test -z "$ac_lib"; then
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_getfsstat=$ac_res
+@@ -19341,11 +19347,11 @@ return getmntent ();
+ }
+ _ACEOF
+ for ac_lib in '' sun seq gen; do
+-  if test -z "$ac_lib"; then
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_getmntent=$ac_res
+@@ -19407,11 +19413,11 @@ return kinfo_get_cpus ();
+ }
+ _ACEOF
+ for ac_lib in '' kinfo; do
+-  if test -z "$ac_lib"; then
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_kinfo_get_cpus=$ac_res
+@@ -19478,11 +19484,11 @@ return exp ();
+ }
+ _ACEOF
+ for ac_lib in '' m; do
+-  if test -z "$ac_lib"; then
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_exp=$ac_res
+@@ -20981,6 +20987,81 @@ fi
+ ##
+ #########################################
+ 
++
++echo "$as_me:$LINENO: checking for des_cbc_encrypt in -ldes" >&5
++echo $ECHO_N "checking for des_cbc_encrypt in -ldes... $ECHO_C" >&6
++if test "${ac_cv_lib_des_des_cbc_encrypt+set}" = set; then
++  echo $ECHO_N "(cached) $ECHO_C" >&6
++else
++  ac_check_lib_save_LIBS=$LIBS
++LIBS="-ldes  $LIBS"
++cat >conftest.$ac_ext <<_ACEOF
++/* confdefs.h.  */
++_ACEOF
++cat confdefs.h >>conftest.$ac_ext
++cat >>conftest.$ac_ext <<_ACEOF
++/* end confdefs.h.  */
++
++/* Override any gcc2 internal prototype to avoid an error.  */
++#ifdef __cplusplus
++extern "C"
++#endif
++/* We use char because int might match the return type of a gcc2
++   builtin and then its argument prototype would still apply.  */
++char des_cbc_encrypt ();
++int
++main ()
++{
++des_cbc_encrypt ();
++  ;
++  return 0;
++}
++_ACEOF
++rm -f conftest.$ac_objext conftest$ac_exeext
++if { (eval echo "$as_me:$LINENO: \"$ac_link\"") >&5
++  (eval $ac_link) 2>conftest.er1
++  ac_status=$?
++  grep -v '^ *+' conftest.er1 >conftest.err
++  rm -f conftest.er1
++  cat conftest.err >&5
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); } &&
++	 { ac_try='test -z "$ac_c_werror_flag"
++			 || test ! -s conftest.err'
++  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
++  (eval $ac_try) 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; } &&
++	 { ac_try='test -s conftest$ac_exeext'
++  { (eval echo "$as_me:$LINENO: \"$ac_try\"") >&5
++  (eval $ac_try) 2>&5
++  ac_status=$?
++  echo "$as_me:$LINENO: \$? = $ac_status" >&5
++  (exit $ac_status); }; }; then
++  ac_cv_lib_des_des_cbc_encrypt=yes
++else
++  echo "$as_me: failed program was:" >&5
++sed 's/^/| /' conftest.$ac_ext >&5
++
++ac_cv_lib_des_des_cbc_encrypt=no
++fi
++rm -f conftest.err conftest.$ac_objext \
++      conftest$ac_exeext conftest.$ac_ext
++LIBS=$ac_check_lib_save_LIBS
++fi
++echo "$as_me:$LINENO: result: $ac_cv_lib_des_des_cbc_encrypt" >&5
++echo "${ECHO_T}$ac_cv_lib_des_des_cbc_encrypt" >&6
++if test $ac_cv_lib_des_des_cbc_encrypt = yes; then
++  cat >>confdefs.h <<_ACEOF
++#define HAVE_LIBDES 1
++_ACEOF
++
++  LIBS="-ldes $LIBS"
++
++fi
++
++
+ ##
+ #   Compilation-related
+ ##
+@@ -21075,11 +21156,11 @@ return dmalloc_message ();
+ }
+ _ACEOF
+ for ac_lib in '' dmalloc; do
+-  if test -z "$ac_lib"; then
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_dmalloc_message=$ac_res
+@@ -21137,11 +21218,11 @@ return EF_Exit ();
+ }
+ _ACEOF
+ for ac_lib in '' efence; do
+-  if test -z "$ac_lib"; then
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_EF_Exit=$ac_res
+@@ -21435,11 +21516,11 @@ return socket ();
+ }
+ _ACEOF
+ for ac_lib in '' socket; do
+-  if test -z "$ac_lib"; then
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_socket=$ac_res
+@@ -21492,12 +21573,12 @@ return gethostbyname ();
+   return 0;
+ }
+ _ACEOF
+-for ac_lib in '' nsl socket; do
+-  if test -z "$ac_lib"; then
++for ac_lib in '' nsl socket network; do
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_gethostbyname=$ac_res
+@@ -21560,11 +21641,11 @@ return gethostbyaddr ();
+ }
+ _ACEOF
+ for ac_lib in '' nsl socket; do
+-  if test -z "$ac_lib"; then
++  if test -z "network"; then
+     ac_res="none required"
+   else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
++    ac_res=-lnetwork
++    LIBS="-lnetwork  $ac_func_search_save_LIBS"
+   fi
+   if ac_fn_c_try_link "$LINENO"; then :
+   ac_cv_search_gethostbyaddr=$ac_res
+@@ -23004,13 +23085,13 @@ $as_echo "no" >&6; }
+ if test "x$ac_cv_func_yp_get_default_domain" = xyes; then :
+ 
+ else
+-  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for yp_get_default_domain in -lnsl" >&5
+-$as_echo_n "checking for yp_get_default_domain in -lnsl... " >&6; }
++  { $as_echo "$as_me:${as_lineno-$LINENO}: checking for yp_get_default_domain in -lnetwork" >&5
++$as_echo_n "checking for yp_get_default_domain in -lnetwork... " >&6; }
+ if ${ac_cv_lib_nsl_yp_get_default_domain+:} false; then :
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lnsl  $LIBS"
++LIBS="-lnetwork  $LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -23045,14 +23126,14 @@ if test "x$ac_cv_lib_nsl_yp_get_default_
+ #define HAVE_LIBNSL 1
+ _ACEOF
+ 
+-  LIBS="-lnsl $LIBS"
++  LIBS="-lnetwork $LIBS"
+ 
+ fi
+ 
+ fi
+ 
+-     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for TCP wrappers library -lwrap linked with -lnsl" >&5
+-$as_echo_n "checking for TCP wrappers library -lwrap linked with -lnsl... " >&6; }
++     { $as_echo "$as_me:${as_lineno-$LINENO}: checking for TCP wrappers library -lwrap linked with -lnetwork" >&5
++$as_echo_n "checking for TCP wrappers library -lwrap linked with -lnetwork... " >&6; }
+      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ #include <sys/types.h>
+@@ -23073,7 +23154,7 @@ $as_echo "yes" >&6; }
+ 	$as_echo "#define NETSNMP_USE_LIBWRAP 1" >>confdefs.h
+ 
+ 	test "$with_libwrap" != no -a "$with_libwrap" != yes && _wraplibs="-L$with_libwrap/lib"
+-	_wraplibs="$_wraplibs -lwrap -lnsl"
++	_wraplibs="$_wraplibs -lwrap -lnetwork"
+ else
+   { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
+ $as_echo "no" >&6; }
+@@ -29458,7 +29539,7 @@ for ac_i in : $LIBOBJS; do test "x$ac_i"
+   as_fn_append ac_libobjs " \${LIBOBJDIR}$ac_i\$U.$ac_objext"
+   as_fn_append ac_ltlibobjs " \${LIBOBJDIR}$ac_i"'$U.lo'
+ done
+-LIBOBJS=$ac_libobjs
++LIBOBJS=networkobjs
+ 
+ LTLIBOBJS=$ac_ltlibobjs
+ 

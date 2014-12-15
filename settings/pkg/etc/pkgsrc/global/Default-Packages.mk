@@ -8,3 +8,4 @@ CURSES_DEFAULT?=	ncurses
 
 #Settings for X11 packages
 #X11_TYPE=modular
+

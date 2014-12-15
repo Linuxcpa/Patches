@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- configure.in.orig	2006-05-09 19:31:03.062390272 +0000
++++ configure.in
+@@ -66,7 +66,7 @@ AC_PROG_RANLIB
+ AC_PROG_INSTALL
+ 
+ AC_CHECK_FUNCS(poll)
+-ADNS_C_GETFUNC(socket,socket)
++ADNS_C_GETFUNC(socket,network)
+ ADNS_C_GETFUNC(inet_ntoa,nsl)
+ 
+ PROGS_IF_TSEARCH=adnsresfilter

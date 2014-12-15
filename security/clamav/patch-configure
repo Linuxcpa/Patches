@@ -1,0 +1,233 @@
+$NetBSD$
+
+--- configure.orig	2014-05-22 13:18:22.005767168 +0000
++++ configure
+@@ -580,7 +580,7 @@ ac_hostname=`(hostname || uname -n) 2>/d
+ #
+ # Initializations.
+ #
+-ac_default_prefix=/usr/local
++ac_default_prefix=/boot/home/pkg
+ ac_clean_files=
+ ac_config_libobj_dir=.
+ LIBOBJS=
+@@ -1600,11 +1600,11 @@ Optional Packages:
+   --with-libcheck-prefix[=DIR]  search for libcheck in DIR/include and DIR/lib
+   --without-libcheck-prefix     don't search for libcheck in includedir and libdir
+   --with-xml=DIR	  path to directory containing libxml2 library (default=
+-			  /usr/local or /usr if not found in /usr/local)
++			  /boot/home/pkg or /usr if not found in /boot/home/pkg)
+   --with-openssl=DIR   path to directory containing openssl (default=
+-    /usr/local or /usr if not found in /usr/local)
++    /boot/home/pkg or /usr if not found in /boot/home/pkg)
+   --with-zlib=DIR	  path to directory containing zlib library (default=
+-			  /usr/local or /usr if not found in /usr/local)
++			  /boot/home/pkg or /usr if not found in /boot/home/pkg)
+   --with-libbz2-prefix[=DIR]  search for libbz2 in DIR/include and DIR/lib
+   --without-libbz2-prefix     don't search for libbz2 in includedir and libdir
+   --with-iconv supports iconv() (default=auto)
+@@ -1617,7 +1617,7 @@ Optional Packages:
+   --with-libpdcurses-prefix[=DIR]  search for libpdcurses in DIR/include and DIR/lib
+   --without-libpdcurses-prefix     don't search for libpdcurses in includedir and libdir
+   --with-libcurl=DIR   path to directory containing libcurl (default=
+-    /usr/local or /usr if not found in /usr/local)
++    /boot/home/pkg or /usr if not found in /boot/home/pkg)
+ 
+ Some influential environment variables:
+   CC          C compiler command
+@@ -10583,7 +10583,7 @@ BEGIN {RS=" "; FS="/|\n";} {
+   esac
+   sys_lib_search_path_spec=`$ECHO "$lt_search_path_spec" | $lt_NL2SP`
+ else
+-  sys_lib_search_path_spec="/lib /usr/lib /usr/local/lib"
++  sys_lib_search_path_spec="/lib /usr/lib /boot/home/pkg/lib"
+ fi
+ library_names_spec=
+ libname_spec='lib$name'
+@@ -10687,8 +10687,8 @@ bsdi[45]*)
+   soname_spec='${libname}${release}${shared_ext}$major'
+   finish_cmds='PATH="\$PATH:/sbin" ldconfig $libdir'
+   shlibpath_var=LD_LIBRARY_PATH
+-  sys_lib_search_path_spec="/shlib /usr/lib /usr/X11/lib /usr/contrib/lib /lib /usr/local/lib"
+-  sys_lib_dlsearch_path_spec="/shlib /usr/lib /usr/local/lib"
++  sys_lib_search_path_spec="/shlib /usr/lib /usr/X11/lib /usr/contrib/lib /lib /boot/home/pkg/lib"
++  sys_lib_dlsearch_path_spec="/shlib /usr/lib /boot/home/pkg/lib"
+   # the default ld.so.conf also contains /usr/contrib/lib and
+   # /usr/X11R6/lib (/usr/X11 is a link to /usr/X11R6), but let us allow
+   # libtool to hard-code these into programs
+@@ -10815,8 +10815,8 @@ darwin* | rhapsody*)
+   shlibpath_var=DYLD_LIBRARY_PATH
+   shrext_cmds='`test .$module = .yes && echo .so || echo .dylib`'
+ 
+-  sys_lib_search_path_spec="$sys_lib_search_path_spec /usr/local/lib"
+-  sys_lib_dlsearch_path_spec='/usr/local/lib /lib /usr/lib'
++  sys_lib_search_path_spec="$sys_lib_search_path_spec /boot/home/pkg/lib"
++  sys_lib_dlsearch_path_spec='/boot/home/pkg/lib /lib /usr/lib'
+   ;;
+ 
+ dgux*)
+@@ -10901,9 +10901,9 @@ hpux9* | hpux10* | hpux11*)
+     library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+     soname_spec='${libname}${release}${shared_ext}$major'
+     if test "X$HPUX_IA64_MODE" = X32; then
+-      sys_lib_search_path_spec="/usr/lib/hpux32 /usr/local/lib/hpux32 /usr/local/lib"
++      sys_lib_search_path_spec="/usr/lib/hpux32 /boot/home/pkg/lib/hpux32 /boot/home/pkg/lib"
+     else
+-      sys_lib_search_path_spec="/usr/lib/hpux64 /usr/local/lib/hpux64"
++      sys_lib_search_path_spec="/usr/lib/hpux64 /boot/home/pkg/lib/hpux64"
+     fi
+     sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
+     ;;
+@@ -10977,7 +10977,7 @@ irix5* | irix6* | nonstopux*)
+   esac
+   shlibpath_var=LD_LIBRARY${shlibsuff}_PATH
+   shlibpath_overrides_runpath=no
+-  sys_lib_search_path_spec="/usr/lib${libsuff} /lib${libsuff} /usr/local/lib${libsuff}"
++  sys_lib_search_path_spec="/usr/lib${libsuff} /lib${libsuff} /boot/home/pkg/lib${libsuff}"
+   sys_lib_dlsearch_path_spec="/usr/lib${libsuff} /lib${libsuff}"
+   hardcode_into_libs=yes
+   ;;
+@@ -11143,7 +11143,7 @@ osf3* | osf4* | osf5*)
+   soname_spec='${libname}${release}${shared_ext}$major'
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   shlibpath_var=LD_LIBRARY_PATH
+-  sys_lib_search_path_spec="/usr/shlib /usr/ccs/lib /usr/lib/cmplrs/cc /usr/lib /usr/local/lib /var/shlib"
++  sys_lib_search_path_spec="/usr/shlib /usr/ccs/lib /usr/lib/cmplrs/cc /usr/lib /boot/home/pkg/lib /var/shlib"
+   sys_lib_dlsearch_path_spec="$sys_lib_search_path_spec"
+   ;;
+ 
+@@ -11218,7 +11218,7 @@ sysv5* | sco3.2v5* | sco5v6* | unixware*
+   shlibpath_overrides_runpath=yes
+   hardcode_into_libs=yes
+   if test "$with_gnu_ld" = yes; then
+-    sys_lib_search_path_spec='/usr/local/lib /usr/gnu/lib /usr/ccs/lib /usr/lib /lib'
++    sys_lib_search_path_spec='/boot/home/pkg/lib /usr/gnu/lib /usr/ccs/lib /usr/lib /lib'
+   else
+     sys_lib_search_path_spec='/usr/ccs/lib /usr/lib'
+     case $host_os in
+@@ -16062,7 +16062,7 @@ fi
+             if test "X$additional_includedir" != "X"; then
+                                                                                                                 if test "X$additional_includedir" != "X/usr/include"; then
+                 haveit=
+-                if test "X$additional_includedir" = "X/usr/local/include"; then
++                if test "X$additional_includedir" = "X/boot/home/pkg/include"; then
+                   if test -n "$GCC"; then
+                     case $host_os in
+                       linux* | gnu* | k*bsd*-gnu) haveit=yes;;
+@@ -16106,7 +16106,7 @@ fi
+                     additional_libdir=`echo "X$dep" | sed -e 's/^X-L//'`
+                                                                                                                                                                 if test "X$additional_libdir" != "X/usr/$acl_libdirstem"; then
+                       haveit=
+-                      if test "X$additional_libdir" = "X/usr/local/$acl_libdirstem"; then
++                      if test "X$additional_libdir" = "X/boot/home/pkg/$acl_libdirstem"; then
+                         if test -n "$GCC"; then
+                           case $host_os in
+                             linux* | gnu* | k*bsd*-gnu) haveit=yes;;
+@@ -16512,7 +16512,7 @@ $as_echo "using $XML_HOME" >&6; }
+ 
+ else
+ 
+-  XML_HOME=/usr/local
++  XML_HOME=/boot/home/pkg
+   if test ! -x "$XML_HOME/bin/xml2-config"
+   then
+     XML_HOME=/usr
+@@ -16663,7 +16663,7 @@ fi
+ 
+ else
+ 
+-LIBSSL_HOME=/usr/local
++LIBSSL_HOME=/boot/home/pkg
+ if test ! -f "$LIBSSL_HOME/include/openssl/ssl.h"
+ then
+     LIBSSL_HOME=/usr
+@@ -16874,7 +16874,7 @@ fi
+ 
+ else
+ 
+-ZLIB_HOME=/usr/local
++ZLIB_HOME=/boot/home/pkg
+ if test ! -f "$ZLIB_HOME/include/zlib.h"
+ then
+   ZLIB_HOME=/usr
+@@ -17408,7 +17408,7 @@ fi
+             if test "X$additional_includedir" != "X"; then
+                                                                                                                 if test "X$additional_includedir" != "X/usr/include"; then
+                 haveit=
+-                if test "X$additional_includedir" = "X/usr/local/include"; then
++                if test "X$additional_includedir" = "X/boot/home/pkg/include"; then
+                   if test -n "$GCC"; then
+                     case $host_os in
+                       linux* | gnu* | k*bsd*-gnu) haveit=yes;;
+@@ -17452,7 +17452,7 @@ fi
+                     additional_libdir=`echo "X$dep" | sed -e 's/^X-L//'`
+                                                                                                                                                                 if test "X$additional_libdir" != "X/usr/$acl_libdirstem"; then
+                       haveit=
+-                      if test "X$additional_libdir" = "X/usr/local/$acl_libdirstem"; then
++                      if test "X$additional_libdir" = "X/boot/home/pkg/$acl_libdirstem"; then
+                         if test -n "$GCC"; then
+                           case $host_os in
+                             linux* | gnu* | k*bsd*-gnu) haveit=yes;;
+@@ -20513,7 +20513,7 @@ fi
+             if test "X$additional_includedir" != "X"; then
+                                                                                                                 if test "X$additional_includedir" != "X/usr/include"; then
+                 haveit=
+-                if test "X$additional_includedir" = "X/usr/local/include"; then
++                if test "X$additional_includedir" = "X/boot/home/pkg/include"; then
+                   if test -n "$GCC"; then
+                     case $host_os in
+                       linux* | gnu* | k*bsd*-gnu) haveit=yes;;
+@@ -20557,7 +20557,7 @@ fi
+                     additional_libdir=`echo "X$dep" | sed -e 's/^X-L//'`
+                                                                                                                                                                 if test "X$additional_libdir" != "X/usr/$acl_libdirstem"; then
+                       haveit=
+-                      if test "X$additional_libdir" = "X/usr/local/$acl_libdirstem"; then
++                      if test "X$additional_libdir" = "X/boot/home/pkg/$acl_libdirstem"; then
+                         if test -n "$GCC"; then
+                           case $host_os in
+                             linux* | gnu* | k*bsd*-gnu) haveit=yes;;
+@@ -21038,7 +21038,7 @@ fi
+             if test "X$additional_includedir" != "X"; then
+                                                                                                                 if test "X$additional_includedir" != "X/usr/include"; then
+                 haveit=
+-                if test "X$additional_includedir" = "X/usr/local/include"; then
++                if test "X$additional_includedir" = "X/boot/home/pkg/include"; then
+                   if test -n "$GCC"; then
+                     case $host_os in
+                       linux* | gnu* | k*bsd*-gnu) haveit=yes;;
+@@ -21082,7 +21082,7 @@ fi
+                     additional_libdir=`echo "X$dep" | sed -e 's/^X-L//'`
+                                                                                                                                                                 if test "X$additional_libdir" != "X/usr/$acl_libdirstem"; then
+                       haveit=
+-                      if test "X$additional_libdir" = "X/usr/local/$acl_libdirstem"; then
++                      if test "X$additional_libdir" = "X/boot/home/pkg/$acl_libdirstem"; then
+                         if test -n "$GCC"; then
+                           case $host_os in
+                             linux* | gnu* | k*bsd*-gnu) haveit=yes;;
+@@ -21563,7 +21563,7 @@ fi
+             if test "X$additional_includedir" != "X"; then
+                                                                                                                 if test "X$additional_includedir" != "X/usr/include"; then
+                 haveit=
+-                if test "X$additional_includedir" = "X/usr/local/include"; then
++                if test "X$additional_includedir" = "X/boot/home/pkg/include"; then
+                   if test -n "$GCC"; then
+                     case $host_os in
+                       linux* | gnu* | k*bsd*-gnu) haveit=yes;;
+@@ -21607,7 +21607,7 @@ fi
+                     additional_libdir=`echo "X$dep" | sed -e 's/^X-L//'`
+                                                                                                                                                                 if test "X$additional_libdir" != "X/usr/$acl_libdirstem"; then
+                       haveit=
+-                      if test "X$additional_libdir" = "X/usr/local/$acl_libdirstem"; then
++                      if test "X$additional_libdir" = "X/boot/home/pkg/$acl_libdirstem"; then
+                         if test -n "$GCC"; then
+                           case $host_os in
+                             linux* | gnu* | k*bsd*-gnu) haveit=yes;;
+@@ -21953,7 +21953,7 @@ fi
+ 
+ else
+ 
+-LIBCURL_HOME=/usr/local
++LIBCURL_HOME=/boot/home/pkg
+ if test ! -f "$LIBCURL_HOME/include/curl/curl.h"
+ then
+     LIBCURL_HOME=/usr

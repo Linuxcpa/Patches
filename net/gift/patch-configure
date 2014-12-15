@@ -1,0 +1,29 @@
+$NetBSD$
+
+--- configure.orig	2004-11-27 21:12:59.000000000 +0000
++++ configure
+@@ -25459,24 +25459,6 @@ fi
+ 
+ fi
+ 
+-
+-    if test x$found_libltdl != xyes; then
+-      { { echo "$as_me:$LINENO: error:
+-*** Couldn't find ltdl library.  If it is installed in a non-standard
+-*** location, please supply --with-ltdl=DIR on the configure command line,
+-*** where \`DIR' is the prefix where ltdl is installed (such as /usr,
+-*** /usr/local, or /usr/pkg).  If that doesn't work, check config.log.
+-" >&5
+-echo "$as_me: error:
+-*** Couldn't find ltdl library.  If it is installed in a non-standard
+-*** location, please supply --with-ltdl=DIR on the configure command line,
+-*** where \`DIR' is the prefix where ltdl is installed (such as /usr,
+-*** /usr/local, or /usr/pkg).  If that doesn't work, check config.log.
+-" >&2;}
+-   { (exit 1); exit 1; }; }
+-    fi
+-
+-
+ for ac_header in ltdl.h
+ do
+ as_ac_Header=`echo "ac_cv_header_$ac_header" | $as_tr_sh`

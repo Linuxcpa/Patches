@@ -28,9 +28,22 @@
 || ${PKGPATH} == "mail/pear-Mail" || ${PKGPATH} == "mail/pear-Mail_Mime" \
 || ${PKGPATH} == "mail/pear-Mail_mimeDecode" || ${PKGPATH} == "mail/squirrelmail" \
 || ${PKGPATH} == "mail/squirrelmail-decode" || ${PKGPATH} == "mail/squirrelmail-locales" \
-|| ${PKGPATH} == "mail/roundcube" || ${PKGPATH} == "textproc/php54-dom" \
+|| ${PKGPATH} == "mail/roundcube" || ${PKGPATH} == "textproc/php-dom" \
 || ${PKGPATH} == "math/pear-Math_BigInteger" || ${PKGPATH} == "audio/libao-oss" \
-|| ${PKGPATH} == "multimedia/php-ming"
+|| ${PKGPATH} == "multimedia/php-ming" || ${PKGPATH} == "net/php-ftp" \
+|| ${PKGPATH} == "net/php-geoip" || ${PKGPATH} == "net/php-snmp" \
+|| ${PKGPATH} == "net/php-soap" || ${PKGPATH} == "net/php-sockets" \
+|| ${PKGPATH} == "net/php-xmlrpc" || ${PKGPATH} == "net/php-yaz" \
+|| ${PKGPATH} == "print/php-pdflib" || ${PKGPATH} == "security/libpcap" \
+|| ${PKGPATH} == "x11/fltk13" || ${PKGPATH} == "security/php-mcrypt" \
+|| ${PKGPATH} == "security/php-oauth" || ${PKGPATH} == "security/php-ssdeep" \
+|| ${PKGPATH} == "security/php-suhosin" || ${PKGPATH} == "math/fftw" \
+|| ${PKGPATH} == "sysutils/pear-log" || ${PKGPATH} == "graphics/ImageMagick" \
+|| ${PKGPATH} == "textproc/pear-Console_Table" || ${PKGPATH} == "textproc/pear-File_Find" \
+|| ${PKGPATH} == "textproc/php-enchant" || ${PKGPATH} == "textproc/php-intl" \
+|| ${PKGPATH} == "textproc/php-json" || ${PKGPATH} == "textproc/php-mecab" \
+|| ${PKGPATH} == "textproc/php-pspell" || ${PKGPATH} == "textproc/php-wddx" \
+|| ${PKGPATH} == "textproc/php-xsl"
 SHLIBTOOL_OVERRIDE= # empty
 LDFLAGS.Haiku+= -Wl,--rpath
 .endif

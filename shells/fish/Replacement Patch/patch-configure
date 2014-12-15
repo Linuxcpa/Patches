@@ -1,0 +1,417 @@
+$NetBSD: patch-configure,v 1.2 2013/10/20 17:53:26 joerg Exp $
+
+Expand variable where it's defined
+
+--- configure.orig	2009-03-08 14:46:47.029097984 +0000
++++ configure
+@@ -740,7 +740,7 @@ sharedstatedir='${prefix}/com'
+ localstatedir='${prefix}/var'
+ includedir='${prefix}/include'
+ oldincludedir='/usr/include'
+-docdir='${datarootdir}/doc/${PACKAGE_TARNAME}'
++docdir='${datarootdir}/doc/'"${PACKAGE_TARNAME}"
+ infodir='${datarootdir}/info'
+ htmldir='${docdir}'
+ dvidir='${docdir}'
+@@ -1848,7 +1848,7 @@ echo $ECHO_N "checking for $i/lib librar
+ 	if test -d $i/lib; then
+ 		{ echo "$as_me:$LINENO: result: yes" >&5
+ echo "${ECHO_T}yes" >&6; }
+-		LDFLAGS="$LDFLAGS -L$i/lib/ -R$i/lib/"
++		LDFLAGS="$LDFLAGS -L$i/lib/ ${COMPILER_RPATH_FLAG}$i/lib/"
+ 	else
+ 		{ echo "$as_me:$LINENO: result: no" >&5
+ echo "${ECHO_T}no" >&6; }
+@@ -3681,7 +3681,7 @@ return connect ();
+   return 0;
+ }
+ _ACEOF
+-for ac_lib in '' socket; do
++for ac_lib in '' network; do
+   if test -z "$ac_lib"; then
+     ac_res="none required"
+   else
+@@ -3735,8 +3735,8 @@ if test "$ac_res" != no; then
+   test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+ 
+ else
+-  { { echo "$as_me:$LINENO: error: Cannot find the socket library, needed to build this package. " >&5
+-echo "$as_me: error: Cannot find the socket library, needed to build this package. " >&2;}
++  { { echo "$as_me:$LINENO: error: Cannot find the network library, needed to build this package. " >&5
++echo "$as_me: error: Cannot find the network library, needed to build this package. " >&2;}
+    { (exit 1); exit 1; }; }
+ fi
+ 
+@@ -4096,180 +4096,6 @@ fi
+ 
+ fi
+ 
+-# Check for libiconv_open if we can't find iconv_open. Silly OS X does
+-# weird macro magic for the sole purpose of amusing me.
+-{ echo "$as_me:$LINENO: checking for library containing iconv_open" >&5
+-echo $ECHO_N "checking for library containing iconv_open... $ECHO_C" >&6; }
+-if test "${ac_cv_search_iconv_open+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  ac_func_search_save_LIBS=$LIBS
+-cat >conftest.$ac_ext <<_ACEOF
+-/* confdefs.h.  */
+-_ACEOF
+-cat confdefs.h >>conftest.$ac_ext
+-cat >>conftest.$ac_ext <<_ACEOF
+-/* end confdefs.h.  */
+-
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char iconv_open ();
+-int
+-main ()
+-{
+-return iconv_open ();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-for ac_lib in '' iconv; do
+-  if test -z "$ac_lib"; then
+-    ac_res="none required"
+-  else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+-  fi
+-  rm -f conftest.$ac_objext conftest$ac_exeext
+-if { (ac_try="$ac_link"
+-case "(($ac_try" in
+-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+-  *) ac_try_echo=$ac_try;;
+-esac
+-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+-  (eval "$ac_link") 2>conftest.er1
+-  ac_status=$?
+-  grep -v '^ *+' conftest.er1 >conftest.err
+-  rm -f conftest.er1
+-  cat conftest.err >&5
+-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+-  (exit $ac_status); } && {
+-	 test -z "$ac_c_werror_flag" ||
+-	 test ! -s conftest.err
+-       } && test -s conftest$ac_exeext &&
+-       $as_test_x conftest$ac_exeext; then
+-  ac_cv_search_iconv_open=$ac_res
+-else
+-  echo "$as_me: failed program was:" >&5
+-sed 's/^/| /' conftest.$ac_ext >&5
+-
+-
+-fi
+-
+-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+-      conftest$ac_exeext
+-  if test "${ac_cv_search_iconv_open+set}" = set; then
+-  break
+-fi
+-done
+-if test "${ac_cv_search_iconv_open+set}" = set; then
+-  :
+-else
+-  ac_cv_search_iconv_open=no
+-fi
+-rm conftest.$ac_ext
+-LIBS=$ac_func_search_save_LIBS
+-fi
+-{ echo "$as_me:$LINENO: result: $ac_cv_search_iconv_open" >&5
+-echo "${ECHO_T}$ac_cv_search_iconv_open" >&6; }
+-ac_res=$ac_cv_search_iconv_open
+-if test "$ac_res" != no; then
+-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+-
+-else
+-  { echo "$as_me:$LINENO: checking for library containing libiconv_open" >&5
+-echo $ECHO_N "checking for library containing libiconv_open... $ECHO_C" >&6; }
+-if test "${ac_cv_search_libiconv_open+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  ac_func_search_save_LIBS=$LIBS
+-cat >conftest.$ac_ext <<_ACEOF
+-/* confdefs.h.  */
+-_ACEOF
+-cat confdefs.h >>conftest.$ac_ext
+-cat >>conftest.$ac_ext <<_ACEOF
+-/* end confdefs.h.  */
+-
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char libiconv_open ();
+-int
+-main ()
+-{
+-return libiconv_open ();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-for ac_lib in '' iconv; do
+-  if test -z "$ac_lib"; then
+-    ac_res="none required"
+-  else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+-  fi
+-  rm -f conftest.$ac_objext conftest$ac_exeext
+-if { (ac_try="$ac_link"
+-case "(($ac_try" in
+-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+-  *) ac_try_echo=$ac_try;;
+-esac
+-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+-  (eval "$ac_link") 2>conftest.er1
+-  ac_status=$?
+-  grep -v '^ *+' conftest.er1 >conftest.err
+-  rm -f conftest.er1
+-  cat conftest.err >&5
+-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+-  (exit $ac_status); } && {
+-	 test -z "$ac_c_werror_flag" ||
+-	 test ! -s conftest.err
+-       } && test -s conftest$ac_exeext &&
+-       $as_test_x conftest$ac_exeext; then
+-  ac_cv_search_libiconv_open=$ac_res
+-else
+-  echo "$as_me: failed program was:" >&5
+-sed 's/^/| /' conftest.$ac_ext >&5
+-
+-
+-fi
+-
+-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+-      conftest$ac_exeext
+-  if test "${ac_cv_search_libiconv_open+set}" = set; then
+-  break
+-fi
+-done
+-if test "${ac_cv_search_libiconv_open+set}" = set; then
+-  :
+-else
+-  ac_cv_search_libiconv_open=no
+-fi
+-rm conftest.$ac_ext
+-LIBS=$ac_func_search_save_LIBS
+-fi
+-{ echo "$as_me:$LINENO: result: $ac_cv_search_libiconv_open" >&5
+-echo "${ECHO_T}$ac_cv_search_libiconv_open" >&6; }
+-ac_res=$ac_cv_search_libiconv_open
+-if test "$ac_res" != no; then
+-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+-
+-else
+-  { { echo "$as_me:$LINENO: error: Could not find an iconv implementation, needed to build fish" >&5
+-echo "$as_me: error: Could not find an iconv implementation, needed to build fish" >&2;}
+-   { (exit 1); exit 1; }; }
+-fi
+-
+-fi
+-
+-
+ LIBS_FISH=$LIBS
+ LIBS=$LIBS_COMMON
+ 
+@@ -4458,95 +4284,6 @@ if test "$ac_res" != no; then
+ fi
+ 
+ fi
+-{ echo "$as_me:$LINENO: checking for library containing iconv_open" >&5
+-echo $ECHO_N "checking for library containing iconv_open... $ECHO_C" >&6; }
+-if test "${ac_cv_search_iconv_open+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  ac_func_search_save_LIBS=$LIBS
+-cat >conftest.$ac_ext <<_ACEOF
+-/* confdefs.h.  */
+-_ACEOF
+-cat confdefs.h >>conftest.$ac_ext
+-cat >>conftest.$ac_ext <<_ACEOF
+-/* end confdefs.h.  */
+-
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char iconv_open ();
+-int
+-main ()
+-{
+-return iconv_open ();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-for ac_lib in '' iconv; do
+-  if test -z "$ac_lib"; then
+-    ac_res="none required"
+-  else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+-  fi
+-  rm -f conftest.$ac_objext conftest$ac_exeext
+-if { (ac_try="$ac_link"
+-case "(($ac_try" in
+-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+-  *) ac_try_echo=$ac_try;;
+-esac
+-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+-  (eval "$ac_link") 2>conftest.er1
+-  ac_status=$?
+-  grep -v '^ *+' conftest.er1 >conftest.err
+-  rm -f conftest.er1
+-  cat conftest.err >&5
+-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+-  (exit $ac_status); } && {
+-	 test -z "$ac_c_werror_flag" ||
+-	 test ! -s conftest.err
+-       } && test -s conftest$ac_exeext &&
+-       $as_test_x conftest$ac_exeext; then
+-  ac_cv_search_iconv_open=$ac_res
+-else
+-  echo "$as_me: failed program was:" >&5
+-sed 's/^/| /' conftest.$ac_ext >&5
+-
+-
+-fi
+-
+-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+-      conftest$ac_exeext
+-  if test "${ac_cv_search_iconv_open+set}" = set; then
+-  break
+-fi
+-done
+-if test "${ac_cv_search_iconv_open+set}" = set; then
+-  :
+-else
+-  ac_cv_search_iconv_open=no
+-fi
+-rm conftest.$ac_ext
+-LIBS=$ac_func_search_save_LIBS
+-fi
+-{ echo "$as_me:$LINENO: result: $ac_cv_search_iconv_open" >&5
+-echo "${ECHO_T}$ac_cv_search_iconv_open" >&6; }
+-ac_res=$ac_cv_search_iconv_open
+-if test "$ac_res" != no; then
+-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+-
+-else
+-  { { echo "$as_me:$LINENO: error: Could not find an iconv implementation, needed to build fish" >&5
+-echo "$as_me: error: Could not find an iconv implementation, needed to build fish" >&2;}
+-   { (exit 1); exit 1; }; }
+-fi
+-
+-LIBS_FISH_PAGER=$LIBS
+-LIBS=$LIBS_COMMON
+ 
+ #
+ # Check for libraries needed by fishd.
+@@ -4639,95 +4376,6 @@ if test "$ac_res" != no; then
+ fi
+ 
+ fi
+-{ echo "$as_me:$LINENO: checking for library containing iconv_open" >&5
+-echo $ECHO_N "checking for library containing iconv_open... $ECHO_C" >&6; }
+-if test "${ac_cv_search_iconv_open+set}" = set; then
+-  echo $ECHO_N "(cached) $ECHO_C" >&6
+-else
+-  ac_func_search_save_LIBS=$LIBS
+-cat >conftest.$ac_ext <<_ACEOF
+-/* confdefs.h.  */
+-_ACEOF
+-cat confdefs.h >>conftest.$ac_ext
+-cat >>conftest.$ac_ext <<_ACEOF
+-/* end confdefs.h.  */
+-
+-/* Override any GCC internal prototype to avoid an error.
+-   Use char because int might match the return type of a GCC
+-   builtin and then its argument prototype would still apply.  */
+-#ifdef __cplusplus
+-extern "C"
+-#endif
+-char iconv_open ();
+-int
+-main ()
+-{
+-return iconv_open ();
+-  ;
+-  return 0;
+-}
+-_ACEOF
+-for ac_lib in '' iconv; do
+-  if test -z "$ac_lib"; then
+-    ac_res="none required"
+-  else
+-    ac_res=-l$ac_lib
+-    LIBS="-l$ac_lib  $ac_func_search_save_LIBS"
+-  fi
+-  rm -f conftest.$ac_objext conftest$ac_exeext
+-if { (ac_try="$ac_link"
+-case "(($ac_try" in
+-  *\"* | *\`* | *\\*) ac_try_echo=\$ac_try;;
+-  *) ac_try_echo=$ac_try;;
+-esac
+-eval "echo \"\$as_me:$LINENO: $ac_try_echo\"") >&5
+-  (eval "$ac_link") 2>conftest.er1
+-  ac_status=$?
+-  grep -v '^ *+' conftest.er1 >conftest.err
+-  rm -f conftest.er1
+-  cat conftest.err >&5
+-  echo "$as_me:$LINENO: \$? = $ac_status" >&5
+-  (exit $ac_status); } && {
+-	 test -z "$ac_c_werror_flag" ||
+-	 test ! -s conftest.err
+-       } && test -s conftest$ac_exeext &&
+-       $as_test_x conftest$ac_exeext; then
+-  ac_cv_search_iconv_open=$ac_res
+-else
+-  echo "$as_me: failed program was:" >&5
+-sed 's/^/| /' conftest.$ac_ext >&5
+-
+-
+-fi
+-
+-rm -f core conftest.err conftest.$ac_objext conftest_ipa8_conftest.oo \
+-      conftest$ac_exeext
+-  if test "${ac_cv_search_iconv_open+set}" = set; then
+-  break
+-fi
+-done
+-if test "${ac_cv_search_iconv_open+set}" = set; then
+-  :
+-else
+-  ac_cv_search_iconv_open=no
+-fi
+-rm conftest.$ac_ext
+-LIBS=$ac_func_search_save_LIBS
+-fi
+-{ echo "$as_me:$LINENO: result: $ac_cv_search_iconv_open" >&5
+-echo "${ECHO_T}$ac_cv_search_iconv_open" >&6; }
+-ac_res=$ac_cv_search_iconv_open
+-if test "$ac_res" != no; then
+-  test "$ac_res" = "none required" || LIBS="$ac_res $LIBS"
+-
+-else
+-  { { echo "$as_me:$LINENO: error: Could not find an iconv implementation, needed to build fish" >&5
+-echo "$as_me: error: Could not find an iconv implementation, needed to build fish" >&2;}
+-   { (exit 1); exit 1; }; }
+-fi
+-
+-LIBS_FISHD=$LIBS
+-LIBS=$LIBS_COMMON
+ 
+ #
+ # Check for libraries needed by mimedb.

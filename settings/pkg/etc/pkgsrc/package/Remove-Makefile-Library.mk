@@ -11,3 +11,7 @@ BUILDLINK_TRANSFORM+= rm:-lm
 #.if ${PKGPATH} == "converters/chef"
 #BUILDLINK_TRANSFORM+= rm:-ll
 #.endif
+
+.if ${PKGPATH} == "sysutils/adtool"
+BUILDLINK_TRANSFORM+= rm:-lresolv
+.endif

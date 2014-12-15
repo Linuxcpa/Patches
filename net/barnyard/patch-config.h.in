@@ -1,0 +1,11 @@
+$NetBSD$
+
+--- config.h.in.orig	2004-05-01 16:52:16.000000000 +0000
++++ config.h.in
+@@ -1,5 +1,5 @@
+ /* config.h.in.  Generated automatically from configure.in by autoheader 2.13.  */
+-
++#include <stdint.h>
+ /* Define if on AIX 3.
+    System headers sometimes define this.
+    We just want to avoid a redefinition error message.  */

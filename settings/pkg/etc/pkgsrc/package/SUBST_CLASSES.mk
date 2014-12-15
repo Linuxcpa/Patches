@@ -240,3 +240,34 @@ SUBST_FILES.lbsd10= Makefile
 SUBST_SED.lbsd10+= -e 's|SNDLIB =|SNDLIB = -lbsd|g'
 .endif
 
+.if ${PKGPATH} == "print/dvipdfmx"
+SUBST_CLASSES+= lbsd11
+SUBST_STAGE.lbsd11= pre-build
+SUBST_MESSAGE.lbsd11= Fixing lbsd
+SUBST_FILES.lbsd11= src/Makefile
+SUBST_SED.lbsd11+= -e 's|LIBS = -lpaper|LIBS = -lpaper -lnetwork -lbsd|g'
+.endif
+
+.if ${PKGPATH} == "security/amap"
+SUBST_CLASSES+= lnetwork13
+SUBST_STAGE.lnetwork13= pre-build
+SUBST_MESSAGE.lnetwork13= Fixing lnetwork
+SUBST_FILES.lnetwork13= Makefile
+SUBST_SED.lnetwork13+= -e 's|XLIBS= -lssl|XLIBS= -lssl -lnetwork|g'
+.endif
+
+.if ${PKGPATH} == "shells/fish"
+SUBST_CLASSES+= liconv
+SUBST_STAGE.liconv= pre-build
+SUBST_MESSAGE.liconv= Fixing liconv
+SUBST_FILES.liconv= Makefile
+SUBST_SED.liconv+= -e 's|-lncurses -lnetwork |-lncurses -lnetwork -liconv |g'
+.endif
+
+.if ${PKGPATH} == "textproc/lq-sp"
+SUBST_CLASSES+= lnetwork14
+SUBST_STAGE.lnetwork14= pre-build
+SUBST_MESSAGE.lnetwork14= Fixing lnetwork
+SUBST_FILES.lnetwork14= Makefile
+SUBST_SED.lnetwork14+= -e 's|XLIBS=#-lsocket|XLIBS= -lnetwork|g'
+.endif

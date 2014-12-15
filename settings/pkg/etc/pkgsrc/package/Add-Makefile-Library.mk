@@ -1,6 +1,6 @@
 #Adds libraries to build process for specific packages
 
-.if ${PKGPATH} == "devel/git-base"
+.if ${PKGPATH} == "devel/git-base" || ${PKGPATH} == "net/modpcap"
 BUILDLINK_TRANSFORM+= -lnetwork
 .endif
 

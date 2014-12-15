@@ -12,7 +12,6 @@
 .include "/boot/home/pkg/etc/pkgsrc/global/Fonts.mk"
 .include "/boot/home/pkg/etc/pkgsrc/global/LDFLAGS.mk"
 .include "/boot/home/pkg/etc/pkgsrc/global/PKG_DEFAULT_OPTIONS.mk"
-.include "/boot/home/pkg/etc/pkgsrc/global/Perl.mk"
 .include "/boot/home/pkg/etc/pkgsrc/global/Remove-Makefile-Library.mk"
 .include "/boot/home/pkg/etc/pkgsrc/global/SUBST_CLASSES.mk"
 .include "/boot/home/pkg/etc/pkgsrc/global/Substitute-Makefile-Library.mk"

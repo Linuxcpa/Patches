@@ -1,0 +1,40 @@
+$NetBSD$
+
+--- configure.orig	2012-10-11 10:32:29.002359296 +0000
++++ configure
+@@ -4090,7 +4090,7 @@ if ${ac_cv_lib_socket_socket+:} false; t
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lsocket  $LIBS"
++LIBS="-lsocket -lnetwork $LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -4144,7 +4144,7 @@ if ${ac_cv_lib_resolv_inet_aton+:} false
+   $as_echo_n "(cached) " >&6
+ else
+   ac_check_lib_save_LIBS=$LIBS
+-LIBS="-lresolv  $LIBS"
++LIBS="-lnetwork  $LIBS"
+ cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -4179,7 +4179,7 @@ if test "x$ac_cv_lib_resolv_inet_aton" =
+ #define HAVE_LIBRESOLV 1
+ _ACEOF
+ 
+-  LIBS="-lresolv $LIBS"
++  LIBS="-lnetwork $LIBS"
+ 
+ else
+    echo "inet_aton() is required for build"; exit -1
+@@ -4233,7 +4233,7 @@ if test "x$ac_cv_lib_resolv_inet_ntop" =
+ #define HAVE_LIBRESOLV 1
+ _ACEOF
+ 
+-  LIBS="-lresolv $LIBS"
++  LIBS="-lnetwork $LIBS"
+ 
+ else
+    echo "inet_ntop() is required for build"; exit -1

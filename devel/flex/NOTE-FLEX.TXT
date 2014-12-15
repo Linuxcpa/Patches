@@ -1,7 +1,4 @@
 Although Flex will build without patches, based on my previous experience (yes 1 time) some programs would complain at configure "can't fimd flex" until I applied these patches.
-
 Some of them are changes indicated to be changed for BeOS, some were from Haikuports.
-
 The deal is this: I believe this is better, but I don't know for sure.
-
-Apply the patches at your own risk, or benefit.  
+Apply the patches at your own risk, or benefit. 

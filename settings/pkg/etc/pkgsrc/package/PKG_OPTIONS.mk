@@ -24,7 +24,7 @@ PKG_OPTIONS.cherokee= -pam
 
 PKG_OPTIONS.boost= icu
 
-#PKG_OPTIONS.cairo= -xcb
+PKG_OPTIONS.cairo= -xcb
 
 PKG_OPTIONS.samba= -ads -ldap -winbind -pam
 
@@ -34,6 +34,16 @@ PKG_OPTIONS.tinyproxy= -socks5
 
 PKG_OPTIONS.squid= -inet6 -snmp -squid-backend-diskd -squid-carp -squid-pam-helper squid-unlinkd ssl
 
-PKG_OPTIONS.qt4-libs= -xcb -x11
+PKG_OPTIONS.qt4-libs= -xcb
 
-PKG_OPTIONS.MesaLib +=dri
+#PKG_OPTIONS.MesaLib +=dri
+
+PKG_OPTIONS.avahi= -gtk2
+
+.if ${PKGPATH} == "devel/py-ordereddict"
+PYTHON_VERSIONS_ACCEPTED=		27
+.endif
+
+.if ${PKGPATH} == "net/ocamlnet"
+USE_TOOLS+=		clang
+.endif

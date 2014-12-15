@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- Makefile.orig	2002-10-09 22:17:33.000000000 +0000
++++ Makefile
+@@ -6,7 +6,7 @@ VERSION = 0.91
+ SHELL = /bin/sh
+ CC = gcc
+ CFLAGS = -O2 -Wall
+-LDFLAGS = `[ -f /usr/lib/libsocket.so ] && echo -lsocket -lnsl`
++LDFLAGS = `[ -f /boot/system/lib/libnetwork.so ] && echo -lnetwork`
+ 
+ DISTFILES = avcheck.c infected.ex1 uchroot.c Makefile \
+  avcheck.1 eicar.txt eicar.msg ChangeLog substlang.sh \

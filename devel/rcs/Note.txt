@@ -1,0 +1,1 @@
+If configure freezes, just save the report.

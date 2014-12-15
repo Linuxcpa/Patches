@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- configure.ac.orig	2013-10-04 12:01:07.000000000 +0000
++++ configure.ac
+@@ -217,7 +217,7 @@ RCS_CBOOL([DIFF3_BIN],[yes],[rcs_cv_sane
+   [Does diff3 work like GNU binutils diff3?])
+ 
+ ED=ed
+-RCS_ABSOLUTE_PROGRAM([ED],[original ed],
++RCS_ABSOLUTE_PROGRAM([ED],[ged],
+   [The singular ed(1), necessary only if diff3 is not completely sane.])
+ 
+ # This is only for maintainers.

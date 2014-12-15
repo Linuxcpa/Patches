@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- Makefile.in.orig	2014-08-16 16:06:49.035913728 +0000
++++ Makefile.in
+@@ -2618,7 +2618,7 @@ LIBOBJS = @LIBOBJS@
+ LIBOPENJP2_CFLAGS = @LIBOPENJP2_CFLAGS@
+ LIBOPENJP2_LIBS = @LIBOPENJP2_LIBS@
+ LIBRARY_EXTRA_CPPFLAGS = @LIBRARY_EXTRA_CPPFLAGS@
+-LIBRARY_PATH = @LIBRARY_PATH@
++XLIBRARY_PATH = @XLIBRARY_PATH@
+ LIBS = @LIBS@
+ LIBSTDCLDFLAGS = @LIBSTDCLDFLAGS@
+ LIBTOOL = @LIBTOOL@
+@@ -3017,7 +3017,7 @@ configsharearch_DATA = \
+ 
+ # Where architecture-dependent configuration files get installed
+ # (share/ImageMagick-version)
+-configlibdir = $(CONFIGURE_PATH)
++configlibdir = $(DATA_DIR)/examples/ImageMagick
+ configlib_DATA = \
+ 	config/coder.xml \
+ 	config/colors.xml \

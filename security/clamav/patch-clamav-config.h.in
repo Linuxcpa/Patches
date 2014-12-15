@@ -1,0 +1,14 @@
+$NetBSD$
+
+--- clamav-config.h.in.orig	2014-05-21 15:25:38.000000000 +0000
++++ clamav-config.h.in
+@@ -42,6 +42,9 @@
+ /* os is beos */
+ #undef C_BEOS
+ 
++/* os is haiku */
++#undef C_HAIKU
++
+ /* Increase thread stack size. */
+ #undef C_BIGSTACK
+ 

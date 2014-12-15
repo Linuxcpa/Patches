@@ -1,0 +1,1516 @@
+$NetBSD: patch-configure,v 1.3 2014/08/21 21:49:34 wiz Exp $
+
+First chunk: ./configure: 28988: Syntax error: Bad substitution
+http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&t=26143
+
+Others: test(1) portability fix.
+http://www.imagemagick.org/discourse-server/viewtopic.php?f=3&t=26142
+
+--- configure.orig	2014-08-16 16:06:45.000524288 +0000
++++ configure
+@@ -36,7 +36,7 @@ fi
+ as_nl='
+ '
+ export as_nl
+-# Printing a long string crashes Solaris 7 /usr/bin/printf.
++# Printing a long string crashes Solaris 7 /boot/home/pkg/bin/printf.
+ as_echo='\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'
+ as_echo=$as_echo$as_echo$as_echo$as_echo$as_echo
+ as_echo=$as_echo$as_echo$as_echo$as_echo$as_echo$as_echo
+@@ -50,9 +50,9 @@ elif (test "X`printf %s $as_echo`" = "X$
+   as_echo='printf %s\n'
+   as_echo_n='printf %s'
+ else
+-  if test "X`(/usr/ucb/echo -n -n $as_echo) 2>/dev/null`" = "X-n $as_echo"; then
+-    as_echo_body='eval /usr/ucb/echo -n "$1$as_nl"'
+-    as_echo_n='/usr/ucb/echo -n'
++  if test "X`(/boot/home/pkg/ucb/echo -n -n $as_echo) 2>/dev/null`" = "X-n $as_echo"; then
++    as_echo_body='eval /boot/home/pkg/ucb/echo -n "$1$as_nl"'
++    as_echo_n='/boot/home/pkg/ucb/echo -n'
+   else
+     as_echo_body='eval expr "X$1" : "X\\(.*\\)"'
+     as_echo_n_body='eval
+@@ -217,7 +217,7 @@ fi
+ else
+   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+ as_found=false
+-for as_dir in /bin$PATH_SEPARATOR/usr/bin$PATH_SEPARATOR$PATH
++for as_dir in /bin$PATH_SEPARATOR/boot/home/pkg/bin$PATH_SEPARATOR$PATH
+ do
+   IFS=$as_save_IFS
+   test -z "$as_dir" && as_dir=.
+@@ -578,7 +578,7 @@ ac_hostname=`(hostname || uname -n) 2>/d
+ #
+ # Initializations.
+ #
+-ac_default_prefix=/usr/local
++ac_default_prefix=/boot/home/pkg/local
+ ac_clean_files=
+ ac_config_libobj_dir=.
+ LIBOBJS=
+@@ -755,7 +755,7 @@ LIB_BIN_DIR_PATH
+ LIB_BIN_DIR_RELATIVE_PATH
+ LIB_BIN_DIR
+ LIB_BIN_BASEDIRNAME
+-LIBRARY_PATH
++XLIBRARY_PATH
+ EXECUTABLE_PATH
+ INCLUDEARCH_PATH
+ INCLUDE_PATH
+@@ -1270,7 +1270,7 @@ sysconfdir='${prefix}/etc'
+ sharedstatedir='${prefix}/com'
+ localstatedir='${prefix}/var'
+ includedir='${prefix}/include'
+-oldincludedir='/usr/include'
++oldincludedir='/boot/home/pkg/include'
+ docdir='${datarootdir}/doc/${PACKAGE_TARNAME}'
+ infodir='${datarootdir}/info'
+ htmldir='${docdir}'
+@@ -1813,7 +1813,7 @@ Fine tuning of the installation director
+   --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
+   --libdir=DIR            object code libraries [EPREFIX/lib]
+   --includedir=DIR        C header files [PREFIX/include]
+-  --oldincludedir=DIR     C header files for non-gcc [/usr/include]
++  --oldincludedir=DIR     C header files for non-gcc [/boot/home/pkg/include]
+   --datarootdir=DIR       read-only arch.-independent data root [PREFIX/share]
+   --datadir=DIR           read-only architecture-independent data [DATAROOTDIR]
+   --infodir=DIR           info documentation [DATAROOTDIR/info]
+@@ -3151,15 +3151,15 @@ uname -r = `(uname -r) 2>/dev/null || ec
+ uname -s = `(uname -s) 2>/dev/null || echo unknown`
+ uname -v = `(uname -v) 2>/dev/null || echo unknown`
+ 
+-/usr/bin/uname -p = `(/usr/bin/uname -p) 2>/dev/null || echo unknown`
++/boot/home/pkg/bin/uname -p = `(/boot/home/pkg/bin/uname -p) 2>/dev/null || echo unknown`
+ /bin/uname -X     = `(/bin/uname -X) 2>/dev/null     || echo unknown`
+ 
+ /bin/arch              = `(/bin/arch) 2>/dev/null              || echo unknown`
+-/usr/bin/arch -k       = `(/usr/bin/arch -k) 2>/dev/null       || echo unknown`
+-/usr/convex/getsysinfo = `(/usr/convex/getsysinfo) 2>/dev/null || echo unknown`
+-/usr/bin/hostinfo      = `(/usr/bin/hostinfo) 2>/dev/null      || echo unknown`
++/boot/home/pkg/bin/arch -k       = `(/boot/home/pkg/bin/arch -k) 2>/dev/null       || echo unknown`
++/boot/home/pkg/convex/getsysinfo = `(/boot/home/pkg/convex/getsysinfo) 2>/dev/null || echo unknown`
++/boot/home/pkg/bin/hostinfo      = `(/boot/home/pkg/bin/hostinfo) 2>/dev/null      || echo unknown`
+ /bin/machine           = `(/bin/machine) 2>/dev/null           || echo unknown`
+-/usr/bin/oslevel       = `(/usr/bin/oslevel) 2>/dev/null       || echo unknown`
++/boot/home/pkg/bin/oslevel       = `(/boot/home/pkg/bin/oslevel) 2>/dev/null       || echo unknown`
+ /bin/universe          = `(/bin/universe) 2>/dev/null          || echo unknown`
+ 
+ _ASUNAME
+@@ -3784,14 +3784,14 @@ am__api_version='1.14'
+ # Find a good install program.  We prefer a C program (faster),
+ # so one script is as good as another.  But avoid the broken or
+ # incompatible versions:
+-# SysV /etc/install, /usr/sbin/install
+-# SunOS /usr/etc/install
++# SysV /etc/install, /boot/home/pkg/sbin/install
++# SunOS /boot/home/pkg/etc/install
+ # IRIX /sbin/install
+ # AIX /bin/install
+ # AmigaOS /C/install, which installs bootblocks on floppy discs
+-# AIX 4 /usr/bin/installbsd, which doesn't work without a -g flag
+-# AFS /usr/afsws/bin/install, which mishandles nonexistent args
+-# SVR4 /usr/ucb/install, which tries to use the nonexistent group "staff"
++# AIX 4 /boot/home/pkg/bin/installbsd, which doesn't work without a -g flag
++# AFS /boot/home/pkg/afsws/bin/install, which mishandles nonexistent args
++# SVR4 /boot/home/pkg/ucb/install, which tries to use the nonexistent group "staff"
+ # OS/2's system install, which has a completely different semantic
+ # ./install, which can be erroneously created by make from ./install.sh.
+ # Reject install programs that cannot install multiple files.
+@@ -3809,9 +3809,9 @@ do
+     # Account for people who put trailing slashes in PATH elements.
+ case $as_dir/ in #((
+   ./ | .// | /[cC]/* | \
+-  /etc/* | /usr/sbin/* | /usr/etc/* | /sbin/* | /usr/afsws/bin/* | \
++  /etc/* | /boot/home/pkg/sbin/* | /boot/home/pkg/etc/* | /sbin/* | /boot/home/pkg/afsws/bin/* | \
+   ?:[\\/]os2[\\/]install[\\/]* | ?:[\\/]OS2[\\/]INSTALL[\\/]* | \
+-  /usr/ucb/* ) ;;
++  /boot/home/pkg/ucb/* ) ;;
+   *)
+     # OSF1 and SCO ODT 3.0 have their own names for install.
+     # Don't use installbsd from OSF since it installs stuff as root
+@@ -4693,7 +4693,7 @@ do
+   test -z "$as_dir" && as_dir=.
+     for ac_exec_ext in '' $ac_executable_extensions; do
+   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    if test "$as_dir/$ac_word$ac_exec_ext" = "/usr/ucb/cc"; then
++    if test "$as_dir/$ac_word$ac_exec_ext" = "/boot/home/pkg/ucb/cc"; then
+        ac_prog_rejected=yes
+        continue
+      fi
+@@ -5660,7 +5660,7 @@ else
+   ac_path_GREP_found=false
+   # Loop through the user's path and test for each of PROGNAME-LIST
+   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH$PATH_SEPARATOR/usr/xpg4/bin
++for as_dir in $PATH$PATH_SEPARATOR/boot/home/pkg/xpg4/bin
+ do
+   IFS=$as_save_IFS
+   test -z "$as_dir" && as_dir=.
+@@ -5702,7 +5702,7 @@ esac
+   done
+ IFS=$as_save_IFS
+   if test -z "$ac_cv_path_GREP"; then
+-    as_fn_error $? "no acceptable grep could be found in $PATH$PATH_SEPARATOR/usr/xpg4/bin" "$LINENO" 5
++    as_fn_error $? "no acceptable grep could be found in $PATH$PATH_SEPARATOR/boot/home/pkg/xpg4/bin" "$LINENO" 5
+   fi
+ else
+   ac_cv_path_GREP=$GREP
+@@ -5726,7 +5726,7 @@ else
+   ac_path_EGREP_found=false
+   # Loop through the user's path and test for each of PROGNAME-LIST
+   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH$PATH_SEPARATOR/usr/xpg4/bin
++for as_dir in $PATH$PATH_SEPARATOR/boot/home/pkg/xpg4/bin
+ do
+   IFS=$as_save_IFS
+   test -z "$as_dir" && as_dir=.
+@@ -5768,7 +5768,7 @@ esac
+   done
+ IFS=$as_save_IFS
+   if test -z "$ac_cv_path_EGREP"; then
+-    as_fn_error $? "no acceptable egrep could be found in $PATH$PATH_SEPARATOR/usr/xpg4/bin" "$LINENO" 5
++    as_fn_error $? "no acceptable egrep could be found in $PATH$PATH_SEPARATOR/boot/home/pkg/xpg4/bin" "$LINENO" 5
+   fi
+ else
+   ac_cv_path_EGREP=$EGREP
+@@ -6130,7 +6130,7 @@ do
+   test -z "$as_dir" && as_dir=.
+     for ac_exec_ext in '' $ac_executable_extensions; do
+   if as_fn_executable_p "$as_dir/$ac_word$ac_exec_ext"; then
+-    if test "$as_dir/$ac_word$ac_exec_ext" = "/usr/ucb/cc"; then
++    if test "$as_dir/$ac_word$ac_exec_ext" = "/boot/home/pkg/ucb/cc"; then
+        ac_prog_rejected=yes
+        continue
+      fi
+@@ -7607,7 +7607,7 @@ else
+   ac_path_FGREP_found=false
+   # Loop through the user's path and test for each of PROGNAME-LIST
+   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-for as_dir in $PATH$PATH_SEPARATOR/usr/xpg4/bin
++for as_dir in $PATH$PATH_SEPARATOR/boot/home/pkg/xpg4/bin
+ do
+   IFS=$as_save_IFS
+   test -z "$as_dir" && as_dir=.
+@@ -7649,7 +7649,7 @@ esac
+   done
+ IFS=$as_save_IFS
+   if test -z "$ac_cv_path_FGREP"; then
+-    as_fn_error $? "no acceptable fgrep could be found in $PATH$PATH_SEPARATOR/usr/xpg4/bin" "$LINENO" 5
++    as_fn_error $? "no acceptable fgrep could be found in $PATH$PATH_SEPARATOR/boot/home/pkg/xpg4/bin" "$LINENO" 5
+   fi
+ else
+   ac_cv_path_FGREP=$FGREP
+@@ -8585,7 +8585,7 @@ else
+   ;;
+   *)
+   as_save_IFS=$IFS; IFS=$PATH_SEPARATOR
+-as_dummy="$PATH:/usr/platform/`uname -i`/sbin/:/usr/platform/`uname -m`/sbin/"
++as_dummy="$PATH:/boot/home/pkg/platform/`uname -i`/sbin/:/boot/home/pkg/platform/`uname -m`/sbin/"
+ for as_dir in $as_dummy
+ do
+   IFS=$as_save_IFS
+@@ -8637,7 +8637,7 @@ fi
+   alphaev79) ax_gcc_arch="ev79 ev7 ev69 ev68 ev67" ;;
+ 
+   powerpc*)
+-     cputype=`((grep cpu /proc/cpuinfo | head -n 1 | cut -d: -f2 | cut -d, -f1 | $SED 's/ //g') ; /usr/bin/machine ; /bin/machine; grep CPU /var/run/dmesg.boot | head -n 1 | cut -d" " -f2) 2> /dev/null`
++     cputype=`((grep cpu /proc/cpuinfo | head -n 1 | cut -d: -f2 | cut -d, -f1 | $SED 's/ //g') ; /boot/home/pkg/bin/machine ; /bin/machine; grep CPU /var/run/dmesg.boot | head -n 1 | cut -d" " -f2) 2> /dev/null`
+      cputype=`echo $cputype | $SED -e 's/ppc//g;s/ *//g'`
+      case $cputype in
+        *750*) ax_gcc_arch="750 G3" ;;
+@@ -10454,7 +10454,7 @@ _ACEOF
+ if ac_fn_c_try_link "$LINENO"; then :
+   ax_cv_check_cl_libcl=$ax_try_lib; break
+ else
+-  ax_check_cl_nvidia_flags="-L/usr/$ax_check_cl_libdir/nvidia" LIBS="$ax_try_lib $ax_check_cl_nvidia_flags $CL_LIBS $ax_save_LIBS"
++  ax_check_cl_nvidia_flags="-L/boot/home/pkg/$ax_check_cl_libdir/nvidia" LIBS="$ax_try_lib $ax_check_cl_nvidia_flags $CL_LIBS $ax_save_LIBS"
+                  cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+@@ -11003,7 +11003,7 @@ else
+   fi
+   for lt_tmp_nm in $lt_nm_to_check; do
+     lt_save_ifs="$IFS"; IFS=$PATH_SEPARATOR
+-    for ac_dir in $PATH /usr/ccs/bin/elf /usr/ccs/bin /usr/ucb /bin; do
++    for ac_dir in $PATH /boot/home/pkg/ccs/bin/elf /boot/home/pkg/ccs/bin /boot/home/pkg/ucb /bin; do
+       IFS="$lt_save_ifs"
+       test -z "$ac_dir" && ac_dir=.
+       tmp_nm="$ac_dir/$lt_tmp_nm"
+@@ -11241,8 +11241,8 @@ else
+     # This has been around since 386BSD, at least.  Likely further.
+     if test -x /sbin/sysctl; then
+       lt_cv_sys_max_cmd_len=`/sbin/sysctl -n kern.argmax`
+-    elif test -x /usr/sbin/sysctl; then
+-      lt_cv_sys_max_cmd_len=`/usr/sbin/sysctl -n kern.argmax`
++    elif test -x /boot/home/pkg/sbin/sysctl; then
++      lt_cv_sys_max_cmd_len=`/boot/home/pkg/sbin/sysctl -n kern.argmax`
+     else
+       lt_cv_sys_max_cmd_len=65536	# usable default for all BSDs
+     fi
+@@ -11375,7 +11375,7 @@ fi
+ # test EBCDIC or ASCII
+ case `echo X|tr X '\101'` in
+  A) # ASCII based system
+-    # \n is not interpreted correctly by Solaris 8 /usr/ucb/tr
++    # \n is not interpreted correctly by Solaris 8 /boot/home/pkg/ucb/tr
+   lt_SP2NL='tr \040 \012'
+   lt_NL2SP='tr \015\012 \040\040'
+   ;;
+@@ -11634,7 +11634,7 @@ beos*)
+ 
+ bsdi[45]*)
+   lt_cv_deplibs_check_method='file_magic ELF [0-9][0-9]*-bit [ML]SB (shared object|dynamic lib)'
+-  lt_cv_file_magic_cmd='/usr/bin/file -L'
++  lt_cv_file_magic_cmd='/boot/home/pkg/bin/file -L'
+   lt_cv_file_magic_test_file=/shlib/libc.so
+   ;;
+ 
+@@ -11676,8 +11676,8 @@ freebsd* | dragonfly*)
+       # Not sure whether the presence of OpenBSD here was a mistake.
+       # Let's accept both of them until this is cleared up.
+       lt_cv_deplibs_check_method='file_magic (FreeBSD|OpenBSD|DragonFly)/i[3-9]86 (compact )?demand paged shared library'
+-      lt_cv_file_magic_cmd=/usr/bin/file
+-      lt_cv_file_magic_test_file=`echo /usr/lib/libc.so.*`
++      lt_cv_file_magic_cmd=/boot/home/pkg/bin/file
++      lt_cv_file_magic_test_file=`echo /boot/home/pkg/lib/libc.so.*`
+       ;;
+     esac
+   else
+@@ -11694,19 +11694,19 @@ haiku*)
+   ;;
+ 
+ hpux10.20* | hpux11*)
+-  lt_cv_file_magic_cmd=/usr/bin/file
++  lt_cv_file_magic_cmd=/boot/home/pkg/bin/file
+   case $host_cpu in
+   ia64*)
+     lt_cv_deplibs_check_method='file_magic (s[0-9][0-9][0-9]|ELF-[0-9][0-9]) shared object file - IA64'
+-    lt_cv_file_magic_test_file=/usr/lib/hpux32/libc.so
++    lt_cv_file_magic_test_file=/boot/home/pkg/lib/hpux32/libc.so
+     ;;
+   hppa*64*)
+     lt_cv_deplibs_check_method='file_magic (s[0-9][0-9][0-9]|ELF[ -][0-9][0-9])(-bit)?( [LM]SB)? shared object( file)?[, -]* PA-RISC [0-9]\.[0-9]'
+-    lt_cv_file_magic_test_file=/usr/lib/pa20_64/libc.sl
++    lt_cv_file_magic_test_file=/boot/home/pkg/lib/pa20_64/libc.sl
+     ;;
+   *)
+     lt_cv_deplibs_check_method='file_magic (s[0-9][0-9][0-9]|PA-RISC[0-9]\.[0-9]) shared library'
+-    lt_cv_file_magic_test_file=/usr/lib/libc.sl
++    lt_cv_file_magic_test_file=/boot/home/pkg/lib/libc.sl
+     ;;
+   esac
+   ;;
+@@ -11741,8 +11741,8 @@ netbsd*)
+ 
+ newos6*)
+   lt_cv_deplibs_check_method='file_magic ELF [0-9][0-9]*-bit [ML]SB (executable|dynamic lib)'
+-  lt_cv_file_magic_cmd=/usr/bin/file
+-  lt_cv_file_magic_test_file=/usr/lib/libnls.so
++  lt_cv_file_magic_cmd=/boot/home/pkg/bin/file
++  lt_cv_file_magic_test_file=/boot/home/pkg/lib/libnls.so
+   ;;
+ 
+ *nto* | *qnx*)
+@@ -11777,7 +11777,7 @@ sysv4 | sysv4.3*)
+   case $host_vendor in
+   motorola)
+     lt_cv_deplibs_check_method='file_magic ELF [0-9][0-9]*-bit [ML]SB (shared object|dynamic lib) M[0-9][0-9]* Version [0-9]'
+-    lt_cv_file_magic_test_file=`echo /usr/lib/libc.so*`
++    lt_cv_file_magic_test_file=`echo /boot/home/pkg/lib/libc.so*`
+     ;;
+   ncr)
+     lt_cv_deplibs_check_method=pass_all
+@@ -12757,7 +12757,7 @@ ia64-*-hpux*)
+   ac_status=$?
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-    case `/usr/bin/file conftest.$ac_objext` in
++    case `/boot/home/pkg/bin/file conftest.$ac_objext` in
+       *ELF-32*)
+ 	HPUX_IA64_MODE="32"
+ 	;;
+@@ -12777,7 +12777,7 @@ ia64-*-hpux*)
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+     if test "$lt_cv_prog_gnu_ld" = yes; then
+-      case `/usr/bin/file conftest.$ac_objext` in
++      case `/boot/home/pkg/bin/file conftest.$ac_objext` in
+ 	*32-bit*)
+ 	  LD="${LD-ld} -melf32bsmip"
+ 	  ;;
+@@ -12789,7 +12789,7 @@ ia64-*-hpux*)
+ 	;;
+       esac
+     else
+-      case `/usr/bin/file conftest.$ac_objext` in
++      case `/boot/home/pkg/bin/file conftest.$ac_objext` in
+ 	*32-bit*)
+ 	  LD="${LD-ld} -32"
+ 	  ;;
+@@ -12814,7 +12814,7 @@ s390*-*linux*|s390*-*tpf*|sparc*-*linux*
+   ac_status=$?
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-    case `/usr/bin/file conftest.o` in
++    case `/boot/home/pkg/bin/file conftest.o` in
+       *32-bit*)
+ 	case $host in
+ 	  x86_64-*kfreebsd*-gnu)
+@@ -12919,7 +12919,7 @@ $as_echo "$lt_cv_cc_needs_belf" >&6; }
+   ac_status=$?
+   $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
+   test $ac_status = 0; }; then
+-    case `/usr/bin/file conftest.o` in
++    case `/boot/home/pkg/bin/file conftest.o` in
+     *64-bit*)
+       case $lt_cv_prog_gnu_ld in
+       yes*)
+@@ -14300,7 +14300,7 @@ else
+ *)
+   lt_save_MAGIC_CMD="$MAGIC_CMD"
+   lt_save_ifs="$IFS"; IFS=$PATH_SEPARATOR
+-  ac_dummy="/usr/bin$PATH_SEPARATOR$PATH"
++  ac_dummy="/boot/home/pkg/bin$PATH_SEPARATOR$PATH"
+   for ac_dir in $ac_dummy; do
+     IFS="$lt_save_ifs"
+     test -z "$ac_dir" && ac_dir=.
+@@ -14366,7 +14366,7 @@ else
+ *)
+   lt_save_MAGIC_CMD="$MAGIC_CMD"
+   lt_save_ifs="$IFS"; IFS=$PATH_SEPARATOR
+-  ac_dummy="/usr/bin$PATH_SEPARATOR$PATH"
++  ac_dummy="/boot/home/pkg/bin$PATH_SEPARATOR$PATH"
+   for ac_dir in $ac_dummy; do
+     IFS="$lt_save_ifs"
+     test -z "$ac_dir" && ac_dir=.
+@@ -14601,7 +14601,7 @@ lt_prog_compiler_static=
+     haiku*)
+       # PIC is the default for Haiku.
+       # The "-static" flag exists, but is broken.
+-      lt_prog_compiler_static=
++      lt_prog_compiler_pic='-fPIC'
+       ;;
+ 
+     hpux*)
+@@ -14637,7 +14637,7 @@ lt_prog_compiler_static=
+       ;;
+ 
+     sysv4*MP*)
+-      if test -d /usr/nec; then
++      if test -d /boot/home/pkg/nec; then
+ 	lt_prog_compiler_pic=-Kconform_pic
+       fi
+       ;;
+@@ -14820,7 +14820,7 @@ lt_prog_compiler_static=
+       ;;
+ 
+     sysv4*MP*)
+-      if test -d /usr/nec ;then
++      if test -d /boot/home/pkg/nec ;then
+ 	lt_prog_compiler_pic='-Kconform_pic'
+ 	lt_prog_compiler_static='-Bstatic'
+       fi
+@@ -15632,7 +15632,7 @@ fi
+ rm -f core conftest.err conftest.$ac_objext \
+     conftest$ac_exeext conftest.$ac_ext
+   if test -z "$lt_cv_aix_libpath_"; then
+-    lt_cv_aix_libpath_="/usr/lib:/lib"
++    lt_cv_aix_libpath_="/boot/home/pkg/lib:/lib"
+   fi
+ 
+ fi
+@@ -15644,7 +15644,7 @@ fi
+         archive_expsym_cmds='$CC -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' $compiler_flags `if test "x${allow_undefined_flag}" != "x"; then func_echo_all "${wl}${allow_undefined_flag}"; else :; fi` '"\${wl}$exp_sym_flag:\$export_symbols $shared_flag"
+       else
+ 	if test "$host_cpu" = ia64; then
+-	  hardcode_libdir_flag_spec='${wl}-R $libdir:/usr/lib:/lib'
++	  hardcode_libdir_flag_spec='${wl}-R $libdir:/boot/home/pkg/lib:/lib'
+ 	  allow_undefined_flag="-z nodefs"
+ 	  archive_expsym_cmds="\$CC $shared_flag"' -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' $compiler_flags ${wl}${allow_undefined_flag} '"\${wl}$exp_sym_flag:\$export_symbols"
+ 	else
+@@ -15685,7 +15685,7 @@ fi
+ rm -f core conftest.err conftest.$ac_objext \
+     conftest$ac_exeext conftest.$ac_ext
+   if test -z "$lt_cv_aix_libpath_"; then
+-    lt_cv_aix_libpath_="/usr/lib:/lib"
++    lt_cv_aix_libpath_="/boot/home/pkg/lib:/lib"
+   fi
+ 
+ fi
+@@ -15839,7 +15839,7 @@ fi
+     # does not break anything, and helps significantly (at the cost of a little
+     # extra space).
+     freebsd2.2*)
+-      archive_cmds='$LD -Bshareable -o $lib $libobjs $deplibs $linker_flags /usr/lib/c++rt0.o'
++      archive_cmds='$LD -Bshareable -o $lib $libobjs $deplibs $linker_flags /boot/home/pkg/lib/c++rt0.o'
+       hardcode_libdir_flag_spec='-R$libdir'
+       hardcode_direct=yes
+       hardcode_shlibpath_var=no
+@@ -16048,7 +16048,7 @@ $as_echo "$lt_cv_irix_exported_symbol" >
+       ;;
+ 
+     openbsd*)
+-      if test -f /usr/libexec/ld.so; then
++      if test -f /boot/home/pkg/libexec/ld.so; then
+ 	hardcode_direct=yes
+ 	hardcode_shlibpath_var=no
+ 	hardcode_direct_absolute=yes
+@@ -16198,7 +16198,7 @@ $as_echo "$lt_cv_irix_exported_symbol" >
+       ;;
+ 
+     sysv4*MP*)
+-      if test -d /usr/nec; then
++      if test -d /boot/home/pkg/nec; then
+ 	archive_cmds='$LD -G -h $soname -o $lib $libobjs $deplibs $linker_flags'
+ 	hardcode_shlibpath_var=no
+ 	runpath_var=LD_RUN_PATH
+@@ -16573,7 +16573,7 @@ BEGIN {RS=" "; FS="/|\n";} {
+   esac
+   sys_lib_search_path_spec=`$ECHO "$lt_search_path_spec" | $lt_NL2SP`
+ else
+-  sys_lib_search_path_spec="/lib /usr/lib /usr/local/lib"
++  sys_lib_search_path_spec="/lib /boot/home/pkg/lib /boot/home/pkg/local/lib"
+ fi
+ library_names_spec=
+ libname_spec='lib$name'
+@@ -16587,7 +16587,7 @@ shlibpath_var=
+ shlibpath_overrides_runpath=unknown
+ version_type=none
+ dynamic_linker="$host_os ld.so"
+-sys_lib_dlsearch_path_spec="/lib /usr/lib"
++sys_lib_dlsearch_path_spec="/lib /boot/home/pkg/lib"
+ need_lib_prefix=unknown
+ hardcode_into_libs=no
+ 
+@@ -16613,7 +16613,7 @@ aix[4-9]*)
+   if test "$host_cpu" = ia64; then
+     # AIX 5 supports IA64
+     library_names_spec='${libname}${release}${shared_ext}$major ${libname}${release}${shared_ext}$versuffix $libname${shared_ext}'
+-    shlibpath_var=LD_LIBRARY_PATH
++    shlibpath_var=LD_XLIBRARY_PATH
+   else
+     # With GCC up to 2.95.x, collect2 would create an import file
+     # for dependence libraries.  The import file would start with
+@@ -16664,23 +16664,17 @@ amigaos*)
+   esac
+   ;;
+ 
+-beos*)
+-  library_names_spec='${libname}${shared_ext}'
+-  dynamic_linker="$host_os ld.so"
+-  shlibpath_var=LIBRARY_PATH
+-  ;;
+-
+ bsdi[45]*)
+   version_type=linux # correct to gnu/linux during the next big refactor
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+   finish_cmds='PATH="\$PATH:/sbin" ldconfig $libdir'
+-  shlibpath_var=LD_LIBRARY_PATH
+-  sys_lib_search_path_spec="/shlib /usr/lib /usr/X11/lib /usr/contrib/lib /lib /usr/local/lib"
+-  sys_lib_dlsearch_path_spec="/shlib /usr/lib /usr/local/lib"
+-  # the default ld.so.conf also contains /usr/contrib/lib and
+-  # /usr/X11R6/lib (/usr/X11 is a link to /usr/X11R6), but let us allow
++  shlibpath_var=LD_XLIBRARY_PATH
++  sys_lib_search_path_spec="/shlib /boot/home/pkg/lib /boot/home/pkg/X11/lib /boot/home/pkg/contrib/lib /lib /boot/home/pkg/local/lib"
++  sys_lib_dlsearch_path_spec="/shlib /boot/home/pkg/lib /boot/home/pkg/local/lib"
++  # the default ld.so.conf also contains /boot/home/pkg/contrib/lib and
++  # /boot/home/pkg/X11R6/lib (/boot/home/pkg/X11 is a link to /boot/home/pkg/X11R6), but let us allow
+   # libtool to hard-code these into programs
+   ;;
+ 
+@@ -16714,7 +16708,7 @@ cygwin* | mingw* | pw32* | cegcc*)
+       # Cygwin DLLs use 'cyg' prefix rather than 'lib'
+       soname_spec='`echo ${libname} | sed -e 's/^lib/cyg/'``echo ${release} | $SED -e 's/[.]/-/g'`${versuffix}${shared_ext}'
+ 
+-      sys_lib_search_path_spec="$sys_lib_search_path_spec /usr/lib/w32api"
++      sys_lib_search_path_spec="$sys_lib_search_path_spec /boot/home/pkg/lib/w32api"
+       ;;
+     mingw* | cegcc*)
+       # MinGW DLLs use traditional 'lib' prefix
+@@ -16802,11 +16796,11 @@ darwin* | rhapsody*)
+   library_names_spec='${libname}${release}${major}$shared_ext ${libname}$shared_ext'
+   soname_spec='${libname}${release}${major}$shared_ext'
+   shlibpath_overrides_runpath=yes
+-  shlibpath_var=DYLD_LIBRARY_PATH
++  shlibpath_var=DYLD_XLIBRARY_PATH
+   shrext_cmds='`test .$module = .yes && echo .so || echo .dylib`'
+ 
+-  sys_lib_search_path_spec="$sys_lib_search_path_spec /usr/local/lib"
+-  sys_lib_dlsearch_path_spec='/usr/local/lib /lib /usr/lib'
++  sys_lib_search_path_spec="$sys_lib_search_path_spec /boot/home/pkg/local/lib"
++  sys_lib_dlsearch_path_spec='/boot/home/pkg/local/lib /lib /boot/home/pkg/lib'
+   ;;
+ 
+ dgux*)
+@@ -16815,14 +16809,14 @@ dgux*)
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname$shared_ext'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   ;;
+ 
+ freebsd* | dragonfly*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+-  if test -x /usr/bin/objformat; then
+-    objformat=`/usr/bin/objformat`
++  if test -x /boot/home/pkg/bin/objformat; then
++    objformat=`/boot/home/pkg/bin/objformat`
+   else
+     case $host_os in
+     freebsd[23].*) objformat=aout ;;
+@@ -16841,7 +16835,7 @@ freebsd* | dragonfly*)
+       need_version=yes
+       ;;
+   esac
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   case $host_os in
+   freebsd2.*)
+     shlibpath_overrides_runpath=yes
+@@ -16868,7 +16862,7 @@ gnu*)
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}${major} ${libname}${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=no
+   hardcode_into_libs=yes
+   ;;
+@@ -16880,9 +16874,9 @@ haiku*)
+   dynamic_linker="$host_os runtime_loader"
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}${major} ${libname}${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LIBRARY_PATH
++  shlibpath_var=XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+-  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/common/lib /boot/system/lib'
++  sys_lib_dlsearch_path_spec='/boot/system/lib'
+   hardcode_into_libs=yes
+   ;;
+ 
+@@ -16897,14 +16891,14 @@ hpux9* | hpux10* | hpux11*)
+     shrext_cmds='.so'
+     hardcode_into_libs=yes
+     dynamic_linker="$host_os dld.so"
+-    shlibpath_var=LD_LIBRARY_PATH
++    shlibpath_var=LD_XLIBRARY_PATH
+     shlibpath_overrides_runpath=yes # Unless +noenvvar is specified.
+     library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+     soname_spec='${libname}${release}${shared_ext}$major'
+     if test "X$HPUX_IA64_MODE" = X32; then
+-      sys_lib_search_path_spec="/usr/lib/hpux32 /usr/local/lib/hpux32 /usr/local/lib"
++      sys_lib_search_path_spec="/boot/home/pkg/lib/hpux32 /boot/home/pkg/local/lib/hpux32 /boot/home/pkg/local/lib"
+     else
+-      sys_lib_search_path_spec="/usr/lib/hpux64 /usr/local/lib/hpux64"
++      sys_lib_search_path_spec="/boot/home/pkg/lib/hpux64 /boot/home/pkg/local/lib/hpux64"
+     fi
+     sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
+     ;;
+@@ -16912,11 +16906,11 @@ hpux9* | hpux10* | hpux11*)
+     shrext_cmds='.sl'
+     hardcode_into_libs=yes
+     dynamic_linker="$host_os dld.sl"
+-    shlibpath_var=LD_LIBRARY_PATH # How should we handle SHLIB_PATH
++    shlibpath_var=LD_XLIBRARY_PATH # How should we handle SHLIB_PATH
+     shlibpath_overrides_runpath=yes # Unless +noenvvar is specified.
+     library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+     soname_spec='${libname}${release}${shared_ext}$major'
+-    sys_lib_search_path_spec="/usr/lib/pa20_64 /usr/ccs/lib/pa20_64"
++    sys_lib_search_path_spec="/boot/home/pkg/lib/pa20_64 /boot/home/pkg/ccs/lib/pa20_64"
+     sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
+     ;;
+   *)
+@@ -16941,7 +16935,7 @@ interix[3-9]*)
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major ${libname}${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+   dynamic_linker='Interix 3.x ld.so.1 (PE, like ELF)'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=no
+   hardcode_into_libs=yes
+   ;;
+@@ -16978,8 +16972,8 @@ irix5* | irix6* | nonstopux*)
+   esac
+   shlibpath_var=LD_LIBRARY${shlibsuff}_PATH
+   shlibpath_overrides_runpath=no
+-  sys_lib_search_path_spec="/usr/lib${libsuff} /lib${libsuff} /usr/local/lib${libsuff}"
+-  sys_lib_dlsearch_path_spec="/usr/lib${libsuff} /lib${libsuff}"
++  sys_lib_search_path_spec="/boot/home/pkg/lib${libsuff} /lib${libsuff} /boot/home/pkg/local/lib${libsuff}"
++  sys_lib_dlsearch_path_spec="/boot/home/pkg/lib${libsuff} /lib${libsuff}"
+   hardcode_into_libs=yes
+   ;;
+ 
+@@ -16996,7 +16990,7 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu)
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+   finish_cmds='PATH="\$PATH:/sbin" ldconfig -n $libdir'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=no
+ 
+   # Some binutils ld are patched to set DT_RUNPATH
+@@ -17039,7 +17033,7 @@ fi
+   hardcode_into_libs=yes
+ 
+   # Add ABI-specific directories to the system library path.
+-  sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /lib /usr/lib"
++  sys_lib_dlsearch_path_spec="/lib64 /boot/home/pkg/lib64 /lib /boot/home/pkg/lib"
+ 
+   # Append ld.so.conf contents to the search path
+   if test -f /etc/ld.so.conf; then
+@@ -17070,7 +17064,7 @@ netbsd*)
+     soname_spec='${libname}${release}${shared_ext}$major'
+     dynamic_linker='NetBSD ld.elf_so'
+   fi
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+   hardcode_into_libs=yes
+   ;;
+@@ -17078,7 +17072,7 @@ netbsd*)
+ newsos6)
+   version_type=linux # correct to gnu/linux during the next big refactor
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+   ;;
+ 
+@@ -17088,7 +17082,7 @@ newsos6)
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=no
+   hardcode_into_libs=yes
+   dynamic_linker='ldqnx.so'
+@@ -17096,7 +17090,7 @@ newsos6)
+ 
+ openbsd*)
+   version_type=sunos
+-  sys_lib_dlsearch_path_spec="/usr/lib"
++  sys_lib_dlsearch_path_spec="/boot/home/pkg/lib"
+   need_lib_prefix=no
+   # Some older versions of OpenBSD (3.3 at least) *do* need versioned libs.
+   case $host_os in
+@@ -17105,7 +17099,7 @@ openbsd*)
+   esac
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${shared_ext}$versuffix'
+   finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   if test -z "`echo __ELF__ | $CC -E - | $GREP __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then
+     case $host_os in
+       openbsd2.[89] | openbsd2.[89].*)
+@@ -17135,8 +17129,8 @@ osf3* | osf4* | osf5*)
+   need_version=no
+   soname_spec='${libname}${release}${shared_ext}$major'
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+-  shlibpath_var=LD_LIBRARY_PATH
+-  sys_lib_search_path_spec="/usr/shlib /usr/ccs/lib /usr/lib/cmplrs/cc /usr/lib /usr/local/lib /var/shlib"
++  shlibpath_var=LD_XLIBRARY_PATH
++  sys_lib_search_path_spec="/boot/home/pkg/shlib /boot/home/pkg/ccs/lib /boot/home/pkg/lib/cmplrs/cc /boot/home/pkg/lib /boot/home/pkg/local/lib /var/shlib"
+   sys_lib_dlsearch_path_spec="$sys_lib_search_path_spec"
+   ;;
+ 
+@@ -17150,7 +17144,7 @@ solaris*)
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+   hardcode_into_libs=yes
+   # ldd complains unless libraries are executable
+@@ -17160,8 +17154,8 @@ solaris*)
+ sunos4*)
+   version_type=sunos
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${shared_ext}$versuffix'
+-  finish_cmds='PATH="\$PATH:/usr/etc" ldconfig $libdir'
+-  shlibpath_var=LD_LIBRARY_PATH
++  finish_cmds='PATH="\$PATH:/boot/home/pkg/etc" ldconfig $libdir'
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+   if test "$with_gnu_ld" = yes; then
+     need_lib_prefix=no
+@@ -17173,7 +17167,7 @@ sysv4 | sysv4.3*)
+   version_type=linux # correct to gnu/linux during the next big refactor
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   case $host_vendor in
+     sni)
+       shlibpath_overrides_runpath=no
+@@ -17187,17 +17181,17 @@ sysv4 | sysv4.3*)
+       need_lib_prefix=no
+       need_version=no
+       shlibpath_overrides_runpath=no
+-      sys_lib_search_path_spec='/lib /usr/lib /usr/ccs/lib'
++      sys_lib_search_path_spec='/lib /boot/home/pkg/lib /boot/home/pkg/ccs/lib'
+       ;;
+   esac
+   ;;
+ 
+ sysv4*MP*)
+-  if test -d /usr/nec ;then
++  if test -d /boot/home/pkg/nec ;then
+     version_type=linux # correct to gnu/linux during the next big refactor
+     library_names_spec='$libname${shared_ext}.$versuffix $libname${shared_ext}.$major $libname${shared_ext}'
+     soname_spec='$libname${shared_ext}.$major'
+-    shlibpath_var=LD_LIBRARY_PATH
++    shlibpath_var=LD_XLIBRARY_PATH
+   fi
+   ;;
+ 
+@@ -17207,20 +17201,20 @@ sysv5* | sco3.2v5* | sco5v6* | unixware*
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext} $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+   hardcode_into_libs=yes
+   if test "$with_gnu_ld" = yes; then
+-    sys_lib_search_path_spec='/usr/local/lib /usr/gnu/lib /usr/ccs/lib /usr/lib /lib'
++    sys_lib_search_path_spec='/boot/home/pkg/local/lib /boot/home/pkg/gnu/lib /boot/home/pkg/ccs/lib /boot/home/pkg/lib /lib'
+   else
+-    sys_lib_search_path_spec='/usr/ccs/lib /usr/lib'
++    sys_lib_search_path_spec='/boot/home/pkg/ccs/lib /boot/home/pkg/lib'
+     case $host_os in
+       sco3.2v5*)
+         sys_lib_search_path_spec="$sys_lib_search_path_spec /lib"
+ 	;;
+     esac
+   fi
+-  sys_lib_dlsearch_path_spec='/usr/lib'
++  sys_lib_dlsearch_path_spec='/boot/home/pkg/lib'
+   ;;
+ 
+ tpf*)
+@@ -17229,7 +17223,7 @@ tpf*)
+   need_lib_prefix=no
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=no
+   hardcode_into_libs=yes
+   ;;
+@@ -17238,7 +17232,7 @@ uts4*)
+   version_type=linux # correct to gnu/linux during the next big refactor
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   ;;
+ 
+ *)
+@@ -17251,7 +17245,7 @@ test "$dynamic_linker" = no && can_build
+ 
+ variables_saved_for_relink="PATH $shlibpath_var $runpath_var"
+ if test "$GCC" = yes; then
+-  variables_saved_for_relink="$variables_saved_for_relink GCC_EXEC_PREFIX COMPILER_PATH LIBRARY_PATH"
++  variables_saved_for_relink="$variables_saved_for_relink GCC_EXEC_PREFIX COMPILER_PATH XLIBRARY_PATH"
+ fi
+ 
+ if test "${lt_cv_sys_lib_search_path_spec+set}" = set; then
+@@ -18562,7 +18556,7 @@ fi
+ rm -f core conftest.err conftest.$ac_objext \
+     conftest$ac_exeext conftest.$ac_ext
+   if test -z "$lt_cv_aix_libpath__CXX"; then
+-    lt_cv_aix_libpath__CXX="/usr/lib:/lib"
++    lt_cv_aix_libpath__CXX="/boot/home/pkg/lib:/lib"
+   fi
+ 
+ fi
+@@ -18575,7 +18569,7 @@ fi
+           archive_expsym_cmds_CXX='$CC -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' $compiler_flags `if test "x${allow_undefined_flag}" != "x"; then func_echo_all "${wl}${allow_undefined_flag}"; else :; fi` '"\${wl}$exp_sym_flag:\$export_symbols $shared_flag"
+         else
+           if test "$host_cpu" = ia64; then
+-	    hardcode_libdir_flag_spec_CXX='${wl}-R $libdir:/usr/lib:/lib'
++	    hardcode_libdir_flag_spec_CXX='${wl}-R $libdir:/boot/home/pkg/lib:/lib'
+ 	    allow_undefined_flag_CXX="-z nodefs"
+ 	    archive_expsym_cmds_CXX="\$CC $shared_flag"' -o $output_objdir/$soname $libobjs $deplibs '"\${wl}$no_entry_flag"' $compiler_flags ${wl}${allow_undefined_flag} '"\${wl}$exp_sym_flag:\$export_symbols"
+           else
+@@ -18616,7 +18610,7 @@ fi
+ rm -f core conftest.err conftest.$ac_objext \
+     conftest$ac_exeext conftest.$ac_ext
+   if test -z "$lt_cv_aix_libpath__CXX"; then
+-    lt_cv_aix_libpath__CXX="/usr/lib:/lib"
++    lt_cv_aix_libpath__CXX="/boot/home/pkg/lib:/lib"
+   fi
+ 
+ fi
+@@ -19155,7 +19149,7 @@ fi
+ 	;;
+ 
+       openbsd*)
+-	if test -f /usr/libexec/ld.so; then
++	if test -f /boot/home/pkg/libexec/ld.so; then
+ 	  hardcode_direct_CXX=yes
+ 	  hardcode_shlibpath_var_CXX=no
+ 	  hardcode_direct_absolute_CXX=yes
+@@ -19723,7 +19717,7 @@ lt_prog_compiler_static_CXX=
+       # Instead, we relocate shared libraries at runtime.
+       ;;
+     sysv4*MP*)
+-      if test -d /usr/nec; then
++      if test -d /boot/home/pkg/nec; then
+ 	lt_prog_compiler_pic_CXX=-Kconform_pic
+       fi
+       ;;
+@@ -20424,7 +20418,7 @@ shlibpath_var=
+ shlibpath_overrides_runpath=unknown
+ version_type=none
+ dynamic_linker="$host_os ld.so"
+-sys_lib_dlsearch_path_spec="/lib /usr/lib"
++sys_lib_dlsearch_path_spec="/lib /boot/home/pkg/lib"
+ need_lib_prefix=unknown
+ hardcode_into_libs=no
+ 
+@@ -20450,7 +20444,7 @@ aix[4-9]*)
+   if test "$host_cpu" = ia64; then
+     # AIX 5 supports IA64
+     library_names_spec='${libname}${release}${shared_ext}$major ${libname}${release}${shared_ext}$versuffix $libname${shared_ext}'
+-    shlibpath_var=LD_LIBRARY_PATH
++    shlibpath_var=LD_XLIBRARY_PATH
+   else
+     # With GCC up to 2.95.x, collect2 would create an import file
+     # for dependence libraries.  The import file would start with
+@@ -20504,7 +20498,7 @@ amigaos*)
+ beos*)
+   library_names_spec='${libname}${shared_ext}'
+   dynamic_linker="$host_os ld.so"
+-  shlibpath_var=LIBRARY_PATH
++  shlibpath_var=XLIBRARY_PATH
+   ;;
+ 
+ bsdi[45]*)
+@@ -20513,11 +20507,11 @@ bsdi[45]*)
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+   finish_cmds='PATH="\$PATH:/sbin" ldconfig $libdir'
+-  shlibpath_var=LD_LIBRARY_PATH
+-  sys_lib_search_path_spec="/shlib /usr/lib /usr/X11/lib /usr/contrib/lib /lib /usr/local/lib"
+-  sys_lib_dlsearch_path_spec="/shlib /usr/lib /usr/local/lib"
+-  # the default ld.so.conf also contains /usr/contrib/lib and
+-  # /usr/X11R6/lib (/usr/X11 is a link to /usr/X11R6), but let us allow
++  shlibpath_var=LD_XLIBRARY_PATH
++  sys_lib_search_path_spec="/shlib /boot/home/pkg/lib /boot/home/pkg/X11/lib /boot/home/pkg/contrib/lib /lib /boot/home/pkg/local/lib"
++  sys_lib_dlsearch_path_spec="/shlib /boot/home/pkg/lib /boot/home/pkg/local/lib"
++  # the default ld.so.conf also contains /boot/home/pkg/contrib/lib and
++  # /boot/home/pkg/X11R6/lib (/boot/home/pkg/X11 is a link to /boot/home/pkg/X11R6), but let us allow
+   # libtool to hard-code these into programs
+   ;;
+ 
+@@ -20638,10 +20632,10 @@ darwin* | rhapsody*)
+   library_names_spec='${libname}${release}${major}$shared_ext ${libname}$shared_ext'
+   soname_spec='${libname}${release}${major}$shared_ext'
+   shlibpath_overrides_runpath=yes
+-  shlibpath_var=DYLD_LIBRARY_PATH
++  shlibpath_var=DYLD_XLIBRARY_PATH
+   shrext_cmds='`test .$module = .yes && echo .so || echo .dylib`'
+ 
+-  sys_lib_dlsearch_path_spec='/usr/local/lib /lib /usr/lib'
++  sys_lib_dlsearch_path_spec='/boot/home/pkg/local/lib /lib /boot/home/pkg/lib'
+   ;;
+ 
+ dgux*)
+@@ -20650,14 +20644,14 @@ dgux*)
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname$shared_ext'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   ;;
+ 
+ freebsd* | dragonfly*)
+   # DragonFly does not have aout.  When/if they implement a new
+   # versioning mechanism, adjust this.
+-  if test -x /usr/bin/objformat; then
+-    objformat=`/usr/bin/objformat`
++  if test -x /boot/home/pkg/bin/objformat; then
++    objformat=`/boot/home/pkg/bin/objformat`
+   else
+     case $host_os in
+     freebsd[23].*) objformat=aout ;;
+@@ -20676,7 +20670,7 @@ freebsd* | dragonfly*)
+       need_version=yes
+       ;;
+   esac
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   case $host_os in
+   freebsd2.*)
+     shlibpath_overrides_runpath=yes
+@@ -20703,7 +20697,7 @@ gnu*)
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}${major} ${libname}${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=no
+   hardcode_into_libs=yes
+   ;;
+@@ -20715,9 +20709,9 @@ haiku*)
+   dynamic_linker="$host_os runtime_loader"
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}${major} ${libname}${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LIBRARY_PATH
++  shlibpath_var=XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+-  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/common/lib /boot/system/lib'
++  sys_lib_dlsearch_path_spec='/boot/system/lib'
+   hardcode_into_libs=yes
+   ;;
+ 
+@@ -20732,14 +20726,14 @@ hpux9* | hpux10* | hpux11*)
+     shrext_cmds='.so'
+     hardcode_into_libs=yes
+     dynamic_linker="$host_os dld.so"
+-    shlibpath_var=LD_LIBRARY_PATH
++    shlibpath_var=LD_XLIBRARY_PATH
+     shlibpath_overrides_runpath=yes # Unless +noenvvar is specified.
+     library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+     soname_spec='${libname}${release}${shared_ext}$major'
+     if test "X$HPUX_IA64_MODE" = X32; then
+-      sys_lib_search_path_spec="/usr/lib/hpux32 /usr/local/lib/hpux32 /usr/local/lib"
++      sys_lib_search_path_spec="/boot/home/pkg/lib/hpux32 /boot/home/pkg/local/lib/hpux32 /boot/home/pkg/local/lib"
+     else
+-      sys_lib_search_path_spec="/usr/lib/hpux64 /usr/local/lib/hpux64"
++      sys_lib_search_path_spec="/boot/home/pkg/lib/hpux64 /boot/home/pkg/local/lib/hpux64"
+     fi
+     sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
+     ;;
+@@ -20747,11 +20741,11 @@ hpux9* | hpux10* | hpux11*)
+     shrext_cmds='.sl'
+     hardcode_into_libs=yes
+     dynamic_linker="$host_os dld.sl"
+-    shlibpath_var=LD_LIBRARY_PATH # How should we handle SHLIB_PATH
++    shlibpath_var=LD_XLIBRARY_PATH # How should we handle SHLIB_PATH
+     shlibpath_overrides_runpath=yes # Unless +noenvvar is specified.
+     library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+     soname_spec='${libname}${release}${shared_ext}$major'
+-    sys_lib_search_path_spec="/usr/lib/pa20_64 /usr/ccs/lib/pa20_64"
++    sys_lib_search_path_spec="/boot/home/pkg/lib/pa20_64 /boot/home/pkg/ccs/lib/pa20_64"
+     sys_lib_dlsearch_path_spec=$sys_lib_search_path_spec
+     ;;
+   *)
+@@ -20776,7 +20770,7 @@ interix[3-9]*)
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major ${libname}${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+   dynamic_linker='Interix 3.x ld.so.1 (PE, like ELF)'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=no
+   hardcode_into_libs=yes
+   ;;
+@@ -20813,8 +20807,8 @@ irix5* | irix6* | nonstopux*)
+   esac
+   shlibpath_var=LD_LIBRARY${shlibsuff}_PATH
+   shlibpath_overrides_runpath=no
+-  sys_lib_search_path_spec="/usr/lib${libsuff} /lib${libsuff} /usr/local/lib${libsuff}"
+-  sys_lib_dlsearch_path_spec="/usr/lib${libsuff} /lib${libsuff}"
++  sys_lib_search_path_spec="/boot/home/pkg/lib${libsuff} /lib${libsuff} /boot/home/pkg/local/lib${libsuff}"
++  sys_lib_dlsearch_path_spec="/boot/home/pkg/lib${libsuff} /lib${libsuff}"
+   hardcode_into_libs=yes
+   ;;
+ 
+@@ -20831,7 +20825,7 @@ linux* | k*bsd*-gnu | kopensolaris*-gnu)
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+   finish_cmds='PATH="\$PATH:/sbin" ldconfig -n $libdir'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=no
+ 
+   # Some binutils ld are patched to set DT_RUNPATH
+@@ -20874,7 +20868,7 @@ fi
+   hardcode_into_libs=yes
+ 
+   # Add ABI-specific directories to the system library path.
+-  sys_lib_dlsearch_path_spec="/lib64 /usr/lib64 /lib /usr/lib"
++  sys_lib_dlsearch_path_spec="/lib64 /boot/home/pkg/lib64 /lib /boot/home/pkg/lib"
+ 
+   # Append ld.so.conf contents to the search path
+   if test -f /etc/ld.so.conf; then
+@@ -20905,7 +20899,7 @@ netbsd*)
+     soname_spec='${libname}${release}${shared_ext}$major'
+     dynamic_linker='NetBSD ld.elf_so'
+   fi
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+   hardcode_into_libs=yes
+   ;;
+@@ -20913,7 +20907,7 @@ netbsd*)
+ newsos6)
+   version_type=linux # correct to gnu/linux during the next big refactor
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+   ;;
+ 
+@@ -20923,7 +20917,7 @@ newsos6)
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=no
+   hardcode_into_libs=yes
+   dynamic_linker='ldqnx.so'
+@@ -20931,7 +20925,7 @@ newsos6)
+ 
+ openbsd*)
+   version_type=sunos
+-  sys_lib_dlsearch_path_spec="/usr/lib"
++  sys_lib_dlsearch_path_spec="/boot/home/pkg/lib"
+   need_lib_prefix=no
+   # Some older versions of OpenBSD (3.3 at least) *do* need versioned libs.
+   case $host_os in
+@@ -20940,7 +20934,7 @@ openbsd*)
+   esac
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${shared_ext}$versuffix'
+   finish_cmds='PATH="\$PATH:/sbin" ldconfig -m $libdir'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   if test -z "`echo __ELF__ | $CC -E - | $GREP __ELF__`" || test "$host_os-$host_cpu" = "openbsd2.8-powerpc"; then
+     case $host_os in
+       openbsd2.[89] | openbsd2.[89].*)
+@@ -20970,8 +20964,8 @@ osf3* | osf4* | osf5*)
+   need_version=no
+   soname_spec='${libname}${release}${shared_ext}$major'
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+-  shlibpath_var=LD_LIBRARY_PATH
+-  sys_lib_search_path_spec="/usr/shlib /usr/ccs/lib /usr/lib/cmplrs/cc /usr/lib /usr/local/lib /var/shlib"
++  shlibpath_var=LD_XLIBRARY_PATH
++  sys_lib_search_path_spec="/boot/home/pkg/shlib /boot/home/pkg/ccs/lib /boot/home/pkg/lib/cmplrs/cc /boot/home/pkg/lib /boot/home/pkg/local/lib /var/shlib"
+   sys_lib_dlsearch_path_spec="$sys_lib_search_path_spec"
+   ;;
+ 
+@@ -20985,7 +20979,7 @@ solaris*)
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+   hardcode_into_libs=yes
+   # ldd complains unless libraries are executable
+@@ -20995,8 +20989,8 @@ solaris*)
+ sunos4*)
+   version_type=sunos
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${shared_ext}$versuffix'
+-  finish_cmds='PATH="\$PATH:/usr/etc" ldconfig $libdir'
+-  shlibpath_var=LD_LIBRARY_PATH
++  finish_cmds='PATH="\$PATH:/boot/home/pkg/etc" ldconfig $libdir'
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+   if test "$with_gnu_ld" = yes; then
+     need_lib_prefix=no
+@@ -21008,7 +21002,7 @@ sysv4 | sysv4.3*)
+   version_type=linux # correct to gnu/linux during the next big refactor
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   case $host_vendor in
+     sni)
+       shlibpath_overrides_runpath=no
+@@ -21022,17 +21016,17 @@ sysv4 | sysv4.3*)
+       need_lib_prefix=no
+       need_version=no
+       shlibpath_overrides_runpath=no
+-      sys_lib_search_path_spec='/lib /usr/lib /usr/ccs/lib'
++      sys_lib_search_path_spec='/lib /boot/home/pkg/lib /boot/home/pkg/ccs/lib'
+       ;;
+   esac
+   ;;
+ 
+ sysv4*MP*)
+-  if test -d /usr/nec ;then
++  if test -d /boot/home/pkg/nec ;then
+     version_type=linux # correct to gnu/linux during the next big refactor
+     library_names_spec='$libname${shared_ext}.$versuffix $libname${shared_ext}.$major $libname${shared_ext}'
+     soname_spec='$libname${shared_ext}.$major'
+-    shlibpath_var=LD_LIBRARY_PATH
++    shlibpath_var=LD_XLIBRARY_PATH
+   fi
+   ;;
+ 
+@@ -21042,20 +21036,20 @@ sysv5* | sco3.2v5* | sco5v6* | unixware*
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext} $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+   hardcode_into_libs=yes
+   if test "$with_gnu_ld" = yes; then
+-    sys_lib_search_path_spec='/usr/local/lib /usr/gnu/lib /usr/ccs/lib /usr/lib /lib'
++    sys_lib_search_path_spec='/boot/home/pkg/local/lib /boot/home/pkg/gnu/lib /boot/home/pkg/ccs/lib /boot/home/pkg/lib /lib'
+   else
+-    sys_lib_search_path_spec='/usr/ccs/lib /usr/lib'
++    sys_lib_search_path_spec='/boot/home/pkg/ccs/lib /boot/home/pkg/lib'
+     case $host_os in
+       sco3.2v5*)
+         sys_lib_search_path_spec="$sys_lib_search_path_spec /lib"
+ 	;;
+     esac
+   fi
+-  sys_lib_dlsearch_path_spec='/usr/lib'
++  sys_lib_dlsearch_path_spec='/boot/home/pkg/lib'
+   ;;
+ 
+ tpf*)
+@@ -21064,7 +21058,7 @@ tpf*)
+   need_lib_prefix=no
+   need_version=no
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   shlibpath_overrides_runpath=no
+   hardcode_into_libs=yes
+   ;;
+@@ -21073,7 +21067,7 @@ uts4*)
+   version_type=linux # correct to gnu/linux during the next big refactor
+   library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}$major $libname${shared_ext}'
+   soname_spec='${libname}${release}${shared_ext}$major'
+-  shlibpath_var=LD_LIBRARY_PATH
++  shlibpath_var=LD_XLIBRARY_PATH
+   ;;
+ 
+ *)
+@@ -21086,7 +21080,7 @@ test "$dynamic_linker" = no && can_build
+ 
+ variables_saved_for_relink="PATH $shlibpath_var $runpath_var"
+ if test "$GCC" = yes; then
+-  variables_saved_for_relink="$variables_saved_for_relink GCC_EXEC_PREFIX COMPILER_PATH LIBRARY_PATH"
++  variables_saved_for_relink="$variables_saved_for_relink GCC_EXEC_PREFIX COMPILER_PATH XLIBRARY_PATH"
+ fi
+ 
+ if test "${lt_cv_sys_lib_search_path_spec+set}" = set; then
+@@ -26327,37 +26321,37 @@ else
+   # Look for the header file in a standard set of common directories.
+ # Check X11 before X11Rn because it is often a symlink to the current release.
+     for ac_dir in          \
+-    /lib/usr/lib/X11       \
+-    /usr/X11/lib           \
+-    /usr/X11R4/lib         \
+-    /usr/X11R5/lib         \
+-    /usr/X11R6/lib         \
+-    /usr/X11R7/lib         \
+-    /usr/X386/lib          \
+-    /usr/XFree86/lib/X11   \
+-    /usr/athena/lib        \
+-    /usr/lib               \
+-    /usr/lib/X11           \
+-    /usr/lib/X11R4         \
+-    /usr/lib/X11R5         \
+-    /usr/lib/X11R6         \
+-    /usr/lib/X11R7         \
+-    /usr/local/X11/lib     \
+-    /usr/local/X11R4/lib   \
+-    /usr/local/X11R5/lib   \
+-    /usr/local/X11R6/lib   \
+-    /usr/local/lib         \
+-    /usr/local/lib/X11     \
+-    /usr/local/lib/X11R4   \
+-    /usr/local/lib/X11R5   \
+-    /usr/local/lib/X11R6   \
+-    /usr/local/lib/X11R7   \
+-    /usr/local/x11r5/lib   \
+-    /usr/lpp/Xamples/lib   \
+-    /usr/openwin/lib       \
+-    /usr/openwin/share/lib \
+-    /usr/unsupported/lib   \
+-    /usr/x386/lib          \
++    /lib/boot/home/pkg/lib/X11       \
++    /boot/home/pkg/X11/lib           \
++    /boot/home/pkg/X11R4/lib         \
++    /boot/home/pkg/X11R5/lib         \
++    /boot/home/pkg/X11R6/lib         \
++    /boot/home/pkg/X11R7/lib         \
++    /boot/home/pkg/X386/lib          \
++    /boot/home/pkg/XFree86/lib/X11   \
++    /boot/home/pkg/athena/lib        \
++    /boot/home/pkg/lib               \
++    /boot/home/pkg/lib/X11           \
++    /boot/home/pkg/lib/X11R4         \
++    /boot/home/pkg/lib/X11R5         \
++    /boot/home/pkg/lib/X11R6         \
++    /boot/home/pkg/lib/X11R7         \
++    /boot/home/pkg/local/X11/lib     \
++    /boot/home/pkg/local/X11R4/lib   \
++    /boot/home/pkg/local/X11R5/lib   \
++    /boot/home/pkg/local/X11R6/lib   \
++    /boot/home/pkg/local/lib         \
++    /boot/home/pkg/local/lib/X11     \
++    /boot/home/pkg/local/lib/X11R4   \
++    /boot/home/pkg/local/lib/X11R5   \
++    /boot/home/pkg/local/lib/X11R6   \
++    /boot/home/pkg/local/lib/X11R7   \
++    /boot/home/pkg/local/x11r5/lib   \
++    /boot/home/pkg/lpp/Xamples/lib   \
++    /boot/home/pkg/openwin/lib       \
++    /boot/home/pkg/openwin/share/lib \
++    /boot/home/pkg/unsupported/lib   \
++    /boot/home/pkg/x386/lib          \
+     ; do
+     if test -f "$ac_dir/X11/rgb.txt"; then
+       im_cv_x_configure="$ac_dir/X11/"
+@@ -27082,11 +27076,11 @@ _ACEOF
+     # bogus both because they are the default anyway, and because
+     # using them would break gcc on systems where it needs fixed includes.
+     case $ac_im_incroot in
+-	/usr/include) ac_x_includes= ;;
++	/boot/home/pkg/include) ac_x_includes= ;;
+ 	*) test -f "$ac_im_incroot/X11/Xos.h" && ac_x_includes=$ac_im_incroot;;
+     esac
+     case $ac_im_usrlibdir in
+-	/usr/lib | /usr/lib64 | /lib | /lib64) ;;
++	/boot/home/pkg/lib | /boot/home/pkg/lib64 | /lib | /lib64) ;;
+ 	*) test -d "$ac_im_usrlibdir" && ac_x_libraries=$ac_im_usrlibdir ;;
+     esac
+   fi
+@@ -27097,43 +27091,43 @@ fi
+ # Standard set of common directories for X headers.
+ # Check X11 before X11Rn because it is often a symlink to the current release.
+ ac_x_header_dirs='
+-/usr/X11/include
+-/usr/X11R7/include
+-/usr/X11R6/include
+-/usr/X11R5/include
+-/usr/X11R4/include
+-
+-/usr/include/X11
+-/usr/include/X11R7
+-/usr/include/X11R6
+-/usr/include/X11R5
+-/usr/include/X11R4
+-
+-/usr/local/X11/include
+-/usr/local/X11R7/include
+-/usr/local/X11R6/include
+-/usr/local/X11R5/include
+-/usr/local/X11R4/include
+-
+-/usr/local/include/X11
+-/usr/local/include/X11R7
+-/usr/local/include/X11R6
+-/usr/local/include/X11R5
+-/usr/local/include/X11R4
+-
+-/usr/X386/include
+-/usr/x386/include
+-/usr/XFree86/include/X11
+-
+-/usr/include
+-/usr/local/include
+-/usr/unsupported/include
+-/usr/athena/include
+-/usr/local/x11r5/include
+-/usr/lpp/Xamples/include
++/boot/home/pkg/X11/include
++/boot/home/pkg/X11R7/include
++/boot/home/pkg/X11R6/include
++/boot/home/pkg/X11R5/include
++/boot/home/pkg/X11R4/include
++
++/boot/home/pkg/include/X11
++/boot/home/pkg/include/X11R7
++/boot/home/pkg/include/X11R6
++/boot/home/pkg/include/X11R5
++/boot/home/pkg/include/X11R4
++
++/boot/home/pkg/local/X11/include
++/boot/home/pkg/local/X11R7/include
++/boot/home/pkg/local/X11R6/include
++/boot/home/pkg/local/X11R5/include
++/boot/home/pkg/local/X11R4/include
++
++/boot/home/pkg/local/include/X11
++/boot/home/pkg/local/include/X11R7
++/boot/home/pkg/local/include/X11R6
++/boot/home/pkg/local/include/X11R5
++/boot/home/pkg/local/include/X11R4
++
++/boot/home/pkg/X386/include
++/boot/home/pkg/x386/include
++/boot/home/pkg/XFree86/include/X11
++
++/boot/home/pkg/include
++/boot/home/pkg/local/include
++/boot/home/pkg/unsupported/include
++/boot/home/pkg/athena/include
++/boot/home/pkg/local/x11r5/include
++/boot/home/pkg/lpp/Xamples/include
+ 
+-/usr/openwin/include
+-/usr/openwin/share/include'
++/boot/home/pkg/openwin/include
++/boot/home/pkg/openwin/share/include'
+ 
+ if test "$ac_x_includes" = no; then
+   # Guess where to find include files, by looking for Xlib.h.
+@@ -28985,7 +28979,6 @@ fi
+ have_fpx='no'
+ FPX_LIBS=''
+ SAVED_LIBS=${LIBS}
+-LIBS=${LIBS/-ldjvulibre/}
+ if test "$with_fpx" != 'no'; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: result: -------------------------------------------------------------" >&5
+ $as_echo "-------------------------------------------------------------" >&6; }
+@@ -32294,14 +32287,14 @@ $as_echo "no" >&6; }
+ fi
+ 
+     if test -n "$xml2_config"; then
+-        # Debian installs libxml headers under /usr/include/libxml2/libxml with
+-        # the shared library installed under /usr/lib, whereas the package
++        # Debian installs libxml headers under /boot/home/pkg/include/libxml2/libxml with
++        # the shared library installed under /boot/home/pkg/lib, whereas the package
+         # installs itself under $prefix/libxml and $prefix/lib.
+         xml2_prefix=`xml2-config --prefix`
+         if test -d "${xml2_prefix}/include/libxml2"; then
+             CPPFLAGS="$CPPFLAGS -I${xml2_prefix}/include/libxml2"
+         fi
+-        if test "${xml2_prefix}" != '/usr'; then
++        if test "${xml2_prefix}" != '/boot/home/pkg'; then
+             LDFLAGS="$LDFLAGS -L${xml2_prefix}/lib"
+         fi
+     fi
+@@ -32540,16 +32533,16 @@ _ACEOF
+ 
+ 
+ # Path to ImageMagick lib
+-LIBRARY_PATH="${LIB_DIR}/${LIBRARY_RELATIVE_PATH}"
+-DEFINE_LIBRARY_PATH="${LIB_DIR}/${LIBRARY_RELATIVE_PATH}/"
++XLIBRARY_PATH="${XLIB_DIR}/${LIBRARY_RELATIVE_PATH}"
++DEFINE_XLIBRARY_PATH="${XLIB_DIR}/${LIBRARY_RELATIVE_PATH}/"
+ case "${build_os}" in
+   mingw* )
+-    DEFINE_LIBRARY_PATH=`$WinPathScript "$DEFINE_LIBRARY_PATH" 1`
++    DEFINE_XLIBRARY_PATH=`$WinPathScript "$DEFINE_XLIBRARY_PATH" 1`
+     ;;
+ esac
+ 
+ cat >>confdefs.h <<_ACEOF
+-#define LIBRARY_PATH "$DEFINE_LIBRARY_PATH"
++#define XLIBRARY_PATH "$DEFINE_XLIBRARY_PATH"
+ _ACEOF
+ 
+ 
+@@ -32573,7 +32566,7 @@ fi
+ 
+ LIB_BIN_DIR_RELATIVE_PATH=$LIB_BIN_DIR
+ 
+-LIB_BIN_DIR_PATH="${LIBRARY_PATH}/${LIB_BIN_DIR_RELATIVE_PATH}"
++LIB_BIN_DIR_PATH="${XLIBRARY_PATH}/${LIB_BIN_DIR_RELATIVE_PATH}"
+ 
+ 
+ #
+@@ -32601,7 +32594,7 @@ fi
+ 
+ MODULES_RELATIVE_PATH="${MODULES_DIRNAME}"
+ 
+-MODULES_PATH="${LIBRARY_PATH}/${MODULES_RELATIVE_PATH}"
++MODULES_PATH="${XLIBRARY_PATH}/${MODULES_RELATIVE_PATH}"
+ 
+ 
+ #
+@@ -32740,7 +32733,7 @@ fi
+ 
+ SHAREARCH_RELATIVE_PATH="${SHAREARCH_DIRNAME}"
+ 
+-SHAREARCH_PATH="${LIBRARY_PATH}/${SHAREARCH_RELATIVE_PATH}"
++SHAREARCH_PATH="${XLIBRARY_PATH}/${SHAREARCH_RELATIVE_PATH}"
+ 
+ #
+ # program_transform_name is formed for use in a Makefile, so create a
+@@ -33879,7 +33872,7 @@ $as_echo "no" >&6; }
+ fi
+ 
+ 
+-if test "$MPEGDecodeDelegate" == "$MPEGDecodeDelegateDefault" ; then
++if test "$MPEGDecodeDelegate" = "$MPEGDecodeDelegateDefault" ; then
+   MPEGDecodeDelegateDefault='ffmpeg'
+   # Extract the first word of ""$MPEGDecodeDelegateDefault"", so it can be a program name with args.
+ set dummy "$MPEGDecodeDelegateDefault"; ac_word=$2
+@@ -33964,7 +33957,7 @@ $as_echo "no" >&6; }
+ fi
+ 
+ 
+-if test "$MPEGEncodeDelegate" == "$MPEGEncodeDelegateDefault" ; then
++if test "$MPEGEncodeDelegate" = "$MPEGEncodeDelegateDefault" ; then
+   MPEGEncodeDelegateDefault='ffmpeg'
+   # Extract the first word of ""$MPEGEncodeDelegateDefault"", so it can be a program name with args.
+ set dummy "$MPEGEncodeDelegateDefault"; ac_word=$2
+@@ -34828,7 +34821,7 @@ dejavu_font_dir=''
+ if test "${with_dejavu_font_dir}" != 'default'; then
+   dejavu_font_dir="${with_dejavu_font_dir}/"
+ else
+-  for font_dir in "${prefix}/share/dejavu/fonts/" '/usr/share/fonts/dejavu/'; do
++  for font_dir in "${prefix}/share/dejavu/fonts/" '/boot/home/pkg/share/fonts/dejavu/'; do
+     if test -f "${font_dir}DejaVuSerif.ttf"; then
+       dejavu_font_dir="${font_dir}"
+       break 1
+@@ -34851,14 +34844,14 @@ if test "$with_windows_font_dir" != "no"
+    windows_font_dir="${with_windows_font_dir}/"
+ fi
+ if test "${windows_font_dir}x" != 'x'; then
+-    if test -f '/usr/X11R6/lib/X11/fonts/truetype/arial.ttf'; then
+-      windows_font_dir='/usr/X11R6/lib/X11/fonts/truetype/'
++    if test -f '/boot/home/pkg/X11R6/lib/X11/fonts/truetype/arial.ttf'; then
++      windows_font_dir='/boot/home/pkg/X11R6/lib/X11/fonts/truetype/'
+     fi
+-    if test -f '/usr/X11R7/lib/X11/fonts/truetype/arial.ttf'; then
+-      windows_font_dir='/usr/X11R7/lib/X11/fonts/truetype/'
++    if test -f '/boot/home/pkg/X11R7/lib/X11/fonts/truetype/arial.ttf'; then
++      windows_font_dir='/boot/home/pkg/X11R7/lib/X11/fonts/truetype/'
+     fi
+-    if test -f '/usr/share/fonts/msttcore/arial.ttf'; then
+-      windows_font_dir='/usr/share/fonts/msttcore/truetype/'
++    if test -f '/boot/home/pkg/share/fonts/msttcore/arial.ttf'; then
++      windows_font_dir='/boot/home/pkg/share/fonts/msttcore/truetype/'
+     fi
+ fi
+ if test "${windows_font_dir}x" != 'x'; then
+@@ -34886,7 +34879,7 @@ else
+     fi
+   else
+     # Linux / Mac OS X / Unix Build
+-    for font_dir in "${prefix}/share/ghostscript/fonts/" '/usr/share/fonts/default/Type1/' '/usr/share/ghostscript/fonts/' '/usr/share/fonts/ghostscript/' '/usr/share/fonts/type1/gsfonts/' '/opt/local/share/ghostscript/fonts/' '/sw/share/ghostscript/fonts/' '/System/Library/Frameworks/Ghostscript.framework/Resources/fonts/'; do
++    for font_dir in "${prefix}/share/ghostscript/fonts/" '/boot/home/pkg/share/fonts/default/Type1/' '/boot/home/pkg/share/ghostscript/fonts/' '/boot/home/pkg/share/fonts/ghostscript/' '/boot/home/pkg/share/fonts/type1/gsfonts/' '/opt/local/share/ghostscript/fonts/' '/sw/share/ghostscript/fonts/' '/System/Library/Frameworks/Ghostscript.framework/Resources/fonts/'; do
+       if test -f "${font_dir}a010013l.pfb"; then
+         ghostscript_font_dir="${font_dir}"
+         break 1
+@@ -36392,7 +36385,7 @@ fi
+ as_nl='
+ '
+ export as_nl
+-# Printing a long string crashes Solaris 7 /usr/bin/printf.
++# Printing a long string crashes Solaris 7 /boot/home/pkg/bin/printf.
+ as_echo='\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\'
+ as_echo=$as_echo$as_echo$as_echo$as_echo$as_echo
+ as_echo=$as_echo$as_echo$as_echo$as_echo$as_echo$as_echo
+@@ -36406,9 +36399,9 @@ elif (test "X`printf %s $as_echo`" = "X$
+   as_echo='printf %s\n'
+   as_echo_n='printf %s'
+ else
+-  if test "X`(/usr/ucb/echo -n -n $as_echo) 2>/dev/null`" = "X-n $as_echo"; then
+-    as_echo_body='eval /usr/ucb/echo -n "$1$as_nl"'
+-    as_echo_n='/usr/ucb/echo -n'
++  if test "X`(/boot/home/pkg/ucb/echo -n -n $as_echo) 2>/dev/null`" = "X-n $as_echo"; then
++    as_echo_body='eval /boot/home/pkg/ucb/echo -n "$1$as_nl"'
++    as_echo_n='/boot/home/pkg/ucb/echo -n'
+   else
+     as_echo_body='eval expr "X$1" : "X\\(.*\\)"'
+     as_echo_n_body='eval

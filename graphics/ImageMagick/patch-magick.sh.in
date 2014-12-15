@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- magick.sh.in.orig	2013-11-18 13:03:16.061079552 +0000
++++ magick.sh.in
+@@ -35,7 +35,7 @@ then
+   echo "$@"
+ fi
+ env \
+-  LD_LIBRARY_PATH="${top_builddir}/magick/.libs:${top_builddir}/wand/.libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}" \
++  LD_XLIBRARY_PATH="${top_builddir}/magick/.libs:${top_builddir}/wand/.libs${LD_XLIBRARY_PATH:+:$LD_XLIBRARY_PATH}" \
+   MAGICK_CODER_MODULE_PATH="${MAGICK_CODER_MODULE_PATH}" \
+   MAGICK_CONFIGURE_PATH="${MAGICK_CONFIGURE_BUILD_PATH}${DIRSEP}${MAGICK_CONFIGURE_SRC_PATH}" \
+   MAGICK_FILTER_MODULE_PATH="${MAGICK_FILTER_MODULE_PATH}" \

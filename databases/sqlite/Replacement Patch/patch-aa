@@ -1,0 +1,17 @@
+$NetBSD: patch-aa,v 1.10 2013/01/04 13:33:43 jperkin Exp $
+
+--- src/sqliteInt.h.orig	2005-06-06 15:07:03.062390272 +0000
++++ src/sqliteInt.h
+@@ -15,4 +15,5 @@
+ */
+ #include "config.h"
++#include "os.h"
+ #include "sqlite.h"
+ #include "hash.h"
+@@ -23,5 +24,5 @@
+ #include <string.h>
+ #include <assert.h>
+-
++#include <stdint.h>
+ /*
+ ** The maximum number of in-memory pages to use for the main database

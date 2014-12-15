@@ -74,3 +74,25 @@ CONFIGURE_ARGS+=	--disable-glx-tls
 .if ${PKGPATH} == "multimedia/mencoder"
 CONFIGURE_ARGS+=    --disable-runtime-cpudetection 
 .endif
+
+.if ${PKGPATH} == "graphics/cairo"
+CONFIGURE_ARGS+=    --enable-xcb-shm=no
+.endif
+
+.if ${PKGPATH} == "net/net-snmp"
+CONFIGURE_ARGS+=  --with-ldflags=LDFLAGS -L/boot/home/pkg/lib -ltdb
+.endif
+
+.if ${PKGPATH} == "print/gv"
+CONFIGURE_ARGS+=	--enable-SIGCHLD-fallback
+.endif
+
+.if ${PKGPATH} == "security/clamav"
+CONFIGURE_ARGS+=    --with-zlib=/boot/home/pkg
+CONFIGURE_ARGS+=    --build=Haiku
+.endif
+
+.if ${PKGPATH} == "math/fftw"
+CONFIGURE_ARGS+= --prefix=/boot/home/pkg 
+CONFIGURE_ARGS+= --sharedstatedir=/boot/home/pkg/var
+.endif

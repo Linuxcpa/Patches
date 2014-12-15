@@ -1,0 +1,24 @@
+$NetBSD: patch-al,v 1.2 2014/05/14 02:28:13 rodent Exp $
+
+--- config.X.orig	2005-05-25 14:13:53.045613056 +0000
++++ config.X
+@@ -214,9 +214,7 @@
+ 
+ #include <sys/param.h>
+ #include <sys/types.h>
+-#ifndef USG
+-#include <sys/dir.h>
+-#endif /* USG */
++
+ 
+ /*
+ ** Things that normally go in a Makefile.  Define these just like you
+@@ -274,7 +272,7 @@
+ ** -lcurses, or -lncurses on most systems.
+ */
+ #ifndef TERMLIB
+-#define TERMLIB	"-lncurses"
++#define TERMLIB	"-ltermcap"
+ #endif
+ 
+ /*

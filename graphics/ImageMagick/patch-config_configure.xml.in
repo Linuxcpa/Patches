@@ -1,0 +1,22 @@
+$NetBSD$
+
+--- config/configure.xml.in.orig	2014-08-16 16:06:29.024641536 +0000
++++ config/configure.xml.in
+@@ -10,7 +10,7 @@
+   <configure name="CFLAGS" value="@MAGICK_CFLAGS@"/>
+   <configure name="CODER_PATH" value="@CODER_PATH@"/>
+   <configure name="CONFIGURE_PATH" value="@CONFIGURE_PATH@"/>
+-  <configure name="CONFIGURE" value="@CONFIGURE_ARGS@"/>
++  <configure name="CONFIGURE" value="--without-dps --without-fpx --without-gvc --without-jbig --without-lqr --without-modules --disable-assert --with-fontconfig --with-ltdl-include=/boot/home/pkg/include --with-ltdl-lib=/boot/home/pkg/lib --with-xml=yes --disable-openmp --without-perl --sysconfdir=/boot/home/pkg/etc --with-jp2 --without-djvu --without-gslib --without-wmf --with-libiconv-prefix=/boot/home/pkg --prefix=/boot/home/pkg --build=i386-pc-haiku --host=i386-pc-haiku --mandir=/boot/home/pkg/man"/>
+   <configure name="COPYRIGHT" value="Copyright (C) 1999-2014 ImageMagick Studio LLC"/>
+   <configure name="CPPFLAGS" value="@MAGICK_CPPFLAGS@"/>
+   <configure name="CXXFLAGS" value="@CXXFLAGS@"/>
+@@ -26,7 +26,7 @@
+   <configure name="HOST" value="@host@"/>
+   <configure name="INCLUDE_PATH" value="@INCLUDE_PATH@"/>
+   <configure name="LDFLAGS" value="@MAGICK_LDFLAGS@"/>
+-  <configure name="LIBRARY_PATH" value="@LIBRARY_PATH@"/>
++  <configure name="XLIBRARY_PATH" value="@XLIBRARY_PATH@"/>
+   <configure name="LIBS" value="@MAGICK_LIBS@"/>
+   <configure name="LIB_VERSION_NUMBER" value="@PACKAGE_LIB_VERSION_NUMBER@"/>
+   <configure name="LIB_VERSION" value="@PACKAGE_LIB_VERSION@"/>

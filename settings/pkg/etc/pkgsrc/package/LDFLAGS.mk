@@ -17,14 +17,29 @@ LDFLAGS+= -Wl,-R/boot/system/lib
 LDFLAGS+= -L/boot/system/lib
 .endif
 
-.if ${PKGPATH} == "chat/gtmess" || ${PKGPATH} == "print/luatex"
+.if ${PKGPATH} == "chat/gtmess" || ${PKGPATH} == "print/luatex" \
+|| ${PKGPATH} == "net/net-snmp"
 LDFLAGS+= -L/boot/system/lib
 .endif
 
 .if ${PKGPATH} == "graphics/netpbm" || ${PKGPATH} == "security/tcp_wrappers" \
 || ${PKGPATH} == "benchmarks/httperf" || ${PKGPATH} == "benchmarks/netpipe" \
 || ${PKGPATH} == "chat/goofey" || ${PKGPATH} == "devel/git-base" \
-|| ${PKGPATH} == "lang/squeak-vm"
+|| ${PKGPATH} == "lang/squeak-vm" || ${PKGPATH} == "net/6tunnel" \
+|| ${PKGPATH} == "net/aget" || ${PKGPATH} == "net/bing" \
+|| ${PKGPATH} == "net/gini" || ${PKGPATH} == "net/corkscrew" \
+|| ${PKGPATH} == "net/dhid" || ${PKGPATH} == "net/freenet-tools" \
+|| ${PKGPATH} == "net/gethost" || ${PKGPATH} == "net/modpcap" \
+|| ${PKGPATH} == "net/mping" || ${PKGPATH} == "net/batchftp" \
+|| ${PKGPATH} == "net/paris-traceroute" || ${PKGPATH} == "net/powerdns" \
+|| ${PKGPATH} == "net/poink" || ${PKGPATH} == "net/polsms" \
+|| ${PKGPATH} == "net/proxytunnel" || ${PKGPATH} == "net/bounce" \
+|| ${PKGPATH} == "net/tn5250" || ${PKGPATH} == "net/wakeup" \
+|| ${PKGPATH} == "net/wap-utils" || ${PKGPATH} == "print/xdvipdfmx" \
+|| ${PKGPATH} == "security/mirrordir" || ${PKGPATH} == "security/sbd" \
+|| ${PKGPATH} == "security/sslscan" || ${PKGPATH} == "security/starttls" \
+|| ${PKGPATH} == "security/stud" || ${PKGPATH} == "sysutils/9base" \
+|| ${PKGPATH} == "sysutils/dog" || ${PKGPATH} == "sysutils/ts"
 LDFLAGS+= -lnetwork
 .endif
 
@@ -32,9 +47,17 @@ LDFLAGS+= -lnetwork
 || ${PKGPATH} == "textproc/mdocml" || ${PKGPATH} == "security/mit-krb5" \
 || ${PKGPATH} == "devel/git-base" || ${PKGPATH} == "archivers/p7zip" \
 || ${PKGPATH} == "mail/msmtp" || ${PKGPATH} == "devel/editline" \
-|| ${PKGPATH} == "devel/bmkdep" || ${PKGPATH} == "archivers/unrar"
+|| ${PKGPATH} == "devel/bmkdep" || ${PKGPATH} == "archivers/unrar" \
+|| ${PKGPATH} == "net/batchftp" || ${PKGPATH} == "print/xdvipdfmx" \
+|| ${PKGPATH} == "shells/dash" || ${PKGPATH} == "sysutils/acpidump" \
+|| ${PKGPATH} == "sysutils/9base" || ${PKGPATH} == "sysutils/adtool"
 LDFLAGS+= -lbsd
 .endif
+
+.if ${PKGPATH} == "shells/fish"
+LDFLAGS+= -L/boot/home/pkg/lib
+.endif
+
 
 .if ${PKGPATH} == "net/libpcap" || ${PKGPATH} == "lang/python27" \
 || ${PKGPATH} == "chat/iip" || ${PKGPATH} == "chat/icbirc" \
@@ -49,4 +72,12 @@ LDFLAGS+= -L/boot/system/lib -lnetwork -lbsd -Wl,-R/boot/system/lib
 .if ${PKGPATH} == "devel/gobject-introspection"
 LDFLAGS+= -L/boot/system/lib -lnetwork -lbsd -Wl,-R/boot/system/lib
 #CONFIGURE_ARGS+= -libdir=/boot/system/lib
+.endif
+
+.if ${PKGPATH} == "lang/ruby18-base"
+LDFLAGS+= -L/boot/system/lib -lroot -lstdc++ -lgcc_s -Wl,-R/boot/system/lib
+.endif
+
+.if ${PKGPATH} == "graphics/ImageMagick"
+LDFLAGS+= -L/boot/system/lib -lnetwork -lroot -Wl,-R/boot/system/lib
 .endif
