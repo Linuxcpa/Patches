@@ -15,3 +15,7 @@ BUILDLINK_TRANSFORM+= rm:-lm
 .if ${PKGPATH} == "sysutils/adtool"
 BUILDLINK_TRANSFORM+= rm:-lresolv
 .endif
+
+.if ${PKGPATH} == "www/mini_httpd"
+BUILDLINK_TRANSFORM+= rm:-lcrypt
+.endif

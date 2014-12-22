@@ -1,0 +1,62 @@
+Determining size of off64_t failed with the following output:
+Change Dir: /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/bin/make" "cmTryCompileExec3112393985/fast"
+/bin/make -f CMakeFiles/cmTryCompileExec3112393985.dir/build.make CMakeFiles/cmTryCompileExec3112393985.dir/build
+make[1]: Entering directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+/boot/system/bin/cmake -E cmake_progress_report /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3112393985.dir/OFF64_T.c.o
+/bin/cc  -DHAVE_STDDEF_H -DHAVE_STDINT_H -DHAVE_SYS_TYPES_H -D_LARGEFILE64_SOURCE=1  -o CMakeFiles/cmTryCompileExec3112393985.dir/OFF64_T.c.o   -c /sources/zlib-1.2.8/build/CMakeFiles/CheckTypeSize/OFF64_T.c
+/sources/zlib-1.2.8/build/CMakeFiles/CheckTypeSize/OFF64_T.c:17:22: error: 'off64_t' undeclared here (not in a function)
+ #define SIZE (sizeof(off64_t))
+                      ^
+/sources/zlib-1.2.8/build/CMakeFiles/CheckTypeSize/OFF64_T.c:19:12: note: in expansion of macro 'SIZE'
+   ('0' + ((SIZE / 10000)%10)),
+            ^
+make[1]: *** [CMakeFiles/cmTryCompileExec3112393985.dir/OFF64_T.c.o] Error 1
+make[1]: Leaving directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec3112393985/fast] Error 2
+
+/sources/zlib-1.2.8/build/CMakeFiles/CheckTypeSize/OFF64_T.c:
+#include <sys/types.h>
+#include <stdint.h>
+#include <stddef.h>
+
+
+#undef KEY
+#if defined(__i386)
+# define KEY '_','_','i','3','8','6'
+#elif defined(__x86_64)
+# define KEY '_','_','x','8','6','_','6','4'
+#elif defined(__ppc__)
+# define KEY '_','_','p','p','c','_','_'
+#elif defined(__ppc64__)
+# define KEY '_','_','p','p','c','6','4','_','_'
+#endif
+
+#define SIZE (sizeof(off64_t))
+char info_size[] =  {'I', 'N', 'F', 'O', ':', 's','i','z','e','[',
+  ('0' + ((SIZE / 10000)%10)),
+  ('0' + ((SIZE / 1000)%10)),
+  ('0' + ((SIZE / 100)%10)),
+  ('0' + ((SIZE / 10)%10)),
+  ('0' +  (SIZE    % 10)),
+  ']',
+#ifdef KEY
+  ' ','k','e','y','[', KEY, ']',
+#endif
+  '\0'};
+
+#ifdef __CLASSIC_C__
+int main(argc, argv) int argc; char *argv[];
+#else
+int main(int argc, char *argv[])
+#endif
+{
+  int require = 0;
+  require += info_size[argc];
+  (void)argv;
+  return require;
+}
+
+

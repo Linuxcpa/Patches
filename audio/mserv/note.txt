@@ -1,0 +1,2 @@
+Patching the content of msoundcard.h doesn't work. 
+You have to replace the file with the file provided and do a bmake reinstall and bmake replace.

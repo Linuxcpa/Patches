@@ -1,0 +1,196 @@
+The system is: Haiku - 1 - x86
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /bin/cc 
+Build flags: 
+Id flags: 
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/sources/zlib-1.2.8/build/CMakeFiles/3.0.0-rc3/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/bin/make" "cmTryCompileExec3109982051/fast"
+/bin/make -f CMakeFiles/cmTryCompileExec3109982051.dir/build.make CMakeFiles/cmTryCompileExec3109982051.dir/build
+make[1]: Entering directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+/boot/system/bin/cmake -E cmake_progress_report /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec3109982051.dir/testCCompiler.c.o
+/bin/cc    -o CMakeFiles/cmTryCompileExec3109982051.dir/testCCompiler.c.o   -c /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec3109982051
+/boot/system/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec3109982051.dir/link.txt --verbose=1
+/bin/cc       CMakeFiles/cmTryCompileExec3109982051.dir/testCCompiler.c.o  -o cmTryCompileExec3109982051  
+make[1]: Leaving directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/bin/make" "cmTryCompileExec1888095881/fast"
+/bin/make -f CMakeFiles/cmTryCompileExec1888095881.dir/build.make CMakeFiles/cmTryCompileExec1888095881.dir/build
+make[1]: Entering directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+/boot/system/bin/cmake -E cmake_progress_report /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1888095881.dir/CMakeCCompilerABI.c.o
+/bin/cc    -o CMakeFiles/cmTryCompileExec1888095881.dir/CMakeCCompilerABI.c.o   -c /boot/system/data/cmake/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec1888095881
+/boot/system/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1888095881.dir/link.txt --verbose=1
+/bin/cc     -v CMakeFiles/cmTryCompileExec1888095881.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1888095881   
+Using built-in specs.
+COLLECT_GCC=/bin/cc
+COLLECT_LTO_WRAPPER=/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/lto-wrapper
+Target: i586-pc-haiku
+Configured with: /sources/buildtools-4947d64591fdd9764dad9ff6835ffbef1618e17f/configure --build=i586-pc-haiku --prefix=/packages/gcc-4.8.3_2014_07_26-2/.self/develop/tools --libexecdir=/packages/gcc-4.8.3_2014_07_26-2/.self/develop/tools/lib --mandir=/packages/gcc-4.8.3_2014_07_26-2/.self/documentation/man --docdir=/packages/gcc-4.8.3_2014_07_26-2/.self/documentation/packages/gcc --enable-threads=posix --disable-nls --enable-shared --with-gnu-ld --with-gnu-as --enable-version-specific-runtime-libs --enable-languages=c,c++ --enable-lto --enable-frame-pointer --with-pkgversion=2014_07_26 --enable-__cxa-atexit
+Thread model: posix
+gcc version 4.8.3 (2014_07_26) 
+COMPILER_PATH=/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/:/boot/system/develop/tools/bin/../lib/gcc/:/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../../i586-pc-haiku/bin/
+BELIBRARIES=/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/:/boot/system/develop/tools/bin/../lib/gcc/:/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../../i586-pc-haiku/lib/:/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../:/boot/system/develop/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1888095881' '-mtune=pentium' '-march=pentium'
+ /boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/collect2 -m elf_i386_haiku -shared -no-undefined -o cmTryCompileExec1888095881 /boot/system/develop/lib/crti.o /boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/crtbeginS.o /boot/system/develop/lib/start_dyn.o /boot/system/develop/lib/init_term_dyn.o -L/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3 -L/boot/system/develop/tools/bin/../lib/gcc -L/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../../i586-pc-haiku/lib -L/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../.. -L/boot/system/develop/lib CMakeFiles/cmTryCompileExec1888095881.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lroot -lgcc --as-needed -lgcc_s --no-as-needed /boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/crtendS.o /boot/system/develop/lib/crtn.o
+make[1]: Leaving directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command:"/bin/make" "cmTryCompileExec1888095881/fast"]
+  ignore line: [/bin/make -f CMakeFiles/cmTryCompileExec1888095881.dir/build.make CMakeFiles/cmTryCompileExec1888095881.dir/build]
+  ignore line: [make[1]: Entering directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp']
+  ignore line: [/boot/system/bin/cmake -E cmake_progress_report /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CMakeFiles 1]
+  ignore line: [Building C object CMakeFiles/cmTryCompileExec1888095881.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/bin/cc    -o CMakeFiles/cmTryCompileExec1888095881.dir/CMakeCCompilerABI.c.o   -c /boot/system/data/cmake/Modules/CMakeCCompilerABI.c]
+  ignore line: [Linking C executable cmTryCompileExec1888095881]
+  ignore line: [/boot/system/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1888095881.dir/link.txt --verbose=1]
+  ignore line: [/bin/cc     -v CMakeFiles/cmTryCompileExec1888095881.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec1888095881   ]
+  ignore line: [Using built-in specs.]
+  ignore line: [COLLECT_GCC=/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/lto-wrapper]
+  ignore line: [Target: i586-pc-haiku]
+  ignore line: [Configured with: /sources/buildtools-4947d64591fdd9764dad9ff6835ffbef1618e17f/configure --build=i586-pc-haiku --prefix=/packages/gcc-4.8.3_2014_07_26-2/.self/develop/tools --libexecdir=/packages/gcc-4.8.3_2014_07_26-2/.self/develop/tools/lib --mandir=/packages/gcc-4.8.3_2014_07_26-2/.self/documentation/man --docdir=/packages/gcc-4.8.3_2014_07_26-2/.self/documentation/packages/gcc --enable-threads=posix --disable-nls --enable-shared --with-gnu-ld --with-gnu-as --enable-version-specific-runtime-libs --enable-languages=c,c++ --enable-lto --enable-frame-pointer --with-pkgversion=2014_07_26 --enable-__cxa-atexit]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 4.8.3 (2014_07_26) ]
+  ignore line: [COMPILER_PATH=/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/:/boot/system/develop/tools/bin/../lib/gcc/:/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../../i586-pc-haiku/bin/]
+  ignore line: [BELIBRARIES=/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/:/boot/system/develop/tools/bin/../lib/gcc/:/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../../i586-pc-haiku/lib/:/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../:/boot/system/develop/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec1888095881' '-mtune=pentium' '-march=pentium']
+  link line: [ /boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/collect2 -m elf_i386_haiku -shared -no-undefined -o cmTryCompileExec1888095881 /boot/system/develop/lib/crti.o /boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/crtbeginS.o /boot/system/develop/lib/start_dyn.o /boot/system/develop/lib/init_term_dyn.o -L/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3 -L/boot/system/develop/tools/bin/../lib/gcc -L/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../../i586-pc-haiku/lib -L/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../.. -L/boot/system/develop/lib CMakeFiles/cmTryCompileExec1888095881.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lroot -lgcc --as-needed -lgcc_s --no-as-needed /boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/crtendS.o /boot/system/develop/lib/crtn.o]
+    arg [/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/collect2] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_i386_haiku] ==> ignore
+    arg [-shared] ==> ignore
+    arg [-no-undefined] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTryCompileExec1888095881] ==> ignore
+    arg [/boot/system/develop/lib/crti.o] ==> ignore
+    arg [/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/crtbeginS.o] ==> ignore
+    arg [/boot/system/develop/lib/start_dyn.o] ==> ignore
+    arg [/boot/system/develop/lib/init_term_dyn.o] ==> ignore
+    arg [-L/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3] ==> dir [/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3]
+    arg [-L/boot/system/develop/tools/bin/../lib/gcc] ==> dir [/boot/system/develop/tools/bin/../lib/gcc]
+    arg [-L/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../../i586-pc-haiku/lib] ==> dir [/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../../i586-pc-haiku/lib]
+    arg [-L/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../..] ==> dir [/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../..]
+    arg [-L/boot/system/develop/lib] ==> dir [/boot/system/develop/lib]
+    arg [CMakeFiles/cmTryCompileExec1888095881.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lroot] ==> lib [root]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/crtendS.o] ==> ignore
+    arg [/boot/system/develop/lib/crtn.o] ==> ignore
+  remove lib [gcc]
+  remove lib [gcc_s]
+  remove lib [gcc]
+  remove lib [gcc_s]
+  collapse library dir [/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3] ==> [/boot/system/develop/tools/lib/gcc/i586-pc-haiku/4.8.3]
+  collapse library dir [/boot/system/develop/tools/bin/../lib/gcc] ==> [/boot/system/develop/tools/lib/gcc]
+  collapse library dir [/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../../../i586-pc-haiku/lib] ==> [/boot/system/develop/tools/i586-pc-haiku/lib]
+  collapse library dir [/boot/system/develop/tools/bin/../lib/gcc/i586-pc-haiku/4.8.3/../../..] ==> [/boot/system/develop/tools/lib]
+  collapse library dir [/boot/system/develop/lib] ==> [/boot/system/develop/lib]
+  implicit libs: [root]
+  implicit dirs: [/boot/system/develop/tools/lib/gcc/i586-pc-haiku/4.8.3;/boot/system/develop/tools/lib/gcc;/boot/system/develop/tools/i586-pc-haiku/lib;/boot/system/develop/tools/lib;/boot/system/develop/lib]
+  implicit fwks: []
+
+
+Determining if the include file sys/types.h exists passed with the following output:
+Change Dir: /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/bin/make" "cmTryCompileExec4113901296/fast"
+/bin/make -f CMakeFiles/cmTryCompileExec4113901296.dir/build.make CMakeFiles/cmTryCompileExec4113901296.dir/build
+make[1]: Entering directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+/boot/system/bin/cmake -E cmake_progress_report /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4113901296.dir/CheckIncludeFile.c.o
+/bin/cc    -o CMakeFiles/cmTryCompileExec4113901296.dir/CheckIncludeFile.c.o   -c /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec4113901296
+/boot/system/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4113901296.dir/link.txt --verbose=1
+/bin/cc       CMakeFiles/cmTryCompileExec4113901296.dir/CheckIncludeFile.c.o  -o cmTryCompileExec4113901296  
+make[1]: Leaving directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+Change Dir: /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/bin/make" "cmTryCompileExec4208897123/fast"
+/bin/make -f CMakeFiles/cmTryCompileExec4208897123.dir/build.make CMakeFiles/cmTryCompileExec4208897123.dir/build
+make[1]: Entering directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+/boot/system/bin/cmake -E cmake_progress_report /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec4208897123.dir/CheckIncludeFile.c.o
+/bin/cc    -o CMakeFiles/cmTryCompileExec4208897123.dir/CheckIncludeFile.c.o   -c /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec4208897123
+/boot/system/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec4208897123.dir/link.txt --verbose=1
+/bin/cc       CMakeFiles/cmTryCompileExec4208897123.dir/CheckIncludeFile.c.o  -o cmTryCompileExec4208897123  
+make[1]: Leaving directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stddef.h exists passed with the following output:
+Change Dir: /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/bin/make" "cmTryCompileExec1423133235/fast"
+/bin/make -f CMakeFiles/cmTryCompileExec1423133235.dir/build.make CMakeFiles/cmTryCompileExec1423133235.dir/build
+make[1]: Entering directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+/boot/system/bin/cmake -E cmake_progress_report /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec1423133235.dir/CheckIncludeFile.c.o
+/bin/cc    -o CMakeFiles/cmTryCompileExec1423133235.dir/CheckIncludeFile.c.o   -c /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec1423133235
+/boot/system/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec1423133235.dir/link.txt --verbose=1
+/bin/cc       CMakeFiles/cmTryCompileExec1423133235.dir/CheckIncludeFile.c.o  -o cmTryCompileExec1423133235  
+make[1]: Leaving directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the function fseeko exists passed with the following output:
+Change Dir: /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/bin/make" "cmTryCompileExec391694701/fast"
+/bin/make -f CMakeFiles/cmTryCompileExec391694701.dir/build.make CMakeFiles/cmTryCompileExec391694701.dir/build
+make[1]: Entering directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+/boot/system/bin/cmake -E cmake_progress_report /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec391694701.dir/CheckFunctionExists.c.o
+/bin/cc   -DCHECK_FUNCTION_EXISTS=fseeko   -o CMakeFiles/cmTryCompileExec391694701.dir/CheckFunctionExists.c.o   -c /boot/system/data/cmake/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec391694701
+/boot/system/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec391694701.dir/link.txt --verbose=1
+/bin/cc   -DCHECK_FUNCTION_EXISTS=fseeko    CMakeFiles/cmTryCompileExec391694701.dir/CheckFunctionExists.c.o  -o cmTryCompileExec391694701  
+make[1]: Leaving directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/bin/make" "cmTryCompileExec2881487997/fast"
+/bin/make -f CMakeFiles/cmTryCompileExec2881487997.dir/build.make CMakeFiles/cmTryCompileExec2881487997.dir/build
+make[1]: Entering directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+/boot/system/bin/cmake -E cmake_progress_report /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec2881487997.dir/CheckIncludeFile.c.o
+/bin/cc    -o CMakeFiles/cmTryCompileExec2881487997.dir/CheckIncludeFile.c.o   -c /sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec2881487997
+/boot/system/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec2881487997.dir/link.txt --verbose=1
+/bin/cc       CMakeFiles/cmTryCompileExec2881487997.dir/CheckIncludeFile.c.o  -o cmTryCompileExec2881487997  
+make[1]: Leaving directory `/sources/zlib-1.2.8/build/CMakeFiles/CMakeTmp'
+
+

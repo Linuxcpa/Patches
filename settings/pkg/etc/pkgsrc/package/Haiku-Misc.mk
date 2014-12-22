@@ -36,3 +36,11 @@ LDADD.Haiku=	-lnetwork
 post-extract:
 	${CP} ${FILESDIR}/pango.c ${WRKSRC}/coders
 .endif
+
+.if ${PKGPATH} == "www/libproxy"
+CMAKE_ARGS+=		-DCMAKE_EXE_LINKER_FLAGS:STRING="-lnetwork ${COMPILER_RPATH_FLAG}${PREFIX}/lib"
+.endif
+
+.if ${PKGPATH} == "www/mserv-php"
+DEPENDS+=	php>=4.0.6:../../lang/php54
+.endif

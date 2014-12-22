@@ -1,0 +1,22 @@
+$NetBSD: patch-ba,v 1.1 2010/07/31 21:09:14 dholland Exp $
+
+Avoid conflict between configure script, which #defines u_int64_t on
+the command line, and db.h, which provides it on platforms where it's
+missing. PR 42805.
+
+(Upstream ought to switch to using uint64_t and stdint.h.)
+
+--- dns_resolv.c.orig	2009-01-13 04:42:46.054525952 +0000
++++ dns_resolv.c
+@@ -57,10 +57,10 @@
+ #include <fcntl.h>
+ #include <netdb.h>               /* ensure getaddrinfo/getnameinfo         */
+ #include <signal.h>
+-#include <sys/signal.h>
+ #include <sys/stat.h>
+ #include <sys/time.h>
+ #include <sys/wait.h>
++#undef u_int64_t
+ #include <db.h>                                /* DB header ****************/
+ #include "webalizer.h"                         /* main header              */
+ #include "lang.h"                              /* language declares        */

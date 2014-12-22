@@ -1,0 +1,29 @@
+$NetBSD$
+
+--- nspr/pr/tests/Makefile.in.orig	2014-06-05 21:42:08.000000000 +0000
++++ nspr/pr/tests/Makefile.in
+@@ -369,7 +369,7 @@ LIBPTHREAD = -lpthread
+ ifeq ($(OS_ARCH),AIX)
+ LIBPTHREAD = -lpthreads
+ endif
+-ifeq (,$(filter-out FreeBSD OpenBSD BSD_OS QNX Darwin OpenUNIX,$(OS_ARCH)))
++ifeq (,$(filter-out Haiku FreeBSD OpenBSD BSD_OS QNX Darwin OpenUNIX,$(OS_ARCH)))
+ LIBPTHREAD =
+ endif
+ ifeq ($(OS_ARCH)$(basename $(OS_RELEASE)),HP-UXB.10)
+@@ -450,6 +450,15 @@ $(OBJDIR)/prpoll: $(OBJDIR)/prpoll.o
+ 	$(PURE) $(CC) $(XCFLAGS) $< $(LDOPTS) $(LIBPLC) $(LIBNSPR) -lsocket $(EXTRA_LIBS) -o $@
+ endif
+ 
++ifeq ($(OS_ARCH),Haiku)
++ifeq ($(USE_IPV6),1)
++$(OBJDIR)/gethost: $(OBJDIR)/gethost.o
++	$(PURE) $(CC) $(XCFLAGS) $< $(LDOPTS) $(LIBPLC) $(LIBNSPR) -lnetwork $(EXTRA_LIBS) -o $@
++endif
++$(OBJDIR)/prpoll: $(OBJDIR)/prpoll.o
++	$(PURE) $(CC) $(XCFLAGS) $< $(LDOPTS) $(LIBPLC) $(LIBNSPR) -lnetwork $(EXTRA_LIBS) -o $@
++endif
++
+ ifeq ($(USE_PTHREADS), 1)
+ $(OBJDIR)/attach: $(OBJDIR)/attach.o
+ 	$(PURE) $(CC) $(XCFLAGS) $< $(LDOPTS) $(LIBPLC) $(LIBNSPR) $(LIBPTHREAD) $(EXTRA_LIBS) -o $@

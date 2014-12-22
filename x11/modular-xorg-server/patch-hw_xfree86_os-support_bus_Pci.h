@@ -1,6 +1,6 @@
 $NetBSD$
 
---- hw/xfree86/os-support/bus/Pci.h.orig	2012-05-17 17:09:03.000000000 +0000
+--- hw/xfree86/os-support/bus/Pci.h.orig	2014-12-21 02:38:07.704118784 +0000
 +++ hw/xfree86/os-support/bus/Pci.h
 @@ -139,7 +139,8 @@
  #define osPciInit(x) do {} while (0)

@@ -40,6 +40,8 @@ PKG_OPTIONS.qt4-libs= -xcb
 
 PKG_OPTIONS.avahi= -gtk2
 
+#PKG_OPTIONS.apr-util= +=ldap
+
 .if ${PKGPATH} == "devel/py-ordereddict"
 PYTHON_VERSIONS_ACCEPTED=		27
 .endif

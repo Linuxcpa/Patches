@@ -14,6 +14,7 @@ CFLAGS.Haiku+= -lnetwork
 #CFLAGS+= 		-specs=/boot/home/pkg/etc/specs
 #.endif
 
-.if ${PKGPATH} == "textproc/ispell" || ${PKGPATH} == "textproc/crush-tools"
+.if ${PKGPATH} == "textproc/ispell" || ${PKGPATH} == "textproc/crush-tools" \
+|| ${PKGPATH} == "textproc/regxml"
 CFLAGS.Haiku+= -lbsd
 .endif

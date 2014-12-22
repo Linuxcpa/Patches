@@ -1,7 +1,16 @@
 $NetBSD$
 
---- configure.in.orig	2014-01-30 15:58:25.048496640 +0000
+--- configure.in.orig	2014-01-30 15:58:25.001048576 +0000
 +++ configure.in
+@@ -2309,7 +2309,7 @@ if test "$with_dln_a_out" != yes; then
+ 			    : ${LDSHARED='$(CC) -G'}
+ 			fi
+ 			if test "$ac_cv_sizeof_voidp" = 8; then
+-			    : ${LIBPATHENV=LD_LIBRARY_PATH_64}
++			    : ${LIBPATHENV=LD_XLIBRARY_PATH_64}
+ 			fi
+ 			rb_cv_dlopen=yes],
+ 	[sunos*], [	: ${LDSHARED='$(LD) -assert nodefinitions'}
 @@ -2327,7 +2327,7 @@ if test "$with_dln_a_out" != yes; then
  	[bsdi3*], [	AS_CASE(["$CC"],
  			[*shlicc*], [	: ${LDSHARED='$(CC) -r'}
@@ -11,7 +20,16 @@ $NetBSD$
  			: ${LDSHARED='$(CC) -shared'}
  			if test "$rb_cv_binary_elf" = yes; then
  			    LDFLAGS="$LDFLAGS -Wl,-export-dynamic"
-@@ -2379,13 +2379,13 @@ if test "$with_dln_a_out" != yes; then
+@@ -2354,7 +2354,7 @@ if test "$with_dln_a_out" != yes; then
+ 	[darwin*], [	: ${LDSHARED='$(CC) -dynamic -bundle'}
+ 			: ${DLDFLAGS="${linker_flag}-undefined${linker_flag:+,}dynamic_lookup ${linker_flag}-multiply_defined${linker_flag:+,}suppress"}
+ 			: ${LDFLAGS=""}
+-			: ${LIBPATHENV=DYLD_LIBRARY_PATH}
++			: ${LIBPATHENV=DYLD_XLIBRARY_PATH}
+ 			# /usr/local/include is always searched for
+ 			# some reason, but /usr/local/lib is not.
+ 			hdr=`find /usr/local/include -name \*.h -type f | sed 's:^/usr/local/include/::;q'`
+@@ -2379,15 +2379,15 @@ if test "$with_dln_a_out" != yes; then
  			  [powerpc*], [
  			    : ${LDSHARED='$(LD) -xms'}
  			    EXTDLDFLAGS='-export $(TARGET_ENTRY)'
@@ -26,8 +44,29 @@ $NetBSD$
 +			    DLDFLAGS="$DLDFLAGS -L/boot/home/pkg/lib -lroot -L/boot/home/pkg/lib"
 +			    LDFLAGS="$LDFLAGS -L/boot/home/pkg/lib -lroot-L/boot/home/pkg/lib"
  			    ])
- 			: ${LIBPATHENV=LIBRARY_PATH}
+-			: ${LIBPATHENV=LIBRARY_PATH}
++			: ${LIBPATHENV=XLIBRARY_PATH}
  			rb_cv_dlopen=yes],
+ 	[haiku*], [	AS_CASE(["$target_cpu"],
+ 			  [powerpc*], [
+@@ -2399,7 +2399,7 @@ if test "$with_dln_a_out" != yes; then
+ 			    : ${LDSHARED='$(LD) -shared'}
+ 			    DLDFLAGS="$DLDFLAGS -L/boot/develop/lib/x86 -lroot"
+ 			    ])
+-			: ${LIBPATHENV=LIBRARY_PATH}
++			: ${LIBPATHENV=XLIBRARY_PATH}
+ 			rb_cv_dlopen=yes ],
+ 	[nto-qnx*], [	DLDFLAGS="$DLDFLAGS -L/lib -L/usr/lib -L/usr/local/lib"
+ 			: ${LDSHARED='$(LD) -Bshareable -x'}
+@@ -2439,7 +2439,7 @@ AS_CASE([${RPATHFLAG}],[*'%1$'*],[: ${LI
+ AC_SUBST(LINK_SO)
+ AC_SUBST(LIBPATHFLAG)
+ AC_SUBST(RPATHFLAG)
+-AC_SUBST(LIBPATHENV, "${LIBPATHENV-LD_LIBRARY_PATH}")
++AC_SUBST(LIBPATHENV, "${LIBPATHENV-LD_XLIBRARY_PATH}")
+ AC_SUBST(TRY_LINK)
+ 
+ AC_ARG_WITH(opt-dir,
 @@ -2717,7 +2717,7 @@ AS_CASE("$enable_shared", [yes], [
      [sunos4*], [
  	LIBRUBY_ALIASES='lib$(RUBY_SO_NAME).so.$(MAJOR).$(MINOR) lib$(RUBY_SO_NAME).so'

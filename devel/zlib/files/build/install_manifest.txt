@@ -1,0 +1,8 @@
+/packages/zlib-1.2.8-4/.self/lib/libz.so.1.2.8
+/packages/zlib-1.2.8-4/.self/lib/libz.so.1
+/packages/zlib-1.2.8-4/.self/lib/libz.so
+/packages/zlib-1.2.8-4/.self/lib/libz.a
+/packages/zlib-1.2.8-4/.self/develop/headers/zconf.h
+/packages/zlib-1.2.8-4/.self/develop/headers/zlib.h
+/packages/zlib-1.2.8-4/.self/documentation/man/man3/zlib.3
+/packages/zlib-1.2.8-4/.self/develop/lib/pkgconfig/zlib.pc

@@ -10,6 +10,14 @@ CONFIGURE_ARGS+= --enable-lto
 CONFIGURE_ARGS+= -no-largefile
 CONFIGURE_ARGS+= -fast
 CONFIGURE_ARGS+= -no-pch
+CONFIGURE_ARGS+= -no-opengl
+CONFIGURE_ARGS+= -nomake examples 
+CONFIGURE_ARGS+= -nomake demos 
+CONFIGURE_ARGS+= -release
+CONFIGURE_ARGS+= -no-iconv 
+CONFIGURE_ARGS+= -multimedia 
+CONFIGURE_ARGS+= -no-audio-backend 
+#CONFIGURE_ARGS+= -dbus
 .endif
 
 .if ${PKGPATH} == "emulators/qemu"
@@ -64,6 +72,12 @@ CONFIGURE_ARGS+=    --includedir=/boot/home/pkg/include
 .endif
 
 .if ${PKGPATH} == "x11/modular-xorg-server"
+CONFIGURE_ARGS+=	--disable-pciaccess
+CONFIGURE_ARGS+=	--disable-mitshm
+CONFIGURE_ARGS+=	--enable-xfbdev
+CONFIGURE_ARGS+=	--disable-dri
+CONFIGURE_ARGS+=	--disable-dri2
+CONFIGURE_ARGS+=	--disable-glx
 CONFIGURE_ARGS+=	--disable-glx-tls
 .endif
 
@@ -95,4 +109,17 @@ CONFIGURE_ARGS+=    --build=Haiku
 .if ${PKGPATH} == "math/fftw"
 CONFIGURE_ARGS+= --prefix=/boot/home/pkg 
 CONFIGURE_ARGS+= --sharedstatedir=/boot/home/pkg/var
+.endif
+
+.if ${PKGPATH} == "lang/ruby200-base"
+CONFIGURE_ARGS+= --enable-shared --disable-silent-rules
+CONFIGURE_SH+= export LIBRARY_PATH=$LIBRARY_PATH:%A
+.endif
+
+.if ${PKGPATH} == "www/http_load"
+MAKE_ENV+=	SYSV_LIBS="-lnetwork"
+.endif
+
+.if ${PKGPATH} == "www/mini_httpd"
+MAKE_ENV+=	SYSV_LIBS="-lnetwork -lbsd"
 .endif

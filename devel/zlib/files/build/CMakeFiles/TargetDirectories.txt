@@ -1,0 +1,4 @@
+/sources/zlib-1.2.8/build/CMakeFiles/example.dir
+/sources/zlib-1.2.8/build/CMakeFiles/minigzip.dir
+/sources/zlib-1.2.8/build/CMakeFiles/zlib.dir
+/sources/zlib-1.2.8/build/CMakeFiles/zlibstatic.dir

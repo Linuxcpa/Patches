@@ -1,0 +1,12 @@
+$NetBSD$
+
+--- nss/cmd/shlibsign/Makefile.orig	2014-09-23 18:27:49.000000000 +0000
++++ nss/cmd/shlibsign/Makefile
+@@ -95,5 +95,6 @@ else
+     endif
+ endif
+ 
++ifndef SKIP_SHLIBSIGN 
+ libs install :: $(CHECKLOC)
+-
++endif

@@ -1,0 +1,30 @@
+$NetBSD: patch-mj,v 1.2 2013/07/20 09:28:12 ryoon Exp $
+
+Add DragonFly support.
+
+--- nss/coreconf/arch.mk.orig	2014-09-23 18:27:49.017039360 +0000
++++ nss/coreconf/arch.mk
+@@ -41,6 +41,14 @@ else
+ endif
+ 
+ #
++# Force the Haiku machines to use BeOS.
++#
++
++ifeq ($(OS_ARCH),Haiku)
++	OS_ARCH = BeOS
++endif
++
++#
+ # Force the IRIX64 machines to use IRIX.
+ #
+ 
+@@ -113,7 +121,7 @@ endif
+ # IRIX 6.5-ALPHA-1289139620.
+ #
+ 
+-ifeq (,$(filter-out Linux FreeBSD IRIX,$(OS_ARCH)))
++ifeq (,$(filter-out Linux DragonFly FreeBSD IRIX,$(OS_ARCH)))
+     OS_RELEASE := $(shell echo $(OS_RELEASE) | sed 's/-.*//')
+ endif
+ 

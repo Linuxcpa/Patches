@@ -6,7 +6,7 @@
 BUILDLINK_TRANSFORM+=   rm:-lpthread
 BUILDLINK_TRANSFORM+=   rm:-pthread
 BUILDLINK_TRANSFORM+=   rm:-lsocket
-BUILDLINK_TRANSFORM+=   rm:-ldl
+#BUILDLINK_TRANSFORM+=   rm:-ldl
 #BUILDLINK_TRANSFORM+=   rm:-lltdl
 #BUILDLINK_TRANSFORM+=   rm:-lc
 #BUILDLINK_TRANSFORM+=   rm:Wno-error

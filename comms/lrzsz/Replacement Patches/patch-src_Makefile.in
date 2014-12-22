@@ -1,0 +1,52 @@
+$NetBSD: patch-src_Makefile.in,v 1.1 2014/03/02 13:48:03 apb Exp $
+
+--- src/Makefile.in.orig	2014-12-16 05:21:15.246939648 +0000
++++ src/Makefile.in
+@@ -94,7 +94,7 @@ lrz_SOURCES=lrz.c timing.c zperr.c zread
+ lsz_SOURCES=lsz.c timing.c zperr.c zreadline.c crctab.c rbsb.c zm.c protname.c tcp.c lsyslog.c canit.c
+ noinst_HEADERS = timing.h zglobal.h zmodem.h
+ datadir = $(prefix)/@DATADIRNAME@
+-localedir = $(datadir)/locale
++localedir = /boot/home/pkg/share/locale
+ CFLAGS=@CFLAGS@
+ DISTCLEAN_FILES=lrzszbug
+ 
+@@ -282,7 +282,7 @@ distdir: $(DISTFILES)
+ 	@for file in $(DISTFILES); do \
+ 	  d=$(srcdir); \
+ 	  test -f $(distdir)/$$file \
+-	  || ln $$d/$$file $(distdir)/$$file 2> /dev/null \
++	  || ln -s $$d/$$file $(distdir)/$$file 2> /dev/null \
+ 	  || cp -p $$d/$$file $(distdir)/$$file; \
+ 	done
+ canit.o: canit.c zglobal.h ../config.h zmodem.h ../lib/getopt.h
+@@ -370,17 +370,21 @@ maintainer-clean-generic clean mostlycle
+ 
+ install-exec-local:
+ 	rm -f $(DESTDIR)/$(bindir)/`echo lsb | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lsz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lsb |sed -e '$(transform)'` 
++	cd $(DESTDIR)/$(bindir) && \
++	ln -s `echo lsz |sed -e '$(transform)'` \
++		`echo lsb |sed -e '$(transform)'`  
+ 	rm -f $(DESTDIR)$(bindir)/`echo lsx | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lsz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lsx |sed -e '$(transform)'` 
++	cd $(DESTDIR)/$(bindir) && \
++	ln -s `echo lsz |sed -e '$(transform)'` \
++		`echo lsx |sed -e '$(transform)'` 
+ 	rm -f $(DESTDIR)$(bindir)/`echo lrb | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lrz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lrb |sed -e '$(transform)'` 
++	cd $(DESTDIR)/$(bindir) && \
++	ln -s `echo lrz |sed -e '$(transform)'` \
++		`echo lrb |sed -e '$(transform)'`
+ 	rm -f $(DESTDIR)$(bindir)/`echo lrx | sed -e '$(transform)'`
+-	ln $(DESTDIR)/$(bindir)/`echo lrz |sed -e '$(transform)'` \
+-		$(DESTDIR)/$(bindir)/`echo lrx |sed -e '$(transform)'` 
++	cd $(DESTDIR)/$(bindir) && \
++	ln -s `echo lrz |sed -e '$(transform)'` \
++		`echo lrx |sed -e '$(transform)'`
+ #	rm -f $(bindir)/`echo lrzszbug | sed -e '$(transform)'`
+ #	ln $(bindir)/`echo lrzszbug |sed -e '$(transform)'` \
+ #		$(bindir)/`echo lrzszbug |sed -e '$(transform)'` 

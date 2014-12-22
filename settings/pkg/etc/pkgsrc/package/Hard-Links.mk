@@ -2,7 +2,7 @@
 
 .if ${PKGPATH} == archivers/bzip2 || ${PKGPATH} == "archivers/rzip" \
 || ${PKGPATH} == "devel/cmake" || ${PKGPATH} == "lang/ruby200-base" \
-|| ${PKGPATH} == "math/fftw" || ${PKGPATH} == "archivers/pigz" \
+|| ${PKGPATH} == "devel/nspr" || ${PKGPATH} == "archivers/pigz" \
 || ${PKGPATH} == "archivers/libzip" || ${PKGPATH} == "net/bind99" \
 || ${PKGPATH} == "lang/tcl" || ${PKGPATH} == "x11/tk" \
 || ${PKGPATH} == "net/libpcap" || ${PKGPATH} == "converters/unix2dos" \
@@ -15,6 +15,17 @@
 || ${PKGPATH} == "sysutils/hfsutils" || ${PKGPATH} == "textproc/diction" \
 || ${PKGPATH} == "textproc/ispell" || ${PKGPATH} == "textproc/ispell-de" \
 || ${PKGPATH} == "textproc/ispell-en_GB" || ${PKGPATH} == "textproc/ispell-es" \
-|| ${PKGPATH} == "textproc/harmony"
+|| ${PKGPATH} == "textproc/harmony" || ${PKGPATH} == "textproc/xmlstarlet" \
+|| ${PKGPATH} == "www/libwww" || ${PKGPATH} == "textproc/yodl" \
+|| ${PKGPATH} == "shells/zsh" || ${PKGPATH} == "www/libwww" \
+|| ${PKGPATH} == "x11/xjman"
 TOOLS_PLATFORM.ln?=             /bin/ln -s
+.endif
+
+.if ${PKGPATH} == "security/libgnome-keyring"
+TOOLS_PLATFORM.ln?=             /bin/ln -sf
+.endif
+
+.if ${PKGPATH} == "math/fftw"
+TOOLS_PLATFORM.ln?=             /bin/ln
 .endif

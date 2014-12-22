@@ -1,0 +1,13 @@
+$NetBSD: patch-an,v 1.1 2006/10/06 19:15:09 schwarz Exp $
+
+--- src/main.c.orig	2001-01-26 13:42:59.055836672 +0000
++++ src/main.c
+@@ -313,7 +313,7 @@ int main (int argc, char **argv, char **
+ /* old : #if defined(SVR4) || defined(__QNX__) || defined(NETBSD) || defined(FreeBSD) */
+ 
+ /* new */
+-#if defined(SVR4) || defined(__QNX__) || defined(NETBSD) || defined(FreeBSD) || defined(linux)
++#if defined(SVR4) || defined(__QNX__) || defined(NETBSD) || defined(FreeBSD) || defined(linux) || defined(__APPLE__) || defined(__HAIKU__)
+ 	signal(SIGCHLD, (void (*)(int))ChildTerminated);
+ #else
+ 	signal(SIGCLD, (void (*)())ChildTerminated);

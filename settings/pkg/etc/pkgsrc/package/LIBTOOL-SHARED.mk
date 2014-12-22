@@ -43,7 +43,19 @@
 || ${PKGPATH} == "textproc/php-enchant" || ${PKGPATH} == "textproc/php-intl" \
 || ${PKGPATH} == "textproc/php-json" || ${PKGPATH} == "textproc/php-mecab" \
 || ${PKGPATH} == "textproc/php-pspell" || ${PKGPATH} == "textproc/php-wddx" \
-|| ${PKGPATH} == "textproc/php-xsl"
+|| ${PKGPATH} == "textproc/php-xsl"|| ${PKGPATH} == "www/pear-HTML_Common" \
+|| ${PKGPATH} == "www/pear-HTML_Select"|| ${PKGPATH} == "www/pear-HTML_TreeMenu" \
+|| ${PKGPATH} == "www/pear-HTTP"|| ${PKGPATH} == "www/php-apc" \
+|| ${PKGPATH} == "www/php-basercms"|| ${PKGPATH} == "www/php-concrete5" \
+|| ${PKGPATH} == "www/php-curl"|| ${PKGPATH} == "www/php-eaccelerator" \
+|| ${PKGPATH} == "www/php-fpm"|| ${PKGPATH} == "www/php-http" \
+|| ${PKGPATH} == "www/php-ja-wordpress"|| ${PKGPATH} == "www/php-owncloud" \
+|| ${PKGPATH} == "www/php-phrasea2"|| ${PKGPATH} == "www/php-piwigo" \
+|| ${PKGPATH} == "www/php-soycms"|| ${PKGPATH} == "www/php-sugarcrm" \
+|| ${PKGPATH} == "www/php-tidy"|| ${PKGPATH} == "www/php-tiki6" \
+|| ${PKGPATH} == "www/php-tt-rss"|| ${PKGPATH} == "www/php-tt-rss-fever-plugin" \
+|| ${PKGPATH} == "www/php-uploadprogress"|| ${PKGPATH} == "www/php-zendoptimizerplus" \
+|| ${PKGPATH} == "lang/ruby200-base"
 SHLIBTOOL_OVERRIDE= # empty
 LDFLAGS.Haiku+= -Wl,--rpath
 .endif
@@ -53,5 +65,3 @@ LDFLAGS.Haiku+= -Wl,--rpath
 CONFIGURE_ARGS+=	--with-zlib-dir=/boot/home/pkg
 CONFIGURE_ARGS+=    --includedir=/boot/home/pkg/include
 .endif
-
-#|| ${PKGPATH} == "lang/ruby200-base"

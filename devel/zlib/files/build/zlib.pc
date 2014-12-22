@@ -1,0 +1,13 @@
+prefix=/packages/zlib-1.2.8-4/.self
+exec_prefix=/packages/zlib-1.2.8-4/.self
+libdir=/packages/zlib-1.2.8-4/.self/lib
+sharedlibdir=/packages/zlib-1.2.8-4/.self/lib
+includedir=/packages/zlib-1.2.8-4/.self/develop/headers
+
+Name: zlib
+Description: zlib compression library
+Version: 1.2.8
+
+Requires:
+Libs: -L${libdir} -L${sharedlibdir} -lz
+Cflags: -I${includedir}

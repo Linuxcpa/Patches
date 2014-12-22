@@ -7,3 +7,14 @@
 #USE_PKGSRC_GCC= yes
 #GCC_REQD= 4.7
 #.endif
+
+.if ${PKGPATH} == "devel/zlib"
+USE_CMAKE += yes
+USE_LIBTOOL+=		no
+PKGCONFIG_OVERRIDE+=	zlib.pc
+SUBST_FILES.pc= zlib.pc
+.endif
+
+.if ${PKGPATH} == "audio/portaudio"
+USE_CMAKE += yes
+.endif

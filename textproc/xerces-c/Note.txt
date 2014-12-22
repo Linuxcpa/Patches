@@ -1,0 +1,10 @@
+Clear out this file: .check_files_missing_real
+
+Copy IconvGNUTransService.hpp into:
+/boot/work/textproc/xerces-c/work/.destdir/boot/home/pkg/include/xercesc/util/Transcoders/IconvGNU/IconvGNUTransService.hpp
+
+From: 
+
+/boot/work/textproc/xerces-c/work/xerces-c-3.1.1/src/xercesc/util/Transcoders/IconvGNU/IconvGNUTransService.hpp
+
+Rerun bmake install

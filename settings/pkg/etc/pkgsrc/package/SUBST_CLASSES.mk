@@ -60,7 +60,9 @@ SUBST_SED.xawfix+= -e 's|libXaw.a|libXaw6.a|g'
 .if ${PKGPATH} == "time/gnyaclock" || ${PKGPATH} == "time/lmclock" \
 || ${PKGPATH} == "time/polclock" || ${PKGPATH} == "time/sunclock" \
 || ${PKGPATH} == "time/titrax" || ${PKGPATH} == "time/xcal" \
-|| ${PKGPATH} == "wm/larswm"
+|| ${PKGPATH} == "wm/larswm" || ${PKGPATH} == "x11/xless" \
+|| ${PKGPATH} == "x11/xlogout" || ${PKGPATH} == "x11/xlupe" \
+|| ${PKGPATH} == "x11/xmascot"
 SUBST_CLASSES+= xawfix1
 SUBST_STAGE.xawfix1= pre-build
 SUBST_MESSAGE.xawfix1= Fixing libxaw to libxaw6
@@ -269,5 +271,11 @@ SUBST_CLASSES+= lnetwork14
 SUBST_STAGE.lnetwork14= pre-build
 SUBST_MESSAGE.lnetwork14= Fixing lnetwork
 SUBST_FILES.lnetwork14= Makefile
-SUBST_SED.lnetwork14+= -e 's|XLIBS=#-lsocket|XLIBS= -lnetwork|g'
+SUBST_SED.lnetwork14+= -e 's|-lsocket|-lnetwork|g'
+
+SUBST_CLASSES+= lnetwork15
+SUBST_STAGE.lnetwork15= pre-build
+SUBST_MESSAGE.lnetwork15= Fixing lnetwork
+SUBST_FILES.lnetwork15= Makefile
+SUBST_SED.lnetwork15+= -e 's|LIBS=-lm|LIBS=-lm -lnetwork|g'
 .endif

@@ -39,7 +39,11 @@ LDFLAGS+= -L/boot/system/lib
 || ${PKGPATH} == "security/mirrordir" || ${PKGPATH} == "security/sbd" \
 || ${PKGPATH} == "security/sslscan" || ${PKGPATH} == "security/starttls" \
 || ${PKGPATH} == "security/stud" || ${PKGPATH} == "sysutils/9base" \
-|| ${PKGPATH} == "sysutils/dog" || ${PKGPATH} == "sysutils/ts"
+|| ${PKGPATH} == "sysutils/dog" || ${PKGPATH} == "sysutils/ts" \
+|| ${PKGPATH} == "textproc/lq-sp" || ${PKGPATH} == "www/ijb" \
+|| ${PKGPATH} == "www/bozohttpd" || ${PKGPATH} == "www/c-icap" \
+|| ${PKGPATH} == "www/mMosaic" || ${PKGPATH} == "audio/mserv" \
+|| ${PKGPATH} == "x11/xfstt"
 LDFLAGS+= -lnetwork
 .endif
 
@@ -50,14 +54,16 @@ LDFLAGS+= -lnetwork
 || ${PKGPATH} == "devel/bmkdep" || ${PKGPATH} == "archivers/unrar" \
 || ${PKGPATH} == "net/batchftp" || ${PKGPATH} == "print/xdvipdfmx" \
 || ${PKGPATH} == "shells/dash" || ${PKGPATH} == "sysutils/acpidump" \
-|| ${PKGPATH} == "sysutils/9base" || ${PKGPATH} == "sysutils/adtool"
+|| ${PKGPATH} == "sysutils/9base" || ${PKGPATH} == "sysutils/adtool" \
+|| ${PKGPATH} == "textproc/vis" || ${PKGPATH} == "www/bozohttpd" \
+|| ${PKGPATH} == "x11/xfstt" || ${PKGPATH} == "math/nickle" \
+|| ${PKGPATH} == "x11/modular-xorg-server"
 LDFLAGS+= -lbsd
 .endif
 
 .if ${PKGPATH} == "shells/fish"
 LDFLAGS+= -L/boot/home/pkg/lib
 .endif
-
 
 .if ${PKGPATH} == "net/libpcap" || ${PKGPATH} == "lang/python27" \
 || ${PKGPATH} == "chat/iip" || ${PKGPATH} == "chat/icbirc" \
@@ -80,4 +86,8 @@ LDFLAGS+= -L/boot/system/lib -lroot -lstdc++ -lgcc_s -Wl,-R/boot/system/lib
 
 .if ${PKGPATH} == "graphics/ImageMagick"
 LDFLAGS+= -L/boot/system/lib -lnetwork -lroot -Wl,-R/boot/system/lib
+.endif
+
+.if ${PKGPATH} == "devel/pango"
+LDFLAGS.Haiku+=	-Wl,-zignore
 .endif

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- hw/xfree86/os-support/shared/posix_tty.c.orig	2012-05-17 17:09:03.000000000 +0000
+--- hw/xfree86/os-support/shared/posix_tty.c.orig	2012-05-17 17:09:03.019398656 +0000
 +++ hw/xfree86/os-support/shared/posix_tty.c
 @@ -51,7 +51,8 @@
   * in this Software without prior written authorization from Metro Link.

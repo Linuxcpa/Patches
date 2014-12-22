@@ -1,0 +1,137 @@
+$NetBSD: patch-ac,v 1.9 2013/11/02 12:34:14 ryoon Exp $
+
+--- nspr/configure.in.orig	2014-06-05 21:42:08.054263808 +0000
++++ nspr/configure.in
+@@ -38,7 +38,7 @@ OBJDIR_NAME=.
+ OBJDIR_SUFFIX=OBJ
+ NSINSTALL='$(MOD_DEPTH)/config/$(OBJDIR_NAME)/nsinstall'
+ NOSUCHFILE=/no-such-file
+-LIBNSPR='-L$(dist_libdir) -lnspr$(MOD_MAJOR_VERSION)'
++LIBNSPR='-Wl,-R${prefix}/lib/${MOZILLA_PKG_NAME} -L$(dist_libdir) -lnspr$(MOD_MAJOR_VERSION)'
+ LIBPLC='-L$(dist_libdir) -lplc$(MOD_MAJOR_VERSION)'
+ CYGWIN_WRAPPER=
+ MACOS_SDK_DIR=
+@@ -1312,6 +1312,27 @@ case "$target" in
+         ;;
+     esac
+     ;;
++   
++*-haiku*)
++    AC_DEFINE(XP_UNIX)
++    AC_DEFINE(HAIKU)
++    AC_DEFINE(HAVE_SOCKLEN_T)
++    AC_DEFINE(HAVE_FCNTL_FILE_LOCKING)
++    DSO_CFLAGS="-fPIC"
++    USE_PTHREADS=1
++    IMPL_STRATEGY=_PTH
++    MDCPUCFG_H=_linux.cfg
++    if test -n "$USE_64"; then
++    	PR_MD_ASFILES=os_Linux_x86_64.s
++    else
++    	PR_MD_ASFILES=os_Linux_x86.s
++    fi
++    MKSHLIB='$(CC) $(DSO_LDOPTS) -o $@'
++    DSO_CFLAGS=-fPIC
++    DSO_LDOPTS='-shared -Wl,-soname -Wl,$(notdir $@)'
++    _OPTIMIZE_FLAGS=-O2
++    AC_CHECK_LIB(network, gethostbyaddr, [OS_LIBS="$OS_LIBS -lnetwork"])
++	;;
+ 
+ *-bsdi*)
+     AC_DEFINE(XP_UNIX)
+@@ -1566,6 +1587,33 @@ tools are selected during the Xcode/Deve
+     DSO_LDOPTS='-shared -Wl,-soname -Wl,$(notdir $@)'
+     MDCPUCFG_H=_freebsd.cfg
+     PR_MD_CSRCS=freebsd.c
++    if test "$LIBRUNPATH"; then
++        DSO_LDOPTS="$DSO_LDOPTS -Wl,-R$LIBRUNPATH"
++    fi
++    ;;
++
++*-dragonfly*)
++    if test -z "$USE_NSPR_THREADS"; then
++        USE_PTHREADS=1
++    fi
++    AC_DEFINE(XP_UNIX)
++    AC_DEFINE(HAVE_BSD_FLOCK)
++    AC_DEFINE(HAVE_SOCKLEN_T)
++    CFLAGS="$CFLAGS $(DSO_CFLAGS) -ansi -Wall"
++    MOZ_OBJFORMAT=`test -x /usr/bin/objformat && /usr/bin/objformat || echo aout`
++    if test "$MOZ_OBJFORMAT" = "elf"; then
++        DLL_SUFFIX=so
++    else
++        DLL_SUFFIX=so.1.0
++    fi
++    MKSHLIB='$(CC) $(DSO_LDOPTS) -o $@'
++    DSO_CFLAGS=-fPIC
++    DSO_LDOPTS='-shared -Wl,-soname -Wl,$(notdir $@)'
++    MDCPUCFG_H=_dragonfly.cfg
++    PR_MD_CSRCS=freebsd.c
++    if test "$LIBRUNPATH"; then
++        DSO_LDOPTS="$DSO_LDOPTS -Wl,-R$LIBRUNPATH"
++    fi
+     ;;
+ 
+ *-hpux*)
+@@ -2101,6 +2149,7 @@ tools are selected during the Xcode/Deve
+     AC_DEFINE(XP_UNIX)
+     AC_DEFINE(NETBSD)
+     AC_DEFINE(HAVE_BSD_FLOCK)
++    AC_DEFINE(HAVE_SOCKLEN_T)
+     if test -z "$USE_NSPR_THREADS"; then
+         USE_PTHREADS=1
+     fi
+@@ -2151,7 +2200,7 @@ tools are selected during the Xcode/Deve
+     AC_DEFINE(HAVE_SOCKLEN_T)
+     CFLAGS="$CFLAGS -ansi -Wall"
+     CXXFLAGS="$CXXFLAGS -ansi -Wall"
+-    DLL_SUFFIX=so.1.0
++    DLL_SUFFIX=so
+     DSO_CFLAGS=-fPIC
+     MDCPUCFG_H=_openbsd.cfg
+     PR_MD_CSRCS=openbsd.c
+@@ -2538,7 +2587,7 @@ dnl The same goes for BeOS.
+ dnl OS/2 has dlfcn in libc.
+ 
+ case $target in
+-*-darwin*|*-beos*|*-os2*)
++*-darwin*|*-beos*|*-haiku*|*-os2*)
+     ;;
+ *)
+     AC_CHECK_LIB(dl, dlopen,
+@@ -2676,7 +2725,7 @@ echo "
+ ])
+ 
+ case "$target_os" in
+-darwin*)
++darwin*|haiku*)
+     _HAVE_PTHREADS=1
+     ;;
+ *)
+@@ -2769,7 +2818,7 @@ if test -n "$USE_PTHREADS"; then
+ 	if test -z "`egrep -i '(unrecognize|unknown)' conftest.out | grep pthread`" && test -z "`egrep -i '(error|incorrect)' conftest.out`" ; then
+ 	    ac_cv_have_dash_pthread=yes
+ 		case "$target_os" in
+-	    freebsd*)
++	    freebsd* | dragonfly*)
+ # Freebsd doesn't use -pthread for compiles, it uses them for linking
+             ;;
+ 	    *)
+@@ -2807,7 +2856,7 @@ if test -n "$USE_PTHREADS"; then
+             _PTHREAD_LDFLAGS=
+         fi
+ 	    ;;
+-    *-freebsd*)
++    *-freebsd* | *-dragonfly*)
+ 	    AC_DEFINE(_REENTRANT)
+ 	    AC_DEFINE(_THREAD_SAFE)
+ 	    dnl -pthread links in -lc_r, so don't specify it explicitly.
+@@ -2888,7 +2937,7 @@ case "$target" in
+         AC_DEFINE(_PR_NEED_PTHREAD_INIT)
+     fi
+     ;;
+-*-freebsd*)
++*-freebsd* | *-dragonfly*)
+     if test -n "$USE_NSPR_THREADS"; then
+         AC_DEFINE(_PR_LOCAL_THREADS_ONLY)
+     fi
