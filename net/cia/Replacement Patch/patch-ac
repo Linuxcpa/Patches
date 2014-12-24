@@ -1,0 +1,34 @@
+$NetBSD: patch-ac,v 1.1 2006/01/23 18:46:00 tron Exp $
+
+Index: ipstat/config.c
+===================================================================
+RCS file: /share/cvsroot/net/ipstat/ipstat/config.c,v
+retrieving revision 1.6
+retrieving revision 1.7
+diff -u -r1.6 -r1.7
+--- ipstat/config.c.orig	2014-12-24 07:19:13.543686656 +0000
++++ ipstat/config.c
+@@ -4,5 +4,5 @@
+ 
+ */
+-
++#include <strings.h>
+ #include <sys/types.h>
+ #include <netinet/in.h>
+@@ -313,6 +313,6 @@ static int ParseConfig(char *Filename,FI
+              struct in_addr *Addr,*Mask;
+ 
+-             Addr=&((Type==0)?Mt->m_SrcAddr:Mt->m_DstAddr);
+-             Mask=&((Type==0)?Mt->m_SrcMask:Mt->m_DstMask);
++             Addr=((Type==0)?&Mt->m_SrcAddr:&Mt->m_DstAddr);
++             Mask=((Type==0)?&Mt->m_SrcMask:&Mt->m_DstMask);
+              if (!ParseNet(*Arg,Addr,Mask))
+               {
+@@ -363,5 +363,6 @@ static int ParseConfig(char *Filename,FI
+               }
+ 
+-             ((Type==3)?Mt->m_SrcPort:Mt->m_DstPort)=Port;
++             if (Type==3) Mt->m_SrcPort=Port;
++             else Mt->m_DstPort=Port;
+             }
+           }

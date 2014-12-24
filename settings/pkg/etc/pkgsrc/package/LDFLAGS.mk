@@ -43,7 +43,7 @@ LDFLAGS+= -L/boot/system/lib
 || ${PKGPATH} == "textproc/lq-sp" || ${PKGPATH} == "www/ijb" \
 || ${PKGPATH} == "www/bozohttpd" || ${PKGPATH} == "www/c-icap" \
 || ${PKGPATH} == "www/mMosaic" || ${PKGPATH} == "audio/mserv" \
-|| ${PKGPATH} == "x11/xfstt"
+|| ${PKGPATH} == "x11/xfstt" || ${PKGPATH} == "x11/modular-xorg-server"
 LDFLAGS+= -lnetwork
 .endif
 
@@ -57,7 +57,7 @@ LDFLAGS+= -lnetwork
 || ${PKGPATH} == "sysutils/9base" || ${PKGPATH} == "sysutils/adtool" \
 || ${PKGPATH} == "textproc/vis" || ${PKGPATH} == "www/bozohttpd" \
 || ${PKGPATH} == "x11/xfstt" || ${PKGPATH} == "math/nickle" \
-|| ${PKGPATH} == "x11/modular-xorg-server"
+|| ${PKGPATH} == "net/cftp"
 LDFLAGS+= -lbsd
 .endif
 

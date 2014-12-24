@@ -28,7 +28,8 @@
 || ${PKGPATH} == "security/cy2-saml" || ${PKGPATH} == "security/cy2-scram" \
 || ${PKGPATH} == "security/cy2-sql" || ${PKGPATH} == "security/cyrus-saslauthd" \
 || ${PKGPATH} == "security/arirang" || ${PKGPATH} == "www/analog" \
-|| ${PKGPATH} == "www/lhs"
+|| ${PKGPATH} == "www/lhs" || ${PKGPATH} == "net/chksniff" \
+|| ${PKGPATH} == "net/cidr" || ${PKGPATH} == "net/connect"
 LIBS.Haiku+=	-lnetwork
 .endif
 

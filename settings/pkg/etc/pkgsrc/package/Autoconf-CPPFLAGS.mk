@@ -20,3 +20,7 @@ CPPFLAGS+= -I/boot/home/pkg/include
 .if ${PKGPATH} == "lang/sablevm" 
 LDFLAGS+= -L/boot/home/pkg/lib
 .endif
+
+.if ${PKGPATH} == "net/cia"
+CPPFLAGS+= -lnetwork
+.endif
