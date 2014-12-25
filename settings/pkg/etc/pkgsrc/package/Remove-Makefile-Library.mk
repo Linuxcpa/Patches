@@ -8,10 +8,6 @@ BUILDLINK_TRANSFORM+= rm:-pthread
 BUILDLINK_TRANSFORM+= rm:-lm
 .endif
 
-#.if ${PKGPATH} == "converters/chef"
-#BUILDLINK_TRANSFORM+= rm:-ll
-#.endif
-
 .if ${PKGPATH} == "sysutils/adtool"
 BUILDLINK_TRANSFORM+= rm:-lresolv
 .endif
@@ -19,3 +15,9 @@ BUILDLINK_TRANSFORM+= rm:-lresolv
 .if ${PKGPATH} == "www/mini_httpd"
 BUILDLINK_TRANSFORM+= rm:-lcrypt
 .endif
+
+#Not working below here
+
+#.if ${PKGPATH} == "converters/chef"
+#BUILDLINK_TRANSFORM+= rm:-ll
+#.endif

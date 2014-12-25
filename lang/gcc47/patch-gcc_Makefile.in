@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- gcc/Makefile.in.orig	2013-07-08 09:14:34.040894464 +0000
++++ gcc/Makefile.in
+@@ -3967,7 +3967,7 @@ $(genprogerr:%=build/gen%$(build_exeext)
+ genprog = $(genprogerr) check checksum condmd
+ 
+ # These programs need libs over and above what they get from the above list.
+-build/genautomata$(build_exeext) : BUILD_LIBS += -lm
++build/genautomata$(build_exeext) : BUILD_LIBS += @math_library@
+ 
+ # These programs are not linked with the MD reader.
+ build/gengtype$(build_exeext) : build/gengtype-lex.o build/gengtype-parse.o \

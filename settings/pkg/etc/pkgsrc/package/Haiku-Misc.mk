@@ -1,6 +1,6 @@
 #Miscellaneous settings for sucessful compile for specific packages
 
-.if ${PKGPATH} == "security/tcp_wrappers" || ${PKGPATH} == "x11/qt4-libs"
+.if ${PKGPATH} == "security/tcp_wrappers"
 BUILD_TARGET.Haiku= haiku
 .endif
 
@@ -14,10 +14,6 @@ MAKE_ENV+=	EXTRA_LIBS="-lnetwork"
 
 .if ${PKGPATH} == "benchmarks/nttcp"
 MAKE_ENV+=	LIB="-lnetwork"
-.endif
-
-.if ${PKGPATH} == "lang/python27"
-USE_BUILTIN.zlib=	no
 .endif
 
 .if ${PKGPATH} == "net/balance"
@@ -44,3 +40,15 @@ CMAKE_ARGS+=		-DCMAKE_EXE_LINKER_FLAGS:STRING="-lnetwork ${COMPILER_RPATH_FLAG}$
 .if ${PKGPATH} == "www/mserv-php"
 DEPENDS+=	php>=4.0.6:../../lang/php54
 .endif
+
+#Not working yet
+
+.if ${PKGPATH} == "x11/qt4-libs"
+BUILD_TARGET.Haiku= haiku
+.endif
+
+#Probably shouldn't use below, zlib solved now
+
+#.if ${PKGPATH} == "lang/python27"
+#USE_BUILTIN.zlib=	no
+#.endif

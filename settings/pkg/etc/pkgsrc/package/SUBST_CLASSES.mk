@@ -62,7 +62,9 @@ SUBST_SED.xawfix+= -e 's|libXaw.a|libXaw6.a|g'
 || ${PKGPATH} == "time/titrax" || ${PKGPATH} == "time/xcal" \
 || ${PKGPATH} == "wm/larswm" || ${PKGPATH} == "x11/xless" \
 || ${PKGPATH} == "x11/xlogout" || ${PKGPATH} == "x11/xlupe" \
-|| ${PKGPATH} == "x11/xmascot"
+|| ${PKGPATH} == "x11/xmascot" || ${PKGPATH} == "time/xtimer" \
+|| ${PKGPATH} == "games/cbzone" || ${PKGPATH} == "mail/xmailwatcher" \
+|| ${PKGPATH} == "mail/xmailbox"
 SUBST_CLASSES+= xawfix1
 SUBST_STAGE.xawfix1= pre-build
 SUBST_MESSAGE.xawfix1= Fixing libxaw to libxaw6
@@ -76,15 +78,6 @@ SUBST_STAGE.xawfix2= post-build
 SUBST_MESSAGE.xawfix2= Fixing libxaw to libxaw6
 SUBST_FILES.xawfix2= Makefile
 SUBST_SED.xawfix2+= -e 's|libXaw.a|libXaw6.a|g'
-.endif
-
-.if ${PKGPATH} == "time/xtimer" || ${PKGPATH} == "games/cbzone" \
-|| ${PKGPATH} == "mail/xmailwatcher" || ${PKGPATH} == "mail/xmailbox"
-SUBST_CLASSES+= xawfix3
-SUBST_STAGE.xawfix3= pre-build
-SUBST_MESSAGE.xawfix3= Fixing libxaw to libxaw6
-SUBST_FILES.xawfix3= Makefile
-SUBST_SED.xawfix3+= -e 's|libXaw.a|libXaw6.a|g'
 .endif
 
 .if ${PKGPATH} == "time/xcal"
@@ -193,6 +186,7 @@ SUBST_FILES.lbsd= src/Makefile
 SUBST_SED.lbsd+= -e 's|-lnetbsd|-lbsd|g'
 .endif
 
+#php-memcached not installed yet
 .if ${PKGPATH} == "chat/xaric" || ${PKGPATH} == "devel/php-memcached" \
 || ${PKGPATH} == "devel/php-memcache"
 SUBST_CLASSES+= usr-fix1
@@ -202,6 +196,7 @@ SUBST_FILES.usr-fix1= configure
 SUBST_SED.usr-fix1+= -e 's|/usr|/boot/home/pkg|g'
 .endif
 
+#php-memcached not installed yet
 .if ${PKGPATH} == "devel/php-memcached" || ${PKGPATH} == "devel/php-memcache"
 SUBST_CLASSES+= usr-fix2
 SUBST_STAGE.usr-fix2= configure
@@ -210,6 +205,7 @@ SUBST_FILES.usr-fix2= configure.in
 SUBST_SED.usr-fix2+= -e 's|/usr|/boot/home/pkg|g'
 .endif
 
+#php-memcached not installed yet
 .if ${PKGPATH} == "devel/php-memcached" || ${PKGPATH} == "devel/php-memcache"
 SUBST_CLASSES+= usr-fix3
 SUBST_STAGE.usr-fix3= post-configure
@@ -279,3 +275,17 @@ SUBST_MESSAGE.lnetwork15= Fixing lnetwork
 SUBST_FILES.lnetwork15= Makefile
 SUBST_SED.lnetwork15+= -e 's|LIBS=-lm|LIBS=-lm -lnetwork|g'
 .endif
+
+#.if ${PKGPATH} == "lang/ruby200-base"
+#SUBST_CLASSES+= fixit
+#SUBST_STAGE.fixit= pre-build
+#SUBST_MESSAGE.fixit= Fixing Makefile
+#SUBST_FILES.fixit= Makefile
+#SUBST_SED.fixit+= -e 's|LIBS = -lpthread -lrt -ldl  $(EXTLIBS)|LIBS = $(EXTLIBS)|g'
+
+#SUBST_CLASSES+= fixit1
+#SUBST_STAGE.fixit1= pre-build
+#SUBST_MESSAGE.fixit1= Fixing Makefile
+#SUBST_FILES.fixit1= Makefile
+#SUBST_SED.fixit1+= -e 's|LDSHARED = |LDSHARED = $(LD) -shared|g'
+#.endif

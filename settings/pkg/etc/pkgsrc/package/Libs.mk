@@ -36,9 +36,15 @@ LIBS.Haiku+=	-lnetwork
 .if ${PKGPATH} == "security/cyrus-sasl" || ${PKGPATH} == "mail/cyrus-imapd" \
 || ${PKGPATH} == "mail/cyrus-imapd23" || ${PKGPATH} == "mail/avenger" \
 || ${PKGPATH} == "mail/cyrus-imapd24" || ${PKGPATH} == "sysutils/libpciaccess" \
-|| ${PKGPATH} == "x11/libdrm" || ${PKGPATH} == "mail/procmail" \
+|| ${PKGPATH} == "x11/libdrm" || ${PKGPATH} == "textproc/lout" \
 || ${PKGPATH} == "net/gini" || ${PKGPATH} == "net/libexosip" \
-|| ${PKGPATH} == "shells/nologinmsg" || ${PKGPATH} == "textproc/lout"
+|| ${PKGPATH} == "shells/nologinmsg"
 LIBS.Haiku+= -lbsd
 .endif
+
+#Below here not working yet
+
+#.if ${PKGPATH} == "mail/procmail"
+#LIBS.Haiku+= -lbsd
+#.endif
 

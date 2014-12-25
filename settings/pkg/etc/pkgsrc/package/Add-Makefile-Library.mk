@@ -8,6 +8,8 @@ BUILDLINK_TRANSFORM+= -lnetwork
 BUILDLINK_TRANSFORM+= -lroot
 .endif
 
+#Tried the below, didn't work
+
 #.if ${PKGPATH} == "converters/chef"
 #BUILDLINK_TRANSFORM+= -lroot
 #.endif

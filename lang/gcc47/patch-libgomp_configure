@@ -1,0 +1,57 @@
+$NetBSD$
+
+--- libgomp/configure.orig	2013-10-16 07:27:58.009961472 +0000
++++ libgomp/configure
+@@ -8849,8 +8849,8 @@ _LT_EOF
+       ;;
+ 
+     haiku*)
+-      archive_cmds='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+-      link_all_deplibs=yes
++      allow_undefined_flag=unsupported
++      archive_cmds='$CC -nostart $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+       ;;
+ 
+     interix[3-9]*)
+@@ -10284,16 +10284,9 @@ gnu*)
+   ;;
+ 
+ haiku*)
+-  version_type=linux
+-  need_lib_prefix=no
+-  need_version=no
+-  dynamic_linker="$host_os runtime_loader"
+-  library_names_spec='${libname}${release}${shared_ext}$versuffix ${libname}${release}${shared_ext}${major} ${libname}${shared_ext}'
+-  soname_spec='${libname}${release}${shared_ext}$major'
++  library_names_spec='${libname}${shared_ext}'
++  dynamic_linker="$host_os ld.so"
+   shlibpath_var=LIBRARY_PATH
+-  shlibpath_overrides_runpath=yes
+-  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/common/lib /boot/beos/system/lib'
+-  hardcode_into_libs=yes
+   ;;
+ 
+ hpux9* | hpux10* | hpux11*)
+@@ -12034,7 +12027,7 @@ $as_echo_n "checking for $compiler optio
+       esac
+       ;;
+ 
+-    beos* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
++    beos* | haiku* | irix5* | irix6* | nonstopux* | osf3* | osf4* | osf5*)
+       # PIC is the default for these OSes.
+       ;;
+ 
+@@ -12708,11 +12701,11 @@ _LT_EOF
+       fi
+       ;;
+ 
+-    haiku*)
++	haiku*)
+       archive_cmds_FC='$CC -shared $libobjs $deplibs $compiler_flags ${wl}-soname $wl$soname -o $lib'
+       link_all_deplibs_FC=yes
+       ;;
+-
++  
+     interix[3-9]*)
+       hardcode_direct_FC=no
+       hardcode_shlibpath_var_FC=no

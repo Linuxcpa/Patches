@@ -4,17 +4,8 @@
 LDFLAGS+= -Wl,-R${PREFIX}/lib
 .endif
 
-.if ${PKGPATH} == "devel/p5-subversion"
-LDFLAGS+= -lssp_nonshared
-.endif
-
-.if ${PKGPATH} == "net/samba" || ${PKGPATH} == "lang/gcc48-libs" \
-|| ${PKGPATH} == "chat/anope"
+.if ${PKGPATH} == "net/samba" || ${PKGPATH} == "chat/anope"
 LDFLAGS+= -Wl,-R/boot/system/lib
-.endif
-
-.if ${PKGPATH} == "lang/gcc48-libs"
-LDFLAGS+= -L/boot/system/lib
 .endif
 
 .if ${PKGPATH} == "chat/gtmess" || ${PKGPATH} == "print/luatex" \
@@ -43,7 +34,8 @@ LDFLAGS+= -L/boot/system/lib
 || ${PKGPATH} == "textproc/lq-sp" || ${PKGPATH} == "www/ijb" \
 || ${PKGPATH} == "www/bozohttpd" || ${PKGPATH} == "www/c-icap" \
 || ${PKGPATH} == "www/mMosaic" || ${PKGPATH} == "audio/mserv" \
-|| ${PKGPATH} == "x11/xfstt" || ${PKGPATH} == "x11/modular-xorg-server"
+|| ${PKGPATH} == "x11/xfstt" || ${PKGPATH} == "x11/modular-xorg-server" \
+|| ${PKGPATH} == "net/csup" || ${PKGPATH} == "net/dhisd"
 LDFLAGS+= -lnetwork
 .endif
 
@@ -57,11 +49,11 @@ LDFLAGS+= -lnetwork
 || ${PKGPATH} == "sysutils/9base" || ${PKGPATH} == "sysutils/adtool" \
 || ${PKGPATH} == "textproc/vis" || ${PKGPATH} == "www/bozohttpd" \
 || ${PKGPATH} == "x11/xfstt" || ${PKGPATH} == "math/nickle" \
-|| ${PKGPATH} == "net/cftp"
+|| ${PKGPATH} == "net/cftp" || ${PKGPATH} == "net/csup"
 LDFLAGS+= -lbsd
 .endif
 
-.if ${PKGPATH} == "shells/fish"
+.if ${PKGPATH} == "shells/fish" || ${PKGPATH} == "lang/sablevm" 
 LDFLAGS+= -L/boot/home/pkg/lib
 .endif
 
@@ -90,4 +82,18 @@ LDFLAGS+= -L/boot/system/lib -lnetwork -lroot -Wl,-R/boot/system/lib
 
 .if ${PKGPATH} == "devel/pango"
 LDFLAGS.Haiku+=	-Wl,-zignore
+.endif
+
+#Builds not working below here
+
+.if ${PKGPATH} == "lang/gcc48-libs"
+LDFLAGS+= -Wl,-R/boot/system/lib
+.endif
+
+.if ${PKGPATH} == "lang/gcc48-libs"
+LDFLAGS+= -L/boot/system/lib
+.endif
+
+.if ${PKGPATH} == "devel/p5-subversion"
+LDFLAGS+= -lssp_nonshared
 .endif

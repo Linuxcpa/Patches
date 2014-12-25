@@ -5,8 +5,7 @@
 || ${PKGPATH} == "converters/php-iconv" || ${PKGPATH} == "converters/php-mbstring" \
 || ${PKGPATH} == "devel/php-gettext" || ${PKGPATH} == "devel/php-gmp" \
 || ${PKGPATH} == "devel/php-libawl" || ${PKGPATH} == "devel/php-memcache" \
-|| ${PKGPATH} == "devel/php-memcached" || ${PKGPATH} == "devel/php-mode" \
-|| ${PKGPATH} == "devel/php-opcache" || ${PKGPATH} == "devel/php-pcntl" \
+|| ${PKGPATH} == "devel/php-pcntl" || ${PKGPATH} == "lang/ruby200-base" \
 || ${PKGPATH} == "devel/php-posix" || ${PKGPATH} == "devel/php-shmop" \
 || ${PKGPATH} == "devel/php-sysvmsg" || ${PKGPATH} == "devel/php-sysvsem" \
 || ${PKGPATH} == "devel/php-sysvshm" || ${PKGPATH} == "databases/php-dba" \
@@ -37,7 +36,7 @@
 || ${PKGPATH} == "print/php-pdflib" || ${PKGPATH} == "security/libpcap" \
 || ${PKGPATH} == "x11/fltk13" || ${PKGPATH} == "security/php-mcrypt" \
 || ${PKGPATH} == "security/php-oauth" || ${PKGPATH} == "security/php-ssdeep" \
-|| ${PKGPATH} == "security/php-suhosin" || ${PKGPATH} == "math/fftw" \
+|| ${PKGPATH} == "security/php-suhosin"  || ${PKGPATH} == "audio/libao-oss" \
 || ${PKGPATH} == "sysutils/pear-log" || ${PKGPATH} == "graphics/ImageMagick" \
 || ${PKGPATH} == "textproc/pear-Console_Table" || ${PKGPATH} == "textproc/pear-File_Find" \
 || ${PKGPATH} == "textproc/php-enchant" || ${PKGPATH} == "textproc/php-intl" \
@@ -54,14 +53,25 @@
 || ${PKGPATH} == "www/php-soycms"|| ${PKGPATH} == "www/php-sugarcrm" \
 || ${PKGPATH} == "www/php-tidy"|| ${PKGPATH} == "www/php-tiki6" \
 || ${PKGPATH} == "www/php-tt-rss"|| ${PKGPATH} == "www/php-tt-rss-fever-plugin" \
-|| ${PKGPATH} == "www/php-uploadprogress"|| ${PKGPATH} == "www/php-zendoptimizerplus" \
-|| ${PKGPATH} == "lang/ruby200-base" || ${PKGPATH} == "audio/libao-oss"
+|| ${PKGPATH} == "www/php-uploadprogress"|| ${PKGPATH} == "www/php-zendoptimizerplus"
 SHLIBTOOL_OVERRIDE= # empty
 LDFLAGS.Haiku+= -Wl,--rpath
 .endif
 
 .if ${PKGPATH} == "archivers/php-zip" || ${PKGPATH} == "archivers/php-zlib" \
-|| ${PKGPATH} == "devel/php-memcache" || ${PKGPATH} == "devel/php-memcached"
+|| ${PKGPATH} == "devel/php-memcache"
+CONFIGURE_ARGS+=	--with-zlib-dir=/boot/home/pkg
+CONFIGURE_ARGS+=    --includedir=/boot/home/pkg/include
+.endif
+
+#Not working yet
+.if ${PKGPATH} == "devel/php-memcached" || ${PKGPATH} == "devel/php-mode" \
+|| ${PKGPATH} == "devel/php-opcache"
+SHLIBTOOL_OVERRIDE= # empty
+LDFLAGS.Haiku+= -Wl,--rpath
+.endif
+
+.if ${PKGPATH} == "devel/php-memcached"
 CONFIGURE_ARGS+=	--with-zlib-dir=/boot/home/pkg
 CONFIGURE_ARGS+=    --includedir=/boot/home/pkg/include
 .endif

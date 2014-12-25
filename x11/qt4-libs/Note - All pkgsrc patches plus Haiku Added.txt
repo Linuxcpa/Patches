@@ -1,0 +1,4 @@
+Just too many to sort through in my time span.
+I might get to this later.
+
+Right now replace all of the pkgsrc patches with these.

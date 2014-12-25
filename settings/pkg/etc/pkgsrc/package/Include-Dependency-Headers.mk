@@ -9,20 +9,6 @@
 .include "../../devel/libuuid/buildlink3.mk"
 .endif
 
-#.if ${PKGPATH} == "devel/rcs"
-#.include "../../editors/ed/buildlink3.mk"
-#.endif
-
-#.if ${PKGPATH} == "editors/vile"
-#.include "../../devel/flex/buildlink3.mk"
-#.endif
-
-#.if ${PKGPATH} == "games/angband-tty"
-#.include "../../devel/ncurses/buildlink3.mk"
-#.include "../../mk/curses.buildlink3.mk"
-#.include "../../mk/terminfo.buildlink3.mk"
-#.endif
-
 .if ${PKGPATH} == "www/c-icap-modules"
 .include "../../textproc/libxml2/buildlink3.mk"
 .include "../../converters/libiconv/buildlink3.mk"
@@ -47,3 +33,19 @@
 .if ${PKGPATH} == "www/ocsigen"
 .include "../../textproc/ocaml-text/buildlink3.mk"
 .endif
+
+#Beow not working yet
+
+#.if ${PKGPATH} == "devel/rcs"
+#.include "../../editors/ed/buildlink3.mk"
+#.endif
+
+#.if ${PKGPATH} == "editors/vile"
+#.include "../../devel/flex/buildlink3.mk"
+#.endif
+
+#.if ${PKGPATH} == "games/angband-tty"
+#.include "../../devel/ncurses/buildlink3.mk"
+#.include "../../mk/curses.buildlink3.mk"
+#.include "../../mk/terminfo.buildlink3.mk"
+#.endif

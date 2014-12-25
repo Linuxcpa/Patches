@@ -1,0 +1,6 @@
+$NetBSD$
+
+--- include/QtGui/QtHaikuWindow.orig	2014-12-25 04:44:25.210763776 +0000
++++ include/QtGui/QtHaikuWindow
+@@ -0,0 +1 @@
++#include "qwidget_haiku.h"

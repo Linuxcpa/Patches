@@ -1,0 +1,65 @@
+$NetBSD$
+
+--- configure.orig	2014-12-25 04:44:14.522190848 +0000
++++ configure
+@@ -274,6 +274,11 @@ else
+     PLATFORM_MAC=no
+ fi
+ 
++PLATFORM_HAIKU=no
++if [ $UNAME_SYSTEM = "Haiku" ]; then
++PLATFORM_HAIKU=yes
++fi
++
+ #-----------------------------------------------------------------------------
+ # Qt version detection
+ #-----------------------------------------------------------------------------
+@@ -2995,6 +3000,9 @@ if [ -z "$PLATFORM" ]; then
+      QNX:*)
+         PLATFORM=unsupported/qnx-g++
+         ;;
++     Haiku:*)
++        PLATFORM=haiku-g++
++        ;;
+      *)
+         if [ "$OPT_HELP" != "yes" ]; then
+             echo
+@@ -3282,6 +3290,9 @@ if [ -z "${CFG_HOST_ARCH}" ]; then
+             ;;
+         esac
+         ;;
++    Haiku:*:*)
++         CFG_HOST_ARCH=i386
++         ;;
+     *:*:*)
+         if [ "$OPT_VERBOSE" = "yes" ]; then
+             echo "    Trying '$UNAME_MACHINE'..."
+@@ -3424,7 +3435,7 @@ QMAKE_CONF_COMPILER=`getXQMakeConf QMAKE
+ TEST_COMPILER="$CXX"
+ 
+ [ -z "$TEST_COMPILER" ] && TEST_COMPILER=$QMAKE_CONF_COMPILER
+-if [ "$XPLATFORM_SYMBIAN_SBSV2" = "no" ]; then
++if [ "$XPLATFORM_SYMBIAN_SBSV2" = "no" ] && [ "$PLATFORM_HAIKU" = "no" ]; then
+     #for Symbian we don't need this checking
+     if [ -z "$TEST_COMPILER" ]; then
+         echo "ERROR: Cannot set the compiler for the configuration tests"
+@@ -4588,6 +4599,8 @@ elif [ "$PLATFORM_MAC" = "yes" ]; then
+     Platform="Qt for Mac OS X"
+ elif [ "$XPLATFORM_MINGW" = "yes" ]; then
+     Platform="Qt for Windows"
++elif [ "$PLATFORM_HAIKU" = "yes" ]; then
++    Platform="Qt for Haiku"
+ elif [ -n "`getXQMakeConf grep QMAKE_LIBS_X11`" ]; then
+     PLATFORM_X11=yes
+     Platform="Qt for Linux/X11"
+@@ -5885,8 +5898,8 @@ if [ "$PLATFORM_MAC" = "yes" -a ! -z "$Q
+     QT_NAMESPACE_MAC_CRC=`"$mactests/crc.test" "$XQMAKESPEC" "$QMAKE_CONFIG" $OPT_VERBOSE "$relpath" "$outpath" config.tests/mac/crc $QT_NAMESPACE $L_FLAGS $I_FLAGS $l_FLAGS $MAC_CONFIG_TEST_COMMANDLINE`
+ fi
+ 
+-# X11/QWS/Lighthouse
+-if [ "$PLATFORM_X11" = "yes" -o "$PLATFORM_QWS" = "yes" -o "$PLATFORM_QPA" = "yes" ]; then
++# X11/QWS/Lighthouse/Haiku
++if [ "$PLATFORM_X11" = "yes" -o "$PLATFORM_QWS" = "yes" -o "$PLATFORM_QPA" = "yes" -o "$PLATFORM_HAIKU" = "yes" ]; then
+ 
+     # auto-detect Glib support
+     if [ "$CFG_GLIB" != "no" ]; then

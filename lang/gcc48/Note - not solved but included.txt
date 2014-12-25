@@ -1,0 +1,3 @@
+Diger's original patches. 
+I have not been able to get them to work yet.
+I include them because I suspect that there are important answers here.

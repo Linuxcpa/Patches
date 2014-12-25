@@ -1,7 +1,7 @@
 #Autoconf needs a special set of compile flags to find pkgsrc headers.
 
 #cause autoconf to use the headers we want it to use
-.if ${PKGPATH} == "converters/librevenge" || ${PKGPATH} == "converters/libabw"
+.if ${PKGPATH} == "converters/librevenge"
 CPPFLAGS+= -I/boot/home/pkg/include
 .endif
 
@@ -17,10 +17,12 @@ CPPFLAGS+= -I/boot/home/pkg/include
 .include "../../converters/libiconv/buildlink3.mk"
 .endif
 
-.if ${PKGPATH} == "lang/sablevm" 
-LDFLAGS+= -L/boot/home/pkg/lib
-.endif
-
 .if ${PKGPATH} == "net/cia"
 CPPFLAGS+= -lnetwork
+.endif
+
+# Below didn't work
+
+.if ${PKGPATH} == "converters/libabw"
+CPPFLAGS+= -I/boot/home/pkg/include
 .endif

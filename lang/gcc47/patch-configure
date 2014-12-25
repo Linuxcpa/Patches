@@ -1,0 +1,68 @@
+$NetBSD$
+
+--- configure.orig	2013-09-03 12:13:42.061603840 +0000
++++ configure
+@@ -3029,6 +3029,9 @@ case "${host}" in
+   i[3456789]86-*-msdosdjgpp*)
+     noconfigdirs="$noconfigdirs tcl tk itcl"
+     ;;
++  *-*-haiku*)
++    noconfigdirs="$noconfigdirs tk itcl libgui gdb"
++    ;;
+ esac
+ 
+ 
+@@ -3334,6 +3337,9 @@ case "${target}" in
+   *-*-darwin*)
+     noconfigdirs="$noconfigdirs ${libgcj}"
+     ;;
++  *-*-haiku*)
++    noconfigdirs="$noconfigdirs ${libgcj}"
++    ;;
+   *-*-netware*)
+     noconfigdirs="$noconfigdirs ${libgcj}"
+     ;;
+@@ -3510,6 +3516,9 @@ case "${target}" in
+   *-*-freebsd*)
+     noconfigdirs="$noconfigdirs target-newlib target-libgloss"
+     ;;
++  *-*-haiku*)
++    noconfigdirs="$noconfigdirs target-newlib target-libgloss"
++    ;;
+   *-*-linux* | *-*-gnu* | *-*-k*bsd*-gnu | *-*-kopensolaris*-gnu)
+     noconfigdirs="$noconfigdirs target-newlib target-libgloss"
+     ;;
+@@ -3563,6 +3572,9 @@ case "${target}" in
+       with_gmp=/usr/local
+     fi
+     ;;
++  *-*-haiku*)
++    noconfigdirs="$noconfigdirs gdb target-libiberty"
++    ;;
+   *-*-kaos*)
+     # Remove unsupported stuff on all kaOS configurations.
+     noconfigdirs="$noconfigdirs target-libgloss"
+@@ -5193,9 +5205,14 @@ $as_echo_n "checking how to compare boot
+ if test "${gcc_cv_prog_cmp_skip+set}" = set; then :
+   $as_echo_n "(cached) " >&6
+ else
++  # comparing object files via cmp doesn't work on haiku (files will seemingly
++  # always differ), so we disassemble both files and compare the results:
++  if uname -o | grep -iq haiku; then
++    gcc_cv_prog_cmp_skip='objdump -Dz $$f1 | tail +6 >tmp-foo1; objdump -Dz $$f2 | tail +6 >tmp-foo2; cmp tmp-foo1 tmp-foo2'
++  else 
++    gcc_cv_prog_cmp_skip='tail +16c $$f1 > tmp-foo1; tail +16c $$f2 > tmp-foo2; cmp tmp-foo1 tmp-foo2'
+    echo abfoo >t1
+   echo cdfoo >t2
+-  gcc_cv_prog_cmp_skip='tail +16c $$f1 > tmp-foo1; tail +16c $$f2 > tmp-foo2; cmp tmp-foo1 tmp-foo2'
+   if cmp t1 t2 2 2 > /dev/null 2>&1; then
+     if cmp t1 t2 1 1 > /dev/null 2>&1; then
+       :
+@@ -5211,6 +5228,7 @@ else
+     fi
+   fi
+   rm t1 t2
++  fi
+ 
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $gcc_cv_prog_cmp_skip" >&5

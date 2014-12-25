@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- libquadmath/configure.orig	2013-10-16 07:27:58.064225280 +0000
++++ libquadmath/configure
+@@ -9707,7 +9707,7 @@ haiku*)
+   soname_spec='${libname}${release}${shared_ext}$major'
+   shlibpath_var=LIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+-  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/common/lib /boot/beos/system/lib'
++  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/system/lib'
+   hardcode_into_libs=yes
+   ;;
+ 

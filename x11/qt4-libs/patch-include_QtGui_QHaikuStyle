@@ -1,0 +1,6 @@
+$NetBSD$
+
+--- include/QtGui/QHaikuStyle.orig	2014-12-25 04:44:22.872939520 +0000
++++ include/QtGui/QHaikuStyle
+@@ -0,0 +1 @@
++#include "qhaikustyle.h"

@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- lto-plugin/configure.orig	2012-09-14 23:42:24.050593792 +0000
++++ lto-plugin/configure
+@@ -9756,7 +9756,7 @@ haiku*)
+   soname_spec='${libname}${release}${shared_ext}$major'
+   shlibpath_var=LIBRARY_PATH
+   shlibpath_overrides_runpath=yes
+-  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/common/lib /boot/beos/system/lib'
++  sys_lib_dlsearch_path_spec='/boot/home/config/lib /boot/system/lib'
+   hardcode_into_libs=yes
+   ;;
+ 
