@@ -1,8 +1,8 @@
 $NetBSD: patch-aa,v 1.10 2009/02/23 11:09:27 wiz Exp $
 
---- src/bswap.h.orig	2008-10-09 22:04:24.018350080 +0000
+--- src/bswap.h.orig	2008-10-09 22:04:24.062128128 +0000
 +++ src/bswap.h
-@@ -67,6 +67,15 @@
+@@ -67,13 +67,19 @@
  #define B2N_32(x) x = be32toh(x)
  #define B2N_64(x) x = be64toh(x)
  
@@ -12,9 +12,14 @@ $NetBSD: patch-aa,v 1.10 2009/02/23 11:09:27 wiz Exp $
 +#define B2N_32(x) x = bswap32(x)
 +#define B2N_64(x) x = bswap64(x)
 +
-+#elif defined(__HAIKU__)
-+#include <endian.h>
-+
  /* This is a slow but portable implementation, it has multiple evaluation
   * problems so beware.
   * Old FreeBSD's and Solaris don't have <byteswap.h> or any other such
+  * functionality!
+  */
+ 
+-#elif defined(__FreeBSD__) || defined(__sun) || defined(__bsdi__) || defined(WIN32) || defined(__CYGWIN__) || defined(__BEOS__) || defined(__OS2__)
++#elif defined(__FreeBSD__) || defined(__sun) || defined(__bsdi__) || defined(WIN32) || defined(__CYGWIN__) || defined(__BEOS__) || defined(__OS2__) || defined(__HAIKU__)
+ #define B2N_16(x)                             \
+  x = ((((x) & 0xff00) >> 8) |                 \
+       (((x) & 0x00ff) << 8))

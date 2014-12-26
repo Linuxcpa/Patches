@@ -1,0 +1,2 @@
+This patch seemed to have no effect.
+Passing a configure option in the mk.conf chain disabled the build of the xcb-shm mopdule.

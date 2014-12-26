@@ -2,7 +2,7 @@ $NetBSD$
 
 --- nspr/pr/src/md/unix/primpl.h.orig	2014-12-17 06:30:43.792461312 +0000
 +++ nspr/pr/src/md/unix/primpl.h
-@@ -0,0 +1,2151 @@
+@@ -0,0 +1,2148 @@
 +/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
 + * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -1961,9 +1961,6 @@ $NetBSD$
 +extern PRWord *_MD_HomeGCRegisters(PRThread *t, int isCurrent, int *np);
 +
 +/* Time intervals */
-+
-+extern PRIntervalTime _PR_MD_GET_INTERVAL(void);
-+#define _PR_MD_GET_INTERVAL _MD_GET_INTERVAL
 +
 +extern PRIntervalTime _PR_MD_INTERVAL_PER_SEC(void);
 +#define _PR_MD_INTERVAL_PER_SEC _MD_INTERVAL_PER_SEC

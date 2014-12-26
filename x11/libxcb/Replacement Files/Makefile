@@ -20,13 +20,14 @@ USE_TOOLS+=	gmake pkg-config
 CONFIGURE_ARGS+=	--disable-build-docs	# or needs doxygen
 CONFIGURE_ARGS+=	--without-doxygen
 
-PLIST_VARS+=	dri3
+PLIST_VARS+=	dri3 shm
 
 .include "../../mk/bsd.prefs.mk"
 
-# don't include dri3 if Haiku won't build it
+# don't include dri3 if Haiku won't build it,or shm if Haiku won't support it.
 .if ${OPSYS} != "Haiku"
 PLIST.dri3=	yes
+PLIST.shm=	yes
 .endif
 
 .include "../../mk/bsd.prefs.mk"

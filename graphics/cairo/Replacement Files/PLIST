@@ -13,8 +13,6 @@ include/cairo/cairo-svg.h
 include/cairo/cairo-tee.h
 include/cairo/cairo-version.h
 ${PLIST.xcb}include/cairo/cairo-xcb.h
-${PLIST.x11}include/cairo/cairo-xlib-xrender.h
-${PLIST.x11}include/cairo/cairo-xlib.h
 include/cairo/cairo.h
 ${PLIST.trace}lib/cairo/cairo-fdr.la
 ${PLIST.trace}lib/cairo/libcairo-trace.la
@@ -31,10 +29,7 @@ lib/pkgconfig/cairo-tee.pc
 ${PLIST.quartz}lib/pkgconfig/cairo-quartz-font.pc
 ${PLIST.quartz}lib/pkgconfig/cairo-quartz-image.pc
 ${PLIST.quartz}lib/pkgconfig/cairo-quartz.pc
-${PLIST.xcb}lib/pkgconfig/cairo-xcb-shm.pc
 ${PLIST.xcb}lib/pkgconfig/cairo-xcb.pc
-${PLIST.x11}lib/pkgconfig/cairo-xlib-xrender.pc
-${PLIST.x11}lib/pkgconfig/cairo-xlib.pc
 lib/pkgconfig/cairo.pc
 share/gtk-doc/html/cairo/bindings-errors.html
 share/gtk-doc/html/cairo/bindings-fonts.html

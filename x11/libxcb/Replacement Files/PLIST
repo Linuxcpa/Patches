@@ -43,7 +43,7 @@ lib/libxcb-render.la
 lib/libxcb-res.la
 lib/libxcb-screensaver.la
 lib/libxcb-shape.la
-lib/libxcb-shm.la
+${PLIST.shm}lib/libxcb-shm.la
 lib/libxcb-sync.la
 lib/libxcb-xevie.la
 lib/libxcb-xf86dri.la
@@ -68,7 +68,7 @@ lib/pkgconfig/xcb-render.pc
 lib/pkgconfig/xcb-res.pc
 lib/pkgconfig/xcb-screensaver.pc
 lib/pkgconfig/xcb-shape.pc
-lib/pkgconfig/xcb-shm.pc
+${PLIST.shm}lib/pkgconfig/xcb-shm.pc
 lib/pkgconfig/xcb-sync.pc
 lib/pkgconfig/xcb-xevie.pc
 lib/pkgconfig/xcb-xf86dri.pc

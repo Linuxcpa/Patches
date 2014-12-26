@@ -1,0 +1,4 @@
+If shared memory (shm) is built in XCB Cairo will build with shared memory.
+Almost nothing you can do.
+
+Haiku doesn't support shared memory yet.

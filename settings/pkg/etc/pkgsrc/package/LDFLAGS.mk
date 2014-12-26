@@ -35,7 +35,8 @@ LDFLAGS+= -L/boot/system/lib
 || ${PKGPATH} == "www/bozohttpd" || ${PKGPATH} == "www/c-icap" \
 || ${PKGPATH} == "www/mMosaic" || ${PKGPATH} == "audio/mserv" \
 || ${PKGPATH} == "x11/xfstt" || ${PKGPATH} == "x11/modular-xorg-server" \
-|| ${PKGPATH} == "net/csup" || ${PKGPATH} == "net/dhisd"
+|| ${PKGPATH} == "net/csup" || ${PKGPATH} == "net/dhisd" \
+|| ${PKGPATH} == "graphics/cairo" || ${PKGPATH} == "graphics/cairo-gobject"
 LDFLAGS+= -lnetwork
 .endif
 

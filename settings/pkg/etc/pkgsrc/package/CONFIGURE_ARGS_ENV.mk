@@ -54,6 +54,7 @@ CONFIGURE_ARGS+=    --disable-runtime-cpudetection
 
 .if ${PKGPATH} == "graphics/cairo"
 CONFIGURE_ARGS+=    --enable-xcb-shm=no
+CONFIGURE_ARGS+=    --enable-xlib=no
 .endif
 
 .if ${PKGPATH} == "net/net-snmp"
@@ -92,6 +93,10 @@ CONFIGURE_ARGS+= --enable-lock-dir=/var/empty
 CONFIGURE_ARGS+= --enable-dfl-port=/dev/ports/usb0
 .endif
 
+.if ${PKGPATH} == "x11/libxcb"
+CONFIGURE_ARGS+= --enable-shm=no
+.endif
+
 #below here, builds aren't working
 
 .if ${PKGPATH} == "lang/gcc48-libs" || ${PKGPATH} == "lang/gcc47"
@@ -101,7 +106,6 @@ CONFIGURE_ARGS+= --enable-lto
 .endif
 
 .if ${PKGPATH} == "x11/qt4-libs"
-CONFIGURE_ARGS+= -PLATFORM_X11=no
 CONFIGURE_ARGS+= -no-largefile
 CONFIGURE_ARGS+= -fast
 CONFIGURE_ARGS+= -no-pch

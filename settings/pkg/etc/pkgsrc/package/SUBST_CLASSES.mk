@@ -276,6 +276,20 @@ SUBST_FILES.lnetwork15= Makefile
 SUBST_SED.lnetwork15+= -e 's|LIBS=-lm|LIBS=-lm -lnetwork|g'
 .endif
 
+.if ${PKGPATH} == "graphics/cairo" || ${PKGPATH} == "graphics/cairo-gobject"
+SUBST_CLASSES+= lnetwork16
+SUBST_STAGE.lnetwork16= pre-build
+SUBST_MESSAGE.lnetwork16= Fixing liconv
+SUBST_FILES.lnetwork16= test/Makefile
+SUBST_SED.lnetwork16+= -e 's|LIBS = -lrt|LIBS = -lrt -lnetwork |g'
+
+SUBST_CLASSES+= lnetwork17
+SUBST_STAGE.lnetwork17= pre-build
+SUBST_MESSAGE.lnetwork17= Fixing liconv
+SUBST_FILES.lnetwork17= perf/Makefile
+SUBST_SED.lnetwork17+= -e 's|LIBS = -lrt|LIBS = -lrt -lnetwork |g'
+.endif
+
 #.if ${PKGPATH} == "lang/ruby200-base"
 #SUBST_CLASSES+= fixit
 #SUBST_STAGE.fixit= pre-build

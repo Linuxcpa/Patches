@@ -1,6 +1,6 @@
 $NetBSD$
 
---- src/dvd_reader.c.orig	2011-06-15 18:09:15.000000000 +0000
+--- src/dvd_reader.c.orig	2011-06-15 18:09:15.064749568 +0000
 +++ src/dvd_reader.c
 @@ -19,7 +19,7 @@
   * with libdvdread; if not, write to the Free Software Foundation, Inc.,
