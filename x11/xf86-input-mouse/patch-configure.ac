@@ -1,0 +1,14 @@
+$NetBSD$
+
+--- configure.ac.orig	2014-08-12 06:36:34.065536000 +0000
++++ configure.ac
+@@ -84,6 +84,9 @@ case $host_os in
+   gnu*)
+     OS_MOUSE_NAME=hurd
+     ;;
++  haiku*)
++    OS_MOUSE_NAME=haiku
++    ;;
+ esac
+ AC_SUBST([OS_MOUSE_NAME])
+ 

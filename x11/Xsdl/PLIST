@@ -1,0 +1,4 @@
+@comment $NetBSD$
+bin/Xsdl
+${PLIST.ignore}lib/xorg/protocol.txt
+${PLIST.ignore}man/man1/Xserver.1

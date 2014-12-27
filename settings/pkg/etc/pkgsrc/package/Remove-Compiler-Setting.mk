@@ -4,7 +4,8 @@
 || ${PKGPATH} == "multimedia/mencoder" || ${PKGPATH} == "www/goaccess" \
 || ${PKGPATH} == "multimedia/mplayer" || ${PKGPATH} == "net/powerdns" \
 || ${PKGPATH} == "security/google-authenticator" || ${PKGPATH} == "shells/fish" \
-|| ${PKGPATH} == "shells/scsh" || ${PKGPATH} == "www/c-icap"
+|| ${PKGPATH} == "shells/scsh" || ${PKGPATH} == "www/c-icap" \
+|| ${PKGPATH} == "x11/Xsdl"
 BUILDLINK_TRANSFORM+= rm:-rdynamic
 .endif
 

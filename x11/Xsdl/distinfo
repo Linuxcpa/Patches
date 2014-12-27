@@ -1,0 +1,8 @@
+$NetBSD$
+
+SHA1 (patch-hw_kdrive_src_kinput.c) = 17fa1d3632f0b095fa93ea0b8b9cb3b33c22b520
+SHA1 (patch-os_WaitFor.c) = 840a5bcb317d8f3bbc16b9e8bc05fc752d0e8521
+SHA1 (patch-os_access.c) = 09f2cce564595d7a04c6bfb11bf52824b3847659
+SHA1 (patch-os_connection.c) = 064ebcea6f342013840537e59a8f85eef9676210
+SHA1 (patch-os_io.c) = 865e1f757a408a21405b8ec50d5dce7464e20847
+SHA1 (patch-os_oscolor.c) = 6ea0708aa1018c0e09de9262ae46b32ff6a4061b

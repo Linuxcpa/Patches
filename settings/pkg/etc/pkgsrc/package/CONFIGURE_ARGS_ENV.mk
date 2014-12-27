@@ -48,6 +48,10 @@ CONFIGURE_ARGS+=	--disable-glx
 CONFIGURE_ARGS+=	--disable-glx-tls
 .endif
 
+.if ${PKGPATH} == "x11/modular-xorg-server"
+CONFIGURE_ARGS+=	--disable-mitshm
+.endif
+
 .if ${PKGPATH} == "multimedia/mencoder"
 CONFIGURE_ARGS+=    --disable-runtime-cpudetection 
 .endif

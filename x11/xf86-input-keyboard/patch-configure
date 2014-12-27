@@ -1,0 +1,29 @@
+$NetBSD$
+
+--- configure.orig	2013-10-31 23:44:23.000000000 +0000
++++ configure
+@@ -17748,6 +17748,10 @@ case $host_os in
+     IS_HURD="yes"
+     ;;
+ 
++  haiku*)
++    IS_HAIKU="yes"
++    ;;
++
+   *)
+     as_fn_error $? "Your operating system is not supported by the kbd driver.
+                   Contact xorg@lists.freedesktop.org if you are interested in
+@@ -17802,6 +17806,13 @@ else
+   HURD_FALSE=
+ fi
+ 
++ if test "x$IS_HAIKU" = xyes; then
++  HAIKU_TRUE=
++  HAIKU_FALSE='#'
++else
++  HAIKU_TRUE='#'
++  HAIKU_FALSE=
++fi
+ 
+ DRIVER_NAME=kbd
+ 

@@ -1,0 +1,25 @@
+$NetBSD$
+
+--- configure.ac.orig	2013-10-31 23:44:16.000000000 +0000
++++ configure.ac
+@@ -73,6 +73,11 @@ case $host_os in
+     IS_HURD="yes"
+     ;;
+ 
++  haiku*)
++    IS_HAIKU="yes"
++    ;;
++
++
+   *)
+     AC_MSG_ERROR([Your operating system is not supported by the kbd driver.
+                   Contact xorg@lists.freedesktop.org if you are interested in
+@@ -99,6 +104,8 @@ AM_CONDITIONAL(LINUX, [test "x$IS_LINUX"
+ AM_CONDITIONAL(BSD, [test "x$IS_BSD" = xyes])
+ AM_CONDITIONAL(SOLARIS, [test "x$IS_SOLARIS" = xyes])
+ AM_CONDITIONAL(HURD, [test "x$IS_HURD" = xyes])
++AM_CONDITIONAL(HAIKU, [test "x$IS_HAIKU" = xyes])
++
+ 
+ DRIVER_NAME=kbd
+ AC_SUBST([DRIVER_NAME])

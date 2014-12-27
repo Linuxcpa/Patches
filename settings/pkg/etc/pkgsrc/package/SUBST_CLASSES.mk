@@ -262,6 +262,32 @@ SUBST_FILES.liconv= Makefile
 SUBST_SED.liconv+= -e 's|-lncurses -lnetwork |-lncurses -lnetwork -liconv |g'
 .endif
 
+.if ${PKGPATH} == "x11/xf86-input-mouse"
+SUBST_CLASSES+= osid
+SUBST_STAGE.osid= pre-build
+SUBST_MESSAGE.osid= Fixing Haiku OS ID
+SUBST_FILES.osid= src/Makefile
+SUBST_SED.osid+= -e 's|_mouse.lo|haiku_mouse.lo|g'
+
+SUBST_CLASSES+= osid2
+SUBST_STAGE.osid2= pre-build
+SUBST_MESSAGE.osid2= Fixing Haiku OS ID
+SUBST_FILES.osid2= src/Makefile
+SUBST_SED.osid2+= -e 's|_mouse.c|haiku_mouse.c|g'
+
+SUBST_CLASSES+= osid3
+SUBST_STAGE.osid3= post-build
+SUBST_MESSAGE.osid3= Fixing Haiku OS ID
+SUBST_FILES.osid3= src/Makefile
+SUBST_SED.osid3+= -e 's|_mouse.lo|haiku_mouse.lo|g'
+
+SUBST_CLASSES+= osid4
+SUBST_STAGE.osid4= post-build
+SUBST_MESSAGE.osid4= Fixing Haiku OS ID
+SUBST_FILES.osid4= src/Makefile
+SUBST_SED.osid4+= -e 's|_mouse.c|haiku_mouse.c|g'
+.endif
+
 .if ${PKGPATH} == "textproc/lq-sp"
 SUBST_CLASSES+= lnetwork14
 SUBST_STAGE.lnetwork14= pre-build
@@ -303,3 +329,11 @@ SUBST_SED.lnetwork17+= -e 's|LIBS = -lrt|LIBS = -lrt -lnetwork |g'
 #SUBST_FILES.fixit1= Makefile
 #SUBST_SED.fixit1+= -e 's|LDSHARED = |LDSHARED = $(LD) -shared|g'
 #.endif
+
+.if ${PKGPATH} == "x11/Xsdl"
+SUBST_CLASSES+= lnetwork18
+SUBST_STAGE.lnetwork18= pre-build
+SUBST_MESSAGE.lnetwork18= Fixing Makefile
+SUBST_FILES.lnetwork18= Makefile
+SUBST_SED.lnetwork18+= -e 's|LIBS = -lnsl -lm  |LIBS = -lnetwork |g'
+.endif
