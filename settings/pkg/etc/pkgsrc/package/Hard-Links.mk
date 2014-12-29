@@ -16,7 +16,8 @@
 || ${PKGPATH} == "textproc/ispell" || ${PKGPATH} == "textproc/ispell-de" \
 || ${PKGPATH} == "textproc/ispell-en_GB" || ${PKGPATH} == "textproc/ispell-es" \
 || ${PKGPATH} == "textproc/harmony" || ${PKGPATH} == "textproc/xmlstarlet" \
-|| ${PKGPATH} == "textproc/yodl" || ${PKGPATH} == "shells/zsh"
+|| ${PKGPATH} == "textproc/yodl" || ${PKGPATH} == "shells/zsh" \
+|| ${PKGPATH} == "devel/git-gitk"
 TOOLS_PLATFORM.ln?=             /bin/ln -s
 .endif
 

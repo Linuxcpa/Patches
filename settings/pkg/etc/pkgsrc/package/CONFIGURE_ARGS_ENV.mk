@@ -101,6 +101,11 @@ CONFIGURE_ARGS+= --enable-dfl-port=/dev/ports/usb0
 CONFIGURE_ARGS+= --enable-shm=no
 .endif
 
+.if ${PKGPATH} == "sysutils/cdrdao"
+CONFIGURE_ARGS+=	--with-scglib
+CONFIGURE_ARGS+=	--target=haiku
+.endif
+
 #below here, builds aren't working
 
 .if ${PKGPATH} == "lang/gcc48-libs" || ${PKGPATH} == "lang/gcc47"

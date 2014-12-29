@@ -1,0 +1,76 @@
+$NetBSD$
+
+--- scsilib/conf/xconfig.h.in.orig	2004-07-26 21:52:42.015204352 +0000
++++ scsilib/conf/xconfig.h.in
+@@ -349,38 +349,11 @@
+ #undef HAVE_ST_FLAGS		/* if struct stat contains st_flags */
+ #undef STAT_MACROS_BROKEN	/* if the macros S_ISDIR, S_ISREG .. don't work */
+ 
+-#undef DEV_MINOR_BITS		/* # if bits needed to hold minor device number */
+ #undef DEV_MINOR_NONCONTIG	/* if bits in minor device number are noncontiguous */
+ 
+ #undef HAVE_SOCKADDR_STORAGE	/* if socket.h defines struct sockaddr_storage */
+ 
+ 
+-/*
+- * Byteorder/Bitorder
+- */
+-#define	HAVE_C_BIGENDIAN	/* Flag that WORDS_BIGENDIAN test was done */
+-#undef WORDS_BIGENDIAN		/* If using network byte order             */
+-#define	HAVE_C_BITFIELDS	/* Flag that BITFIELDS_HTOL test was done  */
+-#undef BITFIELDS_HTOL		/* If high bits come first in structures   */
+-
+-/*
+- * Types/Keywords
+- */
+-#undef SIZEOF_CHAR
+-#undef SIZEOF_SHORT_INT
+-#undef SIZEOF_INT
+-#undef SIZEOF_LONG_INT
+-#undef SIZEOF_LONG_LONG
+-#undef SIZEOF_CHAR_P
+-#undef SIZEOF_UNSIGNED_CHAR
+-#undef SIZEOF_UNSIGNED_SHORT_INT
+-#undef SIZEOF_UNSIGNED_INT
+-#undef SIZEOF_UNSIGNED_LONG_INT
+-#undef SIZEOF_UNSIGNED_LONG_LONG
+-#undef SIZEOF_UNSIGNED_CHAR_P
+-
+-#undef HAVE_LONGLONG		/* Compiler defines long long type */
+-#undef CHAR_IS_UNSIGNED		/* Compiler defines char to be unsigned */
+ 
+ #undef const			/* Define to empty if const doesn't work */
+ #undef uid_t			/* To be used if uid_t is not present  */
+@@ -418,7 +391,6 @@
+ 
+ /*#undef HAVE_SIZE_T*/
+ /*#undef NO_SIZE_T*/
+-#undef VA_LIST_IS_ARRAY		/* va_list is an array */
+ #undef GETGROUPS_T
+ #define GID_T		GETGROUPS_T
+ 
+@@ -437,8 +409,6 @@
+ #ifdef	HAVE_LARGEFILES		/* If we have working largefiles at all	   */
+ 				/* This is not defined with glibc-2.1.3	   */
+ 
+-#undef _FILE_OFFSET_BITS	/* # of bits in off_t if settable	   */
+-#undef _LARGEFILE_SOURCE	/* To make ftello() visible (HP-UX 10.20). */
+ #undef _LARGE_FILES		/* Large file defined on AIX-style hosts.  */
+ #undef _XOPEN_SOURCE		/* To make ftello() visible (glibc 2.1.3). */
+ 				/* XXX We don't use this because glibc2.1.3*/
+@@ -521,15 +491,6 @@
+ #undef NO_USER_MALLOC		/* If we cannot define our own malloc()	*/
+ #undef HAVE_DYN_ARRAYS		/* If the compiler allows dynamic sized arrays */
+ 
+-/*
+- * Strings that help to maintain OS/platform id's in C-programs
+- */
+-#undef HOST_ALIAS		/* Output from config.guess (orig)	*/
+-#undef HOST_SUB			/* Output from config.sub (modified)	*/
+-#undef HOST_CPU			/* CPU part from HOST_SUB		*/
+-#undef HOST_VENDOR		/* VENDOR part from HOST_SUB		*/
+-#undef HOST_OS			/* CPU part from HOST_SUB		*/
+-
+ 
+ /*
+  * Begin restricted code for quality assurance.
