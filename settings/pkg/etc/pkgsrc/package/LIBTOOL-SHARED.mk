@@ -36,7 +36,7 @@
 || ${PKGPATH} == "print/php-pdflib" || ${PKGPATH} == "security/libpcap" \
 || ${PKGPATH} == "x11/fltk13" || ${PKGPATH} == "security/php-mcrypt" \
 || ${PKGPATH} == "security/php-oauth" || ${PKGPATH} == "security/php-ssdeep" \
-|| ${PKGPATH} == "security/php-suhosin"  || ${PKGPATH} == "audio/libao-oss" \
+|| ${PKGPATH} == "security/php-suhosin" \
 || ${PKGPATH} == "sysutils/pear-log" || ${PKGPATH} == "graphics/ImageMagick" \
 || ${PKGPATH} == "textproc/pear-Console_Table" || ${PKGPATH} == "textproc/pear-File_Find" \
 || ${PKGPATH} == "textproc/php-enchant" || ${PKGPATH} == "textproc/php-intl" \

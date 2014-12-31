@@ -34,7 +34,11 @@
 .include "../../textproc/ocaml-text/buildlink3.mk"
 .endif
 
-#Beow not working yet
+.if ${PKGPATH} == "emulators/dynamips" || ${PKGPATH} == "emulators/ia64sim"
+.include "../../devel/libelf/buildlink3.mk"
+.endif
+
+#Below not working yet
 
 #.if ${PKGPATH} == "devel/rcs"
 #.include "../../editors/ed/buildlink3.mk"

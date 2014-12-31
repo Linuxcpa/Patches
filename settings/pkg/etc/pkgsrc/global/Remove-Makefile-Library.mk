@@ -2,7 +2,7 @@
 
 #Removal of non existant library does not cause build failure.
 
-#BUILDLINK_TRANSFORM+=   rm:-lm
+BUILDLINK_TRANSFORM+=   rm:-lm
 BUILDLINK_TRANSFORM+=   rm:-lpthread
 BUILDLINK_TRANSFORM+=   rm:-pthread
 BUILDLINK_TRANSFORM+=   rm:-lsocket

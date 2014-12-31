@@ -1,0 +1,47 @@
+$NetBSD: patch-aj,v 1.1 2003/01/05 03:31:26 dsainty Exp $
+
+This patch changes the idle CPU wait time from 10ms to 100ms.  For some reason
+the former saturates the CPU (on a Celeron 700 system), but with the latter
+the program idles at near 0%.  This patch is probably not required for native
+threads.
+
+--- SrcUnix/Platform_Unix.cpp.orig	2002-03-29 13:11:19.017563648 +0000
++++ SrcUnix/Platform_Unix.cpp
+@@ -10,7 +10,8 @@
+ 	the Free Software Foundation; either version 2 of the License, or
+ 	(at your option) any later version.
+ \* ===================================================================== */
+-
++#include <strings.h>
++#include <sys/stat.h>
+ #include "EmCommon.h"
+ #include "Platform.h"
+ 
+@@ -34,7 +35,7 @@
+ 
+ 
+ // ===========================================================================
+-//		¥ Globals
++//		 Globals
+ // ===========================================================================
+ 
+ ByteList		gClipboardDataPalm;
+@@ -167,7 +168,7 @@ int Platform::GetIDForError( ErrCode err
+ 	case ENOMEM:		return kStr_MemFull;			// 12	/* Out of memory */
+ 	case EACCES:		return kStr_SerialPortBusy;		// 13	/* Permission denied */
+ 	case EFAULT:		break;		// 14	/* Bad address */
+-	case ENOTBLK:		break;		// 15	/* Block device required */
++//*	case ENOTBLK:		break;		// 15	/* Block device required */
+ 	case EBUSY:			return kStr_FileBusy;			// 16	/* Device or resource busy */
+ 	case EEXIST:		return kStr_DuplicateFileName;	// 17	/* File exists */
+ 	case EXDEV:			break;		// 18	/* Cross-device link */
+@@ -598,7 +599,8 @@ void Platform::Delay (void)
+ 	// Wait on an event instead of just calling Sleep(10) so that another
+ 	// thread can wake us up before our time.
+ 
+-	omni_thread::sleep( 0, 10000 ); // 10k nanoseconds = 1/100 sec
++	// pkgsrc: updated 10k to 100k, makes a huge difference to CPU usage
++	omni_thread::sleep( 0, 100000 ); // 10k nanoseconds = 1/100 sec
+ }
+ 
+ 

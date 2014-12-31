@@ -2,7 +2,7 @@
 .include "/boot/home/pkg/etc/pkgsrc/CustomFeatures.mk"
 .include "/boot/home/pkg/etc/pkgsrc/CustomFileLocations.mk"
 
-# Settings For All Packages - Check Total = 13
+# Settings For All Packages - Check Total = 12
 .include "/boot/home/pkg/etc/pkgsrc/global/Add-Makefile-Library.mk"
 .include "/boot/home/pkg/etc/pkgsrc/global/Builtin.mk"
 .include "/boot/home/pkg/etc/pkgsrc/global/CFLAGS.mk"

@@ -29,7 +29,8 @@
 || ${PKGPATH} == "security/cy2-sql" || ${PKGPATH} == "security/cyrus-saslauthd" \
 || ${PKGPATH} == "security/arirang" || ${PKGPATH} == "www/analog" \
 || ${PKGPATH} == "www/lhs" || ${PKGPATH} == "net/chksniff" \
-|| ${PKGPATH} == "net/cidr" || ${PKGPATH} == "net/connect"
+|| ${PKGPATH} == "net/cidr" || ${PKGPATH} == "net/connect" \
+|| ${PKGPATH} == "emulators/kegs"
 LIBS.Haiku+=	-lnetwork
 .endif
 
@@ -40,6 +41,10 @@ LIBS.Haiku+=	-lnetwork
 || ${PKGPATH} == "net/gini" || ${PKGPATH} == "net/libexosip" \
 || ${PKGPATH} == "shells/nologinmsg"
 LIBS.Haiku+= -lbsd
+.endif
+
+.if ${PKGPATH} == "graphics/ImageMagick" 
+LIBS.Haiku+=          -lroot
 .endif
 
 #Below here not working yet

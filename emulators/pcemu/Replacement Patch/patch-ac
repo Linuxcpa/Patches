@@ -1,0 +1,74 @@
+$NetBSD: patch-ac,v 1.6 2006/01/12 19:48:02 joerg Exp $
+
+--- mfs.c.orig	1994-06-22 14:24:51.034865152 +0000
++++ mfs.c
+@@ -319,17 +319,22 @@ TODO:
+ #include <errno.h>
+ #include <sys/param.h>
+ #include <stdlib.h>
++#if !__STDC__
+ #include <malloc.h>
++#endif
+ 
+-#ifdef SOLARIS
+ #include <fcntl.h>
+ #include <sys/statvfs.h>
+-#endif
+ 
+ #if defined(SGI) || defined(RS6000)
+-#include <sys/statfs.h>
++# include <sys/statfs.h>
+ #else
+-#include <sys/vfs.h>
++# include <sys/param.h>
++# if BSD >= 199103
++#  include <sys/mount.h>
++# else
++#  include <stdio.h>
++# endif /* new BSD */
+ #endif
+ 
+ 
+@@ -768,24 +773,22 @@ get_unix_attr(int mode, int attr)
+ int
+ get_disk_space(char *cwd, int *free, int *total)
+ {
+-#ifdef SOLARIS
+-    struct statvfs fsbuf;
+-    if (statvfs(cwd, &fsbuf) >= 0)
+-#else
+-    struct statfs fsbuf;
++    struct statvfs f_favail;
++    if (statvfs(cwd, &f_favail) >= 0)
++
+ #ifdef SGI
+-    if (statfs(cwd, &fsbuf, sizeof (struct statfs), 0) >= 0)
++    if (statvfs(cwd, &f_favail, sizeof (struct statfs), 0) >= 0)
+ #else
+-    if (statfs(cwd, &fsbuf) >= 0)
+-#endif
++    if (statvfs(cwd, &f_favail) >= 0)
+ #endif
++
+     {
+ #ifdef SGI
+-        *free = fsbuf.f_bsize * fsbuf.f_bfree / 512;
++        *free = f_favail.f_bsize * f_favail.f_bfree / 512;
+ #else
+-        *free = fsbuf.f_bsize * fsbuf.f_bavail / 512;
++        *free = f_favail.f_bsize * f_favail.f_bavail / 512;
+ #endif
+-        *total = fsbuf.f_bsize * fsbuf.f_blocks / 512;
++        *total = f_favail.f_bsize * f_favail.f_blocks / 512;
+         return (1);
+     }
+     else
+@@ -1182,8 +1185,6 @@ _get_dir(char *name, char *mname, char *
+   (void) find_file(name, &sbuf);
+ 
+   if ((cur_dir = opendir(name)) == NULL) {
+-    extern int errno;
+-
+     Debug0((dbg_fd, "get_dir(): couldn't open '%s' errno = %s\n", name, strerror(errno)));
+     return (NULL);
+   }

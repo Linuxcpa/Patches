@@ -106,6 +106,10 @@ CONFIGURE_ARGS+=	--with-scglib
 CONFIGURE_ARGS+=	--target=haiku
 .endif
 
+.if ${PKGPATH} == "games/dosbox"
+CONFIGURE_ARGS+= --disable-dynamic-core
+.endif
+
 #below here, builds aren't working
 
 .if ${PKGPATH} == "lang/gcc48-libs" || ${PKGPATH} == "lang/gcc47"

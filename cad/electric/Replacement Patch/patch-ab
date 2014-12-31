@@ -1,0 +1,85 @@
+$NetBSD: patch-ab,v 1.4 2013/04/01 09:26:07 sbd Exp $
+
+- not all !sparcs are little endian.
+
+- don't assume /usr/local
+
+--- src/include/config.h.orig	2004-07-16 01:59:53.000262144 +0000
++++ src/include/config.h
+@@ -28,10 +28,23 @@
+  * Portola Valley, California 94028
+  * info@staticfreesoft.com
+  */
+-
++#include <endian.h>
+ #ifndef _CONFIG_H_
+ #define _CONFIG_H_ 1
+ 
++#ifdef __sun
++#include <sys/byteorder.h>
++#define LITTLE_ENDIAN 1234
++#define BIG_ENDIAN 4321
++#ifdef _BIG_ENDIAN
++#define BYTE_ORDER BIG_ENDIAN
++#else
++#define BYTE_ORDER LITTLE_ENDIAN
++#endif
++#elif defined(__linux__)
++#include <endian.h>
++#endif
++
+ /********************* MACHINE DETERMINATION *********************/
+ 
+ /* determine if it is Macintosh OS */
+@@ -135,7 +148,7 @@
+ #  ifndef USEQT
+ #    include <X11/Intrinsic.h>
+ #  endif
+-#  ifdef sparc
++#  if BYTE_ORDER == BIG_ENDIAN
+ #    define BYTES_SWAPPED  1								/* bytes are MSB first */
+ #  endif
+ #  define DIRSEP           '/'								/* directory separator */
+@@ -143,31 +156,19 @@
+ #  define MACFSTAG(x)      0
+ #  define NONFILECH        '?'								/* character that cannot be in file name */
+ #  define CADRCFILENAME    x_(".cadrc")						/* CAD startup file */
++#    define LIBDIR           x_("/boot/home/pkg/share/electric/lib/")	/* location of library files */
++#    define DOCDIR           x_("/boot/home/pkg/share/electric/doc/html/")	/* location of HTML files */
++#    define ESIMLOC          x_("/boot/home/pkg/bin/esim")
++#    define RSIMLOC          x_("/boot/home/pkg/bin/rsim")
++#    define PRESIMLOC        x_("/boot/home/pkg/bin/presim")
++#    define RNLLOC           x_("/boot/home/pkg/bin/rnl")
++#    define SPICELOC         x_("/boot/home/pkg/bin/spice3")
++#    define FASTHENRYLOC     x_("/boot/home/pkg/bin/fasthenry")
++#    define SORTLOC          x_("/usr/bin/sort")
++#    define FLATDRCLOC       x_("/boot/home/pkg/bin/ffindshort")
++#    define SFLATDRCLOC      x_("/boot/home/pkg/bin/findshort")
+ #  ifdef sun
+-#    define LIBDIR           x_("/usr/local/share/electric/lib/")	/* location of library files */
+-#    define DOCDIR           x_("/usr/local/share/electric/doc/html/")	/* location of HTML files */
+-#    define ESIMLOC          x_("/usr/local/bin/esim")
+-#    define RSIMLOC          x_("/usr/local/bin/rsim")
+-#    define PRESIMLOC        x_("/usr/local/bin/presim")
+-#    define RNLLOC           x_("/usr/local/bin/rnl")
+-#    define SPICELOC         x_("/usr/local/bin/spice")
+-#    define FASTHENRYLOC     x_("/usr/local/bin/fasthenry")
+-#    define SORTLOC          x_("/usr/local/bin/sort")
+-#    define FLATDRCLOC       x_("/usr/local/bin/ffindshort")
+-#    define SFLATDRCLOC      x_("/usr/local/bin/findshort")
+ #    define u_int64_t uint64_t
+-#  else
+-#    define LIBDIR           x_("/usr/share/electric/lib/")	/* location of library files */
+-#    define DOCDIR           x_("/usr/share/electric/doc/html/")	/* location of HTML files */
+-#    define ESIMLOC          x_("/usr/bin/esim")
+-#    define RSIMLOC          x_("/usr/bin/rsim")
+-#    define PRESIMLOC        x_("/usr/bin/presim")
+-#    define RNLLOC           x_("/usr/bin/rnl")
+-#    define SPICELOC         x_("/usr/bin/spice")
+-#    define FASTHENRYLOC     x_("/usr/bin/fasthenry")
+-#    define SORTLOC          x_("/usr/bin/sort")
+-#    define FLATDRCLOC       x_("/usr/bin/ffindshort")
+-#    define SFLATDRCLOC      x_("/usr/bin/findshort")
+ #  endif
+ #endif
+ 

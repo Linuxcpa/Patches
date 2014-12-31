@@ -1,18 +1,5 @@
 # LD flags to pass to make for specifc packages
 
-.if ${PKGPATH} == "www/serf"
-LDFLAGS+= -Wl,-R${PREFIX}/lib
-.endif
-
-.if ${PKGPATH} == "net/samba" || ${PKGPATH} == "chat/anope"
-LDFLAGS+= -Wl,-R/boot/system/lib
-.endif
-
-.if ${PKGPATH} == "chat/gtmess" || ${PKGPATH} == "print/luatex" \
-|| ${PKGPATH} == "net/net-snmp"
-LDFLAGS+= -L/boot/system/lib
-.endif
-
 .if ${PKGPATH} == "graphics/netpbm" || ${PKGPATH} == "security/tcp_wrappers" \
 || ${PKGPATH} == "benchmarks/httperf" || ${PKGPATH} == "benchmarks/netpipe" \
 || ${PKGPATH} == "chat/goofey" || ${PKGPATH} == "devel/git-base" \
@@ -37,7 +24,8 @@ LDFLAGS+= -L/boot/system/lib
 || ${PKGPATH} == "x11/xfstt" || ${PKGPATH} == "x11/modular-xorg-server" \
 || ${PKGPATH} == "net/csup" || ${PKGPATH} == "net/dhisd" \
 || ${PKGPATH} == "graphics/cairo" || ${PKGPATH} == "graphics/cairo-gobject" \
-|| ${PKGPATH} == "sysutils/cdrdao"
+|| ${PKGPATH} == "sysutils/cdrdao" || ${PKGPATH} == "emulators/dosbox" \
+|| ${PKGPATH} == "emulators/palmosemulator"
 LDFLAGS+= -lnetwork
 .endif
 
@@ -53,6 +41,19 @@ LDFLAGS+= -lnetwork
 || ${PKGPATH} == "x11/xfstt" || ${PKGPATH} == "math/nickle" \
 || ${PKGPATH} == "net/cftp" || ${PKGPATH} == "net/csup"
 LDFLAGS+= -lbsd
+.endif
+
+.if ${PKGPATH} == "www/serf"
+LDFLAGS+= -Wl,-R${PREFIX}/lib
+.endif
+
+.if ${PKGPATH} == "net/samba" || ${PKGPATH} == "chat/anope"
+LDFLAGS+= -Wl,-R/boot/system/lib
+.endif
+
+.if ${PKGPATH} == "chat/gtmess" || ${PKGPATH} == "print/luatex" \
+|| ${PKGPATH} == "net/net-snmp"
+LDFLAGS+= -L/boot/system/lib
 .endif
 
 .if ${PKGPATH} == "shells/fish" || ${PKGPATH} == "lang/sablevm" 

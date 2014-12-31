@@ -28,10 +28,10 @@ MAKE_ENV+=	LDLIBS="-lnetwork"
 LDADD.Haiku=	-lnetwork
 .endif
 
-.if ${PKGPATH} == "graphics/ImageMagick"
-post-extract:
-	${CP} ${FILESDIR}/pango.c ${WRKSRC}/coders
-.endif
+#.if ${PKGPATH} == "graphics/ImageMagick"
+#post-extract:
+#	${CP} ${FILESDIR}/pango.c ${WRKSRC}/coders
+#.endif
 
 .if ${PKGPATH} == "www/libproxy"
 CMAKE_ARGS+=		-DCMAKE_EXE_LINKER_FLAGS:STRING="-lnetwork ${COMPILER_RPATH_FLAG}${PREFIX}/lib"
