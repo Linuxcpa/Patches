@@ -38,6 +38,14 @@
 .include "../../devel/libelf/buildlink3.mk"
 .endif
 
+.if ${PKGPATH} == "games/scummvm"
+.include "../../graphics/jpeg/buildlink3.mk"
+.endif
+
+.if ${PKGPATH} == "games/angband-tty"
+.include "../../devel/ncurses/buildlink3.mk"
+.endif
+
 #Below not working yet
 
 #.if ${PKGPATH} == "devel/rcs"

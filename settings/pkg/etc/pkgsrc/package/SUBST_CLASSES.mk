@@ -337,3 +337,35 @@ SUBST_MESSAGE.lnetwork18= Fixing Makefile
 SUBST_FILES.lnetwork18= Makefile
 SUBST_SED.lnetwork18+= -e 's|LIBS = -lnsl -lm  |LIBS = -lnetwork |g'
 .endif
+
+.if ${PKGPATH} == "emulators/wine"
+SUBST_CLASSES+= WineLibraryPathFix
+SUBST_STAGE.WineLibraryPathFix= pre-build
+SUBST_MESSAGE.WineLibraryPathFix= Fixing Wine LIBRARY_PATH from LD_LIBRARY_PATH
+SUBST_FILES.WineLibraryPathFix= dlls/dbghelp/elf_module.c
+SUBST_SED.WineLibraryPathFix+= -e 's|("LD_LIBRARY_PATH")|("LIBRARY_PATH")|g'
+
+SUBST_CLASSES+= WineLibraryPathFix1
+SUBST_STAGE.WineLibraryPathFix1= pre-build
+SUBST_MESSAGE.WineLibraryPathFix1= Fixing Wine LIBRARY_PATH from LD_LIBRARY_PATH
+SUBST_FILES.WineLibraryPathFix1= tools/winapi/make_parser.pm
+SUBST_SED.WineLibraryPathFix1+= -e 's|LD_LIBRARY_PATH|LIBRARY_PATH|g'
+
+SUBST_CLASSES+= WineLibraryPathFix2
+SUBST_STAGE.WineLibraryPathFix2= pre-build
+SUBST_MESSAGE.WineLibraryPathFix2= Fixing Wine LIBRARY_PATH from LD_LIBRARY_PATH
+SUBST_FILES.WineLibraryPathFix2= tools/winemaker.de.man.in
+SUBST_SED.WineLibraryPathFix2+= -e 's|LD_LIBRARY_PATH|LIBRARY_PATH|g'
+
+SUBST_CLASSES+= WineLibraryPathFix3
+SUBST_STAGE.WineLibraryPathFix3= pre-build
+SUBST_MESSAGE.WineLibraryPathFix3= Fixing Wine LIBRARY_PATH from LD_LIBRARY_PATH
+SUBST_FILES.WineLibraryPathFix3= tools/winemaker.fr.man.in
+SUBST_SED.WineLibraryPathFix3+= -e 's|LD_LIBRARY_PATH|LIBRARY_PATH|g'
+
+SUBST_CLASSES+= WineLibraryPathFix4
+SUBST_STAGE.WineLibraryPathFix4= pre-build
+SUBST_MESSAGE.WineLibraryPathFix4= Fixing Wine LIBRARY_PATH from LD_LIBRARY_PATH
+SUBST_FILES.WineLibraryPathFix4= tools/winemaker.man.in
+SUBST_SED.WineLibraryPathFix4+= -e 's|LD_LIBRARY_PATH|LIBRARY_PATH|g'
+.endif

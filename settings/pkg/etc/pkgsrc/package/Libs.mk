@@ -30,7 +30,8 @@
 || ${PKGPATH} == "security/arirang" || ${PKGPATH} == "www/analog" \
 || ${PKGPATH} == "www/lhs" || ${PKGPATH} == "net/chksniff" \
 || ${PKGPATH} == "net/cidr" || ${PKGPATH} == "net/connect" \
-|| ${PKGPATH} == "emulators/kegs"
+|| ${PKGPATH} == "emulators/kegs" || ${PKGPATH} == "multimedia/libdvbpsi0" \
+|| ${PKGPATH} == "games/tetrinetx"
 LIBS.Haiku+=	-lnetwork
 .endif
 

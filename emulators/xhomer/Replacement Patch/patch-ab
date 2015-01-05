@@ -1,0 +1,50 @@
+$NetBSD: patch-ab,v 1.1 2013/07/24 21:15:54 shattered Exp $
+
+--- term_x11.c.orig	2003-12-13 16:06:36.036175872 +0000
++++ term_x11.c
+@@ -58,12 +58,11 @@
+ #ifdef SHM
+ #include <X11/extensions/XShm.h>
+ #include <sys/ipc.h>
+-#include <sys/shm.h>
+ #endif
+ #ifdef DGA
+-#include <X11/extensions/xf86dga.h>
++#include <X11/extensions/Xxf86dga.h>
+ #ifndef DGA2
+-#include <X11/extensions/xf86vmode.h>
++#include <X11/extensions/Xxf86vmode.h>
+ #endif
+ #include <unistd.h>
+ #endif
+@@ -927,17 +926,17 @@ int			old_uid = geteuid();
+ 					      PRO_VID_SCRWIDTH, PRO_VID_SCRHEIGHT)))
+ 	        shm_present = 0;
+ 	      else if ((shminfo.shmid = 
+-		        shmget(IPC_PRIVATE, pro_image->bytes_per_line*PRO_VID_SCRHEIGHT, IPC_CREAT|0777))==-1)
++		        shm_open(IPC_PRIVATE, pro_image->bytes_per_line*PRO_VID_SCRHEIGHT, IPC_CREAT|0777))==-1)
+ 	        shm_present = 0;
+-	      else if ((shminfo.shmaddr = pro_image->data = shmat(shminfo.shmid, 0, 0))==(char*)-1)
++	      else if ((shminfo.shmaddr = pro_image->data = shm_open(shminfo.shmid, 0, 0))==(char*)-1)
+ 	        shm_present = 0;
+ 	      else
+ 	      {
+ 	        if (XShmAttach(ProDisplay, &shminfo)==0) shm_present = 0;
+ 	        XSync(ProDisplay, True);
+-	        shmctl(shminfo.shmid, IPC_RMID, 0);
++	        msync(shminfo.shmid, IPC_RMID, 0);
+ 
+-	        if (!shm_present) shmdt(shminfo.shmaddr);
++	        if (!shm_present) shm_unlink(shminfo.shmaddr);
+ 	      }
+ 	      if (pro_image && !shm_present) XDestroyImage(pro_image);
+ 	      XSync(ProDisplay, True);
+@@ -1168,7 +1167,7 @@ XWindowAttributes	winattr;
+ 	      if (pro_libc_workaround)
+ 	        printf("13 DDD\r\n");
+ 
+-	      shmdt(shminfo.shmaddr);
++	      shm_unlink(shminfo.shmaddr);
+ 
+ 	      if (pro_libc_workaround)
+ 	        printf("14 DDD\r\n");

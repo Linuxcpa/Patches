@@ -1,7 +1,16 @@
 $NetBSD: patch-an,v 1.1 2006/10/06 19:15:09 schwarz Exp $
 
---- src/main.c.orig	2001-01-26 13:42:59.055836672 +0000
+--- src/main.c.orig	2001-01-26 13:42:59.013107200 +0000
 +++ src/main.c
+@@ -156,7 +156,7 @@ MO_SIGHANDLER_RETURNTYPE ProcessExternal
+ 
+ 	signal (SIGUSR1, SIG_IGN);
+ 	/* Construct filename from our pid. */
+-	sprintf (filename, "/tmp/Mosaic.%d", getpid ());
++	sprintf (filename, "/boot/home/pkg/tmp/Mosaic.%d", getpid ());
+ 	fp = fopen (filename, "r");
+ 	if (!fp){
+ 		signal (SIGUSR1, (void(*)(int))ProcessExternalDirective);
 @@ -313,7 +313,7 @@ int main (int argc, char **argv, char **
  /* old : #if defined(SVR4) || defined(__QNX__) || defined(NETBSD) || defined(FreeBSD) */
  
@@ -11,3 +20,14 @@ $NetBSD: patch-an,v 1.1 2006/10/06 19:15:09 schwarz Exp $
  	signal(SIGCHLD, (void (*)(int))ChildTerminated);
  #else
  	signal(SIGCLD, (void (*)())ChildTerminated);
+@@ -345,9 +345,7 @@ int main (int argc, char **argv, char **
+ 
+ /* system option */
+ 
+-	mMosaicTmpDir = getenv ("TMPDIR");
+-	if (!mMosaicTmpDir)
+-		mMosaicTmpDir = "/tmp";
++	mMosaicTmpDir = "/boot/home/pkg/tmp";
+ 
+ 	/* If there's no docs directory assigned by the X resource,
+ 	 *t hen look at MMOSAIC_DOCS_DIRECTORY environment variable

@@ -53,7 +53,8 @@
 || ${PKGPATH} == "www/php-soycms"|| ${PKGPATH} == "www/php-sugarcrm" \
 || ${PKGPATH} == "www/php-tidy"|| ${PKGPATH} == "www/php-tiki6" \
 || ${PKGPATH} == "www/php-tt-rss"|| ${PKGPATH} == "www/php-tt-rss-fever-plugin" \
-|| ${PKGPATH} == "www/php-uploadprogress"|| ${PKGPATH} == "www/php-zendoptimizerplus"
+|| ${PKGPATH} == "www/php-uploadprogress"|| ${PKGPATH} == "www/php-zendoptimizerplus" \
+|| ${PKGPATH} == "audio/SDL_mixer"
 SHLIBTOOL_OVERRIDE= # empty
 LDFLAGS.Haiku+= -Wl,--rpath
 .endif

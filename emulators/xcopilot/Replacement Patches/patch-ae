@@ -1,0 +1,79 @@
+$NetBSD: patch-ae,v 1.1 1999/03/15 13:54:24 simonb Exp $
+
+--- main.c.orig	1998-08-25 05:06:36.046137344 +0000
++++ main.c
+@@ -56,7 +56,6 @@ Update History:   (most recent first)
+ #endif
+ #include <unistd.h>
+ #include <sys/ipc.h>
+-#include <sys/shm.h>
+ #include <sys/stat.h>
+ #include <fcntl.h>
+ #include <stdio.h>
+@@ -112,9 +111,9 @@ static shared_img *attach_shm(Pilot *pil
+ {
+   void *s;
+ 
+-  s = shmat(pilot->shmid, (char *)0, 0);
++  s = shm_open(pilot->shmid, (char *)0, 0);
+   if (s == (void *)-1) {
+-    perror("shmat");
++    perror("shm_open");
+     exit(1);
+   }
+   return((shared_img *)s);
+@@ -557,7 +556,7 @@ PT_create(Pilot *pilot, PT_proc *proc)
+ 
+ 		shptr = attach_shm(pilot);
+ 		proc(shptr, pilot);
+-  		shmdt((char *)shptr);
++  		shm_unlink((char *)shptr);
+ 
+ 		exit(0);
+ 	} else {
+@@ -638,7 +637,6 @@ int init(Pilot *pilot)
+   struct stat buf;
+ 
+   expand_tilde(&pilot->DataDir);
+-  add_slash(&pilot->DataDir);
+   if (stat(pilot->DataDir, &buf) == -1) {
+     if (errno == ENOENT) {
+       if (mkdir(pilot->DataDir, S_IRWXU)) {
+@@ -651,6 +649,7 @@ int init(Pilot *pilot)
+         exit(1);
+     }
+   }
++  add_slash(&pilot->DataDir);
+ 
+   /* Set the memory version */
+   pdebug_memversion = pilot->MemVersion;
+@@ -674,9 +673,9 @@ int init(Pilot *pilot)
+   /*
+    * get a shared memory segment
+    */
+-  pilot->shmid = shmget((key_t) 0, sizeof(shared_img), IPC_CREAT | 0777);
++  pilot->shmid = shm_open((key_t) 0, sizeof(shared_img), IPC_CREAT | 0777);
+   if (pilot->shmid < 0) {
+-    perror("shmget");
++    perror("shm_open");
+     exit(1);
+   } else {
+     shared_img *shptr = attach_shm(pilot);
+@@ -707,7 +706,7 @@ int init(Pilot *pilot)
+      * Detach the segment before doing fork().  Some OS's have the
+      * child inherit the attached segments.
+      */
+-    shmdt((char *)shptr);
++    shm_unlink((char *)shptr);
+   }
+ 
+   /*
+@@ -725,7 +724,7 @@ int init(Pilot *pilot)
+   PT_wait(pilot);	/* wait until all threads have exited */
+ 
+   /* Delete the shared mem */
+-  shmctl(pilot->shmid, IPC_RMID, 0);
++  msync(pilot->shmid, IPC_RMID, 0);
+ 
+   exit(0);
+ }

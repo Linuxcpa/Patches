@@ -1,6 +1,6 @@
 $NetBSD$
 
---- os/WaitFor.c.orig	2009-08-11 04:00:26.004456448 +0000
+--- os/WaitFor.c.orig	2009-08-11 04:00:26.019136512 +0000
 +++ os/WaitFor.c
 @@ -333,11 +333,11 @@ WaitForSomething(int *pClientsReady)
  	{
@@ -12,7 +12,7 @@ $NetBSD$
  	        int client_priority, client_index;
  
 -		curclient = mffs (clientsReadable.fds_bits[i]) - 1;
-+		curclient = mffs (clientsReadable.bits[i]) - 1;
++		curclient = ffs (clientsReadable.bits[i]) - 1;
  		client_index = /* raphael: modified */
  			ConnectionTranslation[curclient + (i * (sizeof(fd_mask) * 8))];
  #else

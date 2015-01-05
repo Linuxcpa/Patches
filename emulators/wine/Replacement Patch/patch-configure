@@ -1,0 +1,46 @@
+$NetBSD: patch-configure,v 1.1 2014/01/17 09:01:58 adam Exp $
+
+Configure for OSS v3 support for NetBSD.
+
+--- configure.orig	2014-01-10 20:37:29.060030976 +0000
++++ configure
+@@ -11363,14 +11363,25 @@ then
+ if test "x$ac_cv_header_sys_soundcard_h" = xyes; then :
+   ac_fn_c_check_member "$LINENO" "oss_sysinfo" "numaudioengines" "ac_cv_member_oss_sysinfo_numaudioengines" "#include <sys/soundcard.h>
+ "
++if test x`echo "$host_alias" | grep -iv netbsd` = x; then :
+ if test "x$ac_cv_member_oss_sysinfo_numaudioengines" = xyes; then :
+ 
+ cat >>confdefs.h <<_ACEOF
+ #define HAVE_OSS_SYSINFO_NUMAUDIOENGINES 1
++#define HAVE_OSSv4 1
+ _ACEOF
+ 
+ OSS4INCL="$ac_oss_incl"
+ 
++else
++ac_cv_member_oss_sysinfo_numaudioengines=yes
++cat >>confdefs.h <<_ACEOF
++#define HAVE_OSS_SYSINFO_NUMAUDIOENGINES 1
++_ACEOF
++
++OSS4INCL="$ac_oss_incl"
++
++fi
+ fi
+ 
+ fi
+@@ -13176,8 +13187,12 @@ case $build_os in
+     ;;
+   darwin*|macosx*)
+     ;;
++# Haiku detection is not working, so I just made it always do what Haioku wants here.
++  Haiku*)
++    LDPATH="LIBRARY_PATH="$(TOOLSDIR)/libs/wine:$$LIBRARY_PATH""
++    ;;  
+   *)
+-    LDPATH="LD_LIBRARY_PATH=\"\$(TOOLSDIR)/libs/wine:\$\$LD_LIBRARY_PATH\""
++    LDPATH="LIBRARY_PATH=\"\$(TOOLSDIR)/libs/wine:\$\$LIBRARY_PATH\""
+     ;;
+ esac
+ 

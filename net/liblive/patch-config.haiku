@@ -1,0 +1,25 @@
+$NetBSD$
+
+--- config.haiku.orig	2015-01-02 01:17:40.310116352 +0000
++++ config.haiku
+@@ -0,0 +1,20 @@
++.SUFFIXES: .la .lo .cpp
++COMPILE_OPTS =		$(INCLUDES) -I. -O2 -DSOCKLEN_T=socklen_t -D_LARGEFILE_SOURCE=1 -D_FILE_OFFSET_BITS=64
++C =			c
++C_COMPILER =		${LIBTOOL} --tag=CC --mode=compile ${CC}
++C_FLAGS =		$(COMPILE_OPTS)
++CPP =			cpp
++CPLUSPLUS_COMPILER =	${LIBTOOL} --tag=CXX --mode=compile c++
++CPLUSPLUS_FLAGS =	$(COMPILE_OPTS) -Wall -DBSD=1
++OBJ =			lo
++LINK =			${LIBTOOL} --tag=CXX --mode=link c++ -o
++LINK+=			# this is needed to add a space!
++LINK_OPTS =		-L.
++CONSOLE_LINK_OPTS =	$(LINK_OPTS)
++LIBRARY_LINK =		${LIBTOOL} --tag=CXX --mode=link c++ -rpath ${PREFIX}/lib -version-info 0:0 -o
++LIBRARY_LINK+=		# this is needed to add a space!
++LIBRARY_LINK_OPTS =	
++LIB_SUFFIX =		la
++LIBS_FOR_CONSOLE_APPLICATION =
++LIBS_FOR_GUI_APPLICATION =
++EXE =

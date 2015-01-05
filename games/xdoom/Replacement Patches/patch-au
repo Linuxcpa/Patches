@@ -1,0 +1,19 @@
+$NetBSD: patch-au,v 1.4 2010/02/22 21:58:47 wiz Exp $
+
+--- linuxdoom-1.10/w_wad.c.orig	1997-12-22 21:05:36.037486592 +0000
++++ linuxdoom-1.10/w_wad.c
+@@ -23,3 +23,3 @@
+ 
+-
++#include <strings.h>
+ static const char
+@@ -31,8 +31,6 @@ rcsid[] = "$Id: w_wad.c,v 1.5 1997/02/03
+ #include <sys/types.h>
+-#include <string.h>
+ #include <unistd.h>
+-#include <malloc.h>
+ #include <fcntl.h>
+ #include <sys/stat.h>
+-#include <alloca.h>
++#include <stdlib.h>
+ #define O_BINARY		0

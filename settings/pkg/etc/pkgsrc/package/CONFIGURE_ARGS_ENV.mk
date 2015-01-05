@@ -110,6 +110,10 @@ CONFIGURE_ARGS+=	--target=haiku
 CONFIGURE_ARGS+= --disable-dynamic-core
 .endif
 
+.if ${PKGPATH} == "audio/SDL_mixer"
+CONFIGURE_ARGS+= --enable-shared
+.endif
+
 #below here, builds aren't working
 
 .if ${PKGPATH} == "lang/gcc48-libs" || ${PKGPATH} == "lang/gcc47"

@@ -2,7 +2,7 @@ $NetBSD$
 
 --- Xos_r.h.orig	2014-10-29 23:40:22.170917888 +0000
 +++ Xos_r.h
-@@ -0,0 +1,1094 @@
+@@ -0,0 +1,1098 @@
 +/* Xos_r.h.  Generated from Xos_r.h.in by configure.  */
 +/*
 +Copyright 1996, 1998  The Open Group
@@ -87,6 +87,10 @@ $NetBSD$
 +#  endif
 +# endif
 +#endif /* _XOS_R_H */
++
++#ifdef __HAIKU__
++#define _POSIX_THREAD_SAFE_FUNCTIONS
++#endif
 +
 +# ifdef __APPLE__
 +#  include <sys/param.h>

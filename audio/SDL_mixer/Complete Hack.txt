@@ -1,0 +1,4 @@
+Forced creation of package from binaries built in Haikuporter.
+
+1. Pkgsrc would not let g++ compile 
+2. There were undefined references that were unique to pkgsrc.

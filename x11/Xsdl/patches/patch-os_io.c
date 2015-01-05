@@ -1,6 +1,6 @@
 $NetBSD$
 
---- os/io.c.orig	2009-10-09 04:08:29.005505024 +0000
+--- os/io.c.orig	2009-10-09 04:08:29.020185088 +0000
 +++ os/io.c
 @@ -627,8 +627,8 @@ FlushAllOutput(void)
  #ifndef WIN32

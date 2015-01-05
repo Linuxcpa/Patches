@@ -22,6 +22,9 @@ PKG_OPTIONS.subversion= -serf
 
 PKG_OPTIONS.tinyproxy= -socks5
 
+PKG_OPTIONS.vice= sdl
+PKG_OPTIONS.vlc= sdl
+
 .if ${PKGPATH} == "devel/py-ordereddict"
 PYTHON_VERSIONS_ACCEPTED=		27
 .endif
@@ -30,6 +33,9 @@ PYTHON_VERSIONS_ACCEPTED=		27
 USE_TOOLS+=		clang
 .endif
 
+.if ${PKGPATH} == "multimedia/libdvdcss"
+LIBDVDCSS_MASTER_SITES= download.videolan.org/pub/libdvdcss
+.endif
 
 #Below here not working yet
 

@@ -1,6 +1,6 @@
 $NetBSD$
 
---- os/connection.c.orig	2009-08-11 04:00:26.002883584 +0000
+--- os/connection.c.orig	2009-08-11 04:00:26.017563648 +0000
 +++ os/connection.c
 @@ -818,7 +818,7 @@ EstablishNewConnections(ClientPtr client
  #ifndef WIN32

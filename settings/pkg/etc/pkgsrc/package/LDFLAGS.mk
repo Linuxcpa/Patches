@@ -25,7 +25,9 @@
 || ${PKGPATH} == "net/csup" || ${PKGPATH} == "net/dhisd" \
 || ${PKGPATH} == "graphics/cairo" || ${PKGPATH} == "graphics/cairo-gobject" \
 || ${PKGPATH} == "sysutils/cdrdao" || ${PKGPATH} == "emulators/dosbox" \
-|| ${PKGPATH} == "emulators/palmosemulator"
+|| ${PKGPATH} == "emulators/palmosemulator" || ${PKGPATH} == "multimedia/vlc" \
+|| ${PKGPATH} == "games/qstat" || ${PKGPATH} == "games/xdoom" \
+|| ${PKGPATH} == "games/bomberclone"
 LDFLAGS+= -lnetwork
 .endif
 

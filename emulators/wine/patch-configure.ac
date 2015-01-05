@@ -1,0 +1,18 @@
+$NetBSD$
+
+--- configure.ac.orig	2014-01-10 20:37:29.060293120 +0000
++++ configure.ac
+@@ -1960,8 +1960,12 @@ case $build_os in
+     ;;
+   darwin*|macosx*)
+     ;;
++  Haiku*)
++    LDPATH="LIBRARY_PATH="$(TOOLSDIR)/libs/wine:$$LIBRARY_PATH""
++    ;;
++#Haiku detection not working here so I just used what it needed. 
+   *)
+-    LDPATH="LD_LIBRARY_PATH=\"\$(TOOLSDIR)/libs/wine:\$\$LD_LIBRARY_PATH\""
++    LDPATH="LIBRARY_PATH=\"\$(TOOLSDIR)/libs/wine:\$\$LIBRARY_PATH\""
+     ;;
+ esac
+ 

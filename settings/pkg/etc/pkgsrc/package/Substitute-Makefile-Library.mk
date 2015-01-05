@@ -16,4 +16,6 @@ BUILDLINK_TRANSFORM+= l:com_err:root
 BUILDLINK_TRANSFORM+= l:crypto:root
 .endif
 
-
+#.if ${PKGPATH} == "emulators/wine"
+#BUILDLINK_TRANSFORM+= LD_LIBRARY_PATH:LIBRARY_PATH
+#.endif

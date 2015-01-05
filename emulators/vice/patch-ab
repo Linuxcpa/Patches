@@ -1,0 +1,140 @@
+$NetBSD: patch-ab,v 1.13 2012/12/12 09:58:03 wiz Exp $
+
+1. Portability problem with "text xx == yy"
+   (in a section for some other OS, so not too relevant).
+2. Use the NetBSD configuration for every OS since the PLIST is
+   hardcoded for that.  Should fix every non-NetBSD platform.
+
+--- configure.orig	2012-11-02 21:06:04.007340032 +0000
++++ configure
+@@ -3261,59 +3261,6 @@ fi
+ 
+ vice_arg_enable_list="$vice_arg_enable_list no-pic"
+ 
+-
+-
+-
+-for argcheck in $@
+-do
+-  argvalid=yes
+-  case $argcheck in
+-    --enable-arch=*)
+-      argvalid=yes
+-      ;;
+-    --enable-*)
+-      argvalid=no
+-      for i in $vice_arg_enable_list
+-      do
+-        if test x"$argcheck" = x"--enable-$i"; then
+-          argvalid=yes
+-        fi
+-      done
+-      ;;
+-    --disable-*)
+-      argvalid=no
+-      for i in $vice_arg_enable_list
+-      do
+-        if test x"$argcheck" = x"--disable-$i"; then
+-          argvalid=yes
+-        fi
+-      done
+-      ;;
+-    --with-*)
+-      argvalid=no
+-      for i in $vice_arg_with_list
+-      do
+-        if test x"$argcheck" = x"--with-$i"; then
+-          argvalid=yes
+-        fi
+-      done
+-      ;;
+-    --without-*)
+-      argvalid=no
+-      for i in $vice_arg_with_list
+-      do
+-        if test x"$argcheck" = x"--without-$i"; then
+-          argvalid=yes
+-        fi
+-      done
+-      ;;
+-  esac
+-  if test x"$argvalid" = "xno"; then
+-    as_fn_error $? "invalid option: $argcheck" "$LINENO" 5
+-  fi
+-done
+-
+-
+ vice_ui_list="--enable-gnomeui --enable-sdlui --with-cocoa --enable-gp2x --enable-wiz"
+ vice_ui_1=none
+ vice_ui_2=none
+@@ -14123,7 +14070,7 @@ fi
+ 
+ 
+ 
+-        if test x"$dsound_header_no_lib" == "xyes" -o x"$dinput_header_no_lib" == "xyes"; then
++        if test x"$dsound_header_no_lib" = "xyes" -o x"$dinput_header_no_lib" = "xyes"; then
+               { $as_echo "$as_me:${as_lineno-$LINENO}: checking if CoInitialize can be linked" >&5
+ $as_echo_n "checking if CoInitialize can be linked... " >&6; }
+               LIBS="$LIBS -lole32"
+@@ -20158,7 +20105,7 @@ fi
+ esac
+ 
+ case "$host_os" in
+-  netbsd*)
++  *)
+     VICEDIR="$PREFIX/share/vice"
+      if true; then
+   ALTERNATE_DOCDIR_TRUE=
+@@ -20167,52 +20114,6 @@ else
+   ALTERNATE_DOCDIR_TRUE='#'
+   ALTERNATE_DOCDIR_FALSE=
+ fi
+-
+-    ;;
+-  freebsd*)
+-    VICEDIR="$PREFIX/lib/vice"
+-     if true; then
+-  ALTERNATE_DOCDIR_TRUE=
+-  ALTERNATE_DOCDIR_FALSE='#'
+-else
+-  ALTERNATE_DOCDIR_TRUE='#'
+-  ALTERNATE_DOCDIR_FALSE=
+-fi
+-
+-    ;;
+-  linux*)
+-    if test x"$host_cpu" = "xx86_64"; then
+-      VICEDIR="$PREFIX/lib64/vice"
+-       if false; then
+-  ALTERNATE_DOCDIR_TRUE=
+-  ALTERNATE_DOCDIR_FALSE='#'
+-else
+-  ALTERNATE_DOCDIR_TRUE='#'
+-  ALTERNATE_DOCDIR_FALSE=
+-fi
+-
+-    else
+-      VICEDIR="$PREFIX/lib/vice"
+-       if false; then
+-  ALTERNATE_DOCDIR_TRUE=
+-  ALTERNATE_DOCDIR_FALSE='#'
+-else
+-  ALTERNATE_DOCDIR_TRUE='#'
+-  ALTERNATE_DOCDIR_FALSE=
+-fi
+-
+-    fi
+-    ;;
+-  *)
+-    VICEDIR="$PREFIX/lib/vice"
+-     if false; then
+-  ALTERNATE_DOCDIR_TRUE=
+-  ALTERNATE_DOCDIR_FALSE='#'
+-else
+-  ALTERNATE_DOCDIR_TRUE='#'
+-  ALTERNATE_DOCDIR_FALSE=
+-fi
+-
+     ;;
+ esac
+ 
