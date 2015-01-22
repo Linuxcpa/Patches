@@ -1,0 +1,101 @@
+$NetBSD: patch-ac,v 1.5 2009/08/29 19:26:01 wiz Exp $
+
+--- QW/client/gl_vidlinuxglx.c.orig	1999-12-21 18:45:54.020185088 +0000
++++ QW/client/gl_vidlinuxglx.c
+@@ -20,7 +20,6 @@ Foundation, Inc., 59 Temple Place - Suit
+ #include <termios.h>
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
+-#include <sys/vt.h>
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <signal.h>
+@@ -349,8 +348,9 @@ void VID_Shutdown(void)
+ {
+ 	if (!ctx)
+ 		return;
+-
++#if !defined(__HAIKU__)
+ 	glXDestroyContext(dpy, ctx);
++#endif
+ }
+ 
+ void signal_handler(int sig)
+@@ -367,7 +367,6 @@ void InitSig(void)
+ 	signal(SIGQUIT, signal_handler);
+ 	signal(SIGILL, signal_handler);
+ 	signal(SIGTRAP, signal_handler);
+-	signal(SIGIOT, signal_handler);
+ 	signal(SIGBUS, signal_handler);
+ 	signal(SIGFPE, signal_handler);
+ 	signal(SIGSEGV, signal_handler);
+@@ -522,7 +521,9 @@ void GL_BeginRendering (int *x, int *y, 
+ void GL_EndRendering (void)
+ {
+ 	glFlush();
++#if !defined(__HAIKU__)
+ 	glXSwapBuffers(dpy, win);
++#endif
+ }
+ 
+ qboolean VID_Is8bit(void)
+@@ -560,6 +561,9 @@ extern void gl3DfxSetPaletteEXT(GLuint *
+ 
+ void VID_Init8bitPalette(void) 
+ {
++#if defined(__NetBSD__) || defined(__DragonFly__)
++  return;
++#else
+ 	// Check for 8bit Extensions and initialize them.
+ 	int i;
+ 	GLubyte table[256][4];
+@@ -578,8 +582,11 @@ void VID_Init8bitPalette(void) 
+ 		table[i][3] = 255;
+ 		oldpal++;
+ 	}
++#if !defined(__HAIKU__)
+ 	gl3DfxSetPaletteEXT((GLuint *)table);
++#endif
+ 	is8bit = true;
++#endif
+ }
+ #endif
+ 
+@@ -603,7 +610,12 @@ void VID_Init(unsigned char *palette)
+ 	Window root;
+ 	XVisualInfo *visinfo;
+ 
++	/* For some reason this is called.  It causes trouble for NetBSD 
++	 and sound won't work */
++
++#if !defined(__NetBSD__) && !defined(__DragonFly__)
+ 	S_Init();
++#endif
+ 
+ 	Cvar_RegisterVariable (&vid_mode);
+ 	Cvar_RegisterVariable (&gl_ztrick);
+@@ -647,8 +659,9 @@ void VID_Init(unsigned char *palette)
+ 
+ 	scrnum = DefaultScreen(dpy);
+ 	root = RootWindow(dpy, scrnum);
+-
++#if !defined(__HAIKU__)
+ 	visinfo = glXChooseVisual(dpy, scrnum, attrib);
++#endif	
+ 	if (!visinfo) {
+ 		fprintf(stderr, "qkHack: Error couldn't get an RGB, Double-buffered, Depth visual\n");
+ 		exit(1);
+@@ -668,11 +681,11 @@ void VID_Init(unsigned char *palette)
+ 	XMoveWindow(dpy, win, 0, 0);
+ 
+ 	XFlush(dpy);
+-
++#if !defined(__HAIKU__)
+ 	ctx = glXCreateContext(dpy, visinfo, NULL, True);
+ 
+ 	glXMakeCurrent(dpy, win, ctx);
+-
++#endif
+ 	scr_width = width;
+ 	scr_height = height;
+ 

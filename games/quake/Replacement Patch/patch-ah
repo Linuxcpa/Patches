@@ -1,0 +1,67 @@
+$NetBSD: patch-ah,v 1.3 2009/08/29 19:26:01 wiz Exp $
+
+--- WinQuake/gl_vidlinuxglx.c.orig	1999-12-21 18:39:36.055312384 +0000
++++ WinQuake/gl_vidlinuxglx.c
+@@ -20,7 +20,9 @@ Foundation, Inc., 59 Temple Place - Suit
+ #include <termios.h>
+ #include <sys/ioctl.h>
+ #include <sys/stat.h>
++#ifdef __linux__
+ #include <sys/vt.h>
++#endif
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <signal.h>
+@@ -445,7 +447,9 @@ void VID_Shutdown(void)
+ 	IN_DeactivateMouse();
+ 	if (dpy) {
+ 		if (ctx)
++#if !defined(__HAIKU__)
+ 			glXDestroyContext(dpy, ctx);
++#endif
+ 		if (win)
+ 			XDestroyWindow(dpy, win);
+ 		if (vidmode_active)
+@@ -472,7 +476,6 @@ void InitSig(void)
+ 	signal(SIGQUIT, signal_handler);
+ 	signal(SIGILL, signal_handler);
+ 	signal(SIGTRAP, signal_handler);
+-	signal(SIGIOT, signal_handler);
+ 	signal(SIGBUS, signal_handler);
+ 	signal(SIGFPE, signal_handler);
+ 	signal(SIGSEGV, signal_handler);
+@@ -630,7 +633,9 @@ void GL_BeginRendering (int *x, int *y, 
+ void GL_EndRendering (void)
+ {
+ 	glFlush();
++#if !defined(__HAIKU__)
+ 	glXSwapBuffers(dpy, win);
++#endif
+ }
+ 
+ qboolean VID_Is8bit(void)
+@@ -797,8 +802,9 @@ void VID_Init(unsigned char *palette)
+ 		Con_Printf("Using XFree86-VidModeExtension Version %d.%d\n", MajorVersion, MinorVersion);
+ 		vidmode_ext = true;
+ 	}
+-
++#if !defined(__HAIKU__)
+ 	visinfo = glXChooseVisual(dpy, scrnum, attrib);
++#endif
+ 	if (!visinfo) {
+ 		fprintf(stderr, "qkHack: Error couldn't get an RGB, Double-buffered, Depth visual\n");
+ 		exit(1);
+@@ -872,11 +878,11 @@ void VID_Init(unsigned char *palette)
+ 	}
+ 
+ 	XFlush(dpy);
+-
++#if !defined(__HAIKU__)
+ 	ctx = glXCreateContext(dpy, visinfo, NULL, True);
+ 
+ 	glXMakeCurrent(dpy, win, ctx);
+-
++#endif
+ 	scr_width = width;
+ 	scr_height = height;
+ 

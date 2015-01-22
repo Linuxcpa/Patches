@@ -37,6 +37,11 @@ USE_TOOLS+=		clang
 LIBDVDCSS_MASTER_SITES= download.videolan.org/pub/libdvdcss
 .endif
 
+.if ${PKGPATH} == "archivers/libarchive" || ${PKGPATH} == "devel/cmake" \
+|| ${PKGPATH} == "www/curl"
+USE_BUILTIN.zlib=	yes
+.endif
+
 #Below here not working yet
 
 .if ${PKGPATH} == "lang/ruby200-base"

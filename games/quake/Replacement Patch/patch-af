@@ -1,0 +1,24 @@
+$NetBSD: patch-af,v 1.4 2009/08/29 19:26:01 wiz Exp $
+
+--- QW/server/sys_unix.c.orig	1999-12-21 18:45:14.042991616 +0000
++++ QW/server/sys_unix.c
+@@ -24,7 +24,7 @@ Foundation, Inc., 59 Temple Place - Suit
+ #include <libc.h>
+ #endif
+ 
+-#if defined(__linux__) || defined(sun)
++#if defined(__linux__) || defined(sun) || defined(__NetBSD__) || defined(__DragonFly__) || defined(__HAIKU__)
+ #include <sys/stat.h>
+ #include <unistd.h>
+ #include <sys/time.h>
+@@ -33,6 +33,10 @@ Foundation, Inc., 59 Temple Place - Suit
+ #include <sys/dir.h>
+ #endif
+ 
++#if defined(__HAIKU__)
++#include <sys/select.h>
++#endif
++
+ cvar_t	sys_nostdout = {"sys_nostdout","0"};
+ cvar_t	sys_extrasleep = {"sys_extrasleep","0"};
+ 

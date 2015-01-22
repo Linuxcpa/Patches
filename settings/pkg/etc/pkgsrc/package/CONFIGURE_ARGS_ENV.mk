@@ -8,19 +8,28 @@ CONFIGURE_ARGS+= --with-libedit=${BUILDLINK_PREFIX.editline}/lib
 .endif
 
 .if ${PKGPATH} == "lang/python27" || ${PKGPATH} == "lang/python34"
+CONFIGURE_ARGS+= PKG_CONFIG_PATH=/boot/home/pkg/lib/pkgconfig
+CONFIGURE_ARGS+= --enable-shared
+CONFIGURE_ARGS+= --prefix=/boot/home/pkg
 CONFIGURE_ARGS+= --disable-ipv6
+CONFIGURE_ARGS+= --includedir=/boot/home/pkg/include
 .endif
 
-.if ${PKGPATH} == "lang/python27" || ${PKGPATH} == "lang/python34"
-CONFIGURE_ARGS+=    PKG_CONFIG_PATH=/boot/home/pkg/lib/pkgconfig
-CONFIGURE_ARGS+=    --enable-shared
-CONFIGURE_ARGS+=    --prefix=/boot/home/pkg
-CONFIGURE_ARGS+=    --includedir=/boot/home/pkg/include
-.endif
+#.if ${PKGPATH} == "devel/cmake"
+#CONFIGURE_ARGS+= --system-curl
+#CONFIGURE_ARGS+= --system-expat
+#CONFIGURE_ARGS+= --system-bzip2
+#CONFIGURE_ARGS+= --system-libarchive
+#CONFIGURE_ARGS+= --no-system-zlib 
+#.endif
 
 .if ${PKGPATH} == "mail/mutt"
 CONFIGURE_ARGS+= --with-mailpath=/boot/home/mail
 .endif
+
+#.if ${PKGPATH} == "games/billardgl"
+#CONFIGURE_ARGS+=    -specs=/boot/home/pkg/etc/specs
+#.endif
 
 .if ${PKGPATH} == "x11/pixman"
 CONFIGURE_ARGS+=	PTHREAD_LIBS=
@@ -46,10 +55,6 @@ CONFIGURE_ARGS+=	--disable-dri
 CONFIGURE_ARGS+=	--disable-dri2
 CONFIGURE_ARGS+=	--disable-glx
 CONFIGURE_ARGS+=	--disable-glx-tls
-.endif
-
-.if ${PKGPATH} == "x11/modular-xorg-server"
-CONFIGURE_ARGS+=	--disable-mitshm
 .endif
 
 .if ${PKGPATH} == "multimedia/mencoder"
@@ -110,8 +115,8 @@ CONFIGURE_ARGS+=	--target=haiku
 CONFIGURE_ARGS+= --disable-dynamic-core
 .endif
 
-.if ${PKGPATH} == "audio/SDL_mixer"
-CONFIGURE_ARGS+= --enable-shared
+.if ${PKGPATH} == "ghostscript-cidfonts-ryumin"
+PKG_OPTIONS.ghostscript+= disable-compile-inits
 .endif
 
 #below here, builds aren't working

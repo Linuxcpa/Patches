@@ -1,0 +1,22 @@
+$NetBSD: patch-ae,v 1.2 2011/05/26 12:51:23 obache Exp $
+
+--- sys/unix/Makefile.doc.orig	2001-06-24 17:57:24.063700992 +0000
++++ sys/unix/Makefile.doc
+@@ -11,7 +11,7 @@ GUIDEBOOK = Guidebook		# regular ASCII f
+ # Some versions of col need -x to keep them from converting spaces to tabs;
+ # some versions of col don't do the conversion by default and don't
+ # recognize the option.  Sigh.
+-COLCMD = col -bx
++#COLCMD = col -bx
+ #COLCMD = col -b
+ 
+ # Use the "cat" GUIDECMD if nroff and/or tbl and/or col are not installed
+@@ -34,7 +34,7 @@ Guidebook.dvi:	Guidebook.tex
+ 
+ 
+ GAME	= nethack
+-MANDIR	= /usr/man/man6
++MANDIR	= $(PREFIX)/${PKGMANDIR}/man6
+ MANEXT	= 6
+ 
+ # manual installation for most BSD-style systems

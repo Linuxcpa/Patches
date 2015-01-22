@@ -1,6 +1,6 @@
 $NetBSD$
 
---- src/mesa/main/querymatrix.c.orig	2011-10-15 00:43:58.058982400 +0000
+--- src/mesa/main/querymatrix.c.orig	2011-10-15 00:43:58.054788096 +0000
 +++ src/mesa/main/querymatrix.c
 @@ -75,12 +75,6 @@ fpclassify(double x)
       (defined(__sun) && defined(__C99FEATURES__)) || defined(__MINGW32__) || \

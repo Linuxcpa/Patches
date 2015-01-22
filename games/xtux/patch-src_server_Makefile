@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- src/server/Makefile.orig	2015-01-22 03:50:13.744488960 +0000
++++ src/server/Makefile
+@@ -20,7 +20,7 @@ CFLAGS = -g -Wall -O -DDATADIR=\"$(DATAD
+ COMMON_INC = -I$(COMMON_PATH)
+ 
+ # Libraries used in linking
+-MATHLIB = -lm
++MATHLIB = -lnetwork
+ 
+ # Common libraries
+ XTUXLIB = $(COMMON_PATH)/xtuxlib.a

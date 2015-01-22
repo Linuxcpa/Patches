@@ -1,6 +1,6 @@
 $NetBSD$
 
---- src/mesa/main/execmem.c.orig	2010-04-27 21:41:21.060030976 +0000
+--- src/mesa/main/execmem.c.orig	2010-04-27 21:41:21.055836672 +0000
 +++ src/mesa/main/execmem.c
 @@ -36,7 +36,7 @@
  

@@ -1,6 +1,6 @@
 $NetBSD: patch-src_mesa_main_imports.c,v 1.1 2013/05/16 05:22:02 richard Exp $
 
---- src/mesa/main/imports.c.orig	2011-10-15 00:43:58.043253760 +0000
+--- src/mesa/main/imports.c.orig	2011-10-15 00:43:58.039059456 +0000
 +++ src/mesa/main/imports.c
 @@ -514,7 +514,7 @@ _mesa_ffsll(int64_t val)
  #endif

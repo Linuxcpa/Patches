@@ -46,9 +46,3 @@ DEPENDS+=	php>=4.0.6:../../lang/php54
 .if ${PKGPATH} == "x11/qt4-libs"
 BUILD_TARGET.Haiku= haiku
 .endif
-
-#Probably shouldn't use below, zlib solved now
-
-#.if ${PKGPATH} == "lang/python27"
-#USE_BUILTIN.zlib=	no
-#.endif

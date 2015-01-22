@@ -1,0 +1,25 @@
+#!/bin/sh
+
+cat <<...
+
+Group Talisman / North-Keys / Sat Jul 31 00:13:12 CDT 1993
+Cbzone II
+Sound-Enhanced
+
+...
+
+XAPPLRESDIR=/boot/home/pkg/lib/X11/app-defaults
+export XAPPLRESDIR
+
+cd /boot/home/pkg/share/cbzone/sounds
+
+/boot/home/pkg/bin/cbzone.exec -reports -nooutput $* | \
+	{
+		while read msg
+		do cat ${msg}.au >/dev/audio
+		done
+	}
+
+exit $?
+
+#--------------------eof

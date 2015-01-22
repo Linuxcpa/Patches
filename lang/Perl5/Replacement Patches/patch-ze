@@ -25,7 +25,8 @@ Fixes compilation problem on Solaris/SPARC.
 +#endif
  #include <sys/mode.h>
  #endif
-@@ -2446,7 +2446,7 @@ typedef SV PADNAME;
+ 
+@@ -2446,7 +2450,7 @@ typedef SV PADNAME;
  #elif defined(__SYMBIAN32__)
  #   include "symbian/symbianish.h"
  #elif defined(__HAIKU__)

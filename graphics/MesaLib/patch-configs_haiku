@@ -1,6 +1,6 @@
 $NetBSD$
 
---- configs/haiku.orig	2014-11-06 05:02:04.387186688 +0000
+--- configs/haiku.orig	2015-01-09 23:01:51.128974848 +0000
 +++ configs/haiku
 @@ -0,0 +1,60 @@
 +# Configuration for Haiku

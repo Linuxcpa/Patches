@@ -31,7 +31,9 @@
 || ${PKGPATH} == "www/lhs" || ${PKGPATH} == "net/chksniff" \
 || ${PKGPATH} == "net/cidr" || ${PKGPATH} == "net/connect" \
 || ${PKGPATH} == "emulators/kegs" || ${PKGPATH} == "multimedia/libdvbpsi0" \
-|| ${PKGPATH} == "games/tetrinetx"
+|| ${PKGPATH} == "games/tetrinetx" || ${PKGPATH} == "net/ftpproxy" \
+|| ${PKGPATH} == "net/haproxy" || ${PKGPATH} == "games/xevil" \
+|| ${PKGPATH} == "games/xtris"
 LIBS.Haiku+=	-lnetwork
 .endif
 

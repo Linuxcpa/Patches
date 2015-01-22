@@ -6,7 +6,7 @@ so flatten them out as is done for linux.
 Also, to simplify PLIST processing, add versioned shared libraries
 for SunOS.
 
---- bin/mklib.orig	2011-10-15 00:43:58.060293120 +0000
+--- bin/mklib.orig	2011-10-15 00:43:58.056098816 +0000
 +++ bin/mklib
 @@ -260,7 +260,7 @@ if [ $STATIC = 1 ]; then
      NEWOBJECTS=""

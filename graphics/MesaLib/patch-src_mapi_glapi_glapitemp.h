@@ -1,6 +1,6 @@
 $NetBSD$
 
---- src/mapi/glapi/glapitemp.h.orig	2014-12-07 03:30:11.000000000 +0000
+--- src/mapi/glapi/glapitemp.h.orig	2011-10-15 00:43:58.013631488 +0000
 +++ src/mapi/glapi/glapitemp.h
 @@ -27,7 +27,7 @@
   */

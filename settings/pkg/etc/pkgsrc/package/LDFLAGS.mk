@@ -27,7 +27,9 @@
 || ${PKGPATH} == "sysutils/cdrdao" || ${PKGPATH} == "emulators/dosbox" \
 || ${PKGPATH} == "emulators/palmosemulator" || ${PKGPATH} == "multimedia/vlc" \
 || ${PKGPATH} == "games/qstat" || ${PKGPATH} == "games/xdoom" \
-|| ${PKGPATH} == "games/bomberclone"
+|| ${PKGPATH} == "games/bomberclone" || ${PKGPATH} == "net/entropy" \
+|| ${PKGPATH} == "net/Geomyidae" || ${PKGPATH} == "net/rtmpdump" \
+|| ${PKGPATH} == "games/criticalmass" || ${PKGPATH} == "games/quake"
 LDFLAGS+= -lnetwork
 .endif
 
@@ -41,7 +43,9 @@ LDFLAGS+= -lnetwork
 || ${PKGPATH} == "sysutils/9base" || ${PKGPATH} == "sysutils/adtool" \
 || ${PKGPATH} == "textproc/vis" || ${PKGPATH} == "www/bozohttpd" \
 || ${PKGPATH} == "x11/xfstt" || ${PKGPATH} == "math/nickle" \
-|| ${PKGPATH} == "net/cftp" || ${PKGPATH} == "net/csup"
+|| ${PKGPATH} == "net/cftp" || ${PKGPATH} == "net/csup" \
+|| ${PKGPATH} == "net/entropy" || ${PKGPATH} == "net/fping6" \
+|| ${PKGPATH} == "net/flow-tools" || ${PKGPATH} == "net/vncviewer"
 LDFLAGS+= -lbsd
 .endif
 

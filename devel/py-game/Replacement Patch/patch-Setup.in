@@ -1,0 +1,28 @@
+$NetBSD: patch-Setup.in,v 1.1 2013/10/24 12:08:22 ryoon Exp $
+
+* Disable video4linux
+
+--- Setup.in.orig	2009-07-02 04:41:56.057933824 +0000
++++ Setup.in
+@@ -33,9 +33,9 @@ mixer_music src/music.c $(SDL) $(MIXER) 
+ _numericsurfarray src/_numericsurfarray.c $(SDL) $(DEBUG)
+ _numericsndarray src/_numericsndarray.c $(SDL) $(MIXER) $(DEBUG)
+ movie src/movie.c $(SDL) $(SMPEG) $(DEBUG)
+-scrap src/scrap.c $(SDL) $(SCRAP) $(DEBUG)
+-_camera src/_camera.c src/camera_v4l2.c src/camera_v4l.c $(SDL) $(DEBUG)
+-pypm src/pypm.c $(SDL) $(PORTMIDI) $(PORTTIME) $(DEBUG)
++#scrap src/scrap.c $(SDL) $(SCRAP) $(DEBUG)
++#_camera src/_camera.c src/camera_v4l2.c src/camera_v4l.c $(SDL) $(DEBUG)
++#pypm src/pypm.c $(SDL) $(PORTMIDI) $(PORTTIME) $(DEBUG)
+ 
+ GFX = src/SDL_gfx/SDL_gfxPrimitives.c 
+ #GFX = src/SDL_gfx/SDL_gfxBlitFunc.c src/SDL_gfx/SDL_gfxPrimitives.c 
+@@ -64,7 +64,7 @@ joystick src/joystick.c $(SDL) $(DEBUG)
+ draw src/draw.c $(SDL) $(DEBUG)
+ image src/image.c $(SDL) $(DEBUG)
+ overlay src/overlay.c $(SDL) $(DEBUG)
+-transform src/transform.c src/rotozoom.c src/scale2x.c src/scale_mmx.c $(SDL) $(DEBUG) -D_NO_MMX_FOR_X86_64
++transform src/transform.c src/rotozoom.c src/scale2x.c $(SDL) $(DEBUG) -D_NO_MMX_FOR_X86_64
+ mask src/mask.c src/bitmask.c $(SDL) $(DEBUG)
+ bufferproxy src/bufferproxy.c $(SDL) $(DEBUG)
+ pixelarray src/pixelarray.c $(SDL) $(DEBUG)

@@ -15,6 +15,10 @@
 .include "../../security/openssl/buildlink3.mk"
 .endif
 
+.if ${PKGPATH} == "games/enigma"
+.include "../../devel/boost-headers/buildlink3.mk"
+.endif
+
 .if ${PKGPATH} == "net/chimera"
 .include "../../security/openssl/buildlink3.mk"
 .endif
@@ -24,7 +28,7 @@
 .endif
 
 .if ${PKGPATH} == "shells/zsh" || ${PKGPATH} == "shells/fish" \
-|| ${PKGPATH} == "devel/p5-Term-ReadLine"
+|| ${PKGPATH} == "devel/p5-Term-ReadLine" || ${PKGPATH} == "devel/ncurses"
 .include "../../devel/ncurses/buildlink3.mk"
 .include "../../mk/curses.buildlink3.mk"
 .include "../../mk/terminfo.buildlink3.mk"
@@ -44,6 +48,10 @@
 
 .if ${PKGPATH} == "games/angband-tty"
 .include "../../devel/ncurses/buildlink3.mk"
+.endif
+
+.if ${PKGPATH} == "devel/zlib"
+.include "../../devel/cmake/buildlink3.mk"
 .endif
 
 #Below not working yet

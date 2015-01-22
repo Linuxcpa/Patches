@@ -1,0 +1,13 @@
+$NetBSD$
+
+--- include/config.h.in.orig	2005-06-28 16:40:06.060817408 +0000
++++ include/config.h.in
+@@ -156,7 +156,7 @@
+ /* -*- c -*- */
+ 
+ #ifdef STDC_HEADERS
+-#include <stdio.h>
++#include "stdio.h"
+ #include <ctype.h>
+ #include <errno.h>
+ #include <fcntl.h>

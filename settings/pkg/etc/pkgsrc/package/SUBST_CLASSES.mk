@@ -64,7 +64,8 @@ SUBST_SED.xawfix+= -e 's|libXaw.a|libXaw6.a|g'
 || ${PKGPATH} == "x11/xlogout" || ${PKGPATH} == "x11/xlupe" \
 || ${PKGPATH} == "x11/xmascot" || ${PKGPATH} == "time/xtimer" \
 || ${PKGPATH} == "games/cbzone" || ${PKGPATH} == "mail/xmailwatcher" \
-|| ${PKGPATH} == "mail/xmailbox"
+|| ${PKGPATH} == "mail/xmailbox" || ${PKGPATH} == "games/xemeraldia" \
+|| ${PKGPATH} == "games/xvier"
 SUBST_CLASSES+= xawfix1
 SUBST_STAGE.xawfix1= pre-build
 SUBST_MESSAGE.xawfix1= Fixing libxaw to libxaw6
@@ -92,6 +93,14 @@ SUBST_STAGE.xawfix6= pre-build
 SUBST_MESSAGE.xawfix6= Fixing libxaw to libxaw6
 SUBST_FILES.xawfix6= xcalev/Makefile
 SUBST_SED.xawfix6+= -e 's|libXaw.a|libXaw6.a|g'
+.endif
+
+.if ${PKGPATH} == "finance/xfinans"
+SUBST_CLASSES+= xawfix7
+SUBST_STAGE.xawfix7= pre-build
+SUBST_MESSAGE.xawfix7= Fixing libxaw to libxaw6
+SUBST_FILES.xawfix7= Src/Makefile
+SUBST_SED.xawfix7+= -e 's|libXaw.a|libXaw6.a|g'
 .endif
 
 .if ${PKGPATH} == "emulators/gxemul"
@@ -368,4 +377,32 @@ SUBST_STAGE.WineLibraryPathFix4= pre-build
 SUBST_MESSAGE.WineLibraryPathFix4= Fixing Wine LIBRARY_PATH from LD_LIBRARY_PATH
 SUBST_FILES.WineLibraryPathFix4= tools/winemaker.man.in
 SUBST_SED.WineLibraryPathFix4+= -e 's|LD_LIBRARY_PATH|LIBRARY_PATH|g'
+.endif
+
+.if ${PKGPATH} == "net/haproxy"
+SUBST_CLASSES+= lnetwork19
+SUBST_STAGE.lnetwork19= pre-build
+SUBST_MESSAGE.lnetwork19= Fixing Makefile
+SUBST_FILES.lnetwork19= Makefile
+SUBST_SED.lnetwork19+= -e 's|LDFLAGS = |LDFLAGS = -lnetwork |g'
+
+SUBST_CLASSES+= fixywixie
+SUBST_STAGE.fixywixie= pre-build
+SUBST_MESSAGE.fixywixie= Patchie Watchie
+SUBST_FILES.fixywixie= include/common/standard.h
+SUBST_SED.fixywixie+= -e 's|common/chunk.h|sys/select.h|g'
+
+SUBST_CLASSES+= wixyfixie
+SUBST_STAGE.wixyfixie= pre-build
+SUBST_MESSAGE.wixyfixie= Watchie Patchie
+SUBST_FILES.wixyfixie= include/common/standard.h
+SUBST_SED.wixyfixie+= -e 's|common/config.h|strings.h|g'
+.endif
+
+.if ${PKGPATH} == "graphics/freetype2"
+SUBST_CLASSES+= clearout
+SUBST_STAGE.clearout= pre-build
+SUBST_MESSAGE.clearout= Fixing unix-cc.mk
+SUBST_FILES.clearout= builds/unix/unix-cc.mk
+SUBST_SED.clearout+= -e 's|-L@libdir@ -L@sharedlibdir@ -Wl,-R@libdir@ -Wl,-R@sharedlibdir@| |g'
 .endif

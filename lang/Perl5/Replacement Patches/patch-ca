@@ -6,7 +6,7 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
 
 --- Configure.orig	2014-05-26 13:34:18.000000000 +0000
 +++ Configure
-@@ -3372,13 +3372,14 @@ EOM
+@@ -3372,13 +3372,17 @@ EOM
  			osvers="$3"
  			;;
  		dragonfly) osname=dragonfly
@@ -26,7 +26,7 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
  		genix)	osname=genix ;;
  		gnu)	osname=gnu
  			osvers="$3" ;;
-@@ -3401,7 +3402,7 @@ EOM
+@@ -3401,7 +3405,7 @@ EOM
  		MiNT)	osname=mint
  			;;
  		netbsd*) osname=netbsd
@@ -35,16 +35,16 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
  			;;
  		news-os) osvers="$3"
  			case "$3" in
-@@ -3412,7 +3413,7 @@ EOM
+@@ -3412,7 +3416,7 @@ EOM
  		next*) osname=next ;;
  		nonstop-ux) osname=nonstopux ;;
  		openbsd) osname=openbsd
 -                	osvers="$3"
-+                	osvers=`$uname -r | UU/tr '[A-Z]' '[a-z]'`
++               	osvers=`$uname -r | UU/tr '[A-Z]' '[a-z]'`
                  	;;
  		os2)	osname=os2
  			osvers="$4"
-@@ -3427,6 +3428,9 @@ EOM
+@@ -3427,6 +3431,9 @@ EOM
  		qnx) osname=qnx
  			osvers="$4"
  			;;
@@ -54,16 +54,16 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
  		solaris) osname=solaris
  			case "$3" in
  			5*) osvers=`echo $3 | $sed 's/^5/2/g'` ;;
-@@ -4865,7 +4869,7 @@ esac
- # If using gcc or clang, we can get better values for libpth, incpth
- # and usrinc directly from the compiler.
- # Note that ccname for clang is also gcc.
+@@ -4624,7 +4631,7 @@ EOM
+    esac
+    ;;
+ esac
 -case "$ccname" in
 +case "xx$ccname" in
-     gcc)
- 	$echo 'extern int foo;' > try.c
- 	set X `$cppstdin -v try.c 2>&1 | $awk '/^#include </,/^End of search /'|$cppfilter $grep '/include'`
-@@ -4941,14 +4945,14 @@ case "$plibpth" in
+ '') ccname="$cc" ;;
+ esac
+ 
+@@ -4941,15 +4948,15 @@ case "$plibpth" in
  esac
  case "$libpth" in
  ' ') dlist='';;
@@ -76,20 +76,23 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
  for xxx in $dlist
  do
 -    if $test -d $xxx; then
+-		case " $libpth " in
 +    if $test -d $xxx -o "$xxx" = "$prefix/lib"; then
- 		case " $libpth " in
++    	case " $libpth " in
  		*" $xxx "*) ;;
  		*) libpth="$libpth $xxx";;
-@@ -5064,7 +5068,7 @@ lib_ext=$_a
+ 		esac
+@@ -5064,7 +5071,8 @@ lib_ext=$_a
  obj_ext=$_o
  path_sep=$p_
  
 -rm_try="$rm -f try try$_exe a.out .out try.[cho] try.$_o core core.try* try.core*"
-+rm_try="@TOOLS_RM@ -f try try$_exe a.out .out try.[cho] try.$_o core core.try* try.core*"
++rm_try="@TOOLS_RM@ -f try try$_exe a.out .out try.[cho] try.$_o core core.try* tr.core*"
++
  
  : Which makefile gets called first.  This is used by make depend.
  case "$firstmakefile" in
-@@ -6767,7 +6771,9 @@ rp='Pathname for the site-specific libra
+@@ -6767,7 +6775,9 @@ rp='Pathname for the site-specific libra
  . ./getfile
  prefixvar=sitelib
  . ./setprefixvar
@@ -100,7 +103,7 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
  
  : Determine list of previous versions to include in @INC
  $cat > getverlist <<EOPL
-@@ -7179,7 +7185,9 @@ case "$vendorprefix" in
+@@ -7179,7 +7189,9 @@ case "$vendorprefix" in
  	vendorlibexp="$ansexp"
  	;;
  esac
@@ -111,7 +114,7 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
  prefixvar=vendorlib
  . ./installprefix
  
-@@ -7656,6 +7664,15 @@ case "$nm_so_opt" in
+@@ -7656,6 +7668,15 @@ case "$nm_so_opt" in
  	;;
  esac
  
@@ -127,7 +130,7 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
  : Figure out where the libc is located
  case "$runnm" in
  true)
-@@ -8240,6 +8257,7 @@ EOM
+@@ -8240,6 +8261,7 @@ EOM
  			  ;;
  		    *linux*|irix*|gnu*)  dflt="-shared $optimize" ;;
  		    next)  dflt='none' ;;
@@ -135,7 +138,7 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
  		    solaris) # See [perl #66604].
  			    # On Solaris 11, gcc -m64 on amd64
  			    # appears not to understand -G.  gcc versions at
-@@ -8549,7 +8567,7 @@ if "$useshrplib"; then
+@@ -8549,7 +8571,7 @@ if "$useshrplib"; then
  		# next doesn't like the default...
  		;;
  	haiku)
@@ -144,17 +147,17 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
  		;;
  	hpux*)
  		# hpux doesn't like the default, either.
-@@ -8558,6 +8576,9 @@ if "$useshrplib"; then
+@@ -8558,6 +8580,9 @@ if "$useshrplib"; then
  	cygwin)
  		# cygwin needs only ldlibpth
  		;;
 +	sco_sv)
 +		xxx="-Wl,-R$shrpdir"
-+		;;
++		;;	
  	*)
  		tmp_shrpenv="env LD_RUN_PATH=$shrpdir"
  		;;
-@@ -9633,6 +9654,13 @@ esac
+@@ -9633,6 +9658,13 @@ esac
  : Check if we want perlio
  useperlio="$define"
  
@@ -168,7 +171,7 @@ $NetBSD: patch-ca,v 1.21 2014/06/08 23:35:55 joerg Exp $
  : Set the vendorbin variables
  case "$vendorprefix" in
  '')	d_vendorbin="$undef"
-@@ -19366,7 +19394,15 @@ RCAT(Rei,ser)
+@@ -19366,7 +19398,15 @@ RCAT(Rei,ser)
  ACAT(Cir,cus)
  EOCP
  $cppstdin $cppflags $cppminus <cpp_stuff.c >cpp_stuff.out 2>&1

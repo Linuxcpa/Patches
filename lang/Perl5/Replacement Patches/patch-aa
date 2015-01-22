@@ -3,9 +3,9 @@ $NetBSD: patch-aa,v 1.36 2014/05/29 07:57:07 adam Exp $
 * $Is{NetBSD} and $Is{Interix} are unified into $Is{BSD}.
 * Ignore installed packlist when creating new packlist.
 
---- cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Unix.pm.orig	2014-05-26 13:34:19.000000000 +0000
+--- cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Unix.pm.orig	2014-05-26 13:34:19.015466496 +0000
 +++ cpan/ExtUtils-MakeMaker/lib/ExtUtils/MM_Unix.pm
-@@ -29,8 +29,6 @@ BEGIN {
+@@ -29,11 +29,10 @@ BEGIN {
      $Is{VMS}     = $^O eq 'VMS';
      $Is{OSF}     = $^O eq 'dec_osf';
      $Is{IRIX}    = $^O eq 'irix';
@@ -14,8 +14,11 @@ $NetBSD: patch-aa,v 1.36 2014/05/29 07:57:07 adam Exp $
      $Is{SunOS4}  = $^O eq 'sunos';
      $Is{Solaris} = $^O eq 'solaris';
      $Is{SunOS}   = $Is{SunOS4} || $Is{Solaris};
-     $Is{Haiku}   = $^O eq 'haiku';
-@@ -934,7 +932,7 @@ $(INST_DYNAMIC): $(OBJECT) $(MYEXTLIB) $
++    $Is{Haiku}   = $^O eq 'haiku';
+     $Is{BSD}     = ($^O =~ /^(?:free|net|open)bsd$/ or
+                    grep( $^O eq $_, qw(bsdos interix dragonfly) )
+                   );
+@@ -934,7 +933,7 @@ $(INST_DYNAMIC): $(OBJECT) $(MYEXTLIB) $
  
      my $libs = '$(LDLOADLIBS)';
  
@@ -24,7 +27,7 @@ $NetBSD: patch-aa,v 1.36 2014/05/29 07:57:07 adam Exp $
  	# Use nothing on static perl platforms, and to the flags needed
  	# to link against the shared libperl library on shared perl
  	# platforms.  We peek at lddlflags to see if we need -Wl,-R
-@@ -2116,7 +2114,7 @@ pure_vendor_install :: all
+@@ -2116,7 +2115,7 @@ pure_vendor_install :: all
  	$(NOECHO) $(MOD_INSTALL) \
  };
      push @m,

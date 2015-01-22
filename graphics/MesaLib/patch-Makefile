@@ -1,6 +1,6 @@
 $NetBSD$
 
---- Makefile.orig	2011-11-23 01:09:52.060817408 +0000
+--- Makefile.orig	2011-11-23 01:09:52.056623104 +0000
 +++ Makefile
 @@ -78,7 +78,7 @@ aix-static \
  autoconf \

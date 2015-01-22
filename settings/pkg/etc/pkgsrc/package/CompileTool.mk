@@ -14,7 +14,9 @@ SUBST_FILES.pc= zlib.pc
 || ${PKGPATH} == "biology/mpqc" || ${PKGPATH} == "biology/plink" \
 || ${PKGPATH} == "biology/py-mol" || ${PKGPATH} == "parallel/mpi-ch" \
 || ${PKGPATH} == "math/blas" || ${PKGPATH} == "math/py-numpy" \
-|| ${PKGPATH} == "math/lapack" || ${PKGPATH} == "cad/tnt-mmtl"
+|| ${PKGPATH} == "math/lapack" || ${PKGPATH} == "cad/tnt-mmtl" \
+|| ${PKGPATH} == "fonts/py-TTFQuery" || ${PKGPATH} == "fonts/py-fonttools" \
+|| ${PKGPATH} == "geography/mapserver"
 IGNORE_G95=	yes
 #.include "../../devel/libtool-fortran/buildlink3.mk"
 .endif

@@ -1,0 +1,14 @@
+$NetBSD$
+
+--- setup.orig	2005-05-06 08:49:09.000000000 +0000
++++ setup
+@@ -91,6 +91,9 @@ case $# in
+   CYGWIN*)
+     platformheader=platform/cygwin51_gcc3_so
+     ;;
++  HAIKU*)
++    platformheader=platform/cygwin51_gcc3_so
++    ;;
+   esac
+   staticheader=''
+   ;;

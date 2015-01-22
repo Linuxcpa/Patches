@@ -1,0 +1,23 @@
+$NetBSD$
+
+--- pygame.egg-info/SOURCES.txt.orig	2009-08-06 08:48:57.057147392 +0000
++++ pygame.egg-info/SOURCES.txt
+@@ -301,11 +301,7 @@ src/rect.c
+ src/rect.doc
+ src/rotozoom.c
+ src/rwobject.c
+-src/scale.h
+ src/scale2x.c
+-src/scale_mmx.c
+-src/scale_mmx32.c
+-src/scale_mmx64.c
+ src/scrap.c
+ src/scrap.doc
+ src/scrap.h
+@@ -465,4 +461,4 @@ test/util/build_page/results/.htaccess
+ test/util/build_page/results/index.py
+ test/util/build_page/results/results.css
+ test/util/build_page/upload_results/.htaccess
+-test/util/build_page/upload_results/index.py
+\ No newline at end of file
++test/util/build_page/upload_results/index.py

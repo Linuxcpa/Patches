@@ -1,6 +1,6 @@
 $NetBSD$
 
---- src/glu/sgi/Makefile.orig	2010-12-14 21:43:14.027262976 +0000
+--- src/glu/sgi/Makefile.orig	2010-12-14 21:43:14.023330816 +0000
 +++ src/glu/sgi/Makefile
 @@ -135,13 +135,19 @@ $(TOP)/$(LIB_DIR):
  	-mkdir $(TOP)/$(LIB_DIR)
