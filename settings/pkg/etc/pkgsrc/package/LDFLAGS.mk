@@ -29,7 +29,8 @@
 || ${PKGPATH} == "games/qstat" || ${PKGPATH} == "games/xdoom" \
 || ${PKGPATH} == "games/bomberclone" || ${PKGPATH} == "net/entropy" \
 || ${PKGPATH} == "net/Geomyidae" || ${PKGPATH} == "net/rtmpdump" \
-|| ${PKGPATH} == "games/criticalmass" || ${PKGPATH} == "games/quake"
+|| ${PKGPATH} == "games/criticalmass" || ${PKGPATH} == "games/quake" \
+|| ${PKGPATH} == "games/lbreakout2" || ${PKGPATH} == "games/netmaj"
 LDFLAGS+= -lnetwork
 .endif
 
@@ -55,6 +56,10 @@ LDFLAGS+= -Wl,-R${PREFIX}/lib
 
 .if ${PKGPATH} == "net/samba" || ${PKGPATH} == "chat/anope"
 LDFLAGS+= -Wl,-R/boot/system/lib
+.endif
+
+.if ${PKGPATH} == "graphics/MesaLib"
+LDFLAGS+= -ltranslation -lgame
 .endif
 
 .if ${PKGPATH} == "chat/gtmess" || ${PKGPATH} == "print/luatex" \

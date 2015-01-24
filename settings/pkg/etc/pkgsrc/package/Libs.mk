@@ -33,7 +33,7 @@
 || ${PKGPATH} == "emulators/kegs" || ${PKGPATH} == "multimedia/libdvbpsi0" \
 || ${PKGPATH} == "games/tetrinetx" || ${PKGPATH} == "net/ftpproxy" \
 || ${PKGPATH} == "net/haproxy" || ${PKGPATH} == "games/xevil" \
-|| ${PKGPATH} == "games/xtris"
+|| ${PKGPATH} == "games/xtris" || ${PKGPATH} == "games/imaze"
 LIBS.Haiku+=	-lnetwork
 .endif
 

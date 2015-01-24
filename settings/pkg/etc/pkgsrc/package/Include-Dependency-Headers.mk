@@ -1,7 +1,7 @@
 .if ${PKGPATH} == "converters/odt2txt" || ${PKGPATH} == "devel/astyle" \
 || ${PKGPATH} == "security/courier-authlib" || ${PKGPATH} == "shells/fish" \
 || ${PKGPATH} == "textproc/ocaml-text" || ${PKGPATH} == "textproc/unac" \
-|| ${PKGPATH} == "www/htmlcxx"
+|| ${PKGPATH} == "www/htmlcxx" || ${PKGPATH} == "games/hex-a-hop"
 .include "../../converters/libiconv/buildlink3.mk"
 .endif
 
@@ -13,6 +13,10 @@
 .include "../../textproc/libxml2/buildlink3.mk"
 .include "../../converters/libiconv/buildlink3.mk"
 .include "../../security/openssl/buildlink3.mk"
+.endif
+
+.if ${PKGPATH} == "games/gnuchess4"
+.include "../../mk/curses.buildlink3.mk"
 .endif
 
 .if ${PKGPATH} == "games/enigma"

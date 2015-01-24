@@ -16,7 +16,9 @@ BUILDLINK_TRANSFORM+= rm:-lresolv
 BUILDLINK_TRANSFORM+= rm:-lcrypt
 .endif
 
-
+.if ${PKGPATH} == "games/nagi"
+BUILDLINK_TRANSFORM+= rm: -lcompat
+.endif
 
 #Not working below here
 

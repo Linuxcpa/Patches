@@ -57,6 +57,22 @@ SUBST_FILES.xawfix= src/gmac/Makefile
 SUBST_SED.xawfix+= -e 's|libXaw.a|libXaw6.a|g'
 .endif
 
+.if ${PKGPATH} == "games/nethack-lib"
+SUBST_CLASSES+= colfix
+SUBST_STAGE.colfix= pre-build
+SUBST_MESSAGE.colfix= Fixing COLCMD
+SUBST_FILES.colfix= doc/Makefile
+SUBST_SED.colfix+= -e 's|COLCMD = col -bx|COLCMD = |g'
+.endif
+
+.if ${PKGPATH} == "games/nethack-tty" || ${PKGPATH} == "games/nethack-x11"
+SUBST_CLASSES+= termfix
+SUBST_STAGE.termfix= pre-build
+SUBST_MESSAGE.termfix= Fixing -lncurses
+SUBST_FILES.termfix= src/Makefile
+SUBST_SED.termfix+= -e 's|WINTTYLIB = -ltermlib|WINTTYLIB = -lncurses|g'
+.endif
+
 .if ${PKGPATH} == "time/gnyaclock" || ${PKGPATH} == "time/lmclock" \
 || ${PKGPATH} == "time/polclock" || ${PKGPATH} == "time/sunclock" \
 || ${PKGPATH} == "time/titrax" || ${PKGPATH} == "time/xcal" \

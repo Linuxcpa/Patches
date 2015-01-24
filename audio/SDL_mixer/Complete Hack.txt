@@ -2,3 +2,16 @@ Forced creation of package from binaries built in Haikuporter.
 
 1. Pkgsrc would not let g++ compile 
 2. There were undefined references that were unique to pkgsrc.
+
+Util this is solved, I caused SDL_mixer to become installed in pkgsrc
+by unzipping the two packages I built in Haikuporter, manually placing the
+binaries, libraries, headers and pkgconfig files where pkgsrc expects them.
+
+/boot/home/pkg/lib
+/boot/home/pkg/include
+/boot/home/pkg/bin
+/boot/home/pkg/lib/pkgconfig
+
+IMPORTANT edit the SDL_mixer.pc file to be consistent with pkgsrc parameters.
+Look at the other *.pc files in /boot/home/pkg/lib/pkgconfig and edit to become like those.
+

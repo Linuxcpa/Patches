@@ -1,0 +1,13 @@
+$NetBSD: patch-al,v 1.1 2008/02/29 20:53:02 jlam Exp $
+
+--- ss.c.orig	1996-09-05 10:11:24.005242880 +0000
++++ ss.c
+@@ -26,6 +26,7 @@
+  */
+ 
++#include <string.h>
+ #include "ss.h"
+-
++#include <sys/select.h>
+ static int max_sd;
+ static fd_set fds,readable,zero;

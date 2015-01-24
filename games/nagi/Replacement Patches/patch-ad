@@ -1,0 +1,28 @@
+$NetBSD: patch-ad,v 1.2 2006/03/28 21:51:53 joerg Exp $
+
+--- Makefile.linux.orig	2002-11-01 10:32:28.028049408 +0000
++++ Makefile.linux
+@@ -2,14 +2,14 @@ include Makefile.common
+ 
+ CFLAGS += -DRAD_LINUX -DRAD_WARN
+ 
+-LIB = -lSDLmain -lSDL -lpthread
++LIB = -lSDLmain -lSDL ${PTHREAD_LDFLAGS} ${PTHREAD_LIBS}
+ 
+ all:	nagi
+ 
+ nagi:	../bin/nagi
+ 
+ ../bin/nagi: $(OBJ)
+-	$(CC) $(CFLAGS) $(OBJ) $(LIB) -o $@
++	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) $(LIB) -o $@
+ 
+ #cleanall: clean depclean
+ 
+@@ -26,4 +26,4 @@ clean:
+ #include $(SRC:.c=.d)
+ 
+ %.o: %.c
+-	$(CC) $(CFLAGS) -c $< -o $@
+\ No newline at end of file
++	$(CC) $(CFLAGS) -c $< -o $@

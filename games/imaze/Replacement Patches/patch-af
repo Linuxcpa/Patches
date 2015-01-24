@@ -1,0 +1,24 @@
+$NetBSD: patch-af,v 1.1 2006/01/12 22:17:41 joerg Exp $
+
+--- source/system.c.orig	1996-02-22 21:34:29.034603008 +0000
++++ source/system.c
+@@ -10,7 +10,7 @@
+ **  Signal-Handling, Timing etc.
+ */
+ 
+-
++#include <sys/select.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+@@ -36,10 +36,6 @@
+ static char sccsid[] = "@(#)system.c	2.1 02/22/96";
+ 
+ 
+-/* Systemvariable: letzter aufgetretener Fehlercode oder 0 */
+-extern int errno;
+-
+-
+ /* Struktur, in der der Timerzustand gerettet werden kann */
+ struct timer_zustand
+ {

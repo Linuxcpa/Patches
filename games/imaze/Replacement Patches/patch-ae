@@ -1,0 +1,56 @@
+$NetBSD: patch-ae,v 1.1 2006/01/12 22:17:41 joerg Exp $
+
+--- source/ip_netz.c.orig	1996-02-22 21:34:26.031981568 +0000
++++ source/ip_netz.c
+@@ -8,8 +8,8 @@
+ ** Kommentar:
+ **  Netzwerkkommunikation ueber TCP/IP
+ */
+-
+-
++#include <errno.h>
++#include <sys/select.h>
+ #include <stdio.h>
+ #include <string.h>
+ #include <errno.h>
+@@ -45,10 +45,6 @@ static char sccsid[] = "@(#)ip_netz.c	2.
+ #define MAX_SPIEL_PAKET 1024
+ 
+ 
+-/* Systemvariable: letzter aufgetretener Fehlercode oder 0 */
+-extern int errno;
+-
+-
+ static int tcp_deskriptor = -1;     /* Deskriptor fuer TCP-Verbindung */
+ static int udp_deskriptor = -1;     /* Deskriptor fuer UDP-Socket */
+ static int letzte_paketnummer = -1; /* Nummer des letzten empfangenen
+@@ -66,29 +62,6 @@ static int letzte_paketnummer = -1; /* N
+ ** Seiteneffekte:
+ **  der zuletzt zurueckgegebene Zeiger wird evtl. ungueltig
+ */
+-static char *fehler_text()
+-{
+-#ifndef DONT_DECLARE_ERRLIST
+-	extern char *sys_errlist[]; /* Liste der Standard-Fehlertexte */
+-	extern int sys_nerr;        /* Anzahl der Eintraege in sys_errlist */
+-#endif
+-
+-	/* falls errno kein gueltiger Index fuer sys_errlist ist, nur die
+-	   Nummer als String zurueckgeben */
+-	if (errno < 0 || errno >= sys_nerr)
+-	{
+-		static char text[20]; /* Puffer fuer Fehlernummer */
+-
+-		sprintf(text, "Error #%d", errno);
+-
+-		/* Zeiger auf Puffer zurueckgeben; Achtung: dieser Zeiger
+-		   ist immer derselbe */
+-		return text;
+-	}
+-
+-	/* Standard-Fehlertext zurueckgeben */
+-	return (char *)sys_errlist[errno];
+-}
+ 
+ 
+ /*
